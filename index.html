@@ -1,291 +1,265 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>Axentro | Software & Digital Solutions</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Axentro | Software & Digital Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Font -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
-<!-- Icons -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-<style>
-:root{
-  --main:#00d2ff;
-  --green:#25D366;
-  --dark:#050b18;
-}
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Cairo', sans-serif;
+      color: #e5f6ff;
+      background:
+        radial-gradient(circle at 20% 20%, #0b1c2d, transparent 40%),
+        radial-gradient(circle at 80% 80%, #0a3d62, transparent 40%),
+        linear-gradient(135deg, #020617, #020b2e);
+      overflow-x: hidden;
+    }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Cairo',sans-serif;
-  background:radial-gradient(circle at top,var(--dark),#020617);
-  color:#fff;
-  overflow-x:hidden;
-}
+    #particles {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+    }
 
-/* ===== Cursor Glow ===== */
-.cursor{
-  width:22px;height:22px;
-  border-radius:50%;
-  position:fixed;
-  pointer-events:none;
-  background:radial-gradient(circle,var(--main),transparent 70%);
-  opacity:.6;
-  transform:translate(-50%,-50%);
-  z-index:9999;
-}
+    .cursor-glow {
+      position: fixed;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(0,212,255,0.15), transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
 
-/* ===== Particles ===== */
-canvas{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-}
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
 
-/* ===== Hero ===== */
-.hero{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:80px 20px;
-  animation:fadeUp 1.2s ease forwards;
-}
+    h1 {
+      font-size: 46px;
+      color: #00d4ff;
+      margin-bottom: 10px;
+    }
 
-.hero h1{
-  font-size:52px;
-  letter-spacing:4px;
-  color:var(--main);
-  margin:0;
-}
+    .tagline {
+      font-size: 14px;
+      letter-spacing: 3px;
+      opacity: 0.8;
+      margin-bottom: 20px;
+    }
 
-.hero h2{
-  margin:10px 0;
-  font-weight:500;
-  letter-spacing:3px;
-}
+    .desc {
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.8;
+      opacity: 0.9;
+    }
 
-.hero p{
-  max-width:650px;
-  line-height:1.8;
-  opacity:.9;
-}
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
+    }
 
-/* ===== Services ===== */
-.section{
-  padding:80px 20px;
-  text-align:center;
-}
+    .service-card {
+      background: rgba(255,255,255,0.04);
+      border-radius: 14px;
+      padding: 25px;
+      transition: 0.4s ease;
+      backdrop-filter: blur(6px);
+    }
 
-.section h3{
-  font-size:28px;
-  color:var(--main);
-  margin-bottom:40px;
-}
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 25px 60px rgba(0,212,255,0.25);
+    }
 
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:25px;
-  max-width:1100px;
-  margin:auto;
-}
+    .service-card h3 {
+      color: #00ffd5;
+      margin-bottom: 10px;
+    }
 
-.card{
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;
-  padding:25px;
-  transition:.4s;
-  opacity:0;
-  transform:translateY(40px);
-}
+    .digital {
+      font-size: 18px;
+      margin-top: 60px;
+      opacity: 0.9;
+    }
 
-.card i{
-  font-size:34px;
-  color:var(--main);
-  margin-bottom:15px;
-}
+    .cta {
+      margin-top: 35px;
+    }
 
-.card:hover{
-  transform:translateY(-10px) scale(1.05);
-  box-shadow:0 0 25px rgba(0,210,255,.25);
-}
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #000;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
 
-/* ===== CTA ===== */
-.cta{
-  text-align:center;
-  padding:70px 20px;
-}
+    .btn-whatsapp:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #25D366;
+    }
 
-.whatsapp{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  background:var(--green);
-  color:#fff;
-  padding:14px 28px;
-  border-radius:30px;
-  font-weight:700;
-  text-decoration:none;
-  transition:.3s;
-}
+    .social-icons {
+      margin-top: 30px;
+    }
 
-.whatsapp:hover{
-  transform:scale(1.08);
-  box-shadow:0 0 25px rgba(37,211,102,.6);
-}
+    .social-icons a {
+      font-size: 22px;
+      margin: 0 12px;
+      transition: 0.3s ease;
+    }
 
-/* ===== Social ===== */
-.socials{
-  margin-top:35px;
-  display:flex;
-  justify-content:center;
-  gap:22px;
-}
+    .social-icons a:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 0 15px currentColor;
+    }
 
-.socials a{
-  font-size:26px;
-  color:var(--main);
-  position:relative;
-  transition:.35s;
-}
+    .whatsapp { color: #25D366; }
+    .email { color: #EA4335; }
+    .facebook { color: #1877F2; }
+    .instagram { color: #E1306C; }
+    .tiktok { color: #ffffff; }
 
-.socials a::after{
-  content:"";
-  position:absolute;
-  inset:-8px;
-  border-radius:50%;
-  background:currentColor;
-  opacity:0;
-  filter:blur(14px);
-  transition:.35s;
-  z-index:-1;
-}
+    footer {
+      margin-top: 80px;
+      font-size: 14px;
+      font-weight: bold;
+      opacity: 0.85;
+    }
 
-.socials a:hover{
-  transform:scale(1.4) rotate(5deg);
-}
-.socials a:hover::after{opacity:.45}
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.8s ease;
+    }
 
-/* ===== Footer ===== */
-footer{
-  text-align:center;
-  padding:35px 20px;
-  font-weight:700;
-  opacity:.9;
-}
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-/* ===== Animations ===== */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:none}
-}
-
-/* ===== Mobile ===== */
-@media(max-width:768px){
-  .hero h1{font-size:36px}
-  .card:hover{transform:none}
-}
-</style>
+    @media (max-width: 768px) {
+      h1 { font-size: 36px; }
+      .service-card:hover { transform: scale(1.02); }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="cursor"></div>
 <canvas id="particles"></canvas>
+<div class="cursor-glow"></div>
 
-<section class="hero">
+<section class="fade-up">
   <h1>AXENTRO</h1>
-  <h2>CONTROL · TRACK · GROW</h2>
-  <p>
-    حلول برمجية ذكية لإدارة الأعمال وتحويل Excel  
-    إلى أنظمة احترافية (EXE – Web – Mobile – Social Media)
+  <div class="tagline">CONTROL • TRACK • GROW</div>
+  <p class="desc">
+    حلول برمجية ذكية لإدارة الأعمال وتحويل Excel إلى أنظمة احترافية<br>
+    EXE • Web • Mobile • Social Media Solutions
   </p>
 </section>
 
-<section class="section">
-  <h3>Our Services | خدماتنا</h3>
-  <div class="cards">
-    <div class="card"><i class="fa-solid fa-boxes-stacked"></i><h4>Inventory & Sales</h4><p>أنظمة مخازن ومبيعات ذكية</p></div>
-    <div class="card"><i class="fa-solid fa-desktop"></i><h4>Desktop Software</h4><p>برامج EXE مخصصة</p></div>
-    <div class="card"><i class="fa-solid fa-mobile-screen"></i><h4>Web & Mobile Apps</h4><p>تطبيقات ويب وموبايل</p></div>
-    <div class="card"><i class="fa-solid fa-table"></i><h4>Excel Solutions</h4><p>تحويل Excel لأنظمة</p></div>
-    <div class="card"><i class="fa-solid fa-bullhorn"></i><h4>Branding & Social</h4><p>تصميم وتسويق رقمي</p></div>
+<section class="fade-up">
+  <h2>Our Services | خدماتنا</h2>
+
+  <div class="services">
+    <div class="service-card fade-up">
+      <h3>Professional Excel</h3>
+      <p>تحويل ملفات Excel إلى أدوات ذكية لإدارة الأعمال.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <h3>Web & Mobile Apps</h3>
+      <p>تطوير تطبيقات ويب وموبايل مخصصة.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <h3>Desktop Software</h3>
+      <p>أنظمة EXE قوية تعمل بدون إنترنت.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <h3>Inventory & Sales</h3>
+      <p>إدارة مخزون ومبيعات وتقارير دقيقة.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <h3>Branding & Social Media</h3>
+      <p>تصميم هوية وبوستات احترافية.</p>
+    </div>
   </div>
 </section>
 
-<section class="cta">
-  <a class="whatsapp"
-     href="https://wa.me/201146476993?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20%D9%81%D8%B1%D9%8A%D9%82%20Axentro%20%F0%9F%91%8B%0A%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%D9%83%D9%85"
-     target="_blank">
-     <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
-  </a>
+<section class="fade-up">
+  <p class="digital">نصنع لك حضورًا رقميًا يعكس قوة مشروعك ويزيد ثقة عملائك</p>
 
-  <div class="socials">
-    <a href="#"><i class="fab fa-whatsapp"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-tiktok"></i></a>
+  <div class="cta">
+    <a class="btn-whatsapp"
+       href="https://wa.me/201146476993?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20%D9%81%D8%B1%D9%8A%D9%82%20Axentro%D8%8C%0A%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%D9%83%D9%85."
+       target="_blank">
+      <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+    </a>
   </div>
+
+  <div class="social-icons">
+    <a class="whatsapp" href="https://wa.me/201146476993"><i class="fab fa-whatsapp"></i></a>
+    <a class="email" href="mailto:axentroofficial@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
+    <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>
+    <a class="tiktok" href="#"><i class="fab fa-tiktok"></i></a>
+  </div>
+
+  <footer>
+    © 2024 Axentro – All Rights Reserved<br>
+    By Ahmed Hamouda
+  </footer>
 </section>
 
-<footer>
-  © 2024 Axentro – All Rights Reserved<br>
-  By Ahmed Hamouda
-</footer>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
 <script>
-/* Cursor */
-const cursor=document.querySelector('.cursor');
-document.addEventListener('mousemove',e=>{
-  cursor.style.left=e.clientX+'px';
-  cursor.style.top=e.clientY+'px';
+particlesJS("particles", {
+  particles: {
+    number: { value: 60 },
+    color: { value: "#00d4ff" },
+    size: { value: 2 },
+    move: { speed: 1 }
+  }
 });
 
-/* Cards Animation */
-const cards=document.querySelectorAll('.card');
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){
-      e.target.style.transitionDelay=`${i*0.15}s`;
-      e.target.style.opacity=1;
-      e.target.style.transform='none';
-    }
-  })
-},{threshold:.2});
-cards.forEach(c=>observer.observe(c));
+document.addEventListener("mousemove", e => {
+  const glow = document.querySelector(".cursor-glow");
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
 
-/* Particles */
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
-resize();window.onresize=resize;
-let dots=Array.from({length:80},()=>({
-  x:Math.random()*innerWidth,
-  y:Math.random()*innerHeight,
-  r:Math.random()*2+1,
-  dx:(Math.random()-.5)/2,
-  dy:(Math.random()-.5)/2
-}));
-function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  dots.forEach(d=>{
-    d.x+=d.dx;d.y+=d.dy;
-    if(d.x<0||d.x>canvas.width)d.dx*=-1;
-    if(d.y<0||d.y>canvas.height)d.dy*=-1;
-    ctx.fillStyle="rgba(0,210,255,.6)";
-    ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fill();
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("show");
   });
-  requestAnimationFrame(animate);
-}
-animate();
+});
+
+document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
 </script>
 
 </body>
