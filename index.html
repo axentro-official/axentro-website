@@ -1,163 +1,205 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Axentro | Software Solutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <style>
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Arial;
-      background: #0f172a;
+      background: linear-gradient(180deg, #0b1220, #020617);
       color: #e5e7eb;
     }
 
+    a { text-decoration: none; }
+
+    /* ===== Header ===== */
     header {
-      padding: 80px 20px;
+      padding: 90px 20px;
       text-align: center;
-      background: linear-gradient(135deg, #020617, #020617);
+      background: radial-gradient(circle at top, #020617, #020617);
+    }
+
+    header img {
+      width: 120px;
+      margin-bottom: 20px;
     }
 
     header h1 {
       font-size: 42px;
-      margin-bottom: 15px;
       color: #38bdf8;
+      margin-bottom: 15px;
     }
 
     header p {
-      font-size: 18px;
-      max-width: 700px;
+      max-width: 720px;
       margin: auto;
-      line-height: 1.7;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #cbd5f5;
     }
 
     .btn {
       display: inline-block;
       margin-top: 30px;
-      padding: 15px 35px;
+      padding: 14px 34px;
       background: #22c55e;
-      color: #020617;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 18px;
+      color: #022c22;
       font-weight: bold;
+      border-radius: 30px;
     }
 
+    /* ===== Sections ===== */
     section {
       padding: 70px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 32px;
+      margin-bottom: 35px;
+      color: #38bdf8;
+    }
+
+    /* ===== Cards ===== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
       max-width: 1100px;
       margin: auto;
     }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 50px;
-      color: #38bdf8;
-      font-size: 32px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
-
     .card {
       background: #020617;
-      padding: 25px;
-      border-radius: 12px;
       border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 25px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #38bdf8;
     }
 
     .card h3 {
-      margin-bottom: 15px;
       color: #22c55e;
+      margin-bottom: 10px;
     }
 
-    .steps {
-      text-align: center;
-      line-height: 2;
-      font-size: 18px;
+    .card p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #cbd5f5;
     }
 
+    /* ===== Footer ===== */
     footer {
       background: #020617;
+      border-top: 1px solid #1e293b;
       text-align: center;
-      padding: 25px;
+      padding: 35px 20px;
       font-size: 14px;
-      color: #9ca3af;
+      color: #94a3b8;
     }
   </style>
 </head>
 
 <body>
 
+<!-- ===== HERO ===== -->
 <header>
+  <img src="logo.png" alt="Axentro Logo">
   <h1>Axentro</h1>
   <p>
-    حلول برمجية احترافية لإدارة المبيعات والمخازن  
-    نطوّر أنظمة Desktop و Web و Mobile مخصصة لنشاطك
+    حلول برمجية ذكية لإدارة الأعمال وتحويل Excel إلى أنظمة احترافية
+    (EXE – Web – Mobile) تساعدك على التحكم، المتابعة، والنمو بثقة.
   </p>
 
-  <a class="btn" href="https://wa.me/201000000000" target="_blank">
-    تواصل معنا على واتساب
+  <a class="btn"
+     href="https://wa.me/201146476993?text=مرحبًا%20Axentro،%20أنا%20مهتم%20بخدماتكم%20وأحب%20معرفة%20التفاصيل">
+    تواصل معنا عبر واتساب
   </a>
 </header>
 
+<!-- ===== WHY ===== -->
 <section>
-  <h2>لماذا Axentro ؟</h2>
+  <h2>لماذا Axentro؟</h2>
   <div class="grid">
     <div class="card">حلول مخصصة حسب نشاطك</div>
-    <div class="card">أنظمة سهلة وسريعة</div>
-    <div class="card">دعم فني حقيقي بعد التسليم</div>
-    <div class="card">بدون تعقيد أو التزام مبدئي</div>
+    <div class="card">بديل احترافي لـ Excel</div>
+    <div class="card">أنظمة مستقرة وسريعة</div>
+    <div class="card">دعم فني بعد التسليم</div>
   </div>
 </section>
 
+<!-- ===== SERVICES ===== -->
 <section>
   <h2>خدماتنا</h2>
   <div class="grid">
+
+    <div class="card">
+      <h3>Inventory & Sales Management</h3>
+      <p>أنظمة إدارة مخازن ومبيعات دقيقة مع تقارير وتحكم كامل.</p>
+    </div>
+
     <div class="card">
       <h3>Desktop Software (EXE)</h3>
-      أنظمة مبيعات ومخازن تعمل بدون إنترنت
+      <p>برامج سطح مكتب مستقلة وآمنة بدون اشتراكات.</p>
     </div>
 
     <div class="card">
-      <h3>Web & Mobile Apps</h3>
-      تطبيقات حديثة لإدارة أعمالك من أي مكان
+      <h3>Web & Mobile Applications</h3>
+      <p>تطبيقات ويب وموبايل حديثة تدعم نمو نشاطك.</p>
     </div>
 
     <div class="card">
-      <h3>Inventory & Sales Systems</h3>
-      تقارير – فواتير – عملاء – موردين
+      <h3>Professional Excel Solutions</h3>
+      <p>تحويل ملفات Excel إلى أنظمة ذكية قابلة للتوسع.</p>
     </div>
 
-    <div class="card">
-      <h3>Excel Solutions</h3>
-      تحويل ملفات Excel إلى أنظمة ذكية
-    </div>
   </div>
 </section>
 
+<!-- ===== MARKETING ===== -->
 <section>
-  <h2>طريقة العمل</h2>
-  <div class="steps">
-    1️⃣ نفهم نشاطك واحتياجاتك<br>
-    2️⃣ نرشح الحل الأنسب (EXE / Web / App)<br>
-    3️⃣ تنفيذ وتسليم مع دعم مستمر
+  <h2>التسويق وإدارة السوشيال ميديا</h2>
+  <div class="grid">
+
+    <div class="card">
+      <h3>إدارة صفحات السوشيال</h3>
+      <p>تنظيم المحتوى وزيادة التفاعل وبناء هوية قوية.</p>
+    </div>
+
+    <div class="card">
+      <h3>إنشاء بوستات احترافية</h3>
+      <p>تصميم منشورات إعلانية جذابة موجهة للبيع.</p>
+    </div>
+
+    <div class="card">
+      <h3>خطة تسويقية متكاملة</h3>
+      <p>استراتيجية محتوى + إعلانات + تحويل العملاء.</p>
+    </div>
+
   </div>
 </section>
 
-<section style="text-align:center">
+<!-- ===== CTA ===== -->
+<section>
   <h2>ابدأ الآن</h2>
-  <a class="btn" href="https://wa.me/201000000000" target="_blank">
-    احجز استشارة مجانية
+  <a class="btn"
+     href="mailto:axentroofficial@gmail.com">
+    axentroofficial@gmail.com
   </a>
 </section>
 
+<!-- ===== FOOTER ===== -->
 <footer>
-  © 2026 Axentro – All Rights Reserved
+  © 2026 Axentro – All Rights Reserved<br>
+  By Ahmed Hamouda
 </footer>
 
 </body>
