@@ -1,205 +1,210 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <title>Axentro | Software Solutions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Axentro | Software & Digital Solutions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, Arial;
-      background: linear-gradient(180deg, #0b1220, #020617);
-      color: #e5e7eb;
-    }
+<style>
+:root {
+  --blue: #00b7ff;
+  --green: #22c55e;
+  --dark: #020617;
+  --card: #020c1b;
+  --text: #e5e7eb;
+}
 
-    a { text-decoration: none; }
+* { box-sizing: border-box; }
 
-    /* ===== Header ===== */
-    header {
-      padding: 90px 20px;
-      text-align: center;
-      background: radial-gradient(circle at top, #020617, #020617);
-    }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Arial;
+  background: radial-gradient(circle at top, #020c1b, #020617);
+  color: var(--text);
+  text-align: center;
+}
 
-    header img {
-      width: 120px;
-      margin-bottom: 20px;
-    }
+/* ===== HERO ===== */
+.hero {
+  padding: 100px 20px 80px;
+}
 
-    header h1 {
-      font-size: 42px;
-      color: #38bdf8;
-      margin-bottom: 15px;
-    }
+.brand-letter {
+  font-size: 120px;
+  font-weight: 900;
+  color: var(--blue);
+  letter-spacing: -8px;
+}
 
-    header p {
-      max-width: 720px;
-      margin: auto;
-      font-size: 18px;
-      line-height: 1.8;
-      color: #cbd5f5;
-    }
+.hero h1 {
+  font-size: 42px;
+  margin: 10px 0;
+  color: var(--blue);
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 14px 34px;
-      background: #22c55e;
-      color: #022c22;
-      font-weight: bold;
-      border-radius: 30px;
-    }
+.hero p {
+  max-width: 900px;
+  margin: 20px auto;
+  line-height: 1.9;
+  font-size: 18px;
+  color: #cbd5f5;
+}
 
-    /* ===== Sections ===== */
-    section {
-      padding: 70px 20px;
-      text-align: center;
-    }
+/* ===== SERVICES ===== */
+.section {
+  padding: 80px 20px;
+}
 
-    section h2 {
-      font-size: 32px;
-      margin-bottom: 35px;
-      color: #38bdf8;
-    }
+.section h2 {
+  font-size: 32px;
+  color: var(--blue);
+  margin-bottom: 50px;
+}
 
-    /* ===== Cards ===== */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-      max-width: 1100px;
-      margin: auto;
-    }
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+}
 
-    .card {
-      background: #020617;
-      border: 1px solid #1e293b;
-      border-radius: 14px;
-      padding: 25px;
-      transition: 0.3s;
-    }
+.card {
+  background: linear-gradient(145deg, #020c1b, #020617);
+  border: 1px solid #0f172a;
+  border-radius: 18px;
+  padding: 30px 20px;
+  transition: 0.3s ease;
+}
 
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: #38bdf8;
-    }
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--blue);
+}
 
-    .card h3 {
-      color: #22c55e;
-      margin-bottom: 10px;
-    }
+.card h3 {
+  color: var(--green);
+  margin-bottom: 15px;
+}
 
-    .card p {
-      font-size: 15px;
-      line-height: 1.7;
-      color: #cbd5f5;
-    }
+.card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #cbd5f5;
+}
 
-    /* ===== Footer ===== */
-    footer {
-      background: #020617;
-      border-top: 1px solid #1e293b;
-      text-align: center;
-      padding: 35px 20px;
-      font-size: 14px;
-      color: #94a3b8;
-    }
-  </style>
+/* ===== SOCIAL ===== */
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  font-size: 28px;
+  margin-top: 30px;
+}
+
+.social a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.social a:hover {
+  color: var(--green);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid #0f172a;
+  padding: 50px 20px;
+  margin-top: 80px;
+}
+
+.contact {
+  margin-bottom: 30px;
+}
+
+.contact a {
+  display: inline-block;
+  margin: 10px 15px;
+  padding: 14px 30px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, var(--green), var(--blue));
+  color: #020617;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+footer p {
+  font-size: 14px;
+  color: #94a3b8;
+}
+</style>
 </head>
 
 <body>
 
-<!-- ===== HERO ===== -->
-<header>
-  <img src="logo.png" alt="Axentro Logo">
+<!-- HERO -->
+<section class="hero">
+  <div class="brand-letter">A</div>
   <h1>Axentro</h1>
   <p>
-    حلول برمجية ذكية لإدارة الأعمال وتحويل Excel إلى أنظمة احترافية
+    حلول برمجية ذكية لإدارة الأعمال وتحويل Excel إلى أنظمة احترافية  
     (EXE – Web – Mobile) تساعدك على التحكم، المتابعة، والنمو بثقة.
   </p>
-
-  <a class="btn"
-     href="https://wa.me/201146476993?text=مرحبًا%20Axentro،%20أنا%20مهتم%20بخدماتكم%20وأحب%20معرفة%20التفاصيل">
-    تواصل معنا عبر واتساب
-  </a>
-</header>
-
-<!-- ===== WHY ===== -->
-<section>
-  <h2>لماذا Axentro؟</h2>
-  <div class="grid">
-    <div class="card">حلول مخصصة حسب نشاطك</div>
-    <div class="card">بديل احترافي لـ Excel</div>
-    <div class="card">أنظمة مستقرة وسريعة</div>
-    <div class="card">دعم فني بعد التسليم</div>
-  </div>
 </section>
 
-<!-- ===== SERVICES ===== -->
-<section>
+<!-- SERVICES -->
+<section class="section">
   <h2>خدماتنا</h2>
-  <div class="grid">
+  <div class="services">
 
     <div class="card">
-      <h3>Inventory & Sales Management</h3>
-      <p>أنظمة إدارة مخازن ومبيعات دقيقة مع تقارير وتحكم كامل.</p>
+      <h3>Inventory & Sales Systems</h3>
+      <p>أنظمة مخازن ومبيعات مخصصة حسب نشاطك مع تقارير دقيقة وتحكم كامل.</p>
     </div>
 
     <div class="card">
       <h3>Desktop Software (EXE)</h3>
-      <p>برامج سطح مكتب مستقلة وآمنة بدون اشتراكات.</p>
+      <p>برامج سطح مكتب مستقرة وسريعة تعمل بدون إنترنت.</p>
     </div>
 
     <div class="card">
-      <h3>Web & Mobile Applications</h3>
-      <p>تطبيقات ويب وموبايل حديثة تدعم نمو نشاطك.</p>
+      <h3>Web & Mobile Apps</h3>
+      <p>تطبيقات حديثة لإدارة أعمالك من أي مكان.</p>
     </div>
 
     <div class="card">
       <h3>Professional Excel Solutions</h3>
-      <p>تحويل ملفات Excel إلى أنظمة ذكية قابلة للتوسع.</p>
+      <p>تحويل ملفات Excel المعقدة إلى حلول ذكية ومنظمة.</p>
+    </div>
+
+    <div class="card">
+      <h3>Branding & Design</h3>
+      <p>هوية بصرية، تصميمات سوشيال ميديا، وخطة تسويق احترافية.</p>
     </div>
 
   </div>
 </section>
 
-<!-- ===== MARKETING ===== -->
-<section>
-  <h2>التسويق وإدارة السوشيال ميديا</h2>
-  <div class="grid">
-
-    <div class="card">
-      <h3>إدارة صفحات السوشيال</h3>
-      <p>تنظيم المحتوى وزيادة التفاعل وبناء هوية قوية.</p>
-    </div>
-
-    <div class="card">
-      <h3>إنشاء بوستات احترافية</h3>
-      <p>تصميم منشورات إعلانية جذابة موجهة للبيع.</p>
-    </div>
-
-    <div class="card">
-      <h3>خطة تسويقية متكاملة</h3>
-      <p>استراتيجية محتوى + إعلانات + تحويل العملاء.</p>
-    </div>
-
+<!-- SOCIAL -->
+<section class="section">
+  <h2>نساعدك في التواجد الرقمي</h2>
+  <div class="social">
+    <a href="#">📘</a>
+    <a href="#">📸</a>
+    <a href="#">🎵</a>
+    <a href="#">💼</a>
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
-<section>
-  <h2>ابدأ الآن</h2>
-  <a class="btn"
-     href="mailto:axentroofficial@gmail.com">
-    axentroofficial@gmail.com
-  </a>
-</section>
-
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
-  © 2026 Axentro – All Rights Reserved<br>
-  By Ahmed Hamouda
+  <div class="contact">
+    <a href="mailto:axentroofficial@gmail.com">📧 Email</a>
+    <a href="https://wa.me/201146476993?text=مرحبًا%20فريق%20Axentro%20👋%0Aحابب%20نعرف%20أكثر%20عن%20احتياجك%20الحالي.%0Aاحكي%20لنا%20عن%20فكرتك%20أو%20طبيعة%20نشاطك%20وسنقترح%20عليك%20الحل%20الأنسب.">💬 WhatsApp</a>
+  </div>
+
+  <p>© 2026 Axentro – All Rights Reserved<br>By Ahmed Hamouda</p>
 </footer>
 
 </body>
