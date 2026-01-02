@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Axentro | Software & Digital Solutions</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -17,30 +17,44 @@
   --muted:#9fb4d6;
 }
 
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",Tahoma,Arial}
+
 body{
-  margin:0;
-  font-family:"Segoe UI",Tahoma,Arial;
   background:
-    radial-gradient(circle at 20% 20%, #0e1f3f 0%, transparent 40%),
-    radial-gradient(circle at 80% 10%, #0b3a55 0%, transparent 35%),
-    linear-gradient(180deg,var(--bg),var(--bg2));
+    radial-gradient(circle at 15% 20%, rgba(30,201,255,.25), transparent 40%),
+    radial-gradient(circle at 85% 70%, rgba(37,211,102,.18), transparent 40%),
+    linear-gradient(120deg, var(--bg), var(--bg2));
   color:var(--text);
   overflow-x:hidden;
 }
 
-/* ===== Animations ===== */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:none}
-}
-.reveal{
-  opacity:0;
-  animation:fadeUp .9s ease forwards;
+/* ===== Tech Grid Overlay ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+  z-index:0;
 }
 
-/* ===== Layout ===== */
+/* ===== Animations ===== */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:none}
+}
+.reveal{opacity:0;animation:fadeUp .9s ease forwards}
+.delay1{animation-delay:.2s}
+.delay2{animation-delay:.4s}
+.delay3{animation-delay:.6s}
+.delay4{animation-delay:.8s}
+
 section{
+  position:relative;
+  z-index:1;
   padding:90px 20px;
   text-align:center;
   max-width:1200px;
@@ -49,7 +63,7 @@ section{
 
 /* ===== HERO ===== */
 .hero h1{
-  font-size:52px;
+  font-size:56px;
   letter-spacing:4px;
   color:var(--primary);
   margin-bottom:10px;
@@ -57,19 +71,66 @@ section{
 .hero .slogan{
   font-weight:700;
   letter-spacing:3px;
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 .hero .stack{
   color:var(--muted);
   margin-bottom:40px;
 }
 
+/* ===== Services ===== */
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:28px;
+  margin-top:50px;
+}
+.card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:28px;
+  border-radius:20px;
+  backdrop-filter:blur(8px);
+  transition:.4s;
+}
+.card:hover{
+  transform:translateY(-10px);
+  border-color:var(--primary);
+  box-shadow:0 0 35px rgba(30,201,255,.35);
+}
+.card h3{
+  color:var(--primary);
+  margin-bottom:10px;
+}
+
+/* ===== Social ===== */
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  margin-top:25px;
+}
+.socials a{
+  font-size:26px;
+  transition:.3s;
+}
+.socials a:hover{transform:scale(1.25)}
+
+.whatsapp{color:#25D366}
+.facebook{color:#1877F2}
+.instagram{
+  background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.tiktok{color:#ffffff}
+
 /* ===== Buttons ===== */
 .btn{
   display:inline-flex;
   align-items:center;
   gap:10px;
-  padding:14px 26px;
+  padding:16px 32px;
   border-radius:40px;
   font-weight:700;
   text-decoration:none;
@@ -79,59 +140,20 @@ section{
   background:var(--accent);
   color:#fff;
 }
-.btn-whatsapp:hover{transform:scale(1.05)}
+.btn-whatsapp:hover{transform:scale(1.06)}
 .btn-email{
-  background:#0f2c4d;
+  background:rgba(255,255,255,.06);
   color:var(--primary);
-}
-
-/* ===== Services ===== */
-.services{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:25px;
-  margin-top:50px;
-}
-.card{
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.06);
-  padding:25px;
-  border-radius:18px;
-  backdrop-filter:blur(6px);
-  transition:.4s;
-}
-.card:hover{
-  transform:translateY(-8px);
-  border-color:var(--primary);
-}
-.card h3{
-  color:var(--primary);
-  margin-bottom:10px;
-}
-
-/* ===== Digital Presence ===== */
-.presence{
-  margin-top:60px;
-}
-.socials{
-  display:flex;
-  justify-content:center;
-  gap:18px;
   margin-top:20px;
+  border:1px solid rgba(255,255,255,.12);
 }
-.socials a{
-  color:var(--primary);
-  font-size:22px;
-  transition:.3s;
-}
-.socials a:hover{transform:scale(1.2)}
 
 /* ===== Footer ===== */
 footer{
-  padding:40px 20px;
+  padding:45px 20px;
   text-align:center;
   font-weight:700;
-  font-size:16px;
+  font-size:17px;
   color:var(--muted);
 }
 </style>
@@ -140,74 +162,55 @@ footer{
 <body>
 
 <!-- HERO -->
-<section class="hero reveal">
-  <h1>AXENTRO</h1>
-  <div class="slogan">CONTROL · TRACK · GROW</div>
-  <div class="stack">EXE · WEB · MOBILE · SOCIAL MEDIA</div>
-
-  <a class="btn btn-whatsapp"
-     href="https://wa.me/201146476993?text=مرحبًا%20فريق%20Axentro%20👋%0Aحابب%20أستفسر%20عن%20خدماتكم"
-     target="_blank">
-     <i class="fab fa-whatsapp"></i>
-     تواصل معنا عبر واتساب
-  </a>
+<section class="hero">
+  <h1 class="reveal">AXENTRO</h1>
+  <div class="slogan reveal delay1">CONTROL · TRACK · GROW</div>
+  <div class="stack reveal delay2">EXE · WEB · MOBILE · SOCIAL MEDIA</div>
 </section>
 
 <!-- SERVICES -->
-<section class="reveal" style="animation-delay:.3s">
-  <h2>Our Services | خدماتنا</h2>
+<section>
+  <h2 class="reveal">Our Services | خدماتنا</h2>
 
   <div class="services">
-    <div class="card reveal" style="animation-delay:.1s">
-      <h3>Inventory & Sales Systems</h3>
-      <p>أنظمة إدارة المخازن والمبيعات باحترافية عالية.</p>
-    </div>
-
-    <div class="card reveal" style="animation-delay:.2s">
-      <h3>Desktop Software (EXE)</h3>
-      <p>برامج مكتبية مخصصة تناسب نشاطك.</p>
-    </div>
-
-    <div class="card reveal" style="animation-delay:.3s">
-      <h3>Web & Mobile Apps</h3>
-      <p>تطبيقات ويب وموبايل حديثة وسريعة.</p>
-    </div>
-
-    <div class="card reveal" style="animation-delay:.4s">
-      <h3>Professional Excel Solutions</h3>
-      <p>تحويل ملفات Excel إلى حلول ذكية.</p>
-    </div>
-
-    <div class="card reveal" style="animation-delay:.5s">
-      <h3>Branding & Social Media</h3>
-      <p>تصميم الهوية + خطط تسويق ومحتوى.</p>
-    </div>
+    <div class="card reveal delay1"><h3>Inventory & Sales Systems</h3><p>أنظمة إدارة مخازن ومبيعات باحتراف.</p></div>
+    <div class="card reveal delay2"><h3>Desktop Software (EXE)</h3><p>برامج مكتبية قوية بدون إنترنت.</p></div>
+    <div class="card reveal delay3"><h3>Web & Mobile Apps</h3><p>تطبيقات حديثة وسريعة.</p></div>
+    <div class="card reveal delay4"><h3>Professional Excel Solutions</h3><p>تحويل Excel إلى حلول ذكية.</p></div>
+    <div class="card reveal delay4"><h3>Branding & Social Media</h3><p>تصميم وتسويق رقمي احترافي.</p></div>
   </div>
 </section>
 
 <!-- DIGITAL PRESENCE -->
-<section class="presence reveal" style="animation-delay:.6s">
-  <h2>Digital Growth & Presence</h2>
-  <p>نبني حضورك الرقمي بشكل احترافي يعكس قوة علامتك.</p>
+<section>
+  <h2 class="reveal">Digital Growth & Brand Presence</h2>
+  <p class="reveal delay1">نصنع حضورك الرقمي ليعمل لصالح نمو أعمالك.</p>
 
-  <div class="socials">
-    <a href="#"><i class="fab fa-whatsapp"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-tiktok"></i></a>
-  </div>
-
-  <div style="margin-top:35px">
-    <a class="btn btn-email" href="mailto:axentroofficial@gmail.com">
-      <i class="fas fa-envelope"></i>
-      axentroofficial@gmail.com
-    </a>
+  <div class="socials reveal delay2">
+    <a class="whatsapp" href="#"><i class="fab fa-whatsapp"></i></a>
+    <a class="facebook" href="#"><i class="fab fa-facebook"></i></a>
+    <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>
+    <a class="tiktok" href="#"><i class="fab fa-tiktok"></i></a>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- CONTACT -->
+<section>
+  <a class="btn btn-whatsapp reveal"
+     href="https://wa.me/201146476993?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20%D9%81%D8%B1%D9%8A%D9%82%20Axentro%20%F0%9F%91%8B%0A%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%D9%83%D9%85"
+     target="_blank">
+     <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+  </a>
+
+  <br>
+
+  <a class="btn btn-email reveal delay1" href="mailto:axentroofficial@gmail.com">
+    <i class="fas fa-envelope"></i> axentroofficial@gmail.com
+  </a>
+</section>
+
 <footer>
-  © 2024 Axentro – All Rights Reserved <br/>
+  © 2024 Axentro – All Rights Reserved <br>
   By Ahmed Hamouda
 </footer>
 
