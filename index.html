@@ -2,43 +2,184 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Axentro | Software & Digital Solutions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#050b18;
-  --bg2:#08142e;
-  --primary:#1ec9ff;
-  --accent:#25D366;
-  --text:#e6f1ff;
-  --muted:#9fb4d6;
+  --main:#00d2ff;
+  --green:#25D366;
+  --dark:#050b18;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",Tahoma,Arial}
-
+*{box-sizing:border-box}
 body{
-  background:
-    radial-gradient(circle at 15% 20%, rgba(30,201,255,.25), transparent 40%),
-    radial-gradient(circle at 85% 70%, rgba(37,211,102,.18), transparent 40%),
-    linear-gradient(120deg, var(--bg), var(--bg2));
-  color:var(--text);
+  margin:0;
+  font-family:'Cairo',sans-serif;
+  background:radial-gradient(circle at top,var(--dark),#020617);
+  color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== Tech Grid Overlay ===== */
-body::before{
-  content:"";
+/* ===== Cursor Glow ===== */
+.cursor{
+  width:22px;height:22px;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  background:radial-gradient(circle,var(--main),transparent 70%);
+  opacity:.6;
+  transform:translate(-50%,-50%);
+  z-index:9999;
+}
+
+/* ===== Particles ===== */
+canvas{
   position:fixed;
   inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-  background-size:60px 60px;
-  pointer-events:none;
-  z-index:0;
+  z-index:-1;
+}
+
+/* ===== Hero ===== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:80px 20px;
+  animation:fadeUp 1.2s ease forwards;
+}
+
+.hero h1{
+  font-size:52px;
+  letter-spacing:4px;
+  color:var(--main);
+  margin:0;
+}
+
+.hero h2{
+  margin:10px 0;
+  font-weight:500;
+  letter-spacing:3px;
+}
+
+.hero p{
+  max-width:650px;
+  line-height:1.8;
+  opacity:.9;
+}
+
+/* ===== Services ===== */
+.section{
+  padding:80px 20px;
+  text-align:center;
+}
+
+.section h3{
+  font-size:28px;
+  color:var(--main);
+  margin-bottom:40px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:25px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:25px;
+  transition:.4s;
+  opacity:0;
+  transform:translateY(40px);
+}
+
+.card i{
+  font-size:34px;
+  color:var(--main);
+  margin-bottom:15px;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.05);
+  box-shadow:0 0 25px rgba(0,210,255,.25);
+}
+
+/* ===== CTA ===== */
+.cta{
+  text-align:center;
+  padding:70px 20px;
+}
+
+.whatsapp{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--green);
+  color:#fff;
+  padding:14px 28px;
+  border-radius:30px;
+  font-weight:700;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.whatsapp:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 25px rgba(37,211,102,.6);
+}
+
+/* ===== Social ===== */
+.socials{
+  margin-top:35px;
+  display:flex;
+  justify-content:center;
+  gap:22px;
+}
+
+.socials a{
+  font-size:26px;
+  color:var(--main);
+  position:relative;
+  transition:.35s;
+}
+
+.socials a::after{
+  content:"";
+  position:absolute;
+  inset:-8px;
+  border-radius:50%;
+  background:currentColor;
+  opacity:0;
+  filter:blur(14px);
+  transition:.35s;
+  z-index:-1;
+}
+
+.socials a:hover{
+  transform:scale(1.4) rotate(5deg);
+}
+.socials a:hover::after{opacity:.45}
+
+/* ===== Footer ===== */
+footer{
+  text-align:center;
+  padding:35px 20px;
+  font-weight:700;
+  opacity:.9;
 }
 
 /* ===== Animations ===== */
@@ -46,173 +187,106 @@ body::before{
   from{opacity:0;transform:translateY(40px)}
   to{opacity:1;transform:none}
 }
-.reveal{opacity:0;animation:fadeUp .9s ease forwards}
-.delay1{animation-delay:.2s}
-.delay2{animation-delay:.4s}
-.delay3{animation-delay:.6s}
-.delay4{animation-delay:.8s}
 
-section{
-  position:relative;
-  z-index:1;
-  padding:90px 20px;
-  text-align:center;
-  max-width:1200px;
-  margin:auto;
-}
-
-/* ===== HERO ===== */
-.hero h1{
-  font-size:56px;
-  letter-spacing:4px;
-  color:var(--primary);
-  margin-bottom:10px;
-}
-.hero .slogan{
-  font-weight:700;
-  letter-spacing:3px;
-  margin-bottom:12px;
-}
-.hero .stack{
-  color:var(--muted);
-  margin-bottom:40px;
-}
-
-/* ===== Services ===== */
-.services{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:28px;
-  margin-top:50px;
-}
-.card{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.08);
-  padding:28px;
-  border-radius:20px;
-  backdrop-filter:blur(8px);
-  transition:.4s;
-}
-.card:hover{
-  transform:translateY(-10px);
-  border-color:var(--primary);
-  box-shadow:0 0 35px rgba(30,201,255,.35);
-}
-.card h3{
-  color:var(--primary);
-  margin-bottom:10px;
-}
-
-/* ===== Social ===== */
-.socials{
-  display:flex;
-  justify-content:center;
-  gap:22px;
-  margin-top:25px;
-}
-.socials a{
-  font-size:26px;
-  transition:.3s;
-}
-.socials a:hover{transform:scale(1.25)}
-
-.whatsapp{color:#25D366}
-.facebook{color:#1877F2}
-.instagram{
-  background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.tiktok{color:#ffffff}
-
-/* ===== Buttons ===== */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:16px 32px;
-  border-radius:40px;
-  font-weight:700;
-  text-decoration:none;
-  transition:.3s;
-}
-.btn-whatsapp{
-  background:var(--accent);
-  color:#fff;
-}
-.btn-whatsapp:hover{transform:scale(1.06)}
-.btn-email{
-  background:rgba(255,255,255,.06);
-  color:var(--primary);
-  margin-top:20px;
-  border:1px solid rgba(255,255,255,.12);
-}
-
-/* ===== Footer ===== */
-footer{
-  padding:45px 20px;
-  text-align:center;
-  font-weight:700;
-  font-size:17px;
-  color:var(--muted);
+/* ===== Mobile ===== */
+@media(max-width:768px){
+  .hero h1{font-size:36px}
+  .card:hover{transform:none}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
+<div class="cursor"></div>
+<canvas id="particles"></canvas>
+
 <section class="hero">
-  <h1 class="reveal">AXENTRO</h1>
-  <div class="slogan reveal delay1">CONTROL · TRACK · GROW</div>
-  <div class="stack reveal delay2">EXE · WEB · MOBILE · SOCIAL MEDIA</div>
+  <h1>AXENTRO</h1>
+  <h2>CONTROL · TRACK · GROW</h2>
+  <p>
+    حلول برمجية ذكية لإدارة الأعمال وتحويل Excel  
+    إلى أنظمة احترافية (EXE – Web – Mobile – Social Media)
+  </p>
 </section>
 
-<!-- SERVICES -->
-<section>
-  <h2 class="reveal">Our Services | خدماتنا</h2>
-
-  <div class="services">
-    <div class="card reveal delay1"><h3>Inventory & Sales Systems</h3><p>أنظمة إدارة مخازن ومبيعات باحتراف.</p></div>
-    <div class="card reveal delay2"><h3>Desktop Software (EXE)</h3><p>برامج مكتبية قوية بدون إنترنت.</p></div>
-    <div class="card reveal delay3"><h3>Web & Mobile Apps</h3><p>تطبيقات حديثة وسريعة.</p></div>
-    <div class="card reveal delay4"><h3>Professional Excel Solutions</h3><p>تحويل Excel إلى حلول ذكية.</p></div>
-    <div class="card reveal delay4"><h3>Branding & Social Media</h3><p>تصميم وتسويق رقمي احترافي.</p></div>
+<section class="section">
+  <h3>Our Services | خدماتنا</h3>
+  <div class="cards">
+    <div class="card"><i class="fa-solid fa-boxes-stacked"></i><h4>Inventory & Sales</h4><p>أنظمة مخازن ومبيعات ذكية</p></div>
+    <div class="card"><i class="fa-solid fa-desktop"></i><h4>Desktop Software</h4><p>برامج EXE مخصصة</p></div>
+    <div class="card"><i class="fa-solid fa-mobile-screen"></i><h4>Web & Mobile Apps</h4><p>تطبيقات ويب وموبايل</p></div>
+    <div class="card"><i class="fa-solid fa-table"></i><h4>Excel Solutions</h4><p>تحويل Excel لأنظمة</p></div>
+    <div class="card"><i class="fa-solid fa-bullhorn"></i><h4>Branding & Social</h4><p>تصميم وتسويق رقمي</p></div>
   </div>
 </section>
 
-<!-- DIGITAL PRESENCE -->
-<section>
-  <h2 class="reveal">Digital Growth & Brand Presence</h2>
-  <p class="reveal delay1">نصنع حضورك الرقمي ليعمل لصالح نمو أعمالك.</p>
-
-  <div class="socials reveal delay2">
-    <a class="whatsapp" href="#"><i class="fab fa-whatsapp"></i></a>
-    <a class="facebook" href="#"><i class="fab fa-facebook"></i></a>
-    <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>
-    <a class="tiktok" href="#"><i class="fab fa-tiktok"></i></a>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section>
-  <a class="btn btn-whatsapp reveal"
+<section class="cta">
+  <a class="whatsapp"
      href="https://wa.me/201146476993?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20%D9%81%D8%B1%D9%8A%D9%82%20Axentro%20%F0%9F%91%8B%0A%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%D9%83%D9%85"
      target="_blank">
      <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
   </a>
 
-  <br>
-
-  <a class="btn btn-email reveal delay1" href="mailto:axentroofficial@gmail.com">
-    <i class="fas fa-envelope"></i> axentroofficial@gmail.com
-  </a>
+  <div class="socials">
+    <a href="#"><i class="fab fa-whatsapp"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+  </div>
 </section>
 
 <footer>
-  © 2024 Axentro – All Rights Reserved <br>
+  © 2024 Axentro – All Rights Reserved<br>
   By Ahmed Hamouda
 </footer>
+
+<script>
+/* Cursor */
+const cursor=document.querySelector('.cursor');
+document.addEventListener('mousemove',e=>{
+  cursor.style.left=e.clientX+'px';
+  cursor.style.top=e.clientY+'px';
+});
+
+/* Cards Animation */
+const cards=document.querySelectorAll('.card');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      e.target.style.transitionDelay=`${i*0.15}s`;
+      e.target.style.opacity=1;
+      e.target.style.transform='none';
+    }
+  })
+},{threshold:.2});
+cards.forEach(c=>observer.observe(c));
+
+/* Particles */
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+resize();window.onresize=resize;
+let dots=Array.from({length:80},()=>({
+  x:Math.random()*innerWidth,
+  y:Math.random()*innerHeight,
+  r:Math.random()*2+1,
+  dx:(Math.random()-.5)/2,
+  dy:(Math.random()-.5)/2
+}));
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  dots.forEach(d=>{
+    d.x+=d.dx;d.y+=d.dy;
+    if(d.x<0||d.x>canvas.width)d.dx*=-1;
+    if(d.y<0||d.y>canvas.height)d.dy*=-1;
+    ctx.fillStyle="rgba(0,210,255,.6)";
+    ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fill();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
 
 </body>
 </html>
