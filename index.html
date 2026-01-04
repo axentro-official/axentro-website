@@ -66,9 +66,7 @@ font-weight: 700;
 font-size: 16px;
 cursor: pointer;
 transition: background-color 0.3s, transform 0.3s;
-position: absolute;
-top: 180px;
-right: 20px;
+margin-top: 50px; /* لإعطاء مسافة بين النصوص */
 }
 .cta-button:hover {
   background-color: #00b3cc;
@@ -190,14 +188,16 @@ transition:transform .25s ease;
 
 /* NAVIGATION LINKS */
 .navigation-links {
-  position:fixed;
-  top:20px;
-  left:20px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
   z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 35px;
+  /* زيادة المسافة بين الأيقونات */
 }
+
 .navigation .nav-link {
   font-size: 18px;
   color: #fff;
@@ -207,6 +207,7 @@ transition:transform .25s ease;
   gap: 8px;
   transition: color 0.3s;
 }
+
 .navigation .nav-link:hover {
   color: #00d4ff;
 }
@@ -231,7 +232,7 @@ EXE • Web • Mobile • Social Media Solutions
 </div>
 
 <!-- Button with link to scroll to bottom -->
-<a href="#contact" class="cta-button">احجز استشارتك الآن</a>
+<a href="#services" class="cta-button">احجز استشارتك الآن</a>
 </div>
 </section>
 
