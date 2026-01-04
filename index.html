@@ -12,7 +12,7 @@
 <link rel="stylesheet"
  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- Facebook Pixel -->
+<!-- Facebook Pixel (جاهز – غير مفعل) -->
 <script>
 !function(f,b,e,v,n,t,s){
 if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -27,7 +27,7 @@ fbq('init', 'YOUR_PIXEL_ID');
 fbq('track', 'PageView');
 </script>
 
-<!-- Google Tag -->
+<!-- Google Tag (جاهز – غير مفعل) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -39,12 +39,14 @@ gtag('config', 'G-XXXXXXX');
 <style>
 :root{
 --bg:#020617;
---card:rgba(255,255,255,.05);
+--card:rgba(255,255,255,.06);
 --primary:#00d4ff;
 --secondary:#00ffd5;
 --text:#e5f6ff;
 --muted:#94a3b8;
---success:#25D366;
+--wa:#25D366;
+--mail:#EA4335;
+--fb:#1877F2;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -57,94 +59,162 @@ overflow-x:hidden;
 
 section{padding:90px 20px;text-align:center}
 .container{max-width:1100px;margin:auto}
+
 h1,h2,h3{color:var(--secondary)}
 p{color:var(--muted);line-height:1.9}
 
-/* Buttons */
+/* HERO */
+.hero h1{
+font-size:52px;
+letter-spacing:2px;
+}
+.hero .tagline{
+margin-top:10px;
+letter-spacing:4px;
+font-size:14px;
+opacity:.85;
+}
+.hero p{
+max-width:760px;
+margin:30px auto 0;
+}
+
+/* CTA TEXT */
+.cta-text{
+margin-top:50px;
+font-size:20px;
+font-weight:700;
+color:var(--secondary);
+}
+
+/* BUTTONS */
+.cta{
+margin-top:25px;
+display:flex;
+gap:18px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
 .btn{
 display:inline-flex;
 align-items:center;
 gap:12px;
-padding:18px 36px;
+padding:18px 38px;
 border-radius:50px;
 font-weight:800;
+font-size:18px;
 text-decoration:none;
-transition:.3s;
 cursor:pointer;
+transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.btn:hover{
+transform:translateY(-3px) scale(1.04);
+box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+
+.btn-wa{background:var(--wa);color:#000}
+.btn-mail{background:var(--mail);color:#fff}
+.btn-fb{background:var(--fb);color:#fff}
+
+/* SERVICES */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:28px;
+margin-top:50px;
+}
+
+.card{
+background:var(--card);
+padding:32px 26px;
+border-radius:20px;
+transition:transform .35s ease, box-shadow .35s ease;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 25px 60px rgba(0,212,255,.22);
+}
+
+.card h3{
+margin-bottom:14px;
 font-size:18px;
 }
 
-.btn:hover{transform:scale(1.06);box-shadow:0 0 25px rgba(0,0,0,.4)}
-
-.btn-whatsapp{background:#25D366;color:#000}
-.btn-email{background:#EA4335;color:#fff}
-.btn-facebook{background:#1877F2;color:#fff}
-
-/* Hero */
-.hero h1{font-size:48px}
-.hero p{max-width:720px;margin:20px auto}
-.cta{margin-top:40px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-
-/* Cards */
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:25px;margin-top:50px
-}
-.card{
-background:var(--card);
-padding:30px;border-radius:18px;
-transition:.4s;
-}
-.card:hover{transform:translateY(-10px);box-shadow:0 25px 60px rgba(0,212,255,.25)}
-
-/* Floating WhatsApp */
-.floating-wa{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#25D366;
-color:#000;
-width:65px;height:65px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-box-shadow:0 10px 30px rgba(0,0,0,.4);
-z-index:999;
+/* PRIVACY */
+.privacy{
+max-width:850px;
+margin:auto;
 }
 
-/* Footer */
+/* FOOTER */
 footer{
 padding:70px 20px;
-text-align:center;
 border-top:1px solid rgba(255,255,255,.1);
+text-align:center;
 }
+
 footer .main{
 font-weight:900;
 font-size:20px;
 color:#fff;
 }
+
 footer .by{
 margin-top:10px;
 font-size:16px;
 opacity:.9;
 }
 
+/* FOOTER ICONS */
 .footer-icons{
 margin-top:30px;
 display:flex;
-gap:28px;
+gap:30px;
 justify-content:center;
 font-size:26px;
 }
-.icon-whatsapp{color:#25D366}
-.icon-email{color:#EA4335}
-.icon-facebook{color:#1877F2}
+
+.footer-icons a{
+transition:transform .25s ease, filter .25s ease;
+}
+
+.footer-icons a:hover{
+transform:translateY(-4px) scale(1.12);
+filter:drop-shadow(0 0 10px currentColor);
+}
+
+.icon-wa{color:var(--wa)}
+.icon-mail{color:var(--mail)}
+.icon-fb{color:var(--fb)}
+
+/* FLOATING WHATSAPP */
+.floating-wa{
+position:fixed;
+bottom:25px;
+right:25px;
+width:66px;
+height:66px;
+border-radius:50%;
+background:var(--wa);
+color:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+box-shadow:0 12px 30px rgba(0,0,0,.4);
+z-index:999;
+transition:transform .25s ease;
+}
+
+.floating-wa:hover{
+transform:scale(1.08);
+}
 
 @media(max-width:768px){
-.hero h1{font-size:36px}
+.hero h1{font-size:38px}
 }
 </style>
 </head>
@@ -154,23 +224,24 @@ font-size:26px;
 <!-- HERO -->
 <section class="hero">
 <div class="container">
-<h1>نحوّل أفكارك إلى أنظمة ذكية</h1>
+<h1>AXENTRO</h1>
+<div class="tagline">CONTROL • TRACK • GROW</div>
+
 <p>
-حلول برمجية مخصصة لإدارة الأعمال  
-وتحويل Excel إلى أنظمة احترافية
+حلول برمجية ذكية لإدارة الأعمال وتحويل Excel إلى أنظمة احترافية<br>
+<span style="opacity:.8">We build a digital presence that strengthens your brand and builds trust.</span>
 </p>
 
+<div class="cta-text">ابدأ الآن</div>
+
 <div class="cta">
-<a class="btn btn-whatsapp" onclick="whatsapp()">
+<a class="btn btn-wa" onclick="whatsapp()">
 <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
 </a>
-
-<a class="btn btn-email" href="mailto:axentroofficial@gmail.com">
-<i class="fas fa-envelope"></i> تواصل عبر البريد
+<a class="btn btn-mail" href="mailto:axentroofficial@gmail.com">
+<i class="fas fa-envelope"></i> تواصل معنا عبر البريد
 </a>
-
-<a class="btn btn-facebook"
-href="https://www.facebook.com/AxentroSoftware/" target="_blank">
+<a class="btn btn-fb" href="https://www.facebook.com/AxentroSoftware/" target="_blank">
 <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
 </a>
 </div>
@@ -180,27 +251,43 @@ href="https://www.facebook.com/AxentroSoftware/" target="_blank">
 <!-- SERVICES -->
 <section>
 <div class="container">
-<h2>خدماتنا</h2>
+<h2>خدماتنا | Our Services</h2>
+
 <div class="cards">
-<div class="card">Smart Excel Systems</div>
-<div class="card">Web & Mobile Apps</div>
-<div class="card">Desktop Software</div>
-<div class="card">Branding & Digital Solutions</div>
+<div class="card">
+<h3>Smart Excel Systems</h3>
+<p>تحويل ملفات Excel إلى أنظمة ذكية تقلل الأخطاء وتنظم العمل وتوفر وقت الإدارة.</p>
+</div>
+
+<div class="card">
+<h3>Web & Mobile Apps</h3>
+<p>تصميم وتطوير تطبيقات ويب وموبايل مخصصة لتحسين تجربة العملاء وإدارة الأعمال.</p>
+</div>
+
+<div class="card">
+<h3>Desktop Software</h3>
+<p>تطوير أنظمة سطح مكتب قوية تعمل بدون إنترنت وتناسب طبيعة نشاطك.</p>
+</div>
+
+<div class="card">
+<h3>Branding & Digital Solutions</h3>
+<p>بناء هوية رقمية احترافية تعكس قوة مشروعك وتزيد ثقة عملائك.</p>
+</div>
 </div>
 </div>
 </section>
 
 <!-- PRIVACY -->
 <section>
-<div class="container">
-<h2>Privacy Policy | سياسة الخصوصية</h2>
+<div class="container privacy">
+<h2>سياسة الخصوصية | Privacy Policy</h2>
 <p>
-نحن نحترم خصوصية بياناتك، ويتم استخدام أي معلومات
-فقط للتواصل وتحسين الخدمات.
+نحن في Axentro نحترم خصوصية زوارنا وعملائنا بشكل كامل.
+يتم استخدام أي بيانات يتم جمعها فقط للتواصل وتحسين جودة الخدمات وتجربة المستخدم.
 </p>
 <p style="margin-top:15px">
-يتم استخدام أدوات تتبع مثل Facebook Pixel و Google Analytics
-لأغراض تحليل الأداء وتحسين الإعلانات.
+لا نقوم ببيع أو مشاركة أي معلومات شخصية مع أي طرف ثالث،
+ويتم التعامل مع جميع البيانات بسرية تامة.
 </p>
 </div>
 </section>
@@ -211,19 +298,19 @@ href="https://www.facebook.com/AxentroSoftware/" target="_blank">
 <div class="by">By Ahmed Hamouda</div>
 
 <div class="footer-icons">
-<a href="https://wa.me/201146476993" target="_blank" class="icon-whatsapp">
+<a class="icon-wa" href="https://wa.me/201146476993" target="_blank">
 <i class="fab fa-whatsapp"></i>
 </a>
-<a href="mailto:axentroofficial@gmail.com" class="icon-email">
+<a class="icon-mail" href="mailto:axentroofficial@gmail.com">
 <i class="fas fa-envelope"></i>
 </a>
-<a href="https://www.facebook.com/AxentroSoftware/" target="_blank" class="icon-facebook">
+<a class="icon-fb" href="https://www.facebook.com/AxentroSoftware/" target="_blank">
 <i class="fab fa-facebook-f"></i>
 </a>
 </div>
 </footer>
 
-<!-- Floating WhatsApp -->
+<!-- FLOATING WA -->
 <a class="floating-wa" onclick="whatsapp()">
 <i class="fab fa-whatsapp"></i>
 </a>
