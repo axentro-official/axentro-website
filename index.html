@@ -58,19 +58,20 @@ opacity:.8;
 
 /* BUTTON STYLES */
 .cta-button{
-background-color: #6a4e9c;  /* تغيير اللون إلى كحلي فاتح */
+background-color: #003366;  /* اللون الكحلي */
 color: #ffffff;
 padding: 18px 45px; /* حجم أكبر */
 border-radius: 50px;
 font-weight: 600;
-font-size: 22px; /* تغيير حجم الخط */
+font-size: 22px; /* حجم الخط */
 cursor: pointer;
 transition: background-color 0.3s, transform 0.3s;
 margin-top: 50px; /* إعطاء المسافة الصحيحة بين النصوص */
 display: inline-block;
 }
+
 .cta-button:hover {
-  background-color: #5a4482; /* تغيير اللون عند التمرير */
+  background-color: #002244; /* اللون الأغمق عند التمرير */
   transform: scale(1.05);
 }
 
@@ -217,7 +218,7 @@ transition:transform .25s ease;
 <body>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="home">
 <div class="container">
 <h1>AXENTRO</h1>
 <div class="tagline">CONTROL • TRACK • GROW</div>
@@ -232,7 +233,7 @@ EXE • Web • Mobile • Social Media Solutions
 </div>
 
 <!-- Button with link to scroll to bottom -->
-<a href="#services" class="cta-button">احجز استشارتك الآن</a>
+<a href="#contact" class="cta-button">احجز استشارتك الآن</a>
 </div>
 </section>
 
@@ -300,13 +301,13 @@ EXE • Web • Mobile • Social Media Solutions
 </div>
 
 <div class="cta">
-<a class="btn btn-wa" onclick="whatsapp()">
+<a class="cta-button btn-wa" onclick="whatsapp()">
 <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
 </a>
-<a class="btn btn-mail" href="mailto:axentroofficial@gmail.com">
+<a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com">
 <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
 </a>
-<a class="btn btn-fb" href="https://www.facebook.com/AxentroSoftware/" target="_blank">
+<a class="cta-button btn-fb" href="https://www.facebook.com/AxentroSoftware/" target="_blank">
 <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
 </a>
 </div>
