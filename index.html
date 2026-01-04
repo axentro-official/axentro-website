@@ -1,287 +1,311 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>Axentro | Smart Software Solutions</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axentro | Smart Software Solutions</title>
+    
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
-<!-- FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- ICONS -->
-<link rel="stylesheet"
- href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #020617;
+            --card: rgba(255, 255, 255, .06);
+            --primary: #00d4ff;
+            --secondary: #00ffd5;
+            --text: #e5f6ff;
+            --muted: #94a3b8;
+            --wa: #25D366;
+            --mail: #EA4335;
+            --fb: #1877F2;
+        }
 
-<style>
-:root{
---bg:#020617;
---card:rgba(255,255,255,.06);
---primary:#00d4ff;
---secondary:#00ffd5;
---text:#e5f6ff;
---muted:#94a3b8;
---wa:#25D366;
---mail:#EA4335;
---fb:#1877F2;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:'Cairo',sans-serif;
-background:linear-gradient(135deg,#020617,#020b2e);
-color:var(--text);
-overflow-x:hidden;
-}
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #020617, #020b2e);
+            color: var(--text);
+            overflow-x: hidden;
+        }
 
-section{padding:90px 20px;text-align:center}
-.container{max-width:1100px;margin:auto}
+        section { padding: 90px 20px; text-align: center; }
+        .container { max-width: 1100px; margin: auto; }
 
-h1,h2,h3{color:var(--secondary)}
-p{color:var(--muted);line-height:1.9}
+        h1, h2, h3 { color: var(--secondary); }
+        p { color: var(--muted); line-height: 1.9; }
 
-/* HERO */
-.hero h1{font-size:52px;letter-spacing:2px}
-.hero .tagline{
-margin-top:10px;
-letter-spacing:4px;
-font-size:14px;
-opacity:.85;
-}
-.hero p{max-width:760px;margin:30px auto 0}
+        /* HERO */
+        .hero h1 { font-size: 52px; letter-spacing: 2px; }
+        .hero .tagline {
+            margin-top: 10px;
+            letter-spacing: 4px;
+            font-size: 14px;
+            opacity: .85;
+        }
+        .hero p { max-width: 760px; margin: 30px auto 0; }
 
-/* HERO SERVICES LINE */
-.hero-services{
-margin-top:22px;
-font-size:14px;
-letter-spacing:2px;
-opacity:.8;
-}
+        /* HERO SERVICES LINE */
+        .hero-services {
+            margin-top: 22px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            opacity: .8;
+        }
 
-/* SERVICES */
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:28px;
-margin-top:50px;
-}
-.card{
-background:var(--card);
-padding:32px 26px;
-border-radius:20px;
-transition:transform .35s ease, box-shadow .35s ease;
-}
-.card:hover{
-transform:translateY(-8px);
-box-shadow:0 25px 60px rgba(0,212,255,.22);
-}
-.card h3{margin-bottom:14px;font-size:18px}
+        /* SERVICES */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 28px;
+            margin-top: 50px;
+        }
+        .card {
+            background: var(--card);
+            padding: 32px 26px;
+            border-radius: 20px;
+            transition: transform .35s ease, box-shadow .35s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0, 212, 255, .22);
+        }
+        .card h3 { margin-bottom: 14px; font-size: 18px; }
 
-/* FINAL CTA */
-.final-cta-text{
-margin-bottom:25px;
-font-size:22px;
-font-weight:800;
-color:var(--secondary);
-}
-.final-cta-sub{
-max-width:760px;
-margin:0 auto 35px;
-opacity:.9;
-}
+        /* FINAL CTA */
+        .final-cta-text {
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--secondary);
+        }
+        .final-cta-sub {
+            max-width: 760px;
+            margin: 0 auto 35px;
+            opacity: .9;
+        }
 
-/* BUTTONS */
-.cta{
-display:flex;
-gap:18px;
-justify-content:center;
-flex-wrap:wrap;
-}
-.btn{
-display:inline-flex;
-align-items:center;
-gap:12px;
-padding:18px 38px;
-border-radius:50px;
-font-weight:800;
-font-size:18px;
-text-decoration:none;
-cursor:pointer;
-transition:transform .25s ease, box-shadow .25s ease;
-}
-.btn:hover{
-transform:translateY(-3px) scale(1.04);
-box-shadow:0 12px 30px rgba(0,0,0,.35);
-}
-.btn-wa{background:var(--wa);color:#000}
-.btn-mail{background:var(--mail);color:#fff}
-.btn-fb{background:var(--fb);color:#fff}
+        /* BUTTONS */
+        .cta {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 38px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 18px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .btn:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
+        }
+        .btn-wa { background: var(--wa); color: #000; }
+        .btn-mail { background: var(--mail); color: #fff; }
+        .btn-fb { background: var(--fb); color: #fff; }
 
-/* FOOTER */
-footer{
-padding:70px 20px;
-border-top:1px solid rgba(255,255,255,.1);
-text-align:center;
-}
-footer .main{
-font-weight:900;
-font-size:20px;
-color:#fff;
-}
-footer .by{
-margin-top:10px;
-font-size:16px;
-opacity:.9;
-}
-.footer-icons{
-margin-top:30px;
-display:flex;
-gap:30px;
-justify-content:center;
-font-size:26px;
-}
-.footer-icons a{
-transition:transform .25s ease, filter .25s ease;
-}
-.footer-icons a:hover{
-transform:translateY(-4px) scale(1.12);
-filter:drop-shadow(0 0 10px currentColor);
-}
-.icon-wa{color:var(--wa)}
-.icon-mail{color:var(--mail)}
-.icon-fb{color:var(--fb)}
+        /* FOOTER */
+        footer {
+            padding: 70px 20px;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            text-align: center;
+        }
+        footer .main {
+            font-weight: 900;
+            font-size: 20px;
+            color: #fff;
+        }
+        footer .by {
+            margin-top: 10px;
+            font-size: 16px;
+            opacity: .9;
+        }
+        .footer-icons {
+            margin-top: 30px;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            font-size: 26px;
+        }
+        .footer-icons a {
+            transition: transform .25s ease, filter .25s ease;
+        }
+        .footer-icons a:hover {
+            transform: translateY(-4px) scale(1.12);
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+        .icon-wa { color: var(--wa); }
+        .icon-mail { color: var(--mail); }
+        .icon-fb { color: var(--fb); }
 
-/* FLOATING WHATSAPP */
-.floating-wa{
-position:fixed;
-bottom:25px;
-right:25px;
-width:66px;
-height:66px;
-border-radius:50%;
-background:var(--wa);
-color:#000;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-box-shadow:0 12px 30px rgba(0,0,0,.4);
-z-index:999;
-transition:transform .25s ease;
-}
-.floating-wa:hover{transform:scale(1.08)}
+        /* FLOATING WHATSAPP */
+        .floating-wa {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 66px;
+            height: 66px;
+            border-radius: 50%;
+            background: var(--wa);
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .4);
+            z-index: 999;
+            transition: transform .25s ease;
+        }
+        .floating-wa:hover { transform: scale(1.08); }
 
-@media(max-width:768px){
-.hero h1{font-size:38px}
-}
-</style>
+        @media(max-width:768px) {
+            .hero h1 { font-size: 38px; }
+        }
+
+        /* Adding the "Book Your Consultation Now" button in top-right corner */
+        .cta-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: var(--text);
+            padding: 18px 38px;
+            font-size: 18px;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .2);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
+        }
+    </style>
 </head>
 
 <body>
 
 <!-- HERO -->
 <section class="hero">
-<div class="container">
-<h1>AXENTRO</h1>
-<div class="tagline">CONTROL • TRACK • GROW</div>
+    <div class="container">
+        <h1>AXENTRO</h1>
+        <div class="tagline">CONTROL • TRACK • GROW</div>
 
-<p>
-حلول برمجية ذكية لإدارة الأعمال وتحويل Excel إلى أنظمة احترافية<br>
-<span style="opacity:.8">We build a digital presence that strengthens your brand and builds trust.</span>
-</p>
+        <p>
+            حلول برمجية ذكية لإدارة الأعمال وتحويل Excel إلى أنظمة احترافية<br>
+            <span style="opacity:.8">We build a digital presence that strengthens your brand and builds trust.</span>
+        </p>
 
-<div class="hero-services">
-EXE • Web • Mobile • Social Media Solutions
-</div>
-</div>
+        <div class="hero-services">
+            EXE • Web • Mobile • Social Media Solutions
+        </div>
+    </div>
 </section>
+
+<!-- Add the fixed button -->
+<a href="#contact" class="cta-button">احجز استشارتك الآن</a>
 
 <!-- SERVICES -->
 <section>
-<div class="container">
-<h2>خدماتنا | Our Services</h2>
+    <div class="container">
+        <h2>Our Services | خدماتنا</h2>
 
-<div class="cards">
-<div class="card">
-<h3>Smart Excel Systems</h3>
-<p>تحويل ملفات Excel إلى أنظمة ذكية تقلل الأخطاء وتنظم العمل وتوفر وقت الإدارة.</p>
-</div>
+        <div class="cards">
+            <div class="card">
+                <h3>Smart Excel Systems</h3>
+                <p>تحويل ملفات Excel إلى أنظمة ذكية تقلل الأخطاء وتنظم العمل وتوفر وقت الإدارة.</p>
+            </div>
 
-<div class="card">
-<h3>Web & Mobile Apps</h3>
-<p>تصميم وتطوير تطبيقات ويب وموبايل مخصصة لتحسين تجربة العملاء وإدارة الأعمال.</p>
-</div>
+            <div class="card">
+                <h3>Web & Mobile Apps</h3>
+                <p>تصميم وتطوير تطبيقات ويب وموبايل مخصصة لتحسين تجربة العملاء وإدارة الأعمال.</p>
+            </div>
 
-<div class="card">
-<h3>Desktop Software</h3>
-<p>تطوير أنظمة سطح مكتب قوية تعمل بدون إنترنت وتناسب طبيعة نشاطك.</p>
-</div>
+            <div class="card">
+                <h3>Desktop Software</h3>
+                <p>تطوير أنظمة سطح مكتب قوية تعمل بدون إنترنت وتناسب طبيعة نشاطك.</p>
+            </div>
 
-<div class="card">
-<h3>Inventory & Sales</h3>
-<p>
-أنظمة إدارة مخزون ومبيعات ذكية تساعدك على متابعة الأصناف،
-تسجيل المبيعات، واستخراج تقارير دقيقة لاتخاذ قرارات أفضل.
-</p>
-</div>
+            <div class="card">
+                <h3>Inventory & Sales</h3>
+                <p>
+                    أنظمة إدارة مخزون ومبيعات ذكية تساعدك على متابعة الأصناف،
+                    تسجيل المبيعات، واستخراج تقارير دقيقة لاتخاذ قرارات أفضل.
+                </p>
+            </div>
 
-<div class="card">
-<h3>Branding & Digital Solutions</h3>
-<p>بناء هوية رقمية احترافية تعكس قوة مشروعك وتزيد ثقة عملائك.</p>
-</div>
-</div>
-</div>
+            <div class="card">
+                <h3>Branding & Digital Solutions</h3>
+                <p>بناء هوية رقمية احترافية تعكس قوة مشروعك وتزيد ثقة عملائك.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- FINAL CTA -->
 <section>
-<div class="container">
-<div class="final-cta-text">احجز استشارتك الآن</div>
-<div class="final-cta-sub">
-نصنع لك حضورًا رقميًا يعكس قوة مشروعك ويزيد ثقة عملائك<br>
-<span style="opacity:.8">We build a digital presence that strengthens your brand and builds trust.</span>
-</div>
+    <div class="container">
+        <div class="final-cta-text">احجز استشارتك الآن</div>
+        <div class="final-cta-sub">
+            نصنع لك حضورًا رقميًا يعكس قوة مشروعك ويزيد ثقة عملائك<br>
+            <span style="opacity:.8">We build a digital presence that strengthens your brand and builds trust.</span>
+        </div>
 
-<div class="cta">
-<a class="btn btn-wa" onclick="whatsapp()">
-<i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
-</a>
-<a class="btn btn-mail" href="mailto:axentroofficial@gmail.com">
-<i class="fas fa-envelope"></i> تواصل معنا عبر البريد
-</a>
-<a class="btn btn-fb" href="https://www.facebook.com/AxentroSoftware/" target="_blank">
-<i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
-</a>
-</div>
-</div>
+        <div class="cta">
+            <a class="btn btn-wa" onclick="whatsapp()">
+                <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+            </a>
+            <a class="btn btn-mail" href="mailto:axentroofficial@gmail.com">
+                <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
+            </a>
+            <a class="btn btn-fb" href="https://www.facebook.com/AxentroSoftware/" target="_blank">
+                <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
+            </a>
+        </div>
+    </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-<div class="main">© 2024 Axentro – All Rights Reserved</div>
-<div class="by">By Ahmed Hamouda</div>
+    <div class="main">© 2024 Axentro – All Rights Reserved</div>
+    <div class="by">By Ahmed Hamouda</div>
 
-<div class="footer-icons">
-<a class="icon-wa" onclick="whatsapp()"><i class="fab fa-whatsapp"></i></a>
-<a class="icon-mail" href="mailto:axentroofficial@gmail.com"><i class="fas fa-envelope"></i></a>
-<a class="icon-fb" href="https://www.facebook.com/AxentroSoftware/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-</div>
+    <div class="footer-icons">
+        <a class="icon-wa" onclick="whatsapp()"><i class="fab fa-whatsapp"></i></a>
+        <a class="icon-mail" href="mailto:axentroofficial@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a class="icon-fb" href="https://www.facebook.com/AxentroSoftware/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
 </footer>
 
 <!-- FLOATING WA -->
 <a class="floating-wa" onclick="whatsapp()">
-<i class="fab fa-whatsapp"></i>
+    <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
 function whatsapp(){
-const msg = `مرحبًا فريق Axentro،
-أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
-بانتظار تواصلكم، شكرًا.`;
+    const msg = `مرحبًا فريق Axentro،
+    أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
+    بانتظار تواصلكم، شكرًا.`;
 
-window.open(
-  "https://wa.me/201146476993?text=" + encodeURIComponent(msg),
-  "_blank"
-);
+    window.open(
+        "https://wa.me/201146476993?text=" + encodeURIComponent(msg),
+        "_blank"
+    );
 }
 </script>
 
