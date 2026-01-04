@@ -191,9 +191,10 @@ transition:transform .25s ease;
 /* NAVIGATION LINKS */
 .navigation-links {
   position: fixed;
-  top: 20px;
+  top: 50%;  /* تحديد مكان الأزرار بالنسبة للصفحة */
   left: 20px;
-  z-index: 10;
+  z-index: 999; /* ضمان أن الأزرار ثابتة فوق العناصر الأخرى */
+  transform: translateY(-50%); /* محاذاة الأزرار بشكل عمودي في المنتصف */
   display: flex;
   flex-direction: column;
   gap: 50px;  /* زيادة المسافة بين الأيقونات */
