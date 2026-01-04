@@ -56,22 +56,6 @@ letter-spacing:2px;
 opacity:.8;
 }
 
-/* BUTTON STYLES */
-.cta-button{
-background-color: #1e6f8f;
-color: #fff;
-padding: 14px 40px;
-border-radius: 50px;
-font-weight: 700;
-font-size: 16px;
-cursor: pointer;
-transition: background-color 0.3s;
-}
-.cta-button:hover {
-  background-color: #00d4ff;
-  transform: scale(1.05);
-}
-
 /* SERVICES */
 .cards{
 display:grid;
@@ -188,6 +172,31 @@ transition:transform .25s ease;
 @media(max-width:768px){
 .hero h1{font-size:38px}
 }
+
+/* LEFT NAVIGATION STYLES */
+.left-nav{
+position:fixed;
+top:10%;
+left:10px;
+width:50px;
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.left-nav a {
+  background-color: transparent;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+.left-nav a:hover {
+  background-color: #00d4ff;
+}
 </style>
 </head>
 
@@ -212,6 +221,13 @@ EXE • Web • Mobile • Social Media Solutions
 <a href="#contact" class="cta-button">احجز استشارتك الآن</a>
 </div>
 </section>
+
+<!-- LEFT NAVIGATION BAR -->
+<div class="left-nav">
+  <a href="#home"><i class="fas fa-home"></i> الرئيسية</a>
+  <a href="#services"><i class="fas fa-cogs"></i> الخدمات</a>
+  <a href="#contact"><i class="fas fa-phone"></i> اتصل بنا</a>
+</div>
 
 <!-- SERVICES -->
 <section>
