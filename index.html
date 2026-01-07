@@ -25,6 +25,7 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
 font-family:'Cairo',sans-serif;
 background:linear-gradient(135deg,#020617,#020b2e);
@@ -38,10 +39,30 @@ section{padding:90px 20px;text-align:center}
 h1,h2,h3{color:var(--secondary)}
 p{color:var(--muted);line-height:1.9}
 
-/* HERO */
-.hero{
-position: relative;
+/* PROGRESS BAR (خفيف جدًا) */
+.scroll-progress{
+position:fixed;
+top:0;
+left:0;
+height:3px;
+width:0%;
+background:var(--secondary);
+z-index:99999;
 }
+
+/* REVEAL (خفيف جدًا) */
+.reveal{
+opacity:0;
+transform:translateY(16px);
+transition:opacity .7s ease, transform .7s ease;
+}
+.reveal.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* HERO */
+.hero{position:relative}
 .hero h1{font-size:52px;letter-spacing:2px}
 .hero .tagline{
 margin-top:10px;
@@ -61,24 +82,24 @@ opacity:.8;
 
 /* BUTTON STYLES */
 .cta-button{
-background-color:#003366;
-color:var(--secondary);
-padding:18px 45px;
-border-radius:50px;
-font-weight:800;
-font-size:22px;
-cursor:pointer;
-transition:background-color .3s, transform .3s, box-shadow .3s;
-margin-top:50px;
-display:inline-block;
+background-color: #003366;
+color: var(--secondary);
+padding: 18px 45px;
+border-radius: 50px;
+font-weight: 800;
+font-size: 22px;
+cursor: pointer;
+transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+margin-top: 50px;
+display: inline-block;
 text-decoration:none;
-box-shadow:0 0 25px rgba(0,255,213,.35);
+box-shadow: 0 0 25px rgba(0,255,213,0.35);
 }
 
-.cta-button:hover{
-background-color:#002244;
-transform:scale(1.05);
-box-shadow:0 0 40px rgba(0,255,213,.6);
+.cta-button:hover {
+  background-color: #002244;
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(0,255,213,0.6);
 }
 
 /* SERVICES */
@@ -93,12 +114,22 @@ background:var(--card);
 padding:32px 26px;
 border-radius:20px;
 transition:transform .35s ease, box-shadow .35s ease;
+text-align:right;
 }
 .card:hover{
 transform:translateY(-8px);
 box-shadow:0 25px 60px rgba(0,212,255,.22);
 }
 .card h3{margin-bottom:14px;font-size:18px}
+
+/* MAKE CARDS CLICKABLE (بدون تغيير شكلها) */
+.card-link{
+display:block;
+text-decoration:none;
+color:inherit;
+height:100%;
+}
+.card-link:focus{outline:2px solid rgba(0,255,213,.35); outline-offset:4px; border-radius:20px}
 
 /* FINAL CTA */
 .final-cta-text{
@@ -195,7 +226,7 @@ transition:transform .25s ease;
 }
 .floating-wa:hover{transform:scale(1.08)}
 
-/* ✅ NAVIGATION LINKS — أفقي دايمًا */
+/* NAVIGATION LINKS — أفقي دائمًا */
 .navigation-links{
 position:absolute;
 top:20px;
@@ -229,13 +260,16 @@ background-color:#003366;
 
 <body>
 
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- HERO -->
-<section class="hero" id="home">
+<section class="hero reveal show" id="home">
 
 <div class="navigation-links">
-<a href="#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
-<a href="#services" class="nav-link"><i class="fas fa-cogs"></i> الخدمات</a>
-<a href="#contact" class="nav-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
+<a href="index.html#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
+<a href="index.html#services" class="nav-link"><i class="fas fa-cogs"></i> الخدمات</a>
+<a href="about.html" class="nav-link"><i class="fas fa-circle-info"></i> من نحن</a>
+<a href="index.html#contact" class="nav-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
 </div>
 
 <div class="container">
@@ -256,44 +290,54 @@ EXE • Web • Mobile • Social Media Solutions
 </section>
 
 <!-- SERVICES -->
-<section id="services">
+<section id="services" class="reveal">
 <div class="container">
 <h2>خدماتنا | Our Services</h2>
 
 <div class="cards">
-<div class="card">
-<h3>Smart Excel Systems</h3>
-<p>تحويل ملفات Excel إلى أنظمة ذكية تقلل الأخطاء وتنظم العمل وتوفر وقت الإدارة.</p>
-</div>
+  <div class="card">
+    <a class="card-link" href="service-excel.html">
+      <h3>Smart Excel Systems</h3>
+      <p>تحويل ملفات Excel إلى أنظمة ذكية تقلل الأخطاء وتنظم العمل وتوفر وقت الإدارة.</p>
+    </a>
+  </div>
 
-<div class="card">
-<h3>Web & Mobile Apps</h3>
-<p>تصميم وتطوير تطبيقات ويب وموبايل مخصصة لتحسين تجربة العملاء وإدارة الأعمال.</p>
-</div>
+  <div class="card">
+    <a class="card-link" href="service-web-mobile.html">
+      <h3>Web & Mobile Apps</h3>
+      <p>تصميم وتطوير تطبيقات ويب وموبايل مخصصة لتحسين تجربة العملاء وإدارة الأعمال.</p>
+    </a>
+  </div>
 
-<div class="card">
-<h3>Desktop Software</h3>
-<p>تطوير أنظمة سطح مكتب قوية تعمل بدون إنترنت وتناسب طبيعة نشاطك.</p>
-</div>
+  <div class="card">
+    <a class="card-link" href="service-desktop.html">
+      <h3>Desktop Software</h3>
+      <p>تطوير أنظمة سطح مكتب قوية تعمل بدون إنترنت وتناسب طبيعة نشاطك.</p>
+    </a>
+  </div>
 
-<div class="card">
-<h3>Inventory & Sales</h3>
-<p>
-أنظمة إدارة مخزون ومبيعات ذكية تساعدك على متابعة الأصناف،
-تسجيل المبيعات، واستخراج تقارير دقيقة لاتخاذ قرارات أفضل.
-</p>
-</div>
+  <div class="card">
+    <a class="card-link" href="service-inventory-sales.html">
+      <h3>Inventory & Sales</h3>
+      <p>
+        أنظمة إدارة مخزون ومبيعات ذكية تساعدك على متابعة الأصناف،
+        تسجيل المبيعات، واستخراج تقارير دقيقة لاتخاذ قرارات أفضل.
+      </p>
+    </a>
+  </div>
 
-<div class="card">
-<h3>Branding & Digital Solutions</h3>
-<p>بناء هوية رقمية احترافية تعكس قوة مشروعك وتزيد ثقة عملائك.</p>
-</div>
+  <div class="card">
+    <a class="card-link" href="service-branding.html">
+      <h3>Branding & Digital Solutions</h3>
+      <p>بناء هوية رقمية احترافية تعكس قوة مشروعك وتزيد ثقة عملائك.</p>
+    </a>
+  </div>
 </div>
 </div>
 </section>
 
 <!-- FINAL CTA -->
-<section id="contact">
+<section id="contact" class="reveal">
 <div class="container">
 <div class="final-cta-text">احجز استشارتك الآن</div>
 <div class="final-cta-sub">
@@ -302,33 +346,68 @@ EXE • Web • Mobile • Social Media Solutions
 </div>
 
 <div class="cta">
-<a class="cta-button btn-wa" onclick="whatsapp()"><i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب</a>
-<a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com"><i class="fas fa-envelope"></i> تواصل معنا عبر البريد</a>
-<a class="cta-button btn-fb" href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> تابعنا على فيسبوك</a>
+<a class="cta-button btn-wa" onclick="whatsapp()">
+<i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+</a>
+
+<a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com">
+<i class="fas fa-envelope"></i> تواصل معنا عبر البريد
+</a>
+
+<a class="cta-button btn-fb" href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank" rel="noopener">
+<i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
+</a>
 </div>
 </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
 <div class="main">© 2024 Axentro – All Rights Reserved</div>
 <div class="by">By Ahmed Hamouda</div>
 
 <div class="footer-icons">
-<a class="icon-wa" onclick="whatsapp()"><i class="fab fa-whatsapp"></i></a>
-<a class="icon-mail" href="mailto:axentroofficial@gmail.com"><i class="fas fa-envelope"></i></a>
-<a class="icon-fb" href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a class="icon-wa" onclick="whatsapp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a class="icon-mail" href="mailto:axentroofficial@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+<a class="icon-fb" href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
 </div>
 </footer>
 
-<a class="floating-wa" onclick="whatsapp()"><i class="fab fa-whatsapp"></i></a>
+<!-- FLOATING WA -->
+<a class="floating-wa" onclick="whatsapp()" aria-label="WhatsApp Floating">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 <script>
 function whatsapp(){
 const msg = `مرحبًا فريق Axentro،
 أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
 بانتظار تواصلكم، شكرًا.`;
-window.open("https://wa.me/201146476993?text=" + encodeURIComponent(msg),"_blank");
+
+window.open(
+  "https://wa.me/201146476993?text=" + encodeURIComponent(msg),
+  "_blank"
+);
 }
+</script>
+
+<script>
+/* Progress bar */
+const bar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  bar.style.width = p + '%';
+});
+
+/* Reveal (خفيف جدًا) */
+const els = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('show');
+  });
+},{threshold:0.15});
+els.forEach(el=>io.observe(el));
 </script>
 
 </body>
