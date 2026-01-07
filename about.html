@@ -198,6 +198,47 @@ margin-top:18px;
 .btn-mail{background:var(--mail);color:#fff}
 .btn-fb{background:var(--fb);color:#fff}
 
+/* FAQ (خفيف جدًا بدون JS) */
+.faq{
+margin-top:30px;
+text-align:right;
+}
+.faq details{
+background:var(--card);
+border-radius:18px;
+padding:18px 18px;
+margin-bottom:14px;
+border:1px solid rgba(255,255,255,.08);
+}
+.faq summary{
+cursor:pointer;
+list-style:none;
+font-weight:800;
+color:var(--secondary);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:14px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .q{
+display:inline-flex;
+align-items:center;
+gap:10px;
+}
+.faq summary .chev{
+transition:transform .25s ease;
+opacity:.9;
+}
+.faq details[open] summary .chev{
+transform:rotate(180deg);
+}
+.faq .ans{
+margin-top:12px;
+color:var(--muted);
+line-height:1.9;
+}
+
 /* FOOTER — نفس الصفحة الرئيسية */
 footer{
 padding:70px 20px;
@@ -292,8 +333,8 @@ text-decoration:none;
 
     <div class="stats">
       <div class="stat">
-        <div class="num">+4</div>
-        <div class="label">مجالات حلول (Excel / Web / Desktop / Branding)</div>
+        <div class="num">+6</div>
+        <div class="label">مسارات خدمات (Excel / Web / Desktop / Inventory / Branding / Social)</div>
       </div>
       <div class="stat">
         <div class="num">7</div>
@@ -306,6 +347,44 @@ text-decoration:none;
       <div class="stat">
         <div class="num">24/7</div>
         <div class="label">قنوات تواصل سريعة (واتساب / بريد)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: VALUES -->
+<section class="reveal" id="values">
+  <div class="container">
+    <h2>قيمنا الأساسية</h2>
+    <p class="section-sub">
+      3 مبادئ ثابتة في كل مشروع—تضمن الجودة والسرعة والوضوح من أول يوم حتى التسليم.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon"><i class="fas fa-award"></i></div>
+        <h3>Quality | الجودة</h3>
+        <p>
+          نهتم بالتفاصيل: هيكلة نظيفة، واجهة واضحة، اختبار، وتسليم منظم.
+          الهدف إن الحل يعيش معاك ويشتغل بثبات.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><i class="fas fa-bolt"></i></div>
+        <h3>Speed | السرعة</h3>
+        <p>
+          نوصل للنتيجة بسرعة بدون تضييع وقت: تقسيم مراحل، أول نسخة (MVP) ثم تطوير تدريجي حسب الأولويات.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><i class="fas fa-eye"></i></div>
+        <h3>Clarity | الوضوح</h3>
+        <p>
+          كل خطوة لها مخرجات واضحة: المطلوب، التصميم، التنفيذ، التدريب.
+          عشان تبقى فاهم أنت هتاخد إيه ومتى.
+        </p>
       </div>
     </div>
   </div>
@@ -341,11 +420,12 @@ text-decoration:none;
 </section>
 
 <!-- SECTION: WHAT WE DO -->
-<section class="reveal">
+<section class="reveal" id="what-we-do">
   <div class="container">
     <h2>ماذا نقدم</h2>
     <p class="section-sub">
-      خدماتنا مصممة لتغطي احتياج الشركات الصغيرة والمتوسطة: من نظم Excel الذكية إلى تطبيقات ويب وموبايل، وأنظمة سطح مكتب.
+      خدماتنا مصممة لتغطي احتياج الشركات الصغيرة والمتوسطة: من نظم Excel الذكية إلى تطبيقات ويب وموبايل،
+      وأنظمة سطح مكتب، مع حلول الهوية والسوشيال ومواقع عرض الأعمال.
     </p>
 
     <div class="cards">
@@ -354,15 +434,42 @@ text-decoration:none;
         <h3>Smart Excel Systems</h3>
         <p>تحويل Excel إلى نظام يعمل بقواعد واضحة، تقارير تلقائية، ولوحات متابعة تساعدك تتحكم في الشغل.</p>
       </div>
+
       <div class="card">
         <div class="icon"><i class="fas fa-globe"></i></div>
         <h3>Web & Mobile Apps</h3>
         <p>واجهات احترافية وتجربة مستخدم واضحة—تطبيقات تسهّل التشغيل وتخلي العميل يوصل لك بسهولة.</p>
       </div>
+
       <div class="card">
         <div class="icon"><i class="fas fa-desktop"></i></div>
         <h3>Desktop Software</h3>
         <p>أنظمة تعمل محليًا بدون إنترنت عند الحاجة، قوية وسريعة ومناسبة للبيئات التشغيلية المختلفة.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><i class="fas fa-chart-pie"></i></div>
+        <h3>Inventory & Sales</h3>
+        <p>متابعة مخزون ومبيعات وتقارير دقيقة تساعدك على التحكم في الأصناف واتخاذ قرارات أفضل.</p>
+      </div>
+
+      <!-- ✅ كارت السوشيال + التصميم -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-bullhorn"></i></div>
+        <h3>Social Media & Design</h3>
+        <p>
+          تصميم لوجو وهوية بصرية، قوالب بوستات احترافية، ومواد دعائية تساعد مشروعك يبان بشكل قوي ومتناسق.
+        </p>
+      </div>
+
+      <!-- ✅ كارت مواقع لعرض الأعمال -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-window-maximize"></i></div>
+        <h3>Websites for Business & Portfolio</h3>
+        <p>
+          إنشاء موقع احترافي سريع لعرض خدماتك وأعمالك، صفحة تعريف (About)، تواصل مباشر، وتجربة موبايل ممتازة
+          مثل الموقع الذي تنفذه الآن.
+        </p>
       </div>
     </div>
   </div>
@@ -409,34 +516,65 @@ text-decoration:none;
   </div>
 </section>
 
-<!-- SECTION: TRUST -->
-<section class="reveal">
+<!-- SECTION: FAQ -->
+<section class="reveal" id="faq">
   <div class="container">
-    <h2>لماذا تثق بنا حتى لو أنت في بداية التعامل معنا؟</h2>
-    <p class="section-sub">
-      الثقة لا تأتي فقط من “عدد العملاء”—تأتي من المنهج والوضوح والاحترافية.
-      نحن نلتزم بخطوات تسليم، ونركز على جودة التنفيذ وتجربة استخدام واضحة.
-    </p>
+    <h2>أسئلة شائعة | FAQ</h2>
+    <p class="section-sub">إجابات سريعة على أهم الأسئلة قبل ما نبدأ.</p>
 
-    <div class="cards">
-      <div class="card">
-        <div class="icon"><i class="fas fa-file-circle-check"></i></div>
-        <h3>تسليم واضح ومكتوب</h3>
-        <p>مخرجات محددة، نقاط اتفاق، وخطة تنفيذ—من غير مفاجآت.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-gauge-high"></i></div>
-        <h3>أداء وسهولة</h3>
-        <p>نركّز على السرعة والبساطة: النظام يبقى مفهوم لأي شخص داخل شركتك.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-rotate"></i></div>
-        <h3>قابل للتطوير</h3>
-        <p>بنصمّم الحل بحيث يكبر معاك: تقارير إضافية، صلاحيات، مراحل جديدة.</p>
-      </div>
+    <div class="faq">
+      <details>
+        <summary>
+          <span class="q"><i class="fas fa-circle-question"></i> إزاي نبدأ مع بعض؟</span>
+          <i class="fas fa-chevron-down chev"></i>
+        </summary>
+        <div class="ans">
+          بنبدأ بجلسة قصيرة لفهم شغلك والهدف المطلوب، بعدها نحدد نطاق العمل والخطوات والمدة المتوقعة، ثم نبدأ التنفيذ على مراحل.
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="q"><i class="fas fa-circle-question"></i> هل لازم يكون عندي متطلبات جاهزة؟</span>
+          <i class="fas fa-chevron-down chev"></i>
+        </summary>
+        <div class="ans">
+          لا. لو عندك فكرة عامة بس ده كفاية. هنساعدك نطلع المتطلبات بشكل واضح ونحوّلها لخطة تنفيذ واقعية.
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="q"><i class="fas fa-circle-question"></i> لو أنا لسه في بداية المشروع، هل ينفع؟</span>
+          <i class="fas fa-chevron-down chev"></i>
+        </summary>
+        <div class="ans">
+          جدًا. بنركز على نسخة أولى (MVP) تحقق الهدف الأساسي بسرعة، وبعدها نطوّر تدريجيًا حسب نمو شغلك.
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="q"><i class="fas fa-circle-question"></i> هل في دعم بعد التسليم؟</span>
+          <i class="fas fa-chevron-down chev"></i>
+        </summary>
+        <div class="ans">
+          نعم، بنوفر دعم وتعديلات حسب الاتفاق، مع إمكانية إضافة تقارير وخصائص جديدة مع الوقت.
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="q"><i class="fas fa-circle-question"></i> ما الفرق بين Excel System وWeb App؟</span>
+          <i class="fas fa-chevron-down chev"></i>
+        </summary>
+        <div class="ans">
+          Excel System مناسب كبداية سريعة داخل الشركة، بينما Web App مناسب لو عايز وصول من أي مكان، مستخدمين متعددين، وصلاحيات أوسع وتوسع أكبر.
+        </div>
+      </details>
     </div>
 
-    <!-- ✅ أزرار التواصل تحت — نفس الصفحة الرئيسية -->
+    <!-- أزرار تواصل (نفس الرئيسية) -->
     <div class="cta">
       <a class="cta-button btn-wa" onclick="whatsapp()">
         <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
@@ -450,8 +588,6 @@ text-decoration:none;
         <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
       </a>
     </div>
-
-    <a class="cta-button" href="index.html#services">استعرض خدماتنا</a>
   </div>
 </section>
 
