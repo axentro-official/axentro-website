@@ -5,7 +5,10 @@
 <title>Axentro | من نحن</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+<!-- ICONS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -20,6 +23,7 @@
 --mail:#EA4335;
 --fb:#1877F2;
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -28,67 +32,246 @@ background:linear-gradient(135deg,#020617,#020b2e);
 color:var(--text);
 overflow-x:hidden;
 }
+
 section{padding:90px 20px;text-align:center}
 .container{max-width:1100px;margin:auto}
+
 h1,h2,h3{color:var(--secondary)}
 p{color:var(--muted);line-height:1.9}
 
-.scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:var(--secondary);z-index:99999;}
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease, transform .7s ease;}
-.reveal.show{opacity:1;transform:translateY(0);}
+/* PROGRESS BAR */
+.scroll-progress{
+position:fixed;
+top:0;
+left:0;
+height:3px;
+width:0%;
+background:var(--secondary);
+z-index:99999;
+}
 
-.hero{position:relative}
-.hero h1{font-size:48px;letter-spacing:1px}
-.hero p{max-width:860px;margin:22px auto 0}
+/* REVEAL */
+.reveal{
+opacity:0;
+transform:translateY(16px);
+transition:opacity .7s ease, transform .7s ease;
+}
+.reveal.show{
+opacity:1;
+transform:translateY(0);
+}
 
+/* HERO */
+.hero{
+position:relative;
+padding-top:110px;
+}
+.hero h1{
+font-size:44px;
+letter-spacing:1px;
+}
+.hero .tagline{
+margin-top:10px;
+letter-spacing:3px;
+font-size:13px;
+opacity:.85;
+}
+.hero p{
+max-width:860px;
+margin:22px auto 0;
+}
+
+/* NAV — نفس أسلوب الصفحة الرئيسية */
 .navigation-links{
-position:absolute;top:20px;left:10px;right:10px;
-display:flex;justify-content:center;gap:20px;z-index:10;
+position:absolute;
+top:20px;
+left:10px;
+right:10px;
+display:flex;
+flex-direction:row;
+justify-content:center;
+gap:20px;
+z-index:10;
 }
 .navigation-links .nav-link{
-font-size:18px;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;
-padding:12px 16px;border-radius:50px;transition:.3s;
+font-size:18px;
+color:#fff;
+text-decoration:none;
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:12px 16px;
+border-radius:50px;
+transition:color .3s, background-color .3s;
 }
-.navigation-links .nav-link:hover{color:#00d4ff;background-color:#003366;}
+.navigation-links .nav-link:hover{
+color:#00d4ff;
+background-color:#003366;
+}
 
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:40px;}
-.card{background:var(--card);padding:28px 22px;border-radius:20px;text-align:right;}
-.card h3{margin-bottom:10px;font-size:18px}
-
+/* CTA BUTTON — نفس الصفحة الرئيسية */
 .cta-button{
-background-color:#003366;color:var(--secondary);
-padding:18px 45px;border-radius:50px;font-weight:800;font-size:20px;
-cursor:pointer;transition:.3s;margin-top:30px;display:inline-block;text-decoration:none;
+background-color:#003366;
+color:var(--secondary);
+padding:18px 45px;
+border-radius:50px;
+font-weight:800;
+font-size:20px;
+cursor:pointer;
+transition:background-color .3s, transform .3s, box-shadow .3s;
+margin-top:25px;
+display:inline-block;
+text-decoration:none;
 box-shadow:0 0 25px rgba(0,255,213,.35);
 }
-.cta-button:hover{background-color:#002244;transform:scale(1.05);box-shadow:0 0 40px rgba(0,255,213,.6);}
+.cta-button:hover{
+background-color:#002244;
+transform:scale(1.05);
+box-shadow:0 0 40px rgba(0,255,213,.6);
+}
 
-.cta{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+/* Cards / Blocks */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:22px;
+margin-top:40px;
+text-align:right;
+}
+.card{
+background:var(--card);
+padding:28px 22px;
+border-radius:20px;
+transition:transform .35s ease, box-shadow .35s ease;
+}
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 25px 60px rgba(0,212,255,.18);
+}
+.card h3{margin-bottom:10px;font-size:18px}
+.card .icon{
+font-size:22px;
+color:var(--secondary);
+margin-bottom:10px;
+display:inline-flex;
+}
+
+/* Stats */
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+margin-top:30px;
+text-align:center;
+}
+.stat{
+background:var(--card);
+border-radius:20px;
+padding:22px 18px;
+}
+.stat .num{
+font-size:30px;
+font-weight:800;
+color:var(--secondary);
+}
+.stat .label{
+margin-top:8px;
+color:var(--muted);
+}
+
+/* Small section title helper */
+.section-sub{
+max-width:860px;
+margin:12px auto 0;
+opacity:.95;
+}
+
+/* CONTACT BUTTONS — نفس الصفحة الرئيسية */
+.cta{
+display:flex;
+gap:18px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:18px;
+}
 .btn-wa{background:var(--wa);color:#000}
 .btn-mail{background:var(--mail);color:#fff}
 .btn-fb{background:var(--fb);color:#fff}
 
-footer{padding:70px 20px;border-top:1px solid rgba(255,255,255,.1);text-align:center;}
-footer .main{font-weight:900;font-size:20px;color:#fff;}
-footer .by{margin-top:10px;font-size:16px;opacity:.9;}
-.footer-icons{margin-top:30px;display:flex;gap:30px;justify-content:center;font-size:26px;}
-.footer-icons a{text-decoration:none;transition:.25s;}
-.footer-icons a:hover{transform:translateY(-4px) scale(1.12);filter:drop-shadow(0 0 10px currentColor);}
-.icon-wa{color:var(--wa)} .icon-mail{color:var(--mail)} .icon-fb{color:var(--fb)}
+/* FOOTER — نفس الصفحة الرئيسية */
+footer{
+padding:70px 20px;
+border-top:1px solid rgba(255,255,255,.1);
+text-align:center;
+}
+footer .main{
+font-weight:900;
+font-size:20px;
+color:#fff;
+}
+footer .by{
+margin-top:10px;
+font-size:16px;
+opacity:.9;
+}
+.footer-icons{
+margin-top:30px;
+display:flex;
+gap:30px;
+justify-content:center;
+font-size:26px;
+}
+.footer-icons a{
+transition:transform .25s ease, filter .25s ease;
+text-decoration:none;
+}
+.footer-icons a:hover{
+transform:translateY(-4px) scale(1.12);
+filter:drop-shadow(0 0 10px currentColor);
+}
+.icon-wa{color:var(--wa)}
+.icon-mail{color:var(--mail)}
+.icon-fb{color:var(--fb)}
 
+/* FLOATING WHATSAPP */
 .floating-wa{
-position:fixed;bottom:25px;right:25px;width:66px;height:66px;border-radius:50%;
-background:var(--wa);color:#000;display:flex;align-items:center;justify-content:center;
-font-size:30px;box-shadow:0 12px 30px rgba(0,0,0,.4);z-index:999;transition:.25s;
+position:fixed;
+bottom:25px;
+right:25px;
+width:66px;
+height:66px;
+border-radius:50%;
+background:var(--wa);
+color:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+box-shadow:0 12px 30px rgba(0,0,0,.4);
+z-index:999;
+transition:transform .25s ease;
+cursor:pointer;
+text-decoration:none;
 }
 .floating-wa:hover{transform:scale(1.08)}
+
+/* Mobile */
+@media (max-width:600px){
+.hero{padding-top:120px}
+.hero h1{font-size:34px}
+.navigation-links .nav-link{font-size:14px;padding:10px 12px}
+.cta-button{font-size:18px;padding:16px 26px}
+}
 </style>
 </head>
 
 <body>
+
 <div class="scroll-progress" id="scrollProgress"></div>
 
+<!-- HERO -->
 <section class="hero reveal show" id="top">
+
   <div class="navigation-links">
     <a href="index.html#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
     <a href="index.html#services" class="nav-link"><i class="fas fa-cogs"></i> الخدمات</a>
@@ -98,64 +281,195 @@ font-size:30px;box-shadow:0 12px 30px rgba(0,0,0,.4);z-index:999;transition:.25s
 
   <div class="container">
     <h1>من نحن | About Axentro</h1>
+    <div class="tagline">BUILD • OPTIMIZE • SCALE</div>
+
     <p>
-      Axentro فريق متخصص في بناء حلول برمجية عملية وسريعة تساعد أصحاب الأعمال على تنظيم العمليات،
-      تقليل الأخطاء، وزيادة وضوح الأرقام لاتخاذ قرارات أفضل.
-      هدفنا: تحويل الاحتياج الحقيقي لنظام بسيط واحترافي يخدم الشغل يوميًا.
+      Axentro نساعد أصحاب الأعمال على تحويل الفوضى اليومية إلى نظام واضح: متابعة، تقارير، إجراءات، وصلاحيات.
+      شغلنا مبني على فهم نشاطك أولًا ثم تصميم حل عملي وسهل الاستخدام يشتغل مع فريقك من اليوم الأول.
     </p>
 
     <a class="cta-button" href="index.html#contact">احجز استشارتك الآن</a>
-  </div>
-</section>
 
-<section class="reveal">
-  <div class="container">
-    <h2>ليه تختار Axentro؟</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>حلول حسب نشاطك</h3>
-        <p>مش قوالب جاهزة.. بنفهم شغلك وبنبني نظام مناسب لطريقة عملك.</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="num">+4</div>
+        <div class="label">مجالات حلول (Excel / Web / Desktop / Branding)</div>
       </div>
-      <div class="card">
-        <h3>بساطة + نتائج</h3>
-        <p>واجهة واضحة وتقارير عملية تساعدك تتابع وتتحكم بسرعة.</p>
+      <div class="stat">
+        <div class="num">7</div>
+        <div class="label">خطوات تسليم واضحة من التحليل حتى الدعم</div>
       </div>
-      <div class="card">
-        <h3>تسليم منظم</h3>
-        <p>تحليل → تصميم → تنفيذ → تدريب → دعم.. بخطوات واضحة.</p>
+      <div class="stat">
+        <div class="num">100%</div>
+        <div class="label">حل مُفصّل حسب نشاطك (مش قوالب جاهزة)</div>
+      </div>
+      <div class="stat">
+        <div class="num">24/7</div>
+        <div class="label">قنوات تواصل سريعة (واتساب / بريد)</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- SECTION: VISION -->
 <section class="reveal">
   <div class="container">
-    <h2>طريقة عملنا</h2>
+    <h2>رؤيتنا</h2>
+    <p class="section-sub">
+      نبني حلول برمجية تخلّي الإدارة أسهل، البيانات أوضح، وقراراتك أسرع.
+      هدفنا مش “برنامج وخلاص”—هدفنا نظام يخدم شغلك يوميًا ويكبر معاك.
+    </p>
+
     <div class="cards">
-      <div class="card"><h3>1) فهم الاحتياج</h3><p>نجمع تفاصيل عملك ونحدد الهدف والمخرجات المطلوبة.</p></div>
-      <div class="card"><h3>2) تصميم الحل</h3><p>نضع تصور للواجهة والتقارير وسير العمل قبل التنفيذ.</p></div>
-      <div class="card"><h3>3) تنفيذ وتسليم</h3><p>تنفيذ احترافي + اختبار + تدريب + خطة دعم.</p></div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-bullseye"></i></div>
+        <h3>هدف واضح</h3>
+        <p>نحدد معاك الهدف من النظام: متابعة مبيعات؟ مخزون؟ عملاء؟ تقارير إدارة؟ ثم نبني الحل حوله.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-diagram-project"></i></div>
+        <h3>عملية منظمة</h3>
+        <p>من التحليل للتنفيذ للتدريب—كل خطوة لها مخرجات واضحة، عشان تطلع بنتيجة ثابتة ومضمونة.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>ثقة وأمان</h3>
+        <p>نهتم بالنسخ الاحتياطية، صلاحيات المستخدمين، وحماية البيانات بما يناسب طبيعة نشاطك.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: WHAT WE DO -->
+<section class="reveal">
+  <div class="container">
+    <h2>ماذا نقدم</h2>
+    <p class="section-sub">
+      خدماتنا مصممة لتغطي احتياج الشركات الصغيرة والمتوسطة: من نظم Excel الذكية إلى تطبيقات ويب وموبايل، وأنظمة سطح مكتب.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon"><i class="fas fa-table"></i></div>
+        <h3>Smart Excel Systems</h3>
+        <p>تحويل Excel إلى نظام يعمل بقواعد واضحة، تقارير تلقائية، ولوحات متابعة تساعدك تتحكم في الشغل.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-globe"></i></div>
+        <h3>Web & Mobile Apps</h3>
+        <p>واجهات احترافية وتجربة مستخدم واضحة—تطبيقات تسهّل التشغيل وتخلي العميل يوصل لك بسهولة.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-desktop"></i></div>
+        <h3>Desktop Software</h3>
+        <p>أنظمة تعمل محليًا بدون إنترنت عند الحاجة، قوية وسريعة ومناسبة للبيئات التشغيلية المختلفة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: HOW WE WORK -->
+<section class="reveal">
+  <div class="container">
+    <h2>كيف نشتغل معك</h2>
+    <p class="section-sub">أسلوب عمل “شركات” بخطوات واضحة—بدون تعقيد وبأسرع طريق للنتيجة.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon"><i class="fas fa-comments"></i></div>
+        <h3>1) جلسة فهم الاحتياج</h3>
+        <p>نجمع تفاصيل شغلك، المشاكل الحالية، ونحدد المطلوب بدقة (Features + تقارير + صلاحيات).</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-pen-ruler"></i></div>
+        <h3>2) تصميم الحل</h3>
+        <p>نقدّم تصور للواجهة وخط سير العمل قبل التنفيذ، عشان كل شيء يبقى واضح.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-code"></i></div>
+        <h3>3) تنفيذ واختبار</h3>
+        <p>تنفيذ احترافي + اختبار حالات واقعية + تحسينات بناءً على الملاحظات.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-chalkboard-user"></i></div>
+        <h3>4) تدريب وتسليم</h3>
+        <p>شرح للاستخدام + دليل مختصر + تسليم منظم يسهّل التشغيل.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-headset"></i></div>
+        <h3>5) دعم وتطوير</h3>
+        <p>متابعة بعد التسليم + تطوير مراحل جديدة لما شغلك يكبر.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-chart-line"></i></div>
+        <h3>6) نمو مستمر</h3>
+        <p>تحديثات وتحسينات حسب أداء العمل والبيانات—لأفضل قرارات وأعلى كفاءة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: TRUST -->
+<section class="reveal">
+  <div class="container">
+    <h2>لماذا تثق بنا حتى لو أنت في بداية التعامل معنا؟</h2>
+    <p class="section-sub">
+      الثقة لا تأتي فقط من “عدد العملاء”—تأتي من المنهج والوضوح والاحترافية.
+      نحن نلتزم بخطوات تسليم، ونركز على جودة التنفيذ وتجربة استخدام واضحة.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon"><i class="fas fa-file-circle-check"></i></div>
+        <h3>تسليم واضح ومكتوب</h3>
+        <p>مخرجات محددة، نقاط اتفاق، وخطة تنفيذ—من غير مفاجآت.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-gauge-high"></i></div>
+        <h3>أداء وسهولة</h3>
+        <p>نركّز على السرعة والبساطة: النظام يبقى مفهوم لأي شخص داخل شركتك.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-rotate"></i></div>
+        <h3>قابل للتطوير</h3>
+        <p>بنصمّم الحل بحيث يكبر معاك: تقارير إضافية، صلاحيات، مراحل جديدة.</p>
+      </div>
     </div>
 
+    <!-- ✅ أزرار التواصل تحت — نفس الصفحة الرئيسية -->
     <div class="cta">
-      <a class="cta-button btn-wa" onclick="whatsapp()"><i class="fab fa-whatsapp"></i> واتساب</a>
-      <a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com"><i class="fas fa-envelope"></i> البريد</a>
-      <a class="cta-button btn-fb" href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+      <a class="cta-button btn-wa" onclick="whatsapp()">
+        <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+      </a>
+
+      <a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com">
+        <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
+      </a>
+
+      <a class="cta-button btn-fb" href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
+      </a>
     </div>
+
+    <a class="cta-button" href="index.html#services">استعرض خدماتنا</a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="main">© 2024 Axentro – All Rights Reserved</div>
-  <div class="by">By Ahmed Hamouda</div>
-  <div class="footer-icons">
-    <a class="icon-wa" onclick="whatsapp()"><i class="fab fa-whatsapp"></i></a>
-    <a class="icon-mail" href="mailto:axentroofficial@gmail.com"><i class="fas fa-envelope"></i></a>
-    <a class="icon-fb" href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-  </div>
+<div class="main">© 2024 Axentro – All Rights Reserved</div>
+<div class="by">By Ahmed Hamouda</div>
+
+<div class="footer-icons">
+<a class="icon-wa" onclick="whatsapp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a class="icon-mail" href="mailto:axentroofficial@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+<a class="icon-fb" href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+</div>
 </footer>
 
-<a class="floating-wa" onclick="whatsapp()"><i class="fab fa-whatsapp"></i></a>
+<a class="floating-wa" onclick="whatsapp()" aria-label="WhatsApp Floating">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 <script>
 function whatsapp(){
@@ -167,6 +481,7 @@ window.open("https://wa.me/201146476993?text=" + encodeURIComponent(msg),"_blank
 </script>
 
 <script>
+/* Progress bar */
 const bar = document.getElementById('scrollProgress');
 window.addEventListener('scroll', () => {
   const h = document.documentElement;
@@ -174,11 +489,15 @@ window.addEventListener('scroll', () => {
   bar.style.width = p + '%';
 });
 
+/* Reveal */
 const els = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('show');
+  });
 },{threshold:0.15});
 els.forEach(el=>io.observe(el));
 </script>
+
 </body>
 </html>
