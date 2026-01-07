@@ -226,7 +226,7 @@ transition:transform .25s ease;
 }
 .floating-wa:hover{transform:scale(1.08)}
 
-/* NAVIGATION LINKS — أفقي دائمًا */
+/* NAVIGATION LINKS — أفقي دائمًا (نفس about.html) */
 .navigation-links{
 position:absolute;
 top:20px;
@@ -254,6 +254,14 @@ transition:color .3s, background-color .3s;
 .navigation-links .nav-link:hover{
 color:#00d4ff;
 background-color:#003366;
+}
+
+/* ✅ موبايل: نفس about.html */
+@media (max-width:600px){
+  .navigation-links .nav-link{
+    font-size:14px;
+    padding:10px 12px;
+  }
 }
 </style>
 </head>
@@ -330,6 +338,17 @@ EXE • Web • Mobile • Social Media Solutions
     <a class="card-link" href="service-branding.html">
       <h3>Branding & Digital Solutions</h3>
       <p>بناء هوية رقمية احترافية تعكس قوة مشروعك وتزيد ثقة عملائك.</p>
+    </a>
+  </div>
+
+  <!-- ✅ الكارت الجديد: مواقع ويب لعرض الأعمال -->
+  <div class="card">
+    <a class="card-link" href="service-website-portfolio.html">
+      <h3>Websites for Business & Portfolio</h3>
+      <p>
+        إنشاء مواقع ويب احترافية سريعة لعرض خدماتك وأعمالك مع صفحة من نحن وتواصل مباشر —
+        مثل الموقع الذي تنفذه الآن.
+      </p>
     </a>
   </div>
 </div>
