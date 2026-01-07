@@ -35,38 +35,147 @@ section{padding:90px 20px;text-align:center}
 h1,h2,h3{color:var(--secondary)}
 p{color:var(--muted);line-height:1.9}
 
+/* HERO */
 .hero{position:relative}
 .hero h1{font-size:52px;letter-spacing:2px}
-.hero .tagline{margin-top:10px;letter-spacing:4px;font-size:14px;opacity:.85}
+.hero .tagline{
+margin-top:10px;
+letter-spacing:4px;
+font-size:14px;
+opacity:.85;
+}
 .hero p{max-width:760px;margin:30px auto 0}
 
-.hero-services{margin-top:22px;font-size:14px;letter-spacing:2px;opacity:.8}
+.hero-services{
+margin-top:22px;
+font-size:14px;
+letter-spacing:2px;
+opacity:.8;
+}
 
-/* ✅ CTA BUTTON (التعديل هنا فقط) */
+/* ✅ CTA BUTTON – Bold + Secondary Color + Soft Glow */
 .cta-button{
-background-color: #003366;
-color: var(--secondary);
-padding: 18px 45px;
-border-radius: 50px;
-font-weight: 800;
-font-size: 22px;
-cursor: pointer;
-transition: background-color 0.3s, transform 0.3s;
-margin-top: 50px;
-display: inline-block;
+background-color:#003366;
+color:var(--secondary);
+padding:18px 45px;
+border-radius:50px;
+font-weight:800;
+font-size:22px;
+cursor:pointer;
+transition:background-color .3s, transform .3s, box-shadow .3s;
+margin-top:50px;
+display:inline-block;
 text-decoration:none;
+
+/* Glow */
+box-shadow:0 0 25px rgba(0,255,213,.35);
 }
 
 .cta-button:hover{
 background-color:#002244;
 transform:scale(1.05);
+box-shadow:0 0 40px rgba(0,255,213,.6);
 }
 
-/* باقي الكود بدون أي تغيير */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px;margin-top:50px}
-.card{background:var(--card);padding:32px 26px;border-radius:20px;transition:.35s}
-.card:hover{transform:translateY(-8px);box-shadow:0 25px 60px rgba(0,212,255,.22)}
+/* SERVICES */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:28px;
+margin-top:50px;
+}
+.card{
+background:var(--card);
+padding:32px 26px;
+border-radius:20px;
+transition:transform .35s ease, box-shadow .35s ease;
+}
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 25px 60px rgba(0,212,255,.22);
+}
+.card h3{margin-bottom:14px;font-size:18px}
 
+/* FINAL CTA */
+.final-cta-text{
+margin-bottom:25px;
+font-size:22px;
+font-weight:800;
+color:var(--secondary);
+}
+.final-cta-sub{
+max-width:760px;
+margin:0 auto 35px;
+opacity:.9;
+}
+
+/* BUTTONS */
+.cta{
+display:flex;
+gap:18px;
+justify-content:center;
+flex-wrap:wrap;
+}
+.btn-wa{background:var(--wa);color:#000}
+.btn-mail{background:var(--mail);color:#fff}
+.btn-fb{background:var(--fb);color:#fff}
+
+/* FOOTER */
+footer{
+padding:70px 20px;
+border-top:1px solid rgba(255,255,255,.1);
+text-align:center;
+}
+footer .main{
+font-weight:900;
+font-size:20px;
+color:#fff;
+}
+footer .by{
+margin-top:10px;
+font-size:16px;
+opacity:.9;
+}
+.footer-icons{
+margin-top:30px;
+display:flex;
+gap:30px;
+justify-content:center;
+font-size:26px;
+}
+.footer-icons a{
+transition:transform .25s ease, filter .25s ease;
+text-decoration:none;
+}
+.footer-icons a:hover{
+transform:translateY(-4px) scale(1.12);
+filter:drop-shadow(0 0 10px currentColor);
+}
+.icon-wa{color:var(--wa)}
+.icon-mail{color:var(--mail)}
+.icon-fb{color:var(--fb)}
+
+/* FLOATING WHATSAPP */
+.floating-wa{
+position:fixed;
+bottom:25px;
+right:25px;
+width:66px;
+height:66px;
+border-radius:50%;
+background:var(--wa);
+color:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+box-shadow:0 12px 30px rgba(0,0,0,.4);
+z-index:999;
+transition:transform .25s ease;
+}
+.floating-wa:hover{transform:scale(1.08)}
+
+/* NAVIGATION LINKS */
 .navigation-links{
 position:absolute;
 top:20px;
@@ -93,14 +202,94 @@ color:#00d4ff;
 background:#003366;
 }
 
+/* MOBILE */
 @media(max-width:600px){
-.navigation-links{left:10px;right:10px;top:10px;flex-direction:row;justify-content:center;gap:10px}
-.navigation-links .nav-link{font-size:14px;padding:10px 12px}
+.navigation-links{
+left:10px;
+right:10px;
+top:10px;
+flex-direction:row;
+justify-content:center;
+gap:10px;
+}
+.navigation-links .nav-link{
+font-size:14px;
+padding:10px 12px;
+}
+.hero h1{font-size:38px}
+.cta-button{font-size:18px;padding:16px 26px}
 }
 </style>
 </head>
 
 <body>
-<!-- باقي الـ HTML زي ما هو بدون أي تغيير -->
+
+<section class="hero" id="home">
+
+<div class="navigation-links">
+<a href="#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
+<a href="#services" class="nav-link"><i class="fas fa-cogs"></i> الخدمات</a>
+<a href="#contact" class="nav-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
+</div>
+
+<div class="container">
+<h1>AXENTRO</h1>
+<div class="tagline">CONTROL • TRACK • GROW</div>
+
+<p>
+حلول برمجية ذكية لإدارة الأعمال وتحويل Excel إلى أنظمة احترافية<br>
+<span style="opacity:.8">We build a digital presence that strengthens your brand and builds trust.</span>
+</p>
+
+<div class="hero-services">
+EXE • Web • Mobile • Social Media Solutions
+</div>
+
+<a href="#contact" class="cta-button">احجز استشارتك الآن</a>
+</div>
+</section>
+
+<section id="services">
+<div class="container">
+<h2>خدماتنا | Our Services</h2>
+<!-- باقي المحتوى كما هو -->
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<div class="final-cta-text">احجز استشارتك الآن</div>
+<div class="final-cta-sub">
+نصنع لك حضورًا رقميًا يعكس قوة مشروعك ويزيد ثقة عملائك
+</div>
+
+<div class="cta">
+<a class="cta-button btn-wa" onclick="whatsapp()"><i class="fab fa-whatsapp"></i> واتساب</a>
+<a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com"><i class="fas fa-envelope"></i> البريد</a>
+<a class="cta-button btn-fb" href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="main">© 2024 Axentro – All Rights Reserved</div>
+<div class="by">By Ahmed Hamouda</div>
+<div class="footer-icons">
+<a href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="mailto:axentroofficial@gmail.com"><i class="fas fa-envelope"></i></a>
+<a onclick="whatsapp()"><i class="fab fa-whatsapp"></i></a>
+</div>
+</footer>
+
+<a class="floating-wa" onclick="whatsapp()"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+function whatsapp(){
+const msg=`مرحبًا فريق Axentro،
+أرغب في الاستفسار عن حلولكم البرمجية.`;
+window.open("https://wa.me/201146476993?text="+encodeURIComponent(msg),"_blank");
+}
+</script>
+
 </body>
 </html>
