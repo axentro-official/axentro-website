@@ -5,7 +5,10 @@
 <title>Axentro | Smart Software Solutions</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+<!-- ICONS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -36,7 +39,9 @@ h1,h2,h3{color:var(--secondary)}
 p{color:var(--muted);line-height:1.9}
 
 /* HERO */
-.hero{position:relative}
+.hero{
+  position: relative; /* ✅ مهم عشان الناف تبقى داخل الهيرو فقط */
+}
 .hero h1{font-size:52px;letter-spacing:2px}
 .hero .tagline{
 margin-top:10px;
@@ -46,6 +51,7 @@ opacity:.85;
 }
 .hero p{max-width:760px;margin:30px auto 0}
 
+/* HERO SERVICES LINE */
 .hero-services{
 margin-top:22px;
 font-size:14px;
@@ -53,28 +59,29 @@ letter-spacing:2px;
 opacity:.8;
 }
 
-/* ✅ CTA BUTTON – Bold + Secondary Color + Soft Glow */
+/* BUTTON STYLES */
+/* ✅✅✅ التعديل الوحيد هنا: color + font-weight + glow + hover glow */
 .cta-button{
-background-color:#003366;
-color:var(--secondary);
-padding:18px 45px;
-border-radius:50px;
-font-weight:800;
-font-size:22px;
-cursor:pointer;
-transition:background-color .3s, transform .3s, box-shadow .3s;
-margin-top:50px;
-display:inline-block;
+background-color: #003366;  /* اللون الكحلي */
+color: var(--secondary);    /* نفس لون خدماتنا | Our Services */
+padding: 18px 45px; /* حجم أكبر */
+border-radius: 50px;
+font-weight: 800;           /* Bold */
+font-size: 22px; /* حجم الخط */
+cursor: pointer;
+transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+margin-top: 50px; /* إعطاء المسافة الصحيحة بين النصوص */
+display: inline-block;
 text-decoration:none;
 
-/* Glow */
-box-shadow:0 0 25px rgba(0,255,213,.35);
+/* Glow خفيف */
+box-shadow: 0 0 25px rgba(0,255,213,0.35);
 }
 
-.cta-button:hover{
-background-color:#002244;
-transform:scale(1.05);
-box-shadow:0 0 40px rgba(0,255,213,.6);
+.cta-button:hover {
+  background-color: #002244; /* اللون الأغمق عند التمرير */
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(0,255,213,0.6);
 }
 
 /* SERVICES */
@@ -115,6 +122,22 @@ display:flex;
 gap:18px;
 justify-content:center;
 flex-wrap:wrap;
+}
+.btn{
+display:inline-flex;
+align-items:center;
+gap:12px;
+padding:18px 38px;
+border-radius:50px;
+font-weight:800;
+font-size:18px;
+text-decoration:none;
+cursor:pointer;
+transition:transform .25s ease, box-shadow .25s ease;
+}
+.btn:hover{
+transform:translateY(-3px) scale(1.04);
+box-shadow:0 12px 30px rgba(0,0,0,.35);
 }
 .btn-wa{background:var(--wa);color:#000}
 .btn-mail{background:var(--mail);color:#fff}
@@ -175,119 +198,180 @@ transition:transform .25s ease;
 }
 .floating-wa:hover{transform:scale(1.08)}
 
-/* NAVIGATION LINKS */
-.navigation-links{
-position:absolute;
-top:20px;
-left:20px;
-display:flex;
-flex-direction:column;
-gap:50px;
+/* ✅ NAVIGATION LINKS (تعديل بسيط: بدل fixed خليها absolute داخل الهيرو) */
+.navigation-links {
+  position: absolute;   /* ✅ كانت fixed */
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
-.navigation-links .nav-link{
-font-size:20px;
-color:#fff;
-text-decoration:none;
-display:inline-flex;
-align-items:center;
-gap:10px;
-padding:15px;
-border-radius:50px;
-transition:.3s;
+/* ✅ تصحيح السيلكتور: كان .navigation .nav-link */
+.navigation-links .nav-link {
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 50px;
+  transition: color 0.3s, background-color .3s;
 }
 
-.navigation-links .nav-link:hover{
-color:#00d4ff;
-background:#003366;
+.navigation-links .nav-link:hover {
+  color: #00d4ff;
+  background-color: #003366;
 }
 
-/* MOBILE */
-@media(max-width:600px){
-.navigation-links{
-left:10px;
-right:10px;
-top:10px;
-flex-direction:row;
-justify-content:center;
-gap:10px;
-}
-.navigation-links .nav-link{
-font-size:14px;
-padding:10px 12px;
-}
-.hero h1{font-size:38px}
-.cta-button{font-size:18px;padding:16px 26px}
+/* ✅ موبايل: نخليها شريط أفقي أعلى الهيرو بدل عمود */
+@media (max-width: 600px){
+  .navigation-links{
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+  .navigation-links .nav-link{
+    font-size: 14px;
+    padding: 10px 12px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- HERO -->
 <section class="hero" id="home">
 
-<div class="navigation-links">
-<a href="#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
-<a href="#services" class="nav-link"><i class="fas fa-cogs"></i> الخدمات</a>
-<a href="#contact" class="nav-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
-</div>
+  <!-- ✅ NAVIGATION LINKS (زي ما هي بس بتظهر داخل الهيرو فقط) -->
+  <div class="navigation-links" aria-label="Primary">
+    <a href="#home" class="nav-link">
+      <i class="fas fa-home"></i> الرئيسية
+    </a>
+    <a href="#services" class="nav-link">
+      <i class="fas fa-cogs"></i> الخدمات
+    </a>
+    <a href="#contact" class="nav-link">
+      <i class="fas fa-phone-alt"></i> اتصل بنا
+    </a>
+  </div>
 
-<div class="container">
-<h1>AXENTRO</h1>
-<div class="tagline">CONTROL • TRACK • GROW</div>
+  <div class="container">
+    <h1>AXENTRO</h1>
+    <div class="tagline">CONTROL • TRACK • GROW</div>
 
-<p>
-حلول برمجية ذكية لإدارة الأعمال وتحويل Excel إلى أنظمة احترافية<br>
-<span style="opacity:.8">We build a digital presence that strengthens your brand and builds trust.</span>
-</p>
+    <p>
+      حلول برمجية ذكية لإدارة الأعمال وتحويل Excel إلى أنظمة احترافية<br>
+      <span style="opacity:.8">We build a digital presence that strengthens your brand and builds trust.</span>
+    </p>
 
-<div class="hero-services">
-EXE • Web • Mobile • Social Media Solutions
-</div>
+    <div class="hero-services">
+      EXE • Web • Mobile • Social Media Solutions
+    </div>
 
-<a href="#contact" class="cta-button">احجز استشارتك الآن</a>
-</div>
+    <!-- Button with link to scroll to bottom -->
+    <a href="#contact" class="cta-button">احجز استشارتك الآن</a>
+  </div>
 </section>
 
+<!-- SERVICES -->
 <section id="services">
 <div class="container">
 <h2>خدماتنا | Our Services</h2>
-<!-- باقي المحتوى كما هو -->
+
+<div class="cards">
+<div class="card">
+<h3>Smart Excel Systems</h3>
+<p>تحويل ملفات Excel إلى أنظمة ذكية تقلل الأخطاء وتنظم العمل وتوفر وقت الإدارة.</p>
+</div>
+
+<div class="card">
+<h3>Web & Mobile Apps</h3>
+<p>تصميم وتطوير تطبيقات ويب وموبايل مخصصة لتحسين تجربة العملاء وإدارة الأعمال.</p>
+</div>
+
+<div class="card">
+<h3>Desktop Software</h3>
+<p>تطوير أنظمة سطح مكتب قوية تعمل بدون إنترنت وتناسب طبيعة نشاطك.</p>
+</div>
+
+<div class="card">
+<h3>Inventory & Sales</h3>
+<p>
+أنظمة إدارة مخزون ومبيعات ذكية تساعدك على متابعة الأصناف،
+تسجيل المبيعات، واستخراج تقارير دقيقة لاتخاذ قرارات أفضل.
+</p>
+</div>
+
+<div class="card">
+<h3>Branding & Digital Solutions</h3>
+<p>بناء هوية رقمية احترافية تعكس قوة مشروعك وتزيد ثقة عملائك.</p>
+</div>
+</div>
 </div>
 </section>
 
+<!-- FINAL CTA -->
 <section id="contact">
 <div class="container">
 <div class="final-cta-text">احجز استشارتك الآن</div>
 <div class="final-cta-sub">
-نصنع لك حضورًا رقميًا يعكس قوة مشروعك ويزيد ثقة عملائك
+نصنع لك حضورًا رقميًا يعكس قوة مشروعك ويزيد ثقة عملائك<br>
+<span style="opacity:.8">We build a digital presence that strengthens your brand and builds trust.</span>
 </div>
 
 <div class="cta">
-<a class="cta-button btn-wa" onclick="whatsapp()"><i class="fab fa-whatsapp"></i> واتساب</a>
-<a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com"><i class="fas fa-envelope"></i> البريد</a>
-<a class="cta-button btn-fb" href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+<a class="cta-button btn-wa" onclick="whatsapp()">
+<i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+</a>
+
+<!-- ✅ البريد شغال مباشرة -->
+<a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com">
+<i class="fas fa-envelope"></i> تواصل معنا عبر البريد
+</a>
+
+<!-- ✅ تحديث لينك الفيسبوك -->
+<a class="cta-button btn-fb" href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank" rel="noopener">
+<i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
+</a>
 </div>
 </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
 <div class="main">© 2024 Axentro – All Rights Reserved</div>
 <div class="by">By Ahmed Hamouda</div>
+
 <div class="footer-icons">
-<a href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-<a href="mailto:axentroofficial@gmail.com"><i class="fas fa-envelope"></i></a>
-<a onclick="whatsapp()"><i class="fab fa-whatsapp"></i></a>
+<a class="icon-wa" onclick="whatsapp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a class="icon-mail" href="mailto:axentroofficial@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+<a class="icon-fb" href="https://www.facebook.com/share/1DenBfHFPT/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
 </div>
 </footer>
 
-<a class="floating-wa" onclick="whatsapp()"><i class="fab fa-whatsapp"></i></a>
+<!-- FLOATING WA -->
+<a class="floating-wa" onclick="whatsapp()" aria-label="WhatsApp Floating">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 <script>
 function whatsapp(){
-const msg=`مرحبًا فريق Axentro،
-أرغب في الاستفسار عن حلولكم البرمجية.`;
-window.open("https://wa.me/201146476993?text="+encodeURIComponent(msg),"_blank");
+const msg = `مرحبًا فريق Axentro،
+أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
+بانتظار تواصلكم، شكرًا.`;
+
+window.open(
+  "https://wa.me/201146476993?text=" + encodeURIComponent(msg),
+  "_blank"
+);
 }
 </script>
 
