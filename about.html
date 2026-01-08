@@ -296,8 +296,8 @@ text-decoration:none;
 }
 .floating-wa:hover{transform:scale(1.08)}
 
-/* ✅ إضافاتنا (فقط للـ Services cards داخل ماذا نقدم) */
-#what-we-do .card{ scroll-margin-top:120px; }
+/* ✅ إضافات */
+#what-we-do .card{scroll-margin-top:120px;}
 #what-we-do .card:target{
 box-shadow:0 0 0 2px var(--secondary),0 0 35px rgba(0,255,213,.45);
 animation:highlightFade 2.5s ease forwards;
@@ -329,6 +329,29 @@ color:var(--secondary);
 text-decoration:none;
 }
 .back-services:hover{text-decoration:underline}
+
+/* ✅ زر نسخ الرابط — يظهر فقط داخل الكارت المستهدف */
+.copy-link{
+display:none;
+margin-top:14px;
+align-items:center;
+gap:10px;
+border:1px solid rgba(0,255,213,.35);
+background:rgba(0,255,213,.06);
+color:var(--secondary);
+padding:10px 14px;
+border-radius:14px;
+font-weight:800;
+font-size:14px;
+cursor:pointer;
+}
+#what-we-do .card:target .copy-link{
+display:inline-flex;
+}
+.copy-link:hover{
+background:rgba(0,255,213,.10);
+}
+.copy-link i{font-size:16px}
 
 /* Mobile */
 @media (max-width:600px){
@@ -457,10 +480,8 @@ text-decoration:none;
 <section class="reveal" id="what-we-do">
   <div class="container">
 
-    <!-- ✅ العنوان الأساسي (هيتغير تلقائيًا لو داخل برابط خدمة) -->
     <h2 id="serviceTitle">ماذا نقدم</h2>
 
-    <!-- ✅ Breadcrumb -->
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="index.html">الرئيسية</a>
       <span class="sep">›</span>
@@ -478,46 +499,82 @@ text-decoration:none;
       <div class="card" id="excel">
         <div class="icon"><i class="fas fa-table"></i></div>
         <h3>Smart Excel Systems</h3>
-        <p>تحويل Excel إلى نظام يعمل بقواعد واضحة، تقارير تلقائية، ولوحات متابعة تساعدك تتحكم في العمل.</p>
+        <p>
+          نحول ملفات Excel من “جداول مشتتة” إلى نظام عمل واضح بقواعد (Validation) وصلاحيات واستمارات إدخال سهلة.
+          بنبني تقارير تلقائية ولوحات متابعة (Dashboards) تساعدك تشوف الأداء لحظة بلحظة وتقلل الأخطاء البشرية.
+          مناسب جدًا كبداية قوية لأي نشاط: مبيعات، متابعة عملاء، مصروفات، إنتاج، أو أرشفة—مع قابلية تطوير تدريجي حسب نمو شغلك.
+        </p>
+        <button class="copy-link" type="button" onclick="copyServiceLink('excel')">
+          <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
+        </button>
       </div>
 
       <div class="card" id="web">
         <div class="icon"><i class="fas fa-globe"></i></div>
         <h3>Web & Mobile Apps</h3>
-        <p>واجهات احترافية وتجربة مستخدم واضحة—تطبيقات تسهّل التشغيل وتخلي العميل يوصل لك بسهولة.</p>
+        <p>
+          نطوّر تطبيقات ويب وموبايل بتجربة مستخدم واضحة وواجهة احترافية تساعد العميل يوصل للخدمة بسرعة.
+          بنركز على السرعة، الأمان، وإدارة المستخدمين والصلاحيات، وربط النظام بالتقارير ولوحات التحكم.
+          سواء محتاج لوحة إدارة داخلية لشركتك أو تطبيق للعميل—بنصمم الحل بناءً على طريقة تشغيلك الفعلية، مش قوالب جاهزة.
+        </p>
+        <button class="copy-link" type="button" onclick="copyServiceLink('web')">
+          <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
+        </button>
       </div>
 
       <div class="card" id="desktop">
         <div class="icon"><i class="fas fa-desktop"></i></div>
         <h3>Desktop Software</h3>
-        <p>أنظمة تعمل محليًا بدون إنترنت عند الحاجة، قوية وسريعة ومناسبة للبيئات التشغيلية المختلفة.</p>
+        <p>
+          بنبني أنظمة سطح مكتب قوية وسريعة مناسبة للبيئات اللي تحتاج أداء عالي أو تشغيل محلي بدون إنترنت.
+          مثالية للمخازن، نقاط البيع، أو الشركات اللي شغلها بيكون على أجهزة داخل المكان.
+          بنهتم بقاعدة البيانات، النسخ الاحتياطي، وسهولة الاستخدام—مع واجهة واضحة تقلل وقت التدريب وتسرّع التشغيل اليومي.
+        </p>
+        <button class="copy-link" type="button" onclick="copyServiceLink('desktop')">
+          <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
+        </button>
       </div>
 
       <div class="card" id="inventory">
         <div class="icon"><i class="fas fa-chart-pie"></i></div>
         <h3>Inventory & Sales</h3>
-        <p>متابعة مخزون ومبيعات وتقارير دقيقة تساعدك على التحكم في الأصناف واتخاذ قرارات أفضل.</p>
+        <p>
+          بنقدّم حلول متابعة مخزون ومبيعات تساعدك تمسك كل حركة: دخول/خروج أصناف، جرد، فواتير، عملاء، موردين، وتنبيهات نقص المخزون.
+          الهدف إنك تشتغل بأرقام واضحة: تقارير الأرباح، أفضل المنتجات، حركة البيع، وتكاليف التشغيل.
+          الحل بيتصمم حسب طبيعة نشاطك (تجزئة/جملة/خدمات) وبآلية تشغيل سهلة تخلّي فريقك يلتزم بالنظام من أول يوم.
+        </p>
+        <button class="copy-link" type="button" onclick="copyServiceLink('inventory')">
+          <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
+        </button>
       </div>
 
       <div class="card" id="branding">
         <div class="icon"><i class="fas fa-bullhorn"></i></div>
         <h3>Social Media & Design</h3>
         <p>
-          تصميم لوجو وهوية بصرية، قوالب بوستات احترافية، ومواد دعائية تساعد مشروعك يبان بشكل قوي ومتناسق.
+          بنبني لك شكل احترافي ثابت يوصل رسالة مشروعك بسرعة: لوجو وهوية بصرية (ألوان/خطوط/ستايل) + قوالب بوستات متناسقة.
+          الهدف إن أي حد يشوف صفحتك يحس بثقة واحترافية، ويقدر يميّز علامتك من أول نظرة.
+          كمان نقدر نجهّز مواد دعائية (Cover / Highlights / Templates) تساعدك تعمل محتوى بسرعة وبشكل ثابت بدون تشتت.
         </p>
+        <button class="copy-link" type="button" onclick="copyServiceLink('branding')">
+          <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
+        </button>
       </div>
 
       <div class="card" id="website">
         <div class="icon"><i class="fas fa-window-maximize"></i></div>
         <h3>Websites for Business & Portfolio</h3>
         <p>
-          إنشاء مواقع ويب احترافية سريعة لعرض خدماتك وأعمالك،
-بتصميم عصري وتجربة استخدام ممتازة تعكس قوة علامتك التجارية.
+          بننشئ مواقع ويب سريعة وخفيفة لعرض خدماتك وأعمالك بشكل عصري—تخلي العميل يفهم أنت بتقدم إيه في ثواني.
+          الموقع بيكون مرتب: صفحة رئيسية + من نحن + خدمات + تواصل مباشر (واتساب/إيميل) مع تصميم متناسق يعكس قوة البراند.
+          الهدف مش “موقع وخلاص”—الهدف صفحة بيع (Landing) تُحوّل الزائر لعميل: رسالة واضحة، عرض خدمات مضبوط، وتجربة ممتازة على الموبايل.
         </p>
+        <button class="copy-link" type="button" onclick="copyServiceLink('website')">
+          <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
+        </button>
       </div>
     </div>
 
-    <!-- ✅ زر رجوع للخدمات -->
     <a href="index.html#services" class="back-services">← رجوع للخدمات</a>
 
   </div>
@@ -631,7 +688,6 @@ text-decoration:none;
         <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
       </a>
 
-      <!-- ✅ تحديث لينك الفيسبوك -->
       <a class="cta-button btn-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener">
         <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
       </a>
@@ -647,7 +703,6 @@ text-decoration:none;
 <div class="footer-icons">
 <a class="icon-wa" onclick="whatsapp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
 <a class="icon-mail" href="mailto:axentroofficial@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-<!-- ✅ تحديث لينك الفيسبوك -->
 <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
 </div>
 </footer>
@@ -684,8 +739,8 @@ const io = new IntersectionObserver((entries)=>{
 els.forEach(el=>io.observe(el));
 </script>
 
-<!-- ✅ Breadcrumb + Title auto update (فقط لو الهاش خاص بخدمة من خدمات ماذا نقدم) -->
 <script>
+/* ✅ نسخ رابط الخدمة + Breadcrumb + تغيير العنوان + تنظيف URL */
 (function(){
 const ids = new Set(['#excel','#web','#desktop','#inventory','#branding','#website']);
 const hash = window.location.hash;
@@ -705,7 +760,30 @@ const st = document.getElementById('serviceTitle');
 
 if(bc) bc.textContent = title;
 if(st) st.textContent = 'تفاصيل الخدمة: ' + title;
+
+/* تنظيف URL بعد ما الـ highlight يخلص */
+setTimeout(() => {
+  if(history && history.replaceState){
+    history.replaceState(null, document.title, window.location.pathname + window.location.search);
+  }
+}, 2900);
 })();
+
+/* زر النسخ: ينسخ دائمًا about.html#id */
+async function copyServiceLink(id){
+  const url = window.location.origin + window.location.pathname.replace(/\/?$/, '') + '#' + id;
+
+  try{
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      await navigator.clipboard.writeText(url);
+      alert('تم نسخ رابط الخدمة ✅');
+    }else{
+      prompt('انسخ الرابط:', url);
+    }
+  }catch(e){
+    prompt('انسخ الرابط:', url);
+  }
+}
 </script>
 
 </body>
