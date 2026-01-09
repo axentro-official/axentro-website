@@ -682,7 +682,6 @@ background:rgba(0,255,213,.10);
       </details>
     </div>
 
-    <!-- أزرار تواصل (نفس الرئيسية) -->
     <div class="cta">
       <a class="cta-button btn-wa" onclick="whatsapp()">
         <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
@@ -696,8 +695,8 @@ background:rgba(0,255,213,.10);
         <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
       </a>
 
-      <!-- ✅ Instagram (لينك وهمي مؤقت) -->
-      <a class="cta-button btn-ig" href="https://instagram.com/axentro_dummy" target="_blank" rel="noopener">
+      <!-- ✅ زر انستجرام -->
+      <a class="cta-button btn-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener">
         <i class="fab fa-instagram"></i> تابعنا على انستجرام
       </a>
     </div>
@@ -713,8 +712,7 @@ background:rgba(0,255,213,.10);
 <a class="icon-wa" onclick="whatsapp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
 <a class="icon-mail" href="mailto:axentroofficial@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
 <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-<!-- ✅ Instagram icon (لينك وهمي مؤقت) -->
-<a class="icon-ig" href="https://instagram.com/axentro_dummy" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+<a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
 </div>
 </footer>
 
@@ -780,10 +778,9 @@ setTimeout(() => {
 }, 2900);
 })();
 
-/* ✅ زر النسخ: ينسخ دائمًا about.html#id (تحسين) */
+/* زر النسخ: ينسخ دائمًا about.html#id */
 async function copyServiceLink(id){
-  const base = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
-  const url = base + 'about.html#' + id;
+  const url = window.location.origin + window.location.pathname.replace(/\/?$/, '') + '#' + id;
 
   try{
     if(navigator.clipboard && navigator.clipboard.writeText){
