@@ -64,6 +64,47 @@
     };
   }
 
+  // ====== BUILD UTM QUERY (for internal links) ======
+  function buildUTMQuery() {
+    const utm = loadUTM() || {};
+    const qs = new URLSearchParams();
+
+    if (utm.utm_source) qs.set("utm_source", utm.utm_source);
+    if (utm.utm_medium) qs.set("utm_medium", utm.utm_medium);
+    if (utm.utm_campaign) qs.set("utm_campaign", utm.utm_campaign);
+    if (utm.utm_content) qs.set("utm_content", utm.utm_content);
+    if (utm.utm_term) qs.set("utm_term", utm.utm_term);
+    if (utm.src) qs.set("src", utm.src);
+
+    const s = qs.toString();
+    return s ? ("?" + s) : "";
+  }
+
+  function appendUTMToInternalLinks() {
+    try {
+      const q = buildUTMQuery();
+      if (!q) return;
+
+      const links = document.querySelectorAll("a.js-utm-link[href]");
+      links.forEach((a) => {
+        const href = a.getAttribute("href");
+        if (!href) return;
+
+        // only internal relative links
+        if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+
+        // already has query
+        if (href.includes("?")) return;
+
+        const parts = href.split("#");
+        const base = parts[0];
+        const hash = parts[1] ? ("#" + parts[1]) : "";
+
+        a.setAttribute("href", base + q + hash);
+      });
+    } catch (e) {}
+  }
+
   // ====== GTAG SAFE BOOT ======
   function ensureGtag() {
     window.dataLayer = window.dataLayer || [];
@@ -73,7 +114,7 @@
   }
 
   function initGAConfigOnce() {
-    // call config(send_page_view:false) safely (idempotent enough)
+    // safe/idempotent (your pages already set send_page_view:false, this is extra safety)
     try {
       window.gtag("js", new Date());
       window.gtag("config", GA_ID, { send_page_view: false });
@@ -226,7 +267,12 @@
 بانتظار تواصلكم، شكرًا.`;
 
     const url = "https://wa.me/201146476993?text=" + encodeURIComponent(msg);
-    window.open(url, "_blank", "noopener,noreferrer");
+
+    // ✅ Safari / popup blockers fallback
+    const w = window.open(url, "_blank", "noopener,noreferrer");
+    if (!w) {
+      window.location.href = url;
+    }
   }
 
   // ====== ABOUT: SERVICE VIEW BY HASH + CLEAN HASH ======
@@ -322,19 +368,27 @@
     init: function (cfg) {
       ensureGtag();
       initGAConfigOnce();
+
+      // 1) store UTM if exists on URL
       mergeUTMFromUrl();
 
       const page = (cfg && cfg.page) || "";
       const options = cfg || {};
 
-      // Manual page_view
+      // 2) append UTM to internal links if enabled
+      if (options.enable_internal_utm_links) {
+        // run after merge so it uses latest UTM
+        appendUTMToInternalLinks();
+      }
+
+      // 3) manual page_view (+ optional qr events)
       sendPageView(page, {
         enable_qr_open: !!options.enable_qr_open,
         enable_qr_scan: options.enable_qr_scan !== false, // default true
         utm_campaign_default: options.utm_campaign_default || "axentro"
       });
 
-      // About hash logic (optional)
+      // 4) About hash logic (optional)
       if (options.enable_service_hash === true) {
         serviceViewFromHash(page, {
           utm_campaign_default: options.utm_campaign_default || "axentro",
@@ -372,7 +426,6 @@
   };
 
   window.copyServiceLink = function (id) {
-    // async-safe
     return copyServiceLink(id, AxentroAnalytics._page || "", AxentroAnalytics._options || {});
   };
 })();
