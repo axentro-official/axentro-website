@@ -15,7 +15,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    // هنمنع page_view التلقائي ونبعت واحد يدوي مع UTM
+    /* ✅ هنمنع page_view التلقائي ونبعت واحد يدوي مع UTM */
     gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
   </script>
 
@@ -48,7 +48,7 @@
       background:linear-gradient(135deg,#020617,#020b2e);
       color:var(--text);
       overflow-x:hidden;
-      -webkit-text-size-adjust: 100%;
+      -webkit-text-size-adjust:100%;
       padding-top: env(safe-area-inset-top);
     }
 
@@ -67,6 +67,7 @@
       width:0%;
       background:var(--secondary);
       z-index:99999;
+      pointer-events:none;
     }
 
     /* HERO */
@@ -103,11 +104,14 @@
       width:min(560px, 100%);
       border:none;
 
-      /* ✅ حل مشاكل الضغط على iPhone */
+      /* ✅ iPhone tap fixes */
       pointer-events:auto;
       touch-action:manipulation;
       -webkit-tap-highlight-color: transparent;
       user-select:none;
+
+      position:relative;
+      z-index:2;
     }
     .cta-button:hover{
       background-color:#002244;
@@ -117,6 +121,9 @@
     .cta-button:focus{
       outline:2px solid rgba(0,255,213,.45);
       outline-offset:4px;
+    }
+    .cta-button:active{
+      transform:scale(0.99);
     }
 
     /* Button colors */
@@ -166,16 +173,18 @@
       text-decoration:none;
       cursor:pointer;
 
-      /* ✅ */
       pointer-events:auto;
       touch-action:manipulation;
       -webkit-tap-highlight-color: transparent;
+
+      border:none;
     }
     .floating-wa:hover{transform:scale(1.08)}
     .floating-wa:focus{
       outline:2px solid rgba(0,255,213,.45);
       outline-offset:4px;
     }
+    .floating-wa:active{transform:scale(0.98);}
 
     @media (max-width:600px){
       .hero h1{font-size:42px}
@@ -202,9 +211,9 @@
         <span style="opacity:.8">Choose your preferred contact method.</span>
       </p>
 
-      <div style="margin-top:34px; display:flex; flex-direction:column; gap:14px; align-items:center;">
+      <div style="margin-top:34px; display:flex; flex-direction:column; gap:14px; align-items:center; position:relative; z-index:2;">
 
-        <!-- ✅ 1) WhatsApp (Button بدل href="#") -->
+        <!-- ✅ 1) WhatsApp -->
         <button
           type="button"
           class="cta-button btn-wa"
@@ -301,7 +310,7 @@
     <div class="by">By Ahmed Hamouda</div>
   </footer>
 
-  <!-- ✅ FLOATING WA (Button بدل href="#") -->
+  <!-- ✅ FLOATING WA -->
   <button
     type="button"
     class="floating-wa"
@@ -358,16 +367,18 @@
       return {
         utm_source: utm.utm_source || utm.src || '(none)',
         utm_medium: utm.utm_medium || (utm.src ? 'qr' : '(none)'),
-        utm_campaign: utm.utm_campaign || 'axentro',
+        utm_campaign: utm.utm_campaign || 'axentro_card',
         utm_content: utm.utm_content || '',
         utm_term: utm.utm_term || ''
       };
     }
 
-    /* ✅ Send page_view manually with UTM */
+    /* ✅ Send page_view manually with UTM + QR Open */
     (function(){
       try{
         const utm = getUTMForEvent();
+
+        /* page_view */
         gtag('event','page_view',{
           page_title: document.title,
           page_location: window.location.href,
@@ -376,10 +387,25 @@
           ...utm
         });
 
+        /* qr_open (لو utm_medium=qr أو src موجود) */
         const p = new URLSearchParams(window.location.search);
+        const medium = (p.get('utm_medium') || '').toLowerCase();
         const src = p.get('src');
+
+        if(medium === 'qr' || !!src){
+          gtag('event','qr_open',{
+            page: 'links',
+            ...utm
+          });
+        }
+
+        /* qr_scan (لو src موجود) */
         if(src){
-          gtag('event','qr_scan',{ source: src, page: 'links', ...utm });
+          gtag('event','qr_scan',{
+            source: src,
+            page: 'links',
+            ...utm
+          });
         }
       }catch(e){}
     })();
