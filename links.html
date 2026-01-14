@@ -51,6 +51,53 @@
       z-index:99999;
     }
 
+    /* NAVIGATION LINKS — ثابت مع الاسكرول */
+    .navigation-links{
+      position:fixed;
+      top:12px;
+      left:10px;
+      right:10px;
+
+      display:flex;
+      flex-direction:row;
+      justify-content:center;
+      gap:16px;
+
+      z-index:10000;
+      padding:6px;
+
+      backdrop-filter: blur(12px);
+      background: rgba(2, 6, 23, 0.55);
+      border-radius:50px;
+      border:1px solid rgba(255,255,255,.08);
+
+      transition: background .25s ease, box-shadow .25s ease;
+    }
+
+    .navigation-links.scrolled{
+      background: rgba(2, 6, 23, 0.85);
+      box-shadow:0 8px 30px rgba(0,0,0,.4);
+    }
+
+    .navigation-links .nav-link{
+      font-size:16px;
+      color:#fff;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:50px;
+      transition:color .3s, background-color .3s;
+      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .navigation-links .nav-link:hover{
+      color:#00d4ff;
+      background-color:#003366;
+    }
+
     /* HERO */
     .hero{position:relative}
     .hero h1{font-size:52px;letter-spacing:2px}
@@ -87,45 +134,14 @@
       box-shadow:0 0 40px rgba(0,255,213,0.6);
     }
 
-    /* ألوان الأزرار زي عندك */
+    /* ألوان الأزرار */
     .btn-wa{background:var(--wa);color:#000}
     .btn-mail{background:var(--mail);color:#fff}
     .btn-fb{background:var(--fb);color:#fff}
     .btn-ig{background:var(--ig);color:#fff}
     .btn-call{background:#0ea5e9;color:#00111a}
 
-    /* NAVIGATION LINKS — نفس موقعك */
-    .navigation-links{
-      position:fixed;
-      top:14px;
-      left:10px;
-      right:10px;
-      display:flex;
-      flex-direction:row;
-      justify-content:center;
-      gap:14px;
-      z-index:10;
-      backdrop-filter: blur(10px);
-    }
-    .navigation-links .nav-link{
-      font-size:16px;
-      color:#fff;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:50px;
-      transition:color .3s, background-color .3s;
-      background: rgba(0,0,0,.18);
-      border:1px solid rgba(255,255,255,.08);
-    }
-    .navigation-links .nav-link:hover{
-      color:#00d4ff;
-      background-color:#003366;
-    }
-
-    /* FOOTER (خفيف) */
+    /* FOOTER */
     footer{
       padding:40px 20px;
       border-top:1px solid rgba(255,255,255,.1);
@@ -143,7 +159,7 @@
       color:var(--muted);
     }
 
-    /* FLOATING WHATSAPP نفس موقعك */
+    /* FLOATING WHATSAPP */
     .floating-wa{
       position:fixed;
       bottom:25px;
@@ -194,31 +210,72 @@
         <span style="opacity:.8">Scan the QR and contact us instantly.</span>
       </p>
 
-      <!-- BUTTONS (نفس شكل الموقع + أيقونات حقيقية) -->
+      <!-- BUTTONS -->
       <div style="margin-top:34px; display:flex; flex-direction:column; gap:14px; align-items:center;">
 
-        <a class="cta-button btn-wa" onclick="whatsapp()">
-          <i class="fab fa-whatsapp"></i> واتساب مباشر
+        <a
+          class="cta-button btn-wa"
+          href="#"
+          role="button"
+          aria-label="تواصل معنا عبر واتساب"
+          onclick="whatsapp(); return false;"
+        >
+          <i class="fab fa-whatsapp"></i>
+          تواصل معنا عبر واتساب
         </a>
 
-        <a class="cta-button btn-call" href="tel:+201146476993">
-          <i class="fas fa-phone"></i> اتصال مباشر
+        <a
+          class="cta-button btn-call"
+          href="tel:+201146476993"
+          role="button"
+          aria-label="اتصال مباشر"
+        >
+          <i class="fas fa-phone"></i>
+          اتصال مباشر
         </a>
 
-        <a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com">
-          <i class="fas fa-envelope"></i> بريد إلكتروني
+        <a
+          class="cta-button btn-mail"
+          href="mailto:axentroofficial@gmail.com"
+          role="button"
+          aria-label="تواصل معنا عبر البريد"
+        >
+          <i class="fas fa-envelope"></i>
+          تواصل معنا عبر البريد
         </a>
 
-        <a class="cta-button btn-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener">
-          <i class="fab fa-instagram"></i> Instagram
+        <a
+          class="cta-button btn-fb"
+          href="https://facebook.com/AxentroSamrtSolutions"
+          target="_blank"
+          rel="noopener"
+          role="button"
+          aria-label="تابعنا على فيسبوك"
+        >
+          <i class="fab fa-facebook-f"></i>
+          تابعنا على فيسبوك
         </a>
 
-        <a class="cta-button btn-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener">
-          <i class="fab fa-facebook-f"></i> Facebook
+        <a
+          class="cta-button btn-ig"
+          href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
+          target="_blank"
+          rel="noopener"
+          role="button"
+          aria-label="تابعنا على انستقرام"
+        >
+          <i class="fab fa-instagram"></i>
+          تابعنا على انستقرام
         </a>
 
-        <a class="cta-button" href="index.html">
-          <i class="fas fa-globe"></i> زيارة الموقع الرئيسي
+        <a
+          class="cta-button"
+          href="index.html"
+          role="button"
+          aria-label="زيارة الموقع الرئيسي"
+        >
+          <i class="fas fa-globe"></i>
+          زيارة الموقع الرئيسي
         </a>
 
       </div>
@@ -231,7 +288,13 @@
   </footer>
 
   <!-- FLOATING WA -->
-  <a class="floating-wa" onclick="whatsapp()" aria-label="WhatsApp Floating">
+  <a
+    class="floating-wa"
+    href="#"
+    role="button"
+    aria-label="WhatsApp Floating"
+    onclick="whatsapp(); return false;"
+  >
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -256,6 +319,14 @@
       const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
       bar.style.width = p + '%';
     });
+
+    /* Nav effect on scroll */
+    const nav = document.querySelector('.navigation-links');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
   </script>
 </body>
 </html>
+```0
