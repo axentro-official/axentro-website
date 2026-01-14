@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Axentro | Smart Software Solutions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ iPhone / Safari + Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#020617">
+  <meta name="format-detection" content="telephone=no">
 
   <!-- ✅ GA4 Tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
@@ -11,7 +15,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-CY6Y32C90K', { send_page_view: true });
+    // هنخلي config بسيط، وبعدين نبعت page_view يدوي مع UTM
+    gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
   </script>
 
   <!-- FONT -->
@@ -41,6 +46,8 @@
       background:linear-gradient(135deg,#020617,#020b2e);
       color:var(--text);
       overflow-x:hidden;
+      -webkit-text-size-adjust: 100%;
+      padding-top: env(safe-area-inset-top);
     }
 
     section{padding:90px 20px;text-align:center}
@@ -65,6 +72,7 @@
       opacity:0;
       transform:translateY(16px);
       transition:opacity .7s ease, transform .7s ease;
+      will-change: opacity, transform;
     }
     .reveal.show{
       opacity:1;
@@ -105,12 +113,17 @@
       text-decoration:none;
       box-shadow:0 0 25px rgba(0,255,213,0.35);
       border:none;
+      -webkit-tap-highlight-color: transparent;
     }
-
     .cta-button:hover{
       background-color:#002244;
       transform:scale(1.05);
       box-shadow:0 0 40px rgba(0,255,213,0.6);
+    }
+    .cta-button:focus{
+      outline: 2px solid rgba(0,255,213,.45);
+      outline-offset: 4px;
+      border-radius: 50px;
     }
 
     /* SERVICES */
@@ -140,6 +153,7 @@
       text-decoration:none;
       color:inherit;
       height:100%;
+      -webkit-tap-highlight-color: transparent;
     }
     .card-link:focus{
       outline:2px solid rgba(0,255,213,.35);
@@ -158,9 +172,7 @@
       box-shadow:0 12px 30px rgba(0,0,0,.25);
       transition:transform .35s ease;
     }
-    .card:hover .service-img{
-      transform:scale(1.03);
-    }
+    .card:hover .service-img{ transform:scale(1.03); }
 
     /* ✅ اعرف المزيد */
     .more-link{
@@ -195,7 +207,6 @@
       flex-wrap:wrap;
     }
 
-    /* مهم: عندك class btn قديمة، لكن انت بتستخدم cta-button هنا.. سيبتها زي ما هي */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -245,6 +256,7 @@
       transition:transform .25s ease, filter .25s ease;
       text-decoration:none;
       cursor:pointer;
+      -webkit-tap-highlight-color: transparent;
     }
     .footer-icons a:hover{
       transform:translateY(-4px) scale(1.12);
@@ -274,8 +286,13 @@
       transition:transform .25s ease;
       cursor:pointer;
       text-decoration:none;
+      -webkit-tap-highlight-color: transparent;
     }
     .floating-wa:hover{transform:scale(1.08)}
+    .floating-wa:focus{
+      outline:2px solid rgba(0,255,213,.45);
+      outline-offset:4px;
+    }
 
     /* NAVIGATION LINKS — أفقي دائمًا */
     .navigation-links{
@@ -289,7 +306,6 @@
       gap:20px;
       z-index:10;
     }
-
     .navigation-links .nav-link{
       font-size:18px;
       color:#fff;
@@ -300,11 +316,16 @@
       padding:12px 16px;
       border-radius:50px;
       transition:color .3s, background-color .3s;
+      -webkit-tap-highlight-color: transparent;
     }
-
     .navigation-links .nav-link:hover{
       color:#00d4ff;
       background-color:#003366;
+    }
+    .navigation-links .nav-link:focus{
+      outline:2px solid rgba(0,255,213,.45);
+      outline-offset:4px;
+      border-radius:50px;
     }
 
     /* ✅ موبايل */
@@ -314,18 +335,25 @@
         padding:10px 12px;
       }
       .service-img{height:150px;}
+      .hero h1{font-size:44px;}
+      .cta-button{font-size:20px;}
+    }
+
+    /* ✅ تقليل الحركة للناس اللي مفعّلين Reduce Motion */
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .reveal{transition:none}
+      .cta-button,.card,.service-img,.footer-icons a,.floating-wa{transition:none}
     }
   </style>
 </head>
 
 <body>
-
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- HERO -->
   <section class="hero reveal show" id="home">
-
-    <div class="navigation-links">
+    <div class="navigation-links" aria-label="Navigation">
       <a href="index.html#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
       <a href="index.html#services" class="nav-link"><i class="fas fa-cogs"></i> الخدمات</a>
       <a href="about.html" class="nav-link"><i class="fas fa-circle-info"></i> من نحن</a>
@@ -361,7 +389,6 @@
       <h2>خدماتنا | Our Services</h2>
 
       <div class="cards">
-
         <div class="card">
           <a class="card-link" href="about.html#excel" onclick="trackService('smart_excel','Smart Excel Systems');">
             <img class="service-img" src="assets/images/axentro-service-smart-excel.webp" alt="Smart Excel Systems">
@@ -421,7 +448,6 @@
             <span class="more-link">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
           </a>
         </div>
-
       </div>
     </div>
   </section>
@@ -471,7 +497,7 @@
           rel="noopener"
           onclick="trackClick('instagram','تابعنا على انستجرام','contact_section');"
         >
-          <i class="fab fa-instagram"></i> تابعنا على انستجرام
+          <i class="fab fa-instagram"></i> تابعنا على انستقرام
         </a>
       </div>
     </div>
@@ -497,7 +523,7 @@
 
   <script>
     /* ✅ UTM Handling (Business Card / QR Tracking) */
-    const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','src'];
 
     function getQueryParams(){
       const p = new URLSearchParams(window.location.search);
@@ -509,9 +535,16 @@
       return obj;
     }
 
+    function safeRead(key){
+      try{ return localStorage.getItem(key); }catch(e){ return null; }
+    }
+    function safeWrite(key,val){
+      try{ localStorage.setItem(key,val); }catch(e){}
+    }
+
     function loadUTM(){
       try{
-        const saved = localStorage.getItem('ax_utm');
+        const saved = safeRead('ax_utm');
         return saved ? JSON.parse(saved) : {};
       }catch(e){
         return {};
@@ -519,9 +552,7 @@
     }
 
     function saveUTM(utmObj){
-      try{
-        localStorage.setItem('ax_utm', JSON.stringify(utmObj || {}));
-      }catch(e){}
+      safeWrite('ax_utm', JSON.stringify(utmObj || {}));
     }
 
     // Merge current UTM (if present) with saved
@@ -536,13 +567,34 @@
     function getUTMForEvent(){
       const utm = loadUTM() || {};
       return {
-        utm_source: utm.utm_source || '(none)',
-        utm_medium: utm.utm_medium || '(none)',
-        utm_campaign: utm.utm_campaign || '(none)',
+        utm_source: utm.utm_source || utm.src || '(none)',
+        utm_medium: utm.utm_medium || (utm.src ? 'qr' : '(none)'),
+        utm_campaign: utm.utm_campaign || 'axentro',
         utm_content: utm.utm_content || '',
         utm_term: utm.utm_term || ''
       };
     }
+
+    /* ✅ Send page_view manually with UTM */
+    (function(){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event','page_view',{
+          page_title: document.title,
+          page_location: window.location.href,
+          page_path: window.location.pathname,
+          page: 'index',
+          ...utm
+        });
+
+        // لو دخل من QR/query src => نسجل qr_scan كمان (اختياري مفيد)
+        const p = new URLSearchParams(window.location.search);
+        const src = p.get('src');
+        if(src){
+          gtag('event','qr_scan',{ source: src, page: 'index', ...utm });
+        }
+      }catch(e){}
+    })();
 
     /* ✅ Generic click tracking */
     function trackClick(method, label, section){
@@ -587,10 +639,9 @@
 أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
 بانتظار تواصلكم، شكرًا.`;
 
-      window.open(
-        "https://wa.me/201146476993?text=" + encodeURIComponent(msg),
-        "_blank"
-      );
+      // أمان + توافق
+      const url = "https://wa.me/201146476993?text=" + encodeURIComponent(msg);
+      window.open(url, "_blank", "noopener,noreferrer");
     }
   </script>
 
@@ -601,7 +652,7 @@
       const h = document.documentElement;
       const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
       bar.style.width = p + '%';
-    });
+    }, { passive: true });
 
     /* Reveal (خفيف جدًا) */
     const els = document.querySelectorAll('.reveal');
@@ -612,6 +663,5 @@
     },{threshold:0.15});
     els.forEach(el=>io.observe(el));
   </script>
-
 </body>
 </html>
