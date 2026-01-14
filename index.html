@@ -15,7 +15,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    // هنخلي config بسيط، وبعدين نبعت page_view يدوي مع UTM
+    // ✅ page_view يدوي لضمان تثبيت UTM
     gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
   </script>
 
@@ -46,7 +46,7 @@
       background:linear-gradient(135deg,#020617,#020b2e);
       color:var(--text);
       overflow-x:hidden;
-      -webkit-text-size-adjust: 100%;
+      -webkit-text-size-adjust:100%;
       padding-top: env(safe-area-inset-top);
     }
 
@@ -56,7 +56,7 @@
     h1,h2,h3{color:var(--secondary)}
     p{color:var(--muted);line-height:1.9}
 
-    /* PROGRESS BAR (خفيف جدًا) */
+    /* PROGRESS BAR */
     .scroll-progress{
       position:fixed;
       top:0;
@@ -67,17 +67,14 @@
       z-index:99999;
     }
 
-    /* REVEAL (خفيف جدًا) */
+    /* REVEAL */
     .reveal{
       opacity:0;
       transform:translateY(16px);
       transition:opacity .7s ease, transform .7s ease;
       will-change: opacity, transform;
     }
-    .reveal.show{
-      opacity:1;
-      transform:translateY(0);
-    }
+    .reveal.show{opacity:1;transform:translateY(0)}
 
     /* HERO */
     .hero{position:relative}
@@ -109,11 +106,19 @@
       cursor:pointer;
       transition:background-color .3s, transform .3s, box-shadow .3s;
       margin-top:50px;
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
       text-decoration:none;
       box-shadow:0 0 25px rgba(0,255,213,0.35);
       border:none;
-      -webkit-tap-highlight-color: transparent;
+
+      /* ✅ iPhone click stability */
+      pointer-events:auto;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+      user-select:none;
     }
     .cta-button:hover{
       background-color:#002244;
@@ -121,9 +126,8 @@
       box-shadow:0 0 40px rgba(0,255,213,0.6);
     }
     .cta-button:focus{
-      outline: 2px solid rgba(0,255,213,.45);
-      outline-offset: 4px;
-      border-radius: 50px;
+      outline:2px solid rgba(0,255,213,.45);
+      outline-offset:4px;
     }
 
     /* SERVICES */
@@ -147,21 +151,21 @@
     }
     .card h3{margin-bottom:14px;font-size:18px}
 
-    /* MAKE CARDS CLICKABLE (بدون تغيير شكلها) */
+    /* MAKE CARDS CLICKABLE */
     .card-link{
       display:block;
       text-decoration:none;
       color:inherit;
       height:100%;
-      -webkit-tap-highlight-color: transparent;
+      -webkit-tap-highlight-color:transparent;
     }
     .card-link:focus{
       outline:2px solid rgba(0,255,213,.35);
       outline-offset:4px;
-      border-radius:20px
+      border-radius:20px;
     }
 
-    /* ✅ صور الخدمات داخل الكروت */
+    /* Service images */
     .service-img{
       width:100%;
       height:170px;
@@ -172,9 +176,8 @@
       box-shadow:0 12px 30px rgba(0,0,0,.25);
       transition:transform .35s ease;
     }
-    .card:hover .service-img{ transform:scale(1.03); }
+    .card:hover .service-img{transform:scale(1.03)}
 
-    /* ✅ اعرف المزيد */
     .more-link{
       display:inline-flex;
       align-items:center;
@@ -199,29 +202,12 @@
       opacity:.9;
     }
 
-    /* BUTTONS */
+    /* Contact buttons wrapper */
     .cta{
       display:flex;
       gap:18px;
       justify-content:center;
       flex-wrap:wrap;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:12px;
-      padding:18px 38px;
-      border-radius:50px;
-      font-weight:800;
-      font-size:18px;
-      text-decoration:none;
-      cursor:pointer;
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-    .btn:hover{
-      transform:translateY(-3px) scale(1.04);
-      box-shadow:0 12px 30px rgba(0,0,0,.35);
     }
 
     .btn-wa{background:var(--wa);color:#000}
@@ -251,14 +237,22 @@
       gap:30px;
       justify-content:center;
       font-size:26px;
+      flex-wrap:wrap;
     }
-    .footer-icons a{
+    .footer-icons a,
+    .footer-icons button{
       transition:transform .25s ease, filter .25s ease;
       text-decoration:none;
       cursor:pointer;
-      -webkit-tap-highlight-color: transparent;
+      background:transparent;
+      border:none;
+      padding:0;
+      -webkit-tap-highlight-color:transparent;
+      color:inherit;
+      font:inherit;
     }
-    .footer-icons a:hover{
+    .footer-icons a:hover,
+    .footer-icons button:hover{
       transform:translateY(-4px) scale(1.12);
       filter:drop-shadow(0 0 10px currentColor);
     }
@@ -286,7 +280,12 @@
       transition:transform .25s ease;
       cursor:pointer;
       text-decoration:none;
-      -webkit-tap-highlight-color: transparent;
+
+      /* ✅ */
+      pointer-events:auto;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+      border:none;
     }
     .floating-wa:hover{transform:scale(1.08)}
     .floating-wa:focus{
@@ -294,7 +293,7 @@
       outline-offset:4px;
     }
 
-    /* NAVIGATION LINKS — أفقي دائمًا */
+    /* NAV */
     .navigation-links{
       position:absolute;
       top:20px;
@@ -305,6 +304,7 @@
       justify-content:center;
       gap:20px;
       z-index:10;
+      flex-wrap:wrap;
     }
     .navigation-links .nav-link{
       font-size:18px;
@@ -316,7 +316,7 @@
       padding:12px 16px;
       border-radius:50px;
       transition:color .3s, background-color .3s;
-      -webkit-tap-highlight-color: transparent;
+      -webkit-tap-highlight-color:transparent;
     }
     .navigation-links .nav-link:hover{
       color:#00d4ff;
@@ -328,22 +328,17 @@
       border-radius:50px;
     }
 
-    /* ✅ موبايل */
     @media (max-width:600px){
-      .navigation-links .nav-link{
-        font-size:14px;
-        padding:10px 12px;
-      }
-      .service-img{height:150px;}
-      .hero h1{font-size:44px;}
-      .cta-button{font-size:20px;}
+      .navigation-links .nav-link{font-size:14px;padding:10px 12px}
+      .service-img{height:150px}
+      .hero h1{font-size:44px}
+      .cta-button{font-size:20px}
     }
 
-    /* ✅ تقليل الحركة للناس اللي مفعّلين Reduce Motion */
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       .reveal{transition:none}
-      .cta-button,.card,.service-img,.footer-icons a,.floating-wa{transition:none}
+      .cta-button,.card,.service-img,.footer-icons a,.footer-icons button,.floating-wa{transition:none}
     }
   </style>
 </head>
@@ -373,11 +368,8 @@
         EXE • Web • Mobile • Portfolio & Business Websites • Social Media Solutions
       </div>
 
-      <a
-        href="#contact"
-        class="cta-button"
-        onclick="trackClick('cta_consult','احجز استشارتك الآن','home');"
-      >
+      <a href="#contact" class="cta-button"
+         onclick="trackClick('cta_consult','احجز استشارتك الآن','home');">
         احجز استشارتك الآن
       </a>
     </div>
@@ -452,7 +444,7 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
+  <!-- CONTACT -->
   <section id="contact" class="reveal">
     <div class="container">
       <div class="final-cta-text">احجز استشارتك الآن</div>
@@ -463,40 +455,29 @@
       </div>
 
       <div class="cta">
-        <a
-          class="cta-button btn-wa"
-          href="#"
-          role="button"
-          onclick="whatsapp('contact_section'); return false;"
-        >
+        <!-- ✅ WhatsApp (button for iOS reliability) -->
+        <button type="button" class="cta-button btn-wa"
+                onclick="whatsapp('contact_section');">
           <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
-        </a>
+        </button>
 
-        <a
-          class="cta-button btn-mail"
-          href="mailto:axentroofficial@gmail.com"
-          onclick="trackClick('email','تواصل معنا عبر البريد','contact_section');"
-        >
+        <a class="cta-button btn-mail"
+           href="mailto:axentroofficial@gmail.com"
+           onclick="trackClick('email','تواصل معنا عبر البريد','contact_section');">
           <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
         </a>
 
-        <a
-          class="cta-button btn-fb"
-          href="https://facebook.com/AxentroSamrtSolutions"
-          target="_blank"
-          rel="noopener"
-          onclick="trackClick('facebook','تابعنا على فيسبوك','contact_section');"
-        >
+        <a class="cta-button btn-fb"
+           href="https://facebook.com/AxentroSamrtSolutions"
+           target="_blank" rel="noopener"
+           onclick="trackClick('facebook','تابعنا على فيسبوك','contact_section');">
           <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
         </a>
 
-        <a
-          class="cta-button btn-ig"
-          href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
-          target="_blank"
-          rel="noopener"
-          onclick="trackClick('instagram','تابعنا على انستجرام','contact_section');"
-        >
+        <a class="cta-button btn-ig"
+           href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
+           target="_blank" rel="noopener"
+           onclick="trackClick('instagram','تابعنا على انستقرام','contact_section');">
           <i class="fab fa-instagram"></i> تابعنا على انستقرام
         </a>
       </div>
@@ -509,17 +490,38 @@
     <div class="by">By Ahmed Hamouda</div>
 
     <div class="footer-icons">
-      <a class="icon-wa" href="#" aria-label="WhatsApp" onclick="whatsapp('footer'); return false;"><i class="fab fa-whatsapp"></i></a>
-      <a class="icon-mail" href="mailto:axentroofficial@gmail.com" aria-label="Email" onclick="trackClick('email','Email Icon','footer');"><i class="fas fa-envelope"></i></a>
-      <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" aria-label="Facebook" onclick="trackClick('facebook','Facebook Icon','footer');"><i class="fab fa-facebook-f"></i></a>
-      <a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" aria-label="Instagram" onclick="trackClick('instagram','Instagram Icon','footer');"><i class="fab fa-instagram"></i></a>
+      <!-- ✅ WhatsApp icon as button -->
+      <button class="icon-wa" aria-label="WhatsApp" onclick="whatsapp('footer');">
+        <i class="fab fa-whatsapp"></i>
+      </button>
+
+      <a class="icon-mail" href="mailto:axentroofficial@gmail.com"
+         aria-label="Email"
+         onclick="trackClick('email','Email Icon','footer');">
+        <i class="fas fa-envelope"></i>
+      </a>
+
+      <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions"
+         target="_blank" rel="noopener"
+         aria-label="Facebook"
+         onclick="trackClick('facebook','Facebook Icon','footer');">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+
+      <a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
+         target="_blank" rel="noopener"
+         aria-label="Instagram"
+         onclick="trackClick('instagram','Instagram Icon','footer');">
+        <i class="fab fa-instagram"></i>
+      </a>
     </div>
   </footer>
 
-  <!-- FLOATING WA -->
-  <a class="floating-wa" href="#" aria-label="WhatsApp Floating" onclick="whatsapp('floating'); return false;">
+  <!-- ✅ FLOATING WA (button) -->
+  <button type="button" class="floating-wa" aria-label="WhatsApp Floating"
+          onclick="whatsapp('floating');">
     <i class="fab fa-whatsapp"></i>
-  </a>
+  </button>
 
   <script>
     /* ✅ UTM Handling (Business Card / QR Tracking) */
@@ -575,7 +577,7 @@
       };
     }
 
-    /* ✅ Send page_view manually with UTM */
+    /* ✅ Manual page_view (with UTM) */
     (function(){
       try{
         const utm = getUTMForEvent();
@@ -587,7 +589,6 @@
           ...utm
         });
 
-        // لو دخل من QR/query src => نسجل qr_scan كمان (اختياري مفيد)
         const p = new URLSearchParams(window.location.search);
         const src = p.get('src');
         if(src){
@@ -623,7 +624,7 @@
       }catch(e){}
     }
 
-    /* ✅ WhatsApp = Conversion Event (اسم الحدث: whatsapp_click) */
+    /* ✅ WhatsApp conversion */
     function whatsapp(origin){
       const utm = getUTMForEvent();
 
@@ -639,7 +640,6 @@
 أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
 بانتظار تواصلكم، شكرًا.`;
 
-      // أمان + توافق
       const url = "https://wa.me/201146476993?text=" + encodeURIComponent(msg);
       window.open(url, "_blank", "noopener,noreferrer");
     }
@@ -654,7 +654,7 @@
       bar.style.width = p + '%';
     }, { passive: true });
 
-    /* Reveal (خفيف جدًا) */
+    /* Reveal */
     const els = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
