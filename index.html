@@ -5,6 +5,15 @@
   <title>Axentro | Smart Software Solutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ✅ GA4 Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CY6Y32C90K', { send_page_view: true });
+  </script>
+
   <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
@@ -95,6 +104,7 @@
       display:inline-block;
       text-decoration:none;
       box-shadow:0 0 25px rgba(0,255,213,0.35);
+      border:none;
     }
 
     .cta-button:hover{
@@ -184,6 +194,8 @@
       justify-content:center;
       flex-wrap:wrap;
     }
+
+    /* مهم: عندك class btn قديمة، لكن انت بتستخدم cta-button هنا.. سيبتها زي ما هي */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -200,6 +212,7 @@
       transform:translateY(-3px) scale(1.04);
       box-shadow:0 12px 30px rgba(0,0,0,.35);
     }
+
     .btn-wa{background:var(--wa);color:#000}
     .btn-mail{background:var(--mail);color:#fff}
     .btn-fb{background:var(--fb);color:#fff}
@@ -231,6 +244,7 @@
     .footer-icons a{
       transition:transform .25s ease, filter .25s ease;
       text-decoration:none;
+      cursor:pointer;
     }
     .footer-icons a:hover{
       transform:translateY(-4px) scale(1.12);
@@ -258,6 +272,8 @@
       box-shadow:0 12px 30px rgba(0,0,0,.4);
       z-index:999;
       transition:transform .25s ease;
+      cursor:pointer;
+      text-decoration:none;
     }
     .floating-wa:hover{transform:scale(1.08)}
 
@@ -329,7 +345,13 @@
         EXE • Web • Mobile • Portfolio & Business Websites • Social Media Solutions
       </div>
 
-      <a href="#contact" class="cta-button">احجز استشارتك الآن</a>
+      <a
+        href="#contact"
+        class="cta-button"
+        onclick="trackClick('cta_consult','احجز استشارتك الآن','home');"
+      >
+        احجز استشارتك الآن
+      </a>
     </div>
   </section>
 
@@ -341,7 +363,7 @@
       <div class="cards">
 
         <div class="card">
-          <a class="card-link" href="about.html#excel">
+          <a class="card-link" href="about.html#excel" onclick="trackService('smart_excel','Smart Excel Systems');">
             <img class="service-img" src="assets/images/axentro-service-smart-excel.webp" alt="Smart Excel Systems">
             <h3>Smart Excel Systems</h3>
             <p>تحويل ملفات Excel إلى أنظمة ذكية تقلل الأخطاء وتنظم العمل وتوفر وقت الإدارة.</p>
@@ -350,7 +372,7 @@
         </div>
 
         <div class="card">
-          <a class="card-link" href="about.html#web">
+          <a class="card-link" href="about.html#web" onclick="trackService('web_mobile','Web & Mobile Apps');">
             <img class="service-img" src="assets/images/axentro-service-web-mobile.webp" alt="Web & Mobile Apps">
             <h3>Web & Mobile Apps</h3>
             <p>تصميم وتطوير تطبيقات ويب وموبايل مخصصة لتحسين تجربة العملاء وإدارة الأعمال.</p>
@@ -359,7 +381,7 @@
         </div>
 
         <div class="card">
-          <a class="card-link" href="about.html#desktop">
+          <a class="card-link" href="about.html#desktop" onclick="trackService('desktop','Desktop Software');">
             <img class="service-img" src="assets/images/axentro-service-desktop.webp" alt="Desktop Software">
             <h3>Desktop Software</h3>
             <p>تطوير أنظمة سطح مكتب قوية تعمل بدون إنترنت وتناسب طبيعة نشاطك.</p>
@@ -368,7 +390,7 @@
         </div>
 
         <div class="card">
-          <a class="card-link" href="about.html#inventory">
+          <a class="card-link" href="about.html#inventory" onclick="trackService('inventory_sales','Inventory & Sales');">
             <img class="service-img" src="assets/images/axentro-service-inventory-sales.webp" alt="Inventory & Sales">
             <h3>Inventory & Sales</h3>
             <p>
@@ -380,7 +402,7 @@
         </div>
 
         <div class="card">
-          <a class="card-link" href="about.html#branding">
+          <a class="card-link" href="about.html#branding" onclick="trackService('branding','Branding & Digital Solutions');">
             <img class="service-img" src="assets/images/axentro-service-branding.webp" alt="Branding & Digital Solutions">
             <h3>Branding & Digital Solutions</h3>
             <p>بناء هوية رقمية احترافية تعكس قوة مشروعك وتزيد ثقة عملائك.</p>
@@ -389,7 +411,7 @@
         </div>
 
         <div class="card">
-          <a class="card-link" href="about.html#website">
+          <a class="card-link" href="about.html#website" onclick="trackService('websites','Websites for Business & Portfolio');">
             <img class="service-img" src="assets/images/axentro-service-websites.webp" alt="Websites for Business & Portfolio">
             <h3>Websites for Business & Portfolio</h3>
             <p>
@@ -415,20 +437,40 @@
       </div>
 
       <div class="cta">
-        <a class="cta-button btn-wa" onclick="whatsapp()">
+        <a
+          class="cta-button btn-wa"
+          href="#"
+          role="button"
+          onclick="whatsapp('contact_section'); return false;"
+        >
           <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
         </a>
 
-        <a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com">
+        <a
+          class="cta-button btn-mail"
+          href="mailto:axentroofficial@gmail.com"
+          onclick="trackClick('email','تواصل معنا عبر البريد','contact_section');"
+        >
           <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
         </a>
 
-        <a class="cta-button btn-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener">
+        <a
+          class="cta-button btn-fb"
+          href="https://facebook.com/AxentroSamrtSolutions"
+          target="_blank"
+          rel="noopener"
+          onclick="trackClick('facebook','تابعنا على فيسبوك','contact_section');"
+        >
           <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
         </a>
 
-        <!-- ✅ Instagram الحقيقي -->
-        <a class="cta-button btn-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener">
+        <a
+          class="cta-button btn-ig"
+          href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
+          target="_blank"
+          rel="noopener"
+          onclick="trackClick('instagram','تابعنا على انستجرام','contact_section');"
+        >
           <i class="fab fa-instagram"></i> تابعنا على انستجرام
         </a>
       </div>
@@ -441,20 +483,106 @@
     <div class="by">By Ahmed Hamouda</div>
 
     <div class="footer-icons">
-      <a class="icon-wa" onclick="whatsapp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a class="icon-mail" href="mailto:axentroofficial@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a class="icon-wa" href="#" aria-label="WhatsApp" onclick="whatsapp('footer'); return false;"><i class="fab fa-whatsapp"></i></a>
+      <a class="icon-mail" href="mailto:axentroofficial@gmail.com" aria-label="Email" onclick="trackClick('email','Email Icon','footer');"><i class="fas fa-envelope"></i></a>
+      <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" aria-label="Facebook" onclick="trackClick('facebook','Facebook Icon','footer');"><i class="fab fa-facebook-f"></i></a>
+      <a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" aria-label="Instagram" onclick="trackClick('instagram','Instagram Icon','footer');"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
 
   <!-- FLOATING WA -->
-  <a class="floating-wa" onclick="whatsapp()" aria-label="WhatsApp Floating">
+  <a class="floating-wa" href="#" aria-label="WhatsApp Floating" onclick="whatsapp('floating'); return false;">
     <i class="fab fa-whatsapp"></i>
   </a>
 
   <script>
-    function whatsapp(){
+    /* ✅ UTM Handling (Business Card / QR Tracking) */
+    const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+
+    function getQueryParams(){
+      const p = new URLSearchParams(window.location.search);
+      const obj = {};
+      UTM_KEYS.forEach(k=>{
+        const v = p.get(k);
+        if(v) obj[k] = v;
+      });
+      return obj;
+    }
+
+    function loadUTM(){
+      try{
+        const saved = localStorage.getItem('ax_utm');
+        return saved ? JSON.parse(saved) : {};
+      }catch(e){
+        return {};
+      }
+    }
+
+    function saveUTM(utmObj){
+      try{
+        localStorage.setItem('ax_utm', JSON.stringify(utmObj || {}));
+      }catch(e){}
+    }
+
+    // Merge current UTM (if present) with saved
+    (function(){
+      const current = getQueryParams();
+      if(Object.keys(current).length){
+        const merged = { ...loadUTM(), ...current, last_seen: new Date().toISOString() };
+        saveUTM(merged);
+      }
+    })();
+
+    function getUTMForEvent(){
+      const utm = loadUTM() || {};
+      return {
+        utm_source: utm.utm_source || '(none)',
+        utm_medium: utm.utm_medium || '(none)',
+        utm_campaign: utm.utm_campaign || '(none)',
+        utm_content: utm.utm_content || '',
+        utm_term: utm.utm_term || ''
+      };
+    }
+
+    /* ✅ Generic click tracking */
+    function trackClick(method, label, section){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event', 'contact_click', {
+          method: method,
+          label: label,
+          section: section || '',
+          page: 'index',
+          ...utm
+        });
+      }catch(e){}
+    }
+
+    /* ✅ Services tracking */
+    function trackService(service_key, service_name){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event', 'service_click', {
+          service_key: service_key,
+          service_name: service_name,
+          page: 'index',
+          ...utm
+        });
+      }catch(e){}
+    }
+
+    /* ✅ WhatsApp = Conversion Event (اسم الحدث: whatsapp_click) */
+    function whatsapp(origin){
+      const utm = getUTMForEvent();
+
+      try{
+        gtag('event', 'whatsapp_click', {
+          origin: origin || '',
+          page: 'index',
+          ...utm
+        });
+      }catch(e){}
+
       const msg = `مرحبًا فريق Axentro،
 أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
 بانتظار تواصلكم، شكرًا.`;
