@@ -73,10 +73,10 @@
     }
     .hero p{max-width:760px;margin:28px auto 0}
 
-    /* ✅ شيلنا شريط التنقل من صفحة links فقط (حسب طلبك) */
+    /* ✅ شيلنا شريط التنقل من صفحة links فقط */
     .navigation-links{display:none;}
 
-    /* BUTTON STYLES (نفس موقعك) */
+    /* BUTTON STYLES */
     .cta-button{
       background-color:#003366;
       color:var(--secondary);
@@ -94,6 +94,7 @@
       text-decoration:none;
       box-shadow:0 0 25px rgba(0,255,213,0.35);
       width:min(560px, 100%);
+      border:none;
     }
     .cta-button:hover{
       background-color:#002244;
@@ -101,7 +102,7 @@
       box-shadow:0 0 40px rgba(0,255,213,0.6);
     }
 
-    /* ألوان الأزرار */
+    /* Button colors */
     .btn-wa{background:var(--wa);color:#000}
     .btn-mail{background:var(--mail);color:#fff}
     .btn-fb{background:var(--fb);color:#fff}
@@ -128,7 +129,7 @@
       color:var(--muted);
     }
 
-    /* FLOATING WHATSAPP (زي موقعك - ثابت) */
+    /* FLOATING WA */
     .floating-wa{
       position:fixed;
       bottom:25px;
@@ -146,10 +147,10 @@
       z-index:999;
       transition:transform .25s ease;
       text-decoration:none;
+      cursor:pointer;
     }
     .floating-wa:hover{transform:scale(1.08)}
 
-    /* ✅ موبايل */
     @media (max-width:600px){
       .hero h1{font-size:42px}
       .cta-button{font-size:18px;padding:16px 22px}
@@ -160,19 +161,16 @@
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- HERO -->
   <section class="hero" id="links">
     <div class="container">
       <h1>AXENTRO</h1>
       <div class="tagline">CONTROL • TRACK • GROW</div>
 
-      <!-- ✅ الجملة الجديدة -->
       <p>
         اختر وسيلة التواصل الأنسب وسنرد عليك سريعًا.<br>
         <span style="opacity:.8">Choose your preferred contact method.</span>
       </p>
 
-      <!-- BUTTONS -->
       <div style="margin-top:34px; display:flex; flex-direction:column; gap:14px; align-items:center;">
 
         <!-- 1) WhatsApp -->
@@ -181,7 +179,7 @@
           href="#"
           role="button"
           aria-label="تواصل معنا عبر واتساب"
-          onclick="trackClick('whatsapp','تواصل معنا عبر واتساب'); whatsapp(); return false;"
+          onclick="trackClick('whatsapp','تواصل معنا عبر واتساب','main'); whatsapp('main'); return false;"
         >
           <i class="fab fa-whatsapp"></i>
           تواصل معنا عبر واتساب
@@ -193,7 +191,7 @@
           href="tel:+201146476993"
           role="button"
           aria-label="اتصال مباشر"
-          onclick="trackClick('call','اتصال مباشر');"
+          onclick="trackClick('call','اتصال مباشر','main');"
         >
           <i class="fas fa-phone"></i>
           اتصال مباشر
@@ -205,7 +203,7 @@
           href="mailto:axentroofficial@gmail.com"
           role="button"
           aria-label="تواصل معنا عبر البريد"
-          onclick="trackClick('email','تواصل معنا عبر البريد');"
+          onclick="trackClick('email','تواصل معنا عبر البريد','main');"
         >
           <i class="fas fa-envelope"></i>
           تواصل معنا عبر البريد
@@ -217,7 +215,7 @@
           href="index.html"
           role="button"
           aria-label="زيارة الموقع الرئيسي"
-          onclick="trackClick('website','زيارة الموقع الرئيسي');"
+          onclick="trackClick('website','زيارة الموقع الرئيسي','main');"
         >
           <i class="fas fa-globe"></i>
           زيارة الموقع الرئيسي
@@ -231,7 +229,7 @@
           rel="noopener"
           role="button"
           aria-label="تابعنا على انستقرام"
-          onclick="trackClick('instagram','تابعنا على انستقرام');"
+          onclick="trackClick('instagram','تابعنا على انستقرام','main');"
         >
           <i class="fab fa-instagram"></i>
           تابعنا على انستقرام
@@ -245,7 +243,7 @@
           rel="noopener"
           role="button"
           aria-label="تابعنا على فيسبوك"
-          onclick="trackClick('facebook','تابعنا على فيسبوك');"
+          onclick="trackClick('facebook','تابعنا على فيسبوك','main');"
         >
           <i class="fab fa-facebook-f"></i>
           تابعنا على فيسبوك
@@ -258,7 +256,7 @@
           download
           role="button"
           aria-label="احفظ بياناتنا في جهات الاتصال"
-          onclick="trackClick('vcard','حفظ جهة الاتصال');"
+          onclick="trackClick('vcard','حفظ جهة الاتصال','main');"
         >
           <i class="fas fa-address-card"></i>
           احفظ بياناتنا في جهات الاتصال
@@ -279,24 +277,85 @@
     href="#"
     role="button"
     aria-label="WhatsApp Floating"
-    onclick="trackClick('whatsapp_floating','واتساب العائم'); whatsapp(); return false;"
+    onclick="trackClick('whatsapp','واتساب العائم','floating'); whatsapp('floating'); return false;"
   >
     <i class="fab fa-whatsapp"></i>
   </a>
 
   <script>
-    // ✅ Track button clicks in GA4
-    function trackClick(channel, label){
+    /* ✅ UTM Handling (Business Card / QR Tracking) */
+    const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+
+    function getQueryParams(){
+      const p = new URLSearchParams(window.location.search);
+      const obj = {};
+      UTM_KEYS.forEach(k=>{
+        const v = p.get(k);
+        if(v) obj[k] = v;
+      });
+      return obj;
+    }
+
+    function loadUTM(){
       try{
+        const saved = localStorage.getItem('ax_utm');
+        return saved ? JSON.parse(saved) : {};
+      }catch(e){
+        return {};
+      }
+    }
+
+    function saveUTM(utmObj){
+      try{
+        localStorage.setItem('ax_utm', JSON.stringify(utmObj || {}));
+      }catch(e){}
+    }
+
+    (function(){
+      const current = getQueryParams();
+      if(Object.keys(current).length){
+        const merged = { ...loadUTM(), ...current, last_seen: new Date().toISOString() };
+        saveUTM(merged);
+      }
+    })();
+
+    function getUTMForEvent(){
+      const utm = loadUTM() || {};
+      return {
+        utm_source: utm.utm_source || '(none)',
+        utm_medium: utm.utm_medium || '(none)',
+        utm_campaign: utm.utm_campaign || '(none)',
+        utm_content: utm.utm_content || '',
+        utm_term: utm.utm_term || ''
+      };
+    }
+
+    /* ✅ Track button clicks in GA4 */
+    function trackClick(method, label, section){
+      try{
+        const utm = getUTMForEvent();
         gtag('event', 'contact_click', {
-          method: channel,
+          method: method,
           label: label,
-          page: 'links'
+          section: section || '',
+          page: 'links',
+          ...utm
         });
       }catch(e){}
     }
 
-    function whatsapp(){
+    /* ✅ WhatsApp = Conversion Event (اسم الحدث: whatsapp_click) */
+    function whatsapp(origin){
+      const utm = getUTMForEvent();
+
+      try{
+        gtag('event', 'whatsapp_click', {
+          origin: origin || '',
+          page: 'links',
+          ...utm
+        });
+      }catch(e){}
+
       const msg = `مرحبًا فريق Axentro،
 أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
 بانتظار تواصلكم، شكرًا.`;
