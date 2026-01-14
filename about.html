@@ -5,6 +5,15 @@
 <title>Axentro | من نحن</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- ✅ GA4 Tracking -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CY6Y32C90K', { send_page_view: true });
+</script>
+
 <!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
@@ -124,6 +133,7 @@ margin-top:25px;
 display:inline-block;
 text-decoration:none;
 box-shadow:0 0 25px rgba(0,255,213,.35);
+border:none;
 }
 .cta-button:hover{
 background-color:#002244;
@@ -267,6 +277,7 @@ font-size:26px;
 .footer-icons a{
 transition:transform .25s ease, filter .25s ease;
 text-decoration:none;
+cursor:pointer;
 }
 .footer-icons a:hover{
 transform:translateY(-4px) scale(1.12);
@@ -389,7 +400,7 @@ background:rgba(0,255,213,.10);
       عملنا مبني على فهم نشاطك أولًا ثم تصميم حل عملي وسهل الاستخدام يعمل مع فريقك من اليوم الأول.
     </p>
 
-    <a class="cta-button" href="index.html#contact">احجز استشارتك الآن</a>
+    <a class="cta-button" href="index.html#contact" onclick="trackClick('cta_consult','احجز استشارتك الآن','hero');">احجز استشارتك الآن</a>
 
     <div class="stats">
       <div class="stat">
@@ -578,7 +589,7 @@ background:rgba(0,255,213,.10);
       </div>
     </div>
 
-    <a href="index.html#services" class="back-services">← رجوع للخدمات</a>
+    <a href="index.html#services" class="back-services" onclick="trackClick('nav_back_services','رجوع للخدمات','what_we_do');">← رجوع للخدمات</a>
 
   </div>
 </section>
@@ -683,20 +694,19 @@ background:rgba(0,255,213,.10);
     </div>
 
     <div class="cta">
-      <a class="cta-button btn-wa" onclick="whatsapp()">
+      <a class="cta-button btn-wa" href="#" onclick="whatsapp('faq'); return false;">
         <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
       </a>
 
-      <a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com">
+      <a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','تواصل معنا عبر البريد','faq');">
         <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
       </a>
 
-      <a class="cta-button btn-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener">
+      <a class="cta-button btn-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" onclick="trackClick('facebook','تابعنا على فيسبوك','faq');">
         <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
       </a>
 
-      <!-- ✅ زر انستجرام -->
-      <a class="cta-button btn-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener">
+      <a class="cta-button btn-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" onclick="trackClick('instagram','تابعنا على انستجرام','faq');">
         <i class="fab fa-instagram"></i> تابعنا على انستجرام
       </a>
     </div>
@@ -709,23 +719,99 @@ background:rgba(0,255,213,.10);
 <div class="by">By Ahmed Hamouda</div>
 
 <div class="footer-icons">
-<a class="icon-wa" onclick="whatsapp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-<a class="icon-mail" href="mailto:axentroofficial@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-<a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-<a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+<a class="icon-wa" href="#" onclick="whatsapp('footer'); return false;" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a class="icon-mail" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','Email Icon','footer');" aria-label="Email"><i class="fas fa-envelope"></i></a>
+<a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" onclick="trackClick('facebook','Facebook Icon','footer');" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+<a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" onclick="trackClick('instagram','Instagram Icon','footer');" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
 </div>
 </footer>
 
-<a class="floating-wa" onclick="whatsapp()" aria-label="WhatsApp Floating">
+<a class="floating-wa" href="#" onclick="whatsapp('floating'); return false;" aria-label="WhatsApp Floating">
 <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
-function whatsapp(){
-const msg = `مرحبًا فريق Axentro،
+/* ✅ UTM Handling (Business Card / QR Tracking) */
+const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+
+function getQueryParams(){
+  const p = new URLSearchParams(window.location.search);
+  const obj = {};
+  UTM_KEYS.forEach(k=>{
+    const v = p.get(k);
+    if(v) obj[k] = v;
+  });
+  return obj;
+}
+
+function loadUTM(){
+  try{
+    const saved = localStorage.getItem('ax_utm');
+    return saved ? JSON.parse(saved) : {};
+  }catch(e){
+    return {};
+  }
+}
+
+function saveUTM(utmObj){
+  try{
+    localStorage.setItem('ax_utm', JSON.stringify(utmObj || {}));
+  }catch(e){}
+}
+
+(function(){
+  const current = getQueryParams();
+  if(Object.keys(current).length){
+    const merged = { ...loadUTM(), ...current, last_seen: new Date().toISOString() };
+    saveUTM(merged);
+  }
+})();
+
+function getUTMForEvent(){
+  const utm = loadUTM() || {};
+  return {
+    utm_source: utm.utm_source || '(none)',
+    utm_medium: utm.utm_medium || '(none)',
+    utm_campaign: utm.utm_campaign || '(none)',
+    utm_content: utm.utm_content || '',
+    utm_term: utm.utm_term || ''
+  };
+}
+
+/* ✅ Generic click tracking */
+function trackClick(method, label, section){
+  try{
+    const utm = getUTMForEvent();
+    gtag('event', 'contact_click', {
+      method: method,
+      label: label,
+      section: section || '',
+      page: 'about',
+      ...utm
+    });
+  }catch(e){}
+}
+
+/* ✅ WhatsApp = Conversion Event */
+function whatsapp(origin){
+  const utm = getUTMForEvent();
+
+  try{
+    gtag('event', 'whatsapp_click', {
+      origin: origin || '',
+      page: 'about',
+      ...utm
+    });
+  }catch(e){}
+
+  const msg = `مرحبًا فريق Axentro،
 أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
 بانتظار تواصلكم، شكرًا.`;
-window.open("https://wa.me/201146476993?text=" + encodeURIComponent(msg),"_blank");
+
+  window.open(
+    "https://wa.me/201146476993?text=" + encodeURIComponent(msg),
+    "_blank"
+  );
 }
 </script>
 
@@ -749,36 +835,45 @@ els.forEach(el=>io.observe(el));
 </script>
 
 <script>
-/* ✅ نسخ رابط الخدمة + Breadcrumb + تغيير العنوان + تنظيف URL */
+/* ✅ عنوان/Breadcrumb حسب الخدمة + تنظيف URL + Tracking */
 (function(){
-const ids = new Set(['#excel','#web','#desktop','#inventory','#branding','#website']);
-const hash = window.location.hash;
+  const ids = new Set(['#excel','#web','#desktop','#inventory','#branding','#website']);
+  const hash = window.location.hash;
 
-if(!hash || !ids.has(hash)) return;
+  if(hash && ids.has(hash)){
+    const card = document.querySelector(hash);
+    if(card){
+      const titleEl = card.querySelector('h3');
+      const title = titleEl ? titleEl.textContent.trim() : '';
 
-const card = document.querySelector(hash);
-if(!card) return;
+      const bc = document.getElementById('breadcrumbService');
+      const st = document.getElementById('serviceTitle');
 
-const titleEl = card.querySelector('h3');
-if(!titleEl) return;
+      if(title){
+        if(bc) bc.textContent = title;
+        if(st) st.textContent = 'تفاصيل الخدمة: ' + title;
 
-const title = titleEl.textContent.trim();
+        try{
+          const utm = getUTMForEvent();
+          gtag('event','service_view',{
+            service_id: hash.replace('#',''),
+            service_name: title,
+            page: 'about',
+            ...utm
+          });
+        }catch(e){}
+      }
 
-const bc = document.getElementById('breadcrumbService');
-const st = document.getElementById('serviceTitle');
-
-if(bc) bc.textContent = title;
-if(st) st.textContent = 'تفاصيل الخدمة: ' + title;
-
-/* تنظيف URL بعد ما الـ highlight يخلص */
-setTimeout(() => {
-  if(history && history.replaceState){
-    history.replaceState(null, document.title, window.location.pathname + window.location.search);
+      setTimeout(() => {
+        if(history && history.replaceState){
+          history.replaceState(null, document.title, window.location.pathname + window.location.search);
+        }
+      }, 2900);
+    }
   }
-}, 2900);
 })();
 
-/* زر النسخ: ينسخ دائمًا about.html#id */
+/* ✅ زر النسخ + Tracking */
 async function copyServiceLink(id){
   const url = window.location.origin + window.location.pathname.replace(/\/?$/, '') + '#' + id;
 
@@ -792,6 +887,15 @@ async function copyServiceLink(id){
   }catch(e){
     prompt('انسخ الرابط:', url);
   }
+
+  try{
+    const utm = getUTMForEvent();
+    gtag('event','copy_service_link',{
+      service_id: id,
+      page: 'about',
+      ...utm
+    });
+  }catch(e){}
 }
 </script>
 
