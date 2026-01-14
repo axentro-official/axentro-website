@@ -5,6 +5,15 @@
   <title>Axentro | روابط التواصل</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ✅ GA4 Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CY6Y32C90K', { send_page_view: true });
+  </script>
+
   <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
@@ -23,6 +32,8 @@
       --mail:#EA4335;
       --fb:#1877F2;
       --ig:#E1306C;
+      --site:#0b2447;
+      --vcard:#111827;
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
@@ -60,37 +71,10 @@
       font-size:14px;
       opacity:.85;
     }
-    .hero p{max-width:760px;margin:30px auto 0}
+    .hero p{max-width:760px;margin:28px auto 0}
 
-    /* ✅ NAVIGATION LINKS — زي index بالظبط (مش ثابتة) */
-    .navigation-links{
-      position:absolute;
-      top:20px;
-      left:10px;
-      right:10px;
-      display:flex;
-      flex-direction:row;
-      justify-content:center;
-      gap:20px;
-      z-index:10;
-    }
-
-    .navigation-links .nav-link{
-      font-size:18px;
-      color:#fff;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:12px 16px;
-      border-radius:50px;
-      transition:color .3s, background-color .3s;
-    }
-
-    .navigation-links .nav-link:hover{
-      color:#00d4ff;
-      background-color:#003366;
-    }
+    /* ✅ شيلنا شريط التنقل من صفحة links فقط (حسب طلبك) */
+    .navigation-links{display:none;}
 
     /* BUTTON STYLES (نفس موقعك) */
     .cta-button{
@@ -123,6 +107,8 @@
     .btn-fb{background:var(--fb);color:#fff}
     .btn-ig{background:var(--ig);color:#fff}
     .btn-call{background:#0ea5e9;color:#00111a}
+    .btn-site{background:linear-gradient(135deg,#0b2447,#0a3a66);color:var(--secondary)}
+    .btn-vcard{background:linear-gradient(135deg,#111827,#0b1220);color:#fff}
 
     /* FOOTER */
     footer{
@@ -167,7 +153,6 @@
     @media (max-width:600px){
       .hero h1{font-size:42px}
       .cta-button{font-size:18px;padding:16px 22px}
-      .navigation-links .nav-link{font-size:14px;padding:10px 12px}
     }
   </style>
 </head>
@@ -177,70 +162,68 @@
 
   <!-- HERO -->
   <section class="hero" id="links">
-
-    <!-- ✅ NAV جوه الـ HERO زي index -->
-    <div class="navigation-links">
-      <a href="index.html#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
-      <a href="index.html#services" class="nav-link"><i class="fas fa-cogs"></i> الخدمات</a>
-      <a href="about.html" class="nav-link"><i class="fas fa-circle-info"></i> من نحن</a>
-      <a href="index.html#contact" class="nav-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
-    </div>
-
     <div class="container">
       <h1>AXENTRO</h1>
       <div class="tagline">CONTROL • TRACK • GROW</div>
 
+      <!-- ✅ الجملة الجديدة -->
       <p>
-        كل وسائل التواصل الرسمية في صفحة واحدة<br>
-        <span style="opacity:.8">Scan the QR and contact us instantly.</span>
+        اختر وسيلة التواصل الأنسب وسنرد عليك سريعًا.<br>
+        <span style="opacity:.8">Choose your preferred contact method.</span>
       </p>
 
       <!-- BUTTONS -->
       <div style="margin-top:34px; display:flex; flex-direction:column; gap:14px; align-items:center;">
 
+        <!-- 1) WhatsApp -->
         <a
           class="cta-button btn-wa"
           href="#"
           role="button"
           aria-label="تواصل معنا عبر واتساب"
-          onclick="whatsapp(); return false;"
+          onclick="trackClick('whatsapp','تواصل معنا عبر واتساب'); whatsapp(); return false;"
         >
           <i class="fab fa-whatsapp"></i>
           تواصل معنا عبر واتساب
         </a>
 
+        <!-- 2) Call -->
         <a
           class="cta-button btn-call"
           href="tel:+201146476993"
           role="button"
           aria-label="اتصال مباشر"
+          onclick="trackClick('call','اتصال مباشر');"
         >
           <i class="fas fa-phone"></i>
           اتصال مباشر
         </a>
 
+        <!-- 3) Email -->
         <a
           class="cta-button btn-mail"
           href="mailto:axentroofficial@gmail.com"
           role="button"
           aria-label="تواصل معنا عبر البريد"
+          onclick="trackClick('email','تواصل معنا عبر البريد');"
         >
           <i class="fas fa-envelope"></i>
           تواصل معنا عبر البريد
         </a>
 
+        <!-- 4) Visit Main Website -->
         <a
-          class="cta-button btn-fb"
-          href="https://facebook.com/AxentroSamrtSolutions"
-          target="_blank"
-          rel="noopener"
+          class="cta-button btn-site"
+          href="index.html"
           role="button"
-          aria-label="تابعنا على فيسبوك"
+          aria-label="زيارة الموقع الرئيسي"
+          onclick="trackClick('website','زيارة الموقع الرئيسي');"
         >
-          <i class="fab fa-facebook-f"></i>
-          تابعنا على فيسبوك
+          <i class="fas fa-globe"></i>
+          زيارة الموقع الرئيسي
         </a>
 
+        <!-- 5) Instagram -->
         <a
           class="cta-button btn-ig"
           href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
@@ -248,19 +231,37 @@
           rel="noopener"
           role="button"
           aria-label="تابعنا على انستقرام"
+          onclick="trackClick('instagram','تابعنا على انستقرام');"
         >
           <i class="fab fa-instagram"></i>
           تابعنا على انستقرام
         </a>
 
+        <!-- 6) Facebook -->
         <a
-          class="cta-button"
-          href="index.html"
+          class="cta-button btn-fb"
+          href="https://facebook.com/AxentroSamrtSolutions"
+          target="_blank"
+          rel="noopener"
           role="button"
-          aria-label="زيارة الموقع الرئيسي"
+          aria-label="تابعنا على فيسبوك"
+          onclick="trackClick('facebook','تابعنا على فيسبوك');"
         >
-          <i class="fas fa-globe"></i>
-          زيارة الموقع الرئيسي
+          <i class="fab fa-facebook-f"></i>
+          تابعنا على فيسبوك
+        </a>
+
+        <!-- 7) vCard -->
+        <a
+          class="cta-button btn-vcard"
+          href="axentro.vcf"
+          download
+          role="button"
+          aria-label="احفظ بياناتنا في جهات الاتصال"
+          onclick="trackClick('vcard','حفظ جهة الاتصال');"
+        >
+          <i class="fas fa-address-card"></i>
+          احفظ بياناتنا في جهات الاتصال
         </a>
 
       </div>
@@ -278,12 +279,23 @@
     href="#"
     role="button"
     aria-label="WhatsApp Floating"
-    onclick="whatsapp(); return false;"
+    onclick="trackClick('whatsapp_floating','واتساب العائم'); whatsapp(); return false;"
   >
     <i class="fab fa-whatsapp"></i>
   </a>
 
   <script>
+    // ✅ Track button clicks in GA4
+    function trackClick(channel, label){
+      try{
+        gtag('event', 'contact_click', {
+          method: channel,
+          label: label,
+          page: 'links'
+        });
+      }catch(e){}
+    }
+
     function whatsapp(){
       const msg = `مرحبًا فريق Axentro،
 أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
