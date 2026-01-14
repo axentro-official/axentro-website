@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Axentro | روابط التواصل</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ iPhone / Safari + Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#020617">
+  <meta name="format-detection" content="telephone=no">
 
   <!-- ✅ GA4 Tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
@@ -11,7 +15,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-CY6Y32C90K', { send_page_view: true });
+    // هنمنع page_view التلقائي ونبعت واحد يدوي مع UTM
+    gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
   </script>
 
   <!-- FONT -->
@@ -43,6 +48,8 @@
       background:linear-gradient(135deg,#020617,#020b2e);
       color:var(--text);
       overflow-x:hidden;
+      -webkit-text-size-adjust: 100%;
+      padding-top: env(safe-area-inset-top);
     }
 
     section{padding:90px 20px;text-align:center}
@@ -95,11 +102,21 @@
       box-shadow:0 0 25px rgba(0,255,213,0.35);
       width:min(560px, 100%);
       border:none;
+
+      /* ✅ حل مشاكل الضغط على iPhone */
+      pointer-events:auto;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
     }
     .cta-button:hover{
       background-color:#002244;
       transform:scale(1.03);
       box-shadow:0 0 40px rgba(0,255,213,0.6);
+    }
+    .cta-button:focus{
+      outline:2px solid rgba(0,255,213,.45);
+      outline-offset:4px;
     }
 
     /* Button colors */
@@ -148,12 +165,26 @@
       transition:transform .25s ease;
       text-decoration:none;
       cursor:pointer;
+
+      /* ✅ */
+      pointer-events:auto;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     .floating-wa:hover{transform:scale(1.08)}
+    .floating-wa:focus{
+      outline:2px solid rgba(0,255,213,.45);
+      outline-offset:4px;
+    }
 
     @media (max-width:600px){
       .hero h1{font-size:42px}
       .cta-button{font-size:18px;padding:16px 22px}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .cta-button,.floating-wa{transition:none}
     }
   </style>
 </head>
@@ -173,17 +204,16 @@
 
       <div style="margin-top:34px; display:flex; flex-direction:column; gap:14px; align-items:center;">
 
-        <!-- 1) WhatsApp -->
-        <a
+        <!-- ✅ 1) WhatsApp (Button بدل href="#") -->
+        <button
+          type="button"
           class="cta-button btn-wa"
-          href="#"
-          role="button"
           aria-label="تواصل معنا عبر واتساب"
-          onclick="trackClick('whatsapp','تواصل معنا عبر واتساب','main'); whatsapp('main'); return false;"
+          onclick="trackClick('whatsapp','تواصل معنا عبر واتساب','main'); whatsapp('main');"
         >
           <i class="fab fa-whatsapp"></i>
           تواصل معنا عبر واتساب
-        </a>
+        </button>
 
         <!-- 2) Call -->
         <a
@@ -256,7 +286,7 @@
           download
           role="button"
           aria-label="احفظ بياناتنا في جهات الاتصال"
-          onclick="trackClick('vcard','حفظ جهة الاتصال','main');"
+          onclick="trackVCardDownload('main');"
         >
           <i class="fas fa-address-card"></i>
           احفظ بياناتنا في جهات الاتصال
@@ -271,20 +301,19 @@
     <div class="by">By Ahmed Hamouda</div>
   </footer>
 
-  <!-- FLOATING WA -->
-  <a
+  <!-- ✅ FLOATING WA (Button بدل href="#") -->
+  <button
+    type="button"
     class="floating-wa"
-    href="#"
-    role="button"
     aria-label="WhatsApp Floating"
-    onclick="trackClick('whatsapp','واتساب العائم','floating'); whatsapp('floating'); return false;"
+    onclick="trackClick('whatsapp','واتساب العائم','floating'); whatsapp('floating');"
   >
     <i class="fab fa-whatsapp"></i>
-  </a>
+  </button>
 
   <script>
-    /* ✅ UTM Handling (Business Card / QR Tracking) */
-    const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    /* ✅ UTM + QR Tracking */
+    const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','src'];
 
     function getQueryParams(){
       const p = new URLSearchParams(window.location.search);
@@ -296,9 +325,16 @@
       return obj;
     }
 
+    function safeRead(key){
+      try{ return localStorage.getItem(key); }catch(e){ return null; }
+    }
+    function safeWrite(key,val){
+      try{ localStorage.setItem(key,val); }catch(e){}
+    }
+
     function loadUTM(){
       try{
-        const saved = localStorage.getItem('ax_utm');
+        const saved = safeRead('ax_utm');
         return saved ? JSON.parse(saved) : {};
       }catch(e){
         return {};
@@ -306,9 +342,7 @@
     }
 
     function saveUTM(utmObj){
-      try{
-        localStorage.setItem('ax_utm', JSON.stringify(utmObj || {}));
-      }catch(e){}
+      safeWrite('ax_utm', JSON.stringify(utmObj || {}));
     }
 
     (function(){
@@ -322,15 +356,35 @@
     function getUTMForEvent(){
       const utm = loadUTM() || {};
       return {
-        utm_source: utm.utm_source || '(none)',
-        utm_medium: utm.utm_medium || '(none)',
-        utm_campaign: utm.utm_campaign || '(none)',
+        utm_source: utm.utm_source || utm.src || '(none)',
+        utm_medium: utm.utm_medium || (utm.src ? 'qr' : '(none)'),
+        utm_campaign: utm.utm_campaign || 'axentro',
         utm_content: utm.utm_content || '',
         utm_term: utm.utm_term || ''
       };
     }
 
-    /* ✅ Track button clicks in GA4 */
+    /* ✅ Send page_view manually with UTM */
+    (function(){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event','page_view',{
+          page_title: document.title,
+          page_location: window.location.href,
+          page_path: window.location.pathname,
+          page: 'links',
+          ...utm
+        });
+
+        const p = new URLSearchParams(window.location.search);
+        const src = p.get('src');
+        if(src){
+          gtag('event','qr_scan',{ source: src, page: 'links', ...utm });
+        }
+      }catch(e){}
+    })();
+
+    /* ✅ Click tracking */
     function trackClick(method, label, section){
       try{
         const utm = getUTMForEvent();
@@ -344,7 +398,19 @@
       }catch(e){}
     }
 
-    /* ✅ WhatsApp = Conversion Event (اسم الحدث: whatsapp_click) */
+    /* ✅ vCard download tracking (Event مستقل) */
+    function trackVCardDownload(section){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event', 'vcard_download', {
+          section: section || '',
+          page: 'links',
+          ...utm
+        });
+      }catch(e){}
+    }
+
+    /* ✅ WhatsApp Conversion */
     function whatsapp(origin){
       const utm = getUTMForEvent();
 
@@ -360,10 +426,8 @@
 أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
 بانتظار تواصلكم، شكرًا.`;
 
-      window.open(
-        "https://wa.me/201146476993?text=" + encodeURIComponent(msg),
-        "_blank"
-      );
+      const url = "https://wa.me/201146476993?text=" + encodeURIComponent(msg);
+      window.open(url, "_blank", "noopener,noreferrer");
     }
   </script>
 
@@ -374,7 +438,7 @@
       const h = document.documentElement;
       const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
       bar.style.width = p + '%';
-    });
+    }, { passive: true });
   </script>
 </body>
 </html>
