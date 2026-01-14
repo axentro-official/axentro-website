@@ -1,23 +1,24 @@
 BEGIN:VCARD
 VERSION:3.0
-KIND:organization
+KIND:org
 
-N:Axentro;;;;
 FN:Axentro
-
 ORG:Axentro
 TITLE:Smart Software & Digital Solutions
 
 TEL;TYPE=WORK,VOICE:+201146476993
-EMAIL;TYPE=WORK,INTERNET:axentroofficial@gmail.com
-URL:https://axentro-official.github.io/axentro-website/
+EMAIL;TYPE=WORK:axentroofficial@gmail.com
 
-NOTE:📲 WhatsApp (اضغط للتواصل مباشرة)
-NOTE:https://wa.me/201146476993
-NOTE:
+URL;TYPE=WORK:https://axentro-official.github.io/axentro-website/
+
+item1.URL:https://wa.me/201146476993
+item1.X-ABLabel:WhatsApp
+
+item2.URL:https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==
+item2.X-ABLabel:Instagram
+
+item3.URL:https://facebook.com/AxentroSamrtSolutions
+item3.X-ABLabel:Facebook
+
 NOTE:Axentro - Smart Software & Digital Solutions
-
-X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==
-X-SOCIALPROFILE;TYPE=facebook:https://facebook.com/AxentroSamrtSolutions
-
 END:VCARD
