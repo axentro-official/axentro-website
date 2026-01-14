@@ -51,53 +51,6 @@
       z-index:99999;
     }
 
-    /* NAVIGATION LINKS — ثابت مع الاسكرول */
-    .navigation-links{
-      position:fixed;
-      top:12px;
-      left:10px;
-      right:10px;
-
-      display:flex;
-      flex-direction:row;
-      justify-content:center;
-      gap:16px;
-
-      z-index:10000;
-      padding:6px;
-
-      backdrop-filter: blur(12px);
-      background: rgba(2, 6, 23, 0.55);
-      border-radius:50px;
-      border:1px solid rgba(255,255,255,.08);
-
-      transition: background .25s ease, box-shadow .25s ease;
-    }
-
-    .navigation-links.scrolled{
-      background: rgba(2, 6, 23, 0.85);
-      box-shadow:0 8px 30px rgba(0,0,0,.4);
-    }
-
-    .navigation-links .nav-link{
-      font-size:16px;
-      color:#fff;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:50px;
-      transition:color .3s, background-color .3s;
-      background: rgba(0,0,0,.18);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .navigation-links .nav-link:hover{
-      color:#00d4ff;
-      background-color:#003366;
-    }
-
     /* HERO */
     .hero{position:relative}
     .hero h1{font-size:52px;letter-spacing:2px}
@@ -108,6 +61,36 @@
       opacity:.85;
     }
     .hero p{max-width:760px;margin:30px auto 0}
+
+    /* ✅ NAVIGATION LINKS — زي index بالظبط (مش ثابتة) */
+    .navigation-links{
+      position:absolute;
+      top:20px;
+      left:10px;
+      right:10px;
+      display:flex;
+      flex-direction:row;
+      justify-content:center;
+      gap:20px;
+      z-index:10;
+    }
+
+    .navigation-links .nav-link{
+      font-size:18px;
+      color:#fff;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 16px;
+      border-radius:50px;
+      transition:color .3s, background-color .3s;
+    }
+
+    .navigation-links .nav-link:hover{
+      color:#00d4ff;
+      background-color:#003366;
+    }
 
     /* BUTTON STYLES (نفس موقعك) */
     .cta-button{
@@ -159,7 +142,7 @@
       color:var(--muted);
     }
 
-    /* FLOATING WHATSAPP */
+    /* FLOATING WHATSAPP (زي موقعك - ثابت) */
     .floating-wa{
       position:fixed;
       bottom:25px;
@@ -180,10 +163,11 @@
     }
     .floating-wa:hover{transform:scale(1.08)}
 
+    /* ✅ موبايل */
     @media (max-width:600px){
       .hero h1{font-size:42px}
       .cta-button{font-size:18px;padding:16px 22px}
-      .navigation-links .nav-link{font-size:13px;padding:9px 10px}
+      .navigation-links .nav-link{font-size:14px;padding:10px 12px}
     }
   </style>
 </head>
@@ -191,16 +175,17 @@
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- NAV -->
-  <div class="navigation-links">
-    <a href="index.html#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
-    <a href="index.html#services" class="nav-link"><i class="fas fa-cogs"></i> الخدمات</a>
-    <a href="about.html" class="nav-link"><i class="fas fa-circle-info"></i> من نحن</a>
-    <a href="index.html#contact" class="nav-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
-  </div>
-
   <!-- HERO -->
   <section class="hero" id="links">
+
+    <!-- ✅ NAV جوه الـ HERO زي index -->
+    <div class="navigation-links">
+      <a href="index.html#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="index.html#services" class="nav-link"><i class="fas fa-cogs"></i> الخدمات</a>
+      <a href="about.html" class="nav-link"><i class="fas fa-circle-info"></i> من نحن</a>
+      <a href="index.html#contact" class="nav-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
+    </div>
+
     <div class="container">
       <h1>AXENTRO</h1>
       <div class="tagline">CONTROL • TRACK • GROW</div>
@@ -319,14 +304,6 @@
       const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
       bar.style.width = p + '%';
     });
-
-    /* Nav effect on scroll */
-    const nav = document.querySelector('.navigation-links');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) nav.classList.add('scrolled');
-      else nav.classList.remove('scrolled');
-    });
   </script>
 </body>
 </html>
-```0
