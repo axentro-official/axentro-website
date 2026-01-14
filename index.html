@@ -9,17 +9,18 @@
   <meta name="theme-color" content="#020617">
   <meta name="format-detection" content="telephone=no">
 
-  <!-- ✅ GA4 Tracking -->
+  <!-- ✅ GA4 Tracking (Loader only + disable auto page_view) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    // ✅ page_view يدوي لضمان تثبيت UTM
     gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
   </script>
 
   <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
   <!-- ICONS -->
@@ -65,6 +66,7 @@
       width:0%;
       background:var(--secondary);
       z-index:99999;
+      pointer-events:none;
     }
 
     /* REVEAL */
@@ -114,7 +116,6 @@
       box-shadow:0 0 25px rgba(0,255,213,0.35);
       border:none;
 
-      /* ✅ iPhone click stability */
       pointer-events:auto;
       touch-action:manipulation;
       -webkit-tap-highlight-color:transparent;
@@ -281,7 +282,6 @@
       cursor:pointer;
       text-decoration:none;
 
-      /* ✅ */
       pointer-events:auto;
       touch-action:manipulation;
       -webkit-tap-highlight-color:transparent;
@@ -349,10 +349,10 @@
   <!-- HERO -->
   <section class="hero reveal show" id="home">
     <div class="navigation-links" aria-label="Navigation">
-      <a href="index.html#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
-      <a href="index.html#services" class="nav-link"><i class="fas fa-cogs"></i> الخدمات</a>
-      <a href="about.html" class="nav-link"><i class="fas fa-circle-info"></i> من نحن</a>
-      <a href="index.html#contact" class="nav-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
+      <a href="index.html#home" class="nav-link js-utm-link"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="index.html#services" class="nav-link js-utm-link"><i class="fas fa-cogs"></i> الخدمات</a>
+      <a href="about.html" class="nav-link js-utm-link"><i class="fas fa-circle-info"></i> من نحن</a>
+      <a href="index.html#contact" class="nav-link js-utm-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
     </div>
 
     <div class="container">
@@ -382,7 +382,7 @@
 
       <div class="cards">
         <div class="card">
-          <a class="card-link" href="about.html#excel" onclick="trackService('smart_excel','Smart Excel Systems');">
+          <a class="card-link js-utm-link" href="about.html#excel" onclick="trackService('smart_excel','Smart Excel Systems');">
             <img class="service-img" src="assets/images/axentro-service-smart-excel.webp" alt="Smart Excel Systems">
             <h3>Smart Excel Systems</h3>
             <p>تحويل ملفات Excel إلى أنظمة ذكية تقلل الأخطاء وتنظم العمل وتوفر وقت الإدارة.</p>
@@ -391,7 +391,7 @@
         </div>
 
         <div class="card">
-          <a class="card-link" href="about.html#web" onclick="trackService('web_mobile','Web & Mobile Apps');">
+          <a class="card-link js-utm-link" href="about.html#web" onclick="trackService('web_mobile','Web & Mobile Apps');">
             <img class="service-img" src="assets/images/axentro-service-web-mobile.webp" alt="Web & Mobile Apps">
             <h3>Web & Mobile Apps</h3>
             <p>تصميم وتطوير تطبيقات ويب وموبايل مخصصة لتحسين تجربة العملاء وإدارة الأعمال.</p>
@@ -400,7 +400,7 @@
         </div>
 
         <div class="card">
-          <a class="card-link" href="about.html#desktop" onclick="trackService('desktop','Desktop Software');">
+          <a class="card-link js-utm-link" href="about.html#desktop" onclick="trackService('desktop','Desktop Software');">
             <img class="service-img" src="assets/images/axentro-service-desktop.webp" alt="Desktop Software">
             <h3>Desktop Software</h3>
             <p>تطوير أنظمة سطح مكتب قوية تعمل بدون إنترنت وتناسب طبيعة نشاطك.</p>
@@ -409,7 +409,7 @@
         </div>
 
         <div class="card">
-          <a class="card-link" href="about.html#inventory" onclick="trackService('inventory_sales','Inventory & Sales');">
+          <a class="card-link js-utm-link" href="about.html#inventory" onclick="trackService('inventory_sales','Inventory & Sales');">
             <img class="service-img" src="assets/images/axentro-service-inventory-sales.webp" alt="Inventory & Sales">
             <h3>Inventory & Sales</h3>
             <p>
@@ -421,7 +421,7 @@
         </div>
 
         <div class="card">
-          <a class="card-link" href="about.html#branding" onclick="trackService('branding','Branding & Digital Solutions');">
+          <a class="card-link js-utm-link" href="about.html#branding" onclick="trackService('branding','Branding & Digital Solutions');">
             <img class="service-img" src="assets/images/axentro-service-branding.webp" alt="Branding & Digital Solutions">
             <h3>Branding & Digital Solutions</h3>
             <p>بناء هوية رقمية احترافية تعكس قوة مشروعك وتزيد ثقة عملائك.</p>
@@ -430,7 +430,7 @@
         </div>
 
         <div class="card">
-          <a class="card-link" href="about.html#website" onclick="trackService('websites','Websites for Business & Portfolio');">
+          <a class="card-link js-utm-link" href="about.html#website" onclick="trackService('websites','Websites for Business & Portfolio');">
             <img class="service-img" src="assets/images/axentro-service-websites.webp" alt="Websites for Business & Portfolio">
             <h3>Websites for Business & Portfolio</h3>
             <p>
@@ -455,9 +455,7 @@
       </div>
 
       <div class="cta">
-        <!-- ✅ WhatsApp (button for iOS reliability) -->
-        <button type="button" class="cta-button btn-wa"
-                onclick="whatsapp('contact_section');">
+        <button type="button" class="cta-button btn-wa" onclick="whatsapp('contact_section');">
           <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
         </button>
 
@@ -469,14 +467,14 @@
 
         <a class="cta-button btn-fb"
            href="https://facebook.com/AxentroSamrtSolutions"
-           target="_blank" rel="noopener"
+           target="_blank" rel="noopener noreferrer"
            onclick="trackClick('facebook','تابعنا على فيسبوك','contact_section');">
           <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
         </a>
 
         <a class="cta-button btn-ig"
            href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
-           target="_blank" rel="noopener"
+           target="_blank" rel="noopener noreferrer"
            onclick="trackClick('instagram','تابعنا على انستقرام','contact_section');">
           <i class="fab fa-instagram"></i> تابعنا على انستقرام
         </a>
@@ -490,7 +488,6 @@
     <div class="by">By Ahmed Hamouda</div>
 
     <div class="footer-icons">
-      <!-- ✅ WhatsApp icon as button -->
       <button class="icon-wa" aria-label="WhatsApp" onclick="whatsapp('footer');">
         <i class="fab fa-whatsapp"></i>
       </button>
@@ -502,14 +499,14 @@
       </a>
 
       <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions"
-         target="_blank" rel="noopener"
+         target="_blank" rel="noopener noreferrer"
          aria-label="Facebook"
          onclick="trackClick('facebook','Facebook Icon','footer');">
         <i class="fab fa-facebook-f"></i>
       </a>
 
       <a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
-         target="_blank" rel="noopener"
+         target="_blank" rel="noopener noreferrer"
          aria-label="Instagram"
          onclick="trackClick('instagram','Instagram Icon','footer');">
         <i class="fab fa-instagram"></i>
@@ -523,128 +520,7 @@
     <i class="fab fa-whatsapp"></i>
   </button>
 
-  <script>
-    /* ✅ UTM Handling (Business Card / QR Tracking) */
-    const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','src'];
-
-    function getQueryParams(){
-      const p = new URLSearchParams(window.location.search);
-      const obj = {};
-      UTM_KEYS.forEach(k=>{
-        const v = p.get(k);
-        if(v) obj[k] = v;
-      });
-      return obj;
-    }
-
-    function safeRead(key){
-      try{ return localStorage.getItem(key); }catch(e){ return null; }
-    }
-    function safeWrite(key,val){
-      try{ localStorage.setItem(key,val); }catch(e){}
-    }
-
-    function loadUTM(){
-      try{
-        const saved = safeRead('ax_utm');
-        return saved ? JSON.parse(saved) : {};
-      }catch(e){
-        return {};
-      }
-    }
-
-    function saveUTM(utmObj){
-      safeWrite('ax_utm', JSON.stringify(utmObj || {}));
-    }
-
-    // Merge current UTM (if present) with saved
-    (function(){
-      const current = getQueryParams();
-      if(Object.keys(current).length){
-        const merged = { ...loadUTM(), ...current, last_seen: new Date().toISOString() };
-        saveUTM(merged);
-      }
-    })();
-
-    function getUTMForEvent(){
-      const utm = loadUTM() || {};
-      return {
-        utm_source: utm.utm_source || utm.src || '(none)',
-        utm_medium: utm.utm_medium || (utm.src ? 'qr' : '(none)'),
-        utm_campaign: utm.utm_campaign || 'axentro',
-        utm_content: utm.utm_content || '',
-        utm_term: utm.utm_term || ''
-      };
-    }
-
-    /* ✅ Manual page_view (with UTM) */
-    (function(){
-      try{
-        const utm = getUTMForEvent();
-        gtag('event','page_view',{
-          page_title: document.title,
-          page_location: window.location.href,
-          page_path: window.location.pathname,
-          page: 'index',
-          ...utm
-        });
-
-        const p = new URLSearchParams(window.location.search);
-        const src = p.get('src');
-        if(src){
-          gtag('event','qr_scan',{ source: src, page: 'index', ...utm });
-        }
-      }catch(e){}
-    })();
-
-    /* ✅ Generic click tracking */
-    function trackClick(method, label, section){
-      try{
-        const utm = getUTMForEvent();
-        gtag('event', 'contact_click', {
-          method: method,
-          label: label,
-          section: section || '',
-          page: 'index',
-          ...utm
-        });
-      }catch(e){}
-    }
-
-    /* ✅ Services tracking */
-    function trackService(service_key, service_name){
-      try{
-        const utm = getUTMForEvent();
-        gtag('event', 'service_click', {
-          service_key: service_key,
-          service_name: service_name,
-          page: 'index',
-          ...utm
-        });
-      }catch(e){}
-    }
-
-    /* ✅ WhatsApp conversion */
-    function whatsapp(origin){
-      const utm = getUTMForEvent();
-
-      try{
-        gtag('event', 'whatsapp_click', {
-          origin: origin || '',
-          page: 'index',
-          ...utm
-        });
-      }catch(e){}
-
-      const msg = `مرحبًا فريق Axentro،
-أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
-بانتظار تواصلكم، شكرًا.`;
-
-      const url = "https://wa.me/201146476993?text=" + encodeURIComponent(msg);
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
-  </script>
-
+  <!-- ✅ UI scripts (keep) -->
   <script>
     /* Progress bar */
     const bar = document.getElementById('scrollProgress');
@@ -662,6 +538,17 @@
       });
     },{threshold:0.15});
     els.forEach(el=>io.observe(el));
+  </script>
+
+  <!-- ✅ Analytics (single source) -->
+  <script src="assets/js/ga.js"></script>
+  <script>
+    AxentroAnalytics.init({
+      page: "index",
+      utm_campaign_default: "axentro",
+      enable_qr_scan: true,
+      enable_internal_utm_links: true
+    });
   </script>
 </body>
 </html>
