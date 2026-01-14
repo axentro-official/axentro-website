@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Axentro | روابط التواصل</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ GA4 Tracking -->
+  <!-- ✅ iPhone / Safari + Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#020617">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- ✅ GA4 Tracking (Loader only + disable auto page_view) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-CY6Y32C90K', { send_page_view: true });
+    gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
   </script>
 
   <!-- FONT -->
@@ -43,6 +47,8 @@
       background:linear-gradient(135deg,#020617,#020b2e);
       color:var(--text);
       overflow-x:hidden;
+      -webkit-text-size-adjust:100%;
+      padding-top: env(safe-area-inset-top);
     }
 
     section{padding:90px 20px;text-align:center}
@@ -60,6 +66,7 @@
       width:0%;
       background:var(--secondary);
       z-index:99999;
+      pointer-events:none;
     }
 
     /* HERO */
@@ -95,11 +102,20 @@
       box-shadow:0 0 25px rgba(0,255,213,0.35);
       width:min(560px, 100%);
       border:none;
+
+      pointer-events:auto;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+      user-select:none;
     }
     .cta-button:hover{
       background-color:#002244;
       transform:scale(1.03);
       box-shadow:0 0 40px rgba(0,255,213,0.6);
+    }
+    .cta-button:focus{
+      outline:2px solid rgba(0,255,213,.45);
+      outline-offset:4px;
     }
 
     /* Button colors */
@@ -148,12 +164,26 @@
       transition:transform .25s ease;
       text-decoration:none;
       cursor:pointer;
+
+      pointer-events:auto;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+      border:none;
     }
     .floating-wa:hover{transform:scale(1.08)}
+    .floating-wa:focus{
+      outline:2px solid rgba(0,255,213,.45);
+      outline-offset:4px;
+    }
 
     @media (max-width:600px){
       .hero h1{font-size:42px}
       .cta-button{font-size:18px;padding:16px 22px}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .cta-button,.floating-wa{transition:none}
     }
   </style>
 </head>
@@ -209,9 +239,9 @@
           تواصل معنا عبر البريد
         </a>
 
-        <!-- 4) Visit Main Website -->
+        <!-- 4) Visit Main Website (internal link => UTM append) -->
         <a
-          class="cta-button btn-site"
+          class="cta-button btn-site js-utm-link"
           href="index.html"
           role="button"
           aria-label="زيارة الموقع الرئيسي"
@@ -256,7 +286,7 @@
           download
           role="button"
           aria-label="احفظ بياناتنا في جهات الاتصال"
-          onclick="trackClick('vcard','حفظ جهة الاتصال','main');"
+          onclick="trackVCardDownload('main');"
         >
           <i class="fas fa-address-card"></i>
           احفظ بياناتنا في جهات الاتصال
@@ -272,101 +302,16 @@
   </footer>
 
   <!-- FLOATING WA -->
-  <a
+  <button
+    type="button"
     class="floating-wa"
-    href="#"
-    role="button"
     aria-label="WhatsApp Floating"
-    onclick="trackClick('whatsapp','واتساب العائم','floating'); whatsapp('floating'); return false;"
+    onclick="trackClick('whatsapp','واتساب العائم','floating'); whatsapp('floating');"
   >
     <i class="fab fa-whatsapp"></i>
-  </a>
+  </button>
 
-  <script>
-    /* ✅ UTM Handling (Business Card / QR Tracking) */
-    const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
-
-    function getQueryParams(){
-      const p = new URLSearchParams(window.location.search);
-      const obj = {};
-      UTM_KEYS.forEach(k=>{
-        const v = p.get(k);
-        if(v) obj[k] = v;
-      });
-      return obj;
-    }
-
-    function loadUTM(){
-      try{
-        const saved = localStorage.getItem('ax_utm');
-        return saved ? JSON.parse(saved) : {};
-      }catch(e){
-        return {};
-      }
-    }
-
-    function saveUTM(utmObj){
-      try{
-        localStorage.setItem('ax_utm', JSON.stringify(utmObj || {}));
-      }catch(e){}
-    }
-
-    (function(){
-      const current = getQueryParams();
-      if(Object.keys(current).length){
-        const merged = { ...loadUTM(), ...current, last_seen: new Date().toISOString() };
-        saveUTM(merged);
-      }
-    })();
-
-    function getUTMForEvent(){
-      const utm = loadUTM() || {};
-      return {
-        utm_source: utm.utm_source || '(none)',
-        utm_medium: utm.utm_medium || '(none)',
-        utm_campaign: utm.utm_campaign || '(none)',
-        utm_content: utm.utm_content || '',
-        utm_term: utm.utm_term || ''
-      };
-    }
-
-    /* ✅ Track button clicks in GA4 */
-    function trackClick(method, label, section){
-      try{
-        const utm = getUTMForEvent();
-        gtag('event', 'contact_click', {
-          method: method,
-          label: label,
-          section: section || '',
-          page: 'links',
-          ...utm
-        });
-      }catch(e){}
-    }
-
-    /* ✅ WhatsApp = Conversion Event (اسم الحدث: whatsapp_click) */
-    function whatsapp(origin){
-      const utm = getUTMForEvent();
-
-      try{
-        gtag('event', 'whatsapp_click', {
-          origin: origin || '',
-          page: 'links',
-          ...utm
-        });
-      }catch(e){}
-
-      const msg = `مرحبًا فريق Axentro،
-أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
-بانتظار تواصلكم، شكرًا.`;
-
-      window.open(
-        "https://wa.me/201146476993?text=" + encodeURIComponent(msg),
-        "_blank"
-      );
-    }
-  </script>
-
+  <!-- ✅ UI scripts (keep) -->
   <script>
     /* Progress bar */
     const bar = document.getElementById('scrollProgress');
@@ -374,6 +319,17 @@
       const h = document.documentElement;
       const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
       bar.style.width = p + '%';
+    }, { passive: true });
+  </script>
+
+  <!-- ✅ Analytics (single source) -->
+  <script src="assets/js/ga.js"></script>
+  <script>
+    AxentroAnalytics.init({
+      page: "links",
+      utm_campaign_default: "axentro",
+      enable_qr_scan: true,
+      enable_internal_utm_links: true
     });
   </script>
 </body>
