@@ -9,12 +9,13 @@
   <meta name="theme-color" content="#020617">
   <meta name="format-detection" content="telephone=no">
 
-  <!-- ✅ GA4 Tracking (Loader only + disable auto page_view) -->
+  <!-- ✅ GA4 Tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // ✅ page_view يدوي لضمان تثبيت UTM
     gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
   </script>
 
@@ -116,6 +117,7 @@
       box-shadow:0 0 25px rgba(0,255,213,0.35);
       border:none;
 
+      /* ✅ iPhone click stability */
       pointer-events:auto;
       touch-action:manipulation;
       -webkit-tap-highlight-color:transparent;
@@ -520,7 +522,172 @@
     <i class="fab fa-whatsapp"></i>
   </button>
 
-  <!-- ✅ UI scripts (keep) -->
+  <script>
+    /* ✅ UTM Handling (Business Card / QR Tracking) */
+    const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','src'];
+
+    function getQueryParams(){
+      const p = new URLSearchParams(window.location.search);
+      const obj = {};
+      UTM_KEYS.forEach(k=>{
+        const v = p.get(k);
+        if(v) obj[k] = v;
+      });
+      return obj;
+    }
+
+    function safeRead(key){
+      try{ return localStorage.getItem(key); }catch(e){ return null; }
+    }
+    function safeWrite(key,val){
+      try{ localStorage.setItem(key,val); }catch(e){}
+    }
+
+    function loadUTM(){
+      try{
+        const saved = safeRead('ax_utm');
+        return saved ? JSON.parse(saved) : {};
+      }catch(e){
+        return {};
+      }
+    }
+
+    function saveUTM(utmObj){
+      safeWrite('ax_utm', JSON.stringify(utmObj || {}));
+    }
+
+    // Merge current UTM (if present) with saved
+    (function(){
+      const current = getQueryParams();
+      if(Object.keys(current).length){
+        const merged = { ...loadUTM(), ...current, last_seen: new Date().toISOString() };
+        saveUTM(merged);
+      }
+    })();
+
+    function getUTMForEvent(){
+      const utm = loadUTM() || {};
+      return {
+        utm_source: utm.utm_source || utm.src || '(none)',
+        utm_medium: utm.utm_medium || (utm.src ? 'qr' : '(none)'),
+        utm_campaign: utm.utm_campaign || 'axentro',
+        utm_content: utm.utm_content || '',
+        utm_term: utm.utm_term || ''
+      };
+    }
+
+    /* ✅ Build UTM query from saved UTM */
+    function buildUTMQuery(){
+      const utm = loadUTM() || {};
+      const qs = new URLSearchParams();
+
+      if(utm.utm_source) qs.set('utm_source', utm.utm_source);
+      if(utm.utm_medium) qs.set('utm_medium', utm.utm_medium);
+      if(utm.utm_campaign) qs.set('utm_campaign', utm.utm_campaign);
+      if(utm.utm_content) qs.set('utm_content', utm.utm_content);
+      if(utm.utm_term) qs.set('utm_term', utm.utm_term);
+      if(utm.src) qs.set('src', utm.src);
+
+      const s = qs.toString();
+      return s ? ('?' + s) : '';
+    }
+
+    /* ✅ Append UTM to internal links (about.html / index.html) */
+    (function(){
+      try{
+        const q = buildUTMQuery();
+        if(!q) return;
+
+        const links = document.querySelectorAll('a.js-utm-link[href]');
+        links.forEach(a=>{
+          const href = a.getAttribute('href');
+          if(!href) return;
+
+          // only internal relative links
+          if(href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+          if(href.includes('?')) return; // already has query
+
+          const parts = href.split('#');
+          const base = parts[0];
+          const hash = parts[1] ? ('#' + parts[1]) : '';
+
+          a.setAttribute('href', base + q + hash);
+        });
+      }catch(e){}
+    })();
+
+    /* ✅ Manual page_view (with UTM) */
+    (function(){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event','page_view',{
+          page_title: document.title,
+          page_location: window.location.href,
+          page_path: window.location.pathname,
+          page: 'index',
+          ...utm
+        });
+
+        const p = new URLSearchParams(window.location.search);
+        const src = p.get('src');
+        if(src){
+          gtag('event','qr_scan',{ source: src, page: 'index', ...utm });
+        }
+      }catch(e){}
+    })();
+
+    /* ✅ Generic click tracking */
+    function trackClick(method, label, section){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event', 'contact_click', {
+          method: method,
+          label: label,
+          section: section || '',
+          page: 'index',
+          ...utm
+        });
+      }catch(e){}
+    }
+
+    /* ✅ Services tracking */
+    function trackService(service_key, service_name){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event', 'service_click', {
+          service_key: service_key,
+          service_name: service_name,
+          page: 'index',
+          ...utm
+        });
+      }catch(e){}
+    }
+
+    /* ✅ WhatsApp conversion + Safari fallback */
+    function whatsapp(origin){
+      const utm = getUTMForEvent();
+
+      try{
+        gtag('event', 'whatsapp_click', {
+          origin: origin || '',
+          page: 'index',
+          ...utm
+        });
+      }catch(e){}
+
+      const msg = `مرحبًا فريق Axentro،
+أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
+بانتظار تواصلكم، شكرًا.`;
+
+      const url = "https://wa.me/201146476993?text=" + encodeURIComponent(msg);
+
+      const w = window.open(url, "_blank", "noopener,noreferrer");
+      if(!w){
+        window.location.href = url;
+      }
+    }
+  </script>
+
   <script>
     /* Progress bar */
     const bar = document.getElementById('scrollProgress');
@@ -538,17 +705,6 @@
       });
     },{threshold:0.15});
     els.forEach(el=>io.observe(el));
-  </script>
-
-  <!-- ✅ Analytics (single source) -->
-  <script src="assets/js/ga.js"></script>
-  <script>
-    AxentroAnalytics.init({
-      page: "index",
-      utm_campaign_default: "axentro",
-      enable_qr_scan: true,
-      enable_internal_utm_links: true
-    });
   </script>
 </body>
 </html>
