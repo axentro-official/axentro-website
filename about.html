@@ -15,7 +15,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    // هنخلي config بسيط، وبعدين نبعت page_view يدوي مع UTM
+    // ✅ page_view يدوي لضمان تثبيت UTM
     gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
   </script>
 
@@ -46,7 +46,7 @@
       background:linear-gradient(135deg,#020617,#020b2e);
       color:var(--text);
       overflow-x:hidden;
-      -webkit-text-size-adjust: 100%;
+      -webkit-text-size-adjust:100%;
       padding-top: env(safe-area-inset-top);
     }
 
@@ -74,10 +74,7 @@
       transition:opacity .7s ease, transform .7s ease;
       will-change: opacity, transform;
     }
-    .reveal.show{
-      opacity:1;
-      transform:translateY(0);
-    }
+    .reveal.show{opacity:1;transform:translateY(0)}
 
     /* HERO */
     .hero{
@@ -99,7 +96,7 @@
       margin:22px auto 0;
     }
 
-    /* NAV — نفس أسلوب الصفحة الرئيسية */
+    /* NAV */
     .navigation-links{
       position:absolute;
       top:20px;
@@ -110,6 +107,7 @@
       justify-content:center;
       gap:20px;
       z-index:10;
+      flex-wrap:wrap;
     }
     .navigation-links .nav-link{
       font-size:18px;
@@ -121,7 +119,7 @@
       padding:12px 16px;
       border-radius:50px;
       transition:color .3s, background-color .3s;
-      -webkit-tap-highlight-color: transparent;
+      -webkit-tap-highlight-color:transparent;
     }
     .navigation-links .nav-link:hover{
       color:#00d4ff;
@@ -133,7 +131,7 @@
       border-radius:50px;
     }
 
-    /* CTA BUTTON — نفس الصفحة الرئيسية */
+    /* CTA BUTTON */
     .cta-button{
       background-color:#003366;
       color:var(--secondary);
@@ -144,11 +142,19 @@
       cursor:pointer;
       transition:background-color .3s, transform .3s, box-shadow .3s;
       margin-top:25px;
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
       text-decoration:none;
       box-shadow:0 0 25px rgba(0,255,213,.35);
       border:none;
-      -webkit-tap-highlight-color: transparent;
+
+      /* ✅ iPhone click stability */
+      pointer-events:auto;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+      user-select:none;
     }
     .cta-button:hover{
       background-color:#002244;
@@ -160,7 +166,7 @@
       outline-offset:4px;
     }
 
-    /* Cards / Blocks */
+    /* Cards */
     .cards{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -209,14 +215,13 @@
       color:var(--muted);
     }
 
-    /* Small section title helper */
     .section-sub{
       max-width:860px;
       margin:12px auto 0;
       opacity:.95;
     }
 
-    /* CONTACT BUTTONS — نفس الصفحة الرئيسية */
+    /* CONTACT BUTTONS */
     .cta{
       display:flex;
       gap:18px;
@@ -229,11 +234,8 @@
     .btn-fb{background:var(--fb);color:#fff}
     .btn-ig{background:var(--ig);color:#fff}
 
-    /* FAQ (خفيف جدًا بدون JS) */
-    .faq{
-      margin-top:30px;
-      text-align:right;
-    }
+    /* FAQ */
+    .faq{margin-top:30px;text-align:right}
     .faq details{
       background:var(--card);
       border-radius:18px;
@@ -252,25 +254,12 @@
       gap:14px;
     }
     .faq summary::-webkit-details-marker{display:none}
-    .faq summary .q{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-    .faq summary .chev{
-      transition:transform .25s ease;
-      opacity:.9;
-    }
-    .faq details[open] summary .chev{
-      transform:rotate(180deg);
-    }
-    .faq .ans{
-      margin-top:12px;
-      color:var(--muted);
-      line-height:1.9;
-    }
+    .faq summary .q{display:inline-flex;align-items:center;gap:10px}
+    .faq summary .chev{transition:transform .25s ease;opacity:.9}
+    .faq details[open] summary .chev{transform:rotate(180deg)}
+    .faq .ans{margin-top:12px;color:var(--muted);line-height:1.9}
 
-    /* FOOTER — نفس الصفحة الرئيسية */
+    /* FOOTER */
     footer{
       padding:70px 20px;
       border-top:1px solid rgba(255,255,255,.1);
@@ -292,14 +281,22 @@
       gap:30px;
       justify-content:center;
       font-size:26px;
+      flex-wrap:wrap;
     }
-    .footer-icons a{
+    .footer-icons a,
+    .footer-icons button{
       transition:transform .25s ease, filter .25s ease;
       text-decoration:none;
       cursor:pointer;
-      -webkit-tap-highlight-color: transparent;
+      -webkit-tap-highlight-color:transparent;
+      background:transparent;
+      border:none;
+      padding:0;
+      color:inherit;
+      font:inherit;
     }
-    .footer-icons a:hover{
+    .footer-icons a:hover,
+    .footer-icons button:hover{
       transform:translateY(-4px) scale(1.12);
       filter:drop-shadow(0 0 10px currentColor);
     }
@@ -327,7 +324,12 @@
       transition:transform .25s ease;
       cursor:pointer;
       text-decoration:none;
-      -webkit-tap-highlight-color: transparent;
+
+      /* ✅ */
+      pointer-events:auto;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+      border:none;
     }
     .floating-wa:hover{transform:scale(1.08)}
     .floating-wa:focus{
@@ -335,7 +337,7 @@
       outline-offset:4px;
     }
 
-    /* ✅ إضافات */
+    /* ✅ Service highlight */
     #what-we-do .card{scroll-margin-top:120px;}
     #what-we-do .card:target{
       box-shadow:0 0 0 2px var(--secondary),0 0 35px rgba(0,255,213,.45);
@@ -352,10 +354,7 @@
       color:var(--muted);
       flex-wrap:wrap;
     }
-    .breadcrumb a{
-      color:var(--secondary);
-      text-decoration:none;
-    }
+    .breadcrumb a{color:var(--secondary);text-decoration:none}
     .breadcrumb a:hover{text-decoration:underline}
     .breadcrumb .sep{opacity:.7}
 
@@ -369,7 +368,7 @@
     }
     .back-services:hover{text-decoration:underline}
 
-    /* ✅ زر نسخ الرابط — يظهر فقط داخل الكارت المستهدف */
+    /* Copy link button */
     .copy-link{
       display:none;
       margin-top:14px;
@@ -383,17 +382,21 @@
       font-weight:800;
       font-size:14px;
       cursor:pointer;
-      -webkit-tap-highlight-color: transparent;
+
+      /* ✅ */
+      pointer-events:auto;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+      user-select:none;
     }
-    #what-we-do .card:target .copy-link{ display:inline-flex; }
-    .copy-link:hover{ background:rgba(0,255,213,.10); }
+    #what-we-do .card:target .copy-link{display:inline-flex}
+    .copy-link:hover{background:rgba(0,255,213,.10)}
     .copy-link:focus{
       outline:2px solid rgba(0,255,213,.45);
       outline-offset:4px;
     }
     .copy-link i{font-size:16px}
 
-    /* Mobile */
     @media (max-width:600px){
       .hero{padding-top:120px}
       .hero h1{font-size:34px}
@@ -401,11 +404,10 @@
       .cta-button{font-size:18px;padding:16px 26px}
     }
 
-    /* ✅ Reduce Motion */
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       .reveal{transition:none}
-      .cta-button,.card,.footer-icons a,.floating-wa,.copy-link{transition:none}
+      .cta-button,.card,.footer-icons a,.footer-icons button,.floating-wa,.copy-link{transition:none}
     }
   </style>
 </head>
@@ -431,7 +433,10 @@
         عملنا مبني على فهم نشاطك أولًا ثم تصميم حل عملي وسهل الاستخدام يعمل مع فريقك من اليوم الأول.
       </p>
 
-      <a class="cta-button" href="index.html#contact" onclick="trackClick('cta_consult','احجز استشارتك الآن','hero');">احجز استشارتك الآن</a>
+      <a class="cta-button" href="index.html#contact"
+         onclick="trackClick('cta_consult','احجز استشارتك الآن','hero');">
+        احجز استشارتك الآن
+      </a>
 
       <div class="stats">
         <div class="stat">
@@ -619,7 +624,10 @@
         </div>
       </div>
 
-      <a href="index.html#services" class="back-services" onclick="trackClick('nav_back_services','رجوع للخدمات','what_we_do');">← رجوع للخدمات</a>
+      <a href="index.html#services" class="back-services"
+         onclick="trackClick('nav_back_services','رجوع للخدمات','what_we_do');">
+        ← رجوع للخدمات
+      </a>
     </div>
   </section>
 
@@ -723,20 +731,27 @@
       </div>
 
       <div class="cta">
-        <a class="cta-button btn-wa" href="#" onclick="whatsapp('faq'); return false;">
+        <!-- ✅ WhatsApp as button -->
+        <button type="button" class="cta-button btn-wa" onclick="whatsapp('faq');">
           <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
-        </a>
+        </button>
 
-        <a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','تواصل معنا عبر البريد','faq');">
+        <a class="cta-button btn-mail"
+           href="mailto:axentroofficial@gmail.com"
+           onclick="trackClick('email','تواصل معنا عبر البريد','faq');">
           <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
         </a>
 
-        <a class="cta-button btn-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener"
+        <a class="cta-button btn-fb"
+           href="https://facebook.com/AxentroSamrtSolutions"
+           target="_blank" rel="noopener"
            onclick="trackClick('facebook','تابعنا على فيسبوك','faq');">
           <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
         </a>
 
-        <a class="cta-button btn-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener"
+        <a class="cta-button btn-ig"
+           href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
+           target="_blank" rel="noopener"
            onclick="trackClick('instagram','تابعنا على انستجرام','faq');">
           <i class="fab fa-instagram"></i> تابعنا على انستجرام
         </a>
@@ -750,16 +765,34 @@
     <div class="by">By Ahmed Hamouda</div>
 
     <div class="footer-icons">
-      <a class="icon-wa" href="#" onclick="whatsapp('footer'); return false;" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a class="icon-mail" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','Email Icon','footer');" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" onclick="trackClick('facebook','Facebook Icon','footer');" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" onclick="trackClick('instagram','Instagram Icon','footer');" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <!-- ✅ WhatsApp icon as button -->
+      <button class="icon-wa" onclick="whatsapp('footer');" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </button>
+
+      <a class="icon-mail" href="mailto:axentroofficial@gmail.com"
+         onclick="trackClick('email','Email Icon','footer');" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+
+      <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions"
+         target="_blank" rel="noopener"
+         onclick="trackClick('facebook','Facebook Icon','footer');" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+
+      <a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
+         target="_blank" rel="noopener"
+         onclick="trackClick('instagram','Instagram Icon','footer');" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
     </div>
   </footer>
 
-  <a class="floating-wa" href="#" onclick="whatsapp('floating'); return false;" aria-label="WhatsApp Floating">
+  <!-- ✅ Floating WhatsApp as button -->
+  <button type="button" class="floating-wa" onclick="whatsapp('floating');" aria-label="WhatsApp Floating">
     <i class="fab fa-whatsapp"></i>
-  </a>
+  </button>
 
   <script>
     /* ✅ UTM Handling (Business Card / QR Tracking) */
@@ -814,10 +847,11 @@
       };
     }
 
-    /* ✅ Send page_view manually with UTM */
+    /* ✅ Manual page_view */
     (function(){
       try{
         const utm = getUTMForEvent();
+
         gtag('event','page_view',{
           page_title: document.title,
           page_location: window.location.href,
@@ -848,10 +882,9 @@
       }catch(e){}
     }
 
-    /* ✅ WhatsApp = Conversion Event */
+    /* ✅ WhatsApp Conversion */
     function whatsapp(origin){
       const utm = getUTMForEvent();
-
       try{
         gtag('event', 'whatsapp_click', {
           origin: origin || '',
@@ -889,7 +922,7 @@
   </script>
 
   <script>
-    /* ✅ عنوان/Breadcrumb حسب الخدمة + تنظيف URL + Tracking */
+    /* ✅ Title/Breadcrumb by hash + keep UTM + clean only hash */
     (function(){
       const ids = new Set(['#excel','#web','#desktop','#inventory','#branding','#website']);
       const hash = window.location.hash;
@@ -918,6 +951,7 @@
             }catch(e){}
           }
 
+          // ✅ clean ONLY hash, keep query (UTM)
           setTimeout(() => {
             if(history && history.replaceState){
               history.replaceState(null, document.title, window.location.pathname + window.location.search);
@@ -927,19 +961,20 @@
       }
     })();
 
-    /* ✅ زر النسخ + Tracking */
+    /* ✅ Copy Service Link (works on GitHub Pages subpath) */
     async function copyServiceLink(id){
-      const url = window.location.origin + window.location.pathname.replace(/\/?$/, '') + '#' + id;
+      const url = new URL(window.location.href);
+      url.hash = id;
 
       try{
         if(navigator.clipboard && navigator.clipboard.writeText){
-          await navigator.clipboard.writeText(url);
+          await navigator.clipboard.writeText(url.toString());
           alert('تم نسخ رابط الخدمة ✅');
         }else{
-          prompt('انسخ الرابط:', url);
+          prompt('انسخ الرابط:', url.toString());
         }
       }catch(e){
-        prompt('انسخ الرابط:', url);
+        prompt('انسخ الرابط:', url.toString());
       }
 
       try{
