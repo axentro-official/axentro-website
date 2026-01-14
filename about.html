@@ -1,903 +1,956 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>Axentro | من نحن</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Axentro | من نحن</title>
 
-<!-- ✅ GA4 Tracking -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-CY6Y32C90K', { send_page_view: true });
-</script>
+  <!-- ✅ iPhone / Safari + Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#020617">
+  <meta name="format-detection" content="telephone=no">
 
-<!-- FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- ✅ GA4 Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // هنخلي config بسيط، وبعدين نبعت page_view يدوي مع UTM
+    gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
+  </script>
 
-<!-- ICONS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
-<style>
-:root{
---bg:#020617;
---card:rgba(255,255,255,.06);
---primary:#00d4ff;
---secondary:#00ffd5;
---text:#e5f6ff;
---muted:#94a3b8;
---wa:#25D366;
---mail:#EA4335;
---fb:#1877F2;
---ig:#E1306C;
-}
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-font-family:'Cairo',sans-serif;
-background:linear-gradient(135deg,#020617,#020b2e);
-color:var(--text);
-overflow-x:hidden;
-}
+  <style>
+    :root{
+      --bg:#020617;
+      --card:rgba(255,255,255,.06);
+      --primary:#00d4ff;
+      --secondary:#00ffd5;
+      --text:#e5f6ff;
+      --muted:#94a3b8;
+      --wa:#25D366;
+      --mail:#EA4335;
+      --fb:#1877F2;
+      --ig:#E1306C;
+    }
 
-section{padding:90px 20px;text-align:center}
-.container{max-width:1100px;margin:auto}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Cairo',sans-serif;
+      background:linear-gradient(135deg,#020617,#020b2e);
+      color:var(--text);
+      overflow-x:hidden;
+      -webkit-text-size-adjust: 100%;
+      padding-top: env(safe-area-inset-top);
+    }
 
-h1,h2,h3{color:var(--secondary)}
-p{color:var(--muted);line-height:1.9}
+    section{padding:90px 20px;text-align:center}
+    .container{max-width:1100px;margin:auto}
 
-/* PROGRESS BAR */
-.scroll-progress{
-position:fixed;
-top:0;
-left:0;
-height:3px;
-width:0%;
-background:var(--secondary);
-z-index:99999;
-}
+    h1,h2,h3{color:var(--secondary)}
+    p{color:var(--muted);line-height:1.9}
 
-/* REVEAL */
-.reveal{
-opacity:0;
-transform:translateY(16px);
-transition:opacity .7s ease, transform .7s ease;
-}
-.reveal.show{
-opacity:1;
-transform:translateY(0);
-}
+    /* PROGRESS BAR */
+    .scroll-progress{
+      position:fixed;
+      top:0;
+      left:0;
+      height:3px;
+      width:0%;
+      background:var(--secondary);
+      z-index:99999;
+    }
 
-/* HERO */
-.hero{
-position:relative;
-padding-top:110px;
-}
-.hero h1{
-font-size:44px;
-letter-spacing:1px;
-}
-.hero .tagline{
-margin-top:10px;
-letter-spacing:3px;
-font-size:13px;
-opacity:.85;
-}
-.hero p{
-max-width:860px;
-margin:22px auto 0;
-}
+    /* REVEAL */
+    .reveal{
+      opacity:0;
+      transform:translateY(16px);
+      transition:opacity .7s ease, transform .7s ease;
+      will-change: opacity, transform;
+    }
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
 
-/* NAV — نفس أسلوب الصفحة الرئيسية */
-.navigation-links{
-position:absolute;
-top:20px;
-left:10px;
-right:10px;
-display:flex;
-flex-direction:row;
-justify-content:center;
-gap:20px;
-z-index:10;
-}
-.navigation-links .nav-link{
-font-size:18px;
-color:#fff;
-text-decoration:none;
-display:inline-flex;
-align-items:center;
-gap:8px;
-padding:12px 16px;
-border-radius:50px;
-transition:color .3s, background-color .3s;
-}
-.navigation-links .nav-link:hover{
-color:#00d4ff;
-background-color:#003366;
-}
+    /* HERO */
+    .hero{
+      position:relative;
+      padding-top:110px;
+    }
+    .hero h1{
+      font-size:44px;
+      letter-spacing:1px;
+    }
+    .hero .tagline{
+      margin-top:10px;
+      letter-spacing:3px;
+      font-size:13px;
+      opacity:.85;
+    }
+    .hero p{
+      max-width:860px;
+      margin:22px auto 0;
+    }
 
-/* CTA BUTTON — نفس الصفحة الرئيسية */
-.cta-button{
-background-color:#003366;
-color:var(--secondary);
-padding:18px 45px;
-border-radius:50px;
-font-weight:800;
-font-size:20px;
-cursor:pointer;
-transition:background-color .3s, transform .3s, box-shadow .3s;
-margin-top:25px;
-display:inline-block;
-text-decoration:none;
-box-shadow:0 0 25px rgba(0,255,213,.35);
-border:none;
-}
-.cta-button:hover{
-background-color:#002244;
-transform:scale(1.05);
-box-shadow:0 0 40px rgba(0,255,213,.6);
-}
+    /* NAV — نفس أسلوب الصفحة الرئيسية */
+    .navigation-links{
+      position:absolute;
+      top:20px;
+      left:10px;
+      right:10px;
+      display:flex;
+      flex-direction:row;
+      justify-content:center;
+      gap:20px;
+      z-index:10;
+    }
+    .navigation-links .nav-link{
+      font-size:18px;
+      color:#fff;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 16px;
+      border-radius:50px;
+      transition:color .3s, background-color .3s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .navigation-links .nav-link:hover{
+      color:#00d4ff;
+      background-color:#003366;
+    }
+    .navigation-links .nav-link:focus{
+      outline:2px solid rgba(0,255,213,.45);
+      outline-offset:4px;
+      border-radius:50px;
+    }
 
-/* Cards / Blocks */
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:22px;
-margin-top:40px;
-text-align:right;
-}
-.card{
-background:var(--card);
-padding:28px 22px;
-border-radius:20px;
-transition:transform .35s ease, box-shadow .35s ease;
-}
-.card:hover{
-transform:translateY(-8px);
-box-shadow:0 25px 60px rgba(0,212,255,.18);
-}
-.card h3{margin-bottom:10px;font-size:18px}
-.card .icon{
-font-size:22px;
-color:var(--secondary);
-margin-bottom:10px;
-display:inline-flex;
-}
+    /* CTA BUTTON — نفس الصفحة الرئيسية */
+    .cta-button{
+      background-color:#003366;
+      color:var(--secondary);
+      padding:18px 45px;
+      border-radius:50px;
+      font-weight:800;
+      font-size:20px;
+      cursor:pointer;
+      transition:background-color .3s, transform .3s, box-shadow .3s;
+      margin-top:25px;
+      display:inline-block;
+      text-decoration:none;
+      box-shadow:0 0 25px rgba(0,255,213,.35);
+      border:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cta-button:hover{
+      background-color:#002244;
+      transform:scale(1.05);
+      box-shadow:0 0 40px rgba(0,255,213,.6);
+    }
+    .cta-button:focus{
+      outline:2px solid rgba(0,255,213,.45);
+      outline-offset:4px;
+    }
 
-/* Stats */
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:18px;
-margin-top:30px;
-text-align:center;
-}
-.stat{
-background:var(--card);
-border-radius:20px;
-padding:22px 18px;
-}
-.stat .num{
-font-size:30px;
-font-weight:800;
-color:var(--secondary);
-}
-.stat .label{
-margin-top:8px;
-color:var(--muted);
-}
+    /* Cards / Blocks */
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:22px;
+      margin-top:40px;
+      text-align:right;
+    }
+    .card{
+      background:var(--card);
+      padding:28px 22px;
+      border-radius:20px;
+      transition:transform .35s ease, box-shadow .35s ease;
+    }
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 25px 60px rgba(0,212,255,.18);
+    }
+    .card h3{margin-bottom:10px;font-size:18px}
+    .card .icon{
+      font-size:22px;
+      color:var(--secondary);
+      margin-bottom:10px;
+      display:inline-flex;
+    }
 
-/* Small section title helper */
-.section-sub{
-max-width:860px;
-margin:12px auto 0;
-opacity:.95;
-}
+    /* Stats */
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+      margin-top:30px;
+      text-align:center;
+    }
+    .stat{
+      background:var(--card);
+      border-radius:20px;
+      padding:22px 18px;
+    }
+    .stat .num{
+      font-size:30px;
+      font-weight:800;
+      color:var(--secondary);
+    }
+    .stat .label{
+      margin-top:8px;
+      color:var(--muted);
+    }
 
-/* CONTACT BUTTONS — نفس الصفحة الرئيسية */
-.cta{
-display:flex;
-gap:18px;
-justify-content:center;
-flex-wrap:wrap;
-margin-top:18px;
-}
-.btn-wa{background:var(--wa);color:#000}
-.btn-mail{background:var(--mail);color:#fff}
-.btn-fb{background:var(--fb);color:#fff}
-.btn-ig{background:var(--ig);color:#fff}
+    /* Small section title helper */
+    .section-sub{
+      max-width:860px;
+      margin:12px auto 0;
+      opacity:.95;
+    }
 
-/* FAQ (خفيف جدًا بدون JS) */
-.faq{
-margin-top:30px;
-text-align:right;
-}
-.faq details{
-background:var(--card);
-border-radius:18px;
-padding:18px 18px;
-margin-bottom:14px;
-border:1px solid rgba(255,255,255,.08);
-}
-.faq summary{
-cursor:pointer;
-list-style:none;
-font-weight:800;
-color:var(--secondary);
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:14px;
-}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary .q{
-display:inline-flex;
-align-items:center;
-gap:10px;
-}
-.faq summary .chev{
-transition:transform .25s ease;
-opacity:.9;
-}
-.faq details[open] summary .chev{
-transform:rotate(180deg);
-}
-.faq .ans{
-margin-top:12px;
-color:var(--muted);
-line-height:1.9;
-}
+    /* CONTACT BUTTONS — نفس الصفحة الرئيسية */
+    .cta{
+      display:flex;
+      gap:18px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .btn-wa{background:var(--wa);color:#000}
+    .btn-mail{background:var(--mail);color:#fff}
+    .btn-fb{background:var(--fb);color:#fff}
+    .btn-ig{background:var(--ig);color:#fff}
 
-/* FOOTER — نفس الصفحة الرئيسية */
-footer{
-padding:70px 20px;
-border-top:1px solid rgba(255,255,255,.1);
-text-align:center;
-}
-footer .main{
-font-weight:900;
-font-size:20px;
-color:#fff;
-}
-footer .by{
-margin-top:10px;
-font-size:16px;
-opacity:.9;
-}
-.footer-icons{
-margin-top:30px;
-display:flex;
-gap:30px;
-justify-content:center;
-font-size:26px;
-}
-.footer-icons a{
-transition:transform .25s ease, filter .25s ease;
-text-decoration:none;
-cursor:pointer;
-}
-.footer-icons a:hover{
-transform:translateY(-4px) scale(1.12);
-filter:drop-shadow(0 0 10px currentColor);
-}
-.icon-wa{color:var(--wa)}
-.icon-mail{color:var(--mail)}
-.icon-fb{color:var(--fb)}
-.icon-ig{color:var(--ig)}
+    /* FAQ (خفيف جدًا بدون JS) */
+    .faq{
+      margin-top:30px;
+      text-align:right;
+    }
+    .faq details{
+      background:var(--card);
+      border-radius:18px;
+      padding:18px 18px;
+      margin-bottom:14px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .faq summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight:800;
+      color:var(--secondary);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary .q{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .faq summary .chev{
+      transition:transform .25s ease;
+      opacity:.9;
+    }
+    .faq details[open] summary .chev{
+      transform:rotate(180deg);
+    }
+    .faq .ans{
+      margin-top:12px;
+      color:var(--muted);
+      line-height:1.9;
+    }
 
-/* FLOATING WHATSAPP */
-.floating-wa{
-position:fixed;
-bottom:25px;
-right:25px;
-width:66px;
-height:66px;
-border-radius:50%;
-background:var(--wa);
-color:#000;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-box-shadow:0 12px 30px rgba(0,0,0,.4);
-z-index:999;
-transition:transform .25s ease;
-cursor:pointer;
-text-decoration:none;
-}
-.floating-wa:hover{transform:scale(1.08)}
+    /* FOOTER — نفس الصفحة الرئيسية */
+    footer{
+      padding:70px 20px;
+      border-top:1px solid rgba(255,255,255,.1);
+      text-align:center;
+    }
+    footer .main{
+      font-weight:900;
+      font-size:20px;
+      color:#fff;
+    }
+    footer .by{
+      margin-top:10px;
+      font-size:16px;
+      opacity:.9;
+    }
+    .footer-icons{
+      margin-top:30px;
+      display:flex;
+      gap:30px;
+      justify-content:center;
+      font-size:26px;
+    }
+    .footer-icons a{
+      transition:transform .25s ease, filter .25s ease;
+      text-decoration:none;
+      cursor:pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .footer-icons a:hover{
+      transform:translateY(-4px) scale(1.12);
+      filter:drop-shadow(0 0 10px currentColor);
+    }
+    .icon-wa{color:var(--wa)}
+    .icon-mail{color:var(--mail)}
+    .icon-fb{color:var(--fb)}
+    .icon-ig{color:var(--ig)}
 
-/* ✅ إضافات */
-#what-we-do .card{scroll-margin-top:120px;}
-#what-we-do .card:target{
-box-shadow:0 0 0 2px var(--secondary),0 0 35px rgba(0,255,213,.45);
-animation:highlightFade 2.5s ease forwards;
-}
-@keyframes highlightFade{to{box-shadow:none}}
+    /* FLOATING WHATSAPP */
+    .floating-wa{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      width:66px;
+      height:66px;
+      border-radius:50%;
+      background:var(--wa);
+      color:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:30px;
+      box-shadow:0 12px 30px rgba(0,0,0,.4);
+      z-index:999;
+      transition:transform .25s ease;
+      cursor:pointer;
+      text-decoration:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .floating-wa:hover{transform:scale(1.08)}
+    .floating-wa:focus{
+      outline:2px solid rgba(0,255,213,.45);
+      outline-offset:4px;
+    }
 
-.breadcrumb{
-margin-top:10px;
-display:flex;
-justify-content:center;
-gap:10px;
-font-size:14px;
-color:var(--muted);
-flex-wrap:wrap;
-}
-.breadcrumb a{
-color:var(--secondary);
-text-decoration:none;
-}
-.breadcrumb a:hover{text-decoration:underline}
-.breadcrumb .sep{opacity:.7}
+    /* ✅ إضافات */
+    #what-we-do .card{scroll-margin-top:120px;}
+    #what-we-do .card:target{
+      box-shadow:0 0 0 2px var(--secondary),0 0 35px rgba(0,255,213,.45);
+      animation:highlightFade 2.5s ease forwards;
+    }
+    @keyframes highlightFade{to{box-shadow:none}}
 
-.back-services{
-display:inline-block;
-margin-top:18px;
-font-size:14px;
-font-weight:800;
-color:var(--secondary);
-text-decoration:none;
-}
-.back-services:hover{text-decoration:underline}
+    .breadcrumb{
+      margin-top:10px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      font-size:14px;
+      color:var(--muted);
+      flex-wrap:wrap;
+    }
+    .breadcrumb a{
+      color:var(--secondary);
+      text-decoration:none;
+    }
+    .breadcrumb a:hover{text-decoration:underline}
+    .breadcrumb .sep{opacity:.7}
 
-/* ✅ زر نسخ الرابط — يظهر فقط داخل الكارت المستهدف */
-.copy-link{
-display:none;
-margin-top:14px;
-align-items:center;
-gap:10px;
-border:1px solid rgba(0,255,213,.35);
-background:rgba(0,255,213,.06);
-color:var(--secondary);
-padding:10px 14px;
-border-radius:14px;
-font-weight:800;
-font-size:14px;
-cursor:pointer;
-}
-#what-we-do .card:target .copy-link{
-display:inline-flex;
-}
-.copy-link:hover{
-background:rgba(0,255,213,.10);
-}
-.copy-link i{font-size:16px}
+    .back-services{
+      display:inline-block;
+      margin-top:18px;
+      font-size:14px;
+      font-weight:800;
+      color:var(--secondary);
+      text-decoration:none;
+    }
+    .back-services:hover{text-decoration:underline}
 
-/* Mobile */
-@media (max-width:600px){
-.hero{padding-top:120px}
-.hero h1{font-size:34px}
-.navigation-links .nav-link{font-size:14px;padding:10px 12px}
-.cta-button{font-size:18px;padding:16px 26px}
-}
-</style>
+    /* ✅ زر نسخ الرابط — يظهر فقط داخل الكارت المستهدف */
+    .copy-link{
+      display:none;
+      margin-top:14px;
+      align-items:center;
+      gap:10px;
+      border:1px solid rgba(0,255,213,.35);
+      background:rgba(0,255,213,.06);
+      color:var(--secondary);
+      padding:10px 14px;
+      border-radius:14px;
+      font-weight:800;
+      font-size:14px;
+      cursor:pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #what-we-do .card:target .copy-link{ display:inline-flex; }
+    .copy-link:hover{ background:rgba(0,255,213,.10); }
+    .copy-link:focus{
+      outline:2px solid rgba(0,255,213,.45);
+      outline-offset:4px;
+    }
+    .copy-link i{font-size:16px}
+
+    /* Mobile */
+    @media (max-width:600px){
+      .hero{padding-top:120px}
+      .hero h1{font-size:34px}
+      .navigation-links .nav-link{font-size:14px;padding:10px 12px}
+      .cta-button{font-size:18px;padding:16px 26px}
+    }
+
+    /* ✅ Reduce Motion */
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .reveal{transition:none}
+      .cta-button,.card,.footer-icons a,.floating-wa,.copy-link{transition:none}
+    }
+  </style>
 </head>
 
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- HERO -->
-<section class="hero reveal show" id="top">
-
-  <div class="navigation-links">
-    <a href="index.html#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
-    <a href="index.html#services" class="nav-link"><i class="fas fa-cogs"></i> الخدمات</a>
-    <a href="about.html" class="nav-link"><i class="fas fa-circle-info"></i> من نحن</a>
-    <a href="index.html#contact" class="nav-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
-  </div>
-
-  <div class="container">
-    <h1>من نحن | About Axentro</h1>
-    <div class="tagline">BUILD • OPTIMIZE • SCALE</div>
-
-    <p>
-      Axentro نساعد أصحاب الأعمال على تحويل الفوضى اليومية إلى نظام واضح: متابعة، تقارير، إجراءات، وصلاحيات.
-      عملنا مبني على فهم نشاطك أولًا ثم تصميم حل عملي وسهل الاستخدام يعمل مع فريقك من اليوم الأول.
-    </p>
-
-    <a class="cta-button" href="index.html#contact" onclick="trackClick('cta_consult','احجز استشارتك الآن','hero');">احجز استشارتك الآن</a>
-
-    <div class="stats">
-      <div class="stat">
-        <div class="num">+6</div>
-        <div class="label">مسارات خدمات (Excel / Web / Desktop / Inventory / Branding / Social)</div>
-      </div>
-      <div class="stat">
-        <div class="num">7</div>
-        <div class="label">خطوات تسليم واضحة من التحليل حتى الدعم</div>
-      </div>
-      <div class="stat">
-        <div class="num">100%</div>
-        <div class="label">حل مُفصّل حسب نشاطك (مش قوالب جاهزة)</div>
-      </div>
-      <div class="stat">
-        <div class="num">24/7</div>
-        <div class="label">قنوات تواصل سريعة (واتساب / بريد)</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION: VALUES -->
-<section class="reveal" id="values">
-  <div class="container">
-    <h2>قيمنا الأساسية</h2>
-    <p class="section-sub">
-      3 مبادئ ثابتة في كل مشروع—تضمن الجودة والسرعة والوضوح من أول يوم حتى التسليم.
-    </p>
-
-    <div class="cards">
-      <div class="card">
-        <div class="icon"><i class="fas fa-award"></i></div>
-        <h3>Quality | الجودة</h3>
-        <p>
-          نهتم بالتفاصيل: هيكلة نظيفة، واجهة واضحة، اختبار، وتسليم منظم.
-          الهدف إن الحل يظل معك ويعمل بثبات.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="icon"><i class="fas fa-bolt"></i></div>
-        <h3>Speed | السرعة</h3>
-        <p>
-          نوصل للنتيجة بسرعة بدون ضياع للوقت: تقسيم مراحل، أول نسخة (MVP) ثم تطوير تدريجي حسب الأولويات.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="icon"><i class="fas fa-eye"></i></div>
-        <h3>Clarity | الوضوح</h3>
-        <p>
-          كل خطوة لها مخرجات واضحة: المطلوب، التصميم، التنفيذ، التدريب.
-          عشان تبقى فاهم أنت هتحصل علي إيه وأمتى.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION: VISION -->
-<section class="reveal">
-  <div class="container">
-    <h2>رؤيتنا</h2>
-    <p class="section-sub">
-      نبني حلول برمجية تخلّي الإدارة أسهل، البيانات أوضح، وقراراتك أسرع.
-      هدفنا مش “برنامج وخلاص”—هدفنا نظام يخدم عملك يوميًا ويكبر معاك.
-    </p>
-
-    <div class="cards">
-      <div class="card">
-        <div class="icon"><i class="fas fa-bullseye"></i></div>
-        <h3>هدف واضح</h3>
-        <p>نحدد معاك الهدف من النظام: متابعة مبيعات؟ مخزون؟ عملاء؟ تقارير إدارة؟ ثم نبني الحل حوله.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-diagram-project"></i></div>
-        <h3>عملية منظمة</h3>
-        <p>من التحليل للتنفيذ للتدريب—كل خطوة لها مخرجات واضحة، عشان تطلع بنتيجة ثابتة ومضمونة.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-shield-halved"></i></div>
-        <h3>ثقة وأمان</h3>
-        <p>نهتم بالنسخ الاحتياطية، صلاحيات المستخدمين، وحماية البيانات بما يناسب طبيعة نشاطك.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION: WHAT WE DO -->
-<section class="reveal" id="what-we-do">
-  <div class="container">
-
-    <h2 id="serviceTitle">ماذا نقدم</h2>
-
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="index.html">الرئيسية</a>
-      <span class="sep">›</span>
-      <a href="about.html">من نحن</a>
-      <span class="sep">›</span>
-      <span id="breadcrumbService">الخدمة</span>
-    </nav>
-
-    <p class="section-sub">
-      خدماتنا مصممة لتغطي احتياج الشركات الصغيرة والمتوسطة: من نظم Excel الذكية إلى تطبيقات ويب وموبايل،
-      وأنظمة سطح مكتب، مع حلول الهوية والسوشيال ومواقع عرض الأعمال.
-    </p>
-
-    <div class="cards">
-      <div class="card" id="excel">
-        <div class="icon"><i class="fas fa-table"></i></div>
-        <h3>Smart Excel Systems</h3>
-        <p>
-          نحول ملفات Excel من “جداول مشتتة” إلى نظام عمل واضح بقواعد (Validation) وصلاحيات واستمارات إدخال سهلة.
-          بنبني تقارير تلقائية ولوحات متابعة (Dashboards) تساعدك تشوف الأداء لحظة بلحظة وتقلل الأخطاء البشرية.
-          مناسب جدًا كبداية قوية لأي نشاط: مبيعات، متابعة عملاء، مصروفات، إنتاج، أو أرشفة—مع قابلية تطوير تدريجي حسب نمو شغلك.
-        </p>
-        <button class="copy-link" type="button" onclick="copyServiceLink('excel')">
-          <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
-        </button>
-      </div>
-
-      <div class="card" id="web">
-        <div class="icon"><i class="fas fa-globe"></i></div>
-        <h3>Web & Mobile Apps</h3>
-        <p>
-          نطوّر تطبيقات ويب وموبايل بتجربة مستخدم واضحة وواجهة احترافية تساعد العميل يوصل للخدمة بسرعة.
-          بنركز على السرعة، الأمان، وإدارة المستخدمين والصلاحيات، وربط النظام بالتقارير ولوحات التحكم.
-          سواء محتاج لوحة إدارة داخلية لشركتك أو تطبيق للعميل—بنصمم الحل بناءً على طريقة تشغيلك الفعلية، مش قوالب جاهزة.
-        </p>
-        <button class="copy-link" type="button" onclick="copyServiceLink('web')">
-          <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
-        </button>
-      </div>
-
-      <div class="card" id="desktop">
-        <div class="icon"><i class="fas fa-desktop"></i></div>
-        <h3>Desktop Software</h3>
-        <p>
-          بنبني أنظمة سطح مكتب قوية وسريعة مناسبة للبيئات اللي تحتاج أداء عالي أو تشغيل محلي بدون إنترنت.
-          مثالية للمخازن، نقاط البيع، أو الشركات اللي شغلها بيكون على أجهزة داخل المكان.
-          بنهتم بقاعدة البيانات، النسخ الاحتياطي، وسهولة الاستخدام—مع واجهة واضحة تقلل وقت التدريب وتسرّع التشغيل اليومي.
-        </p>
-        <button class="copy-link" type="button" onclick="copyServiceLink('desktop')">
-          <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
-        </button>
-      </div>
-
-      <div class="card" id="inventory">
-        <div class="icon"><i class="fas fa-chart-pie"></i></div>
-        <h3>Inventory & Sales</h3>
-        <p>
-          بنقدّم حلول متابعة مخزون ومبيعات تساعدك تمسك كل حركة: دخول/خروج أصناف، جرد، فواتير، عملاء، موردين، وتنبيهات نقص المخزون.
-          الهدف إنك تشتغل بأرقام واضحة: تقارير الأرباح، أفضل المنتجات، حركة البيع، وتكاليف التشغيل.
-          الحل بيتصمم حسب طبيعة نشاطك (تجزئة/جملة/خدمات) وبآلية تشغيل سهلة تخلّي فريقك يلتزم بالنظام من أول يوم.
-        </p>
-        <button class="copy-link" type="button" onclick="copyServiceLink('inventory')">
-          <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
-        </button>
-      </div>
-
-      <div class="card" id="branding">
-        <div class="icon"><i class="fas fa-bullhorn"></i></div>
-        <h3>Social Media & Design</h3>
-        <p>
-          بنبني لك شكل احترافي ثابت يوصل رسالة مشروعك بسرعة: لوجو وهوية بصرية (ألوان/خطوط/ستايل) + قوالب بوستات متناسقة.
-          الهدف إن أي حد يشوف صفحتك يحس بثقة واحترافية، ويقدر يميّز علامتك من أول نظرة.
-          كمان نقدر نجهّز مواد دعائية (Cover / Highlights / Templates) تساعدك تعمل محتوى بسرعة وبشكل ثابت بدون تشتت.
-        </p>
-        <button class="copy-link" type="button" onclick="copyServiceLink('branding')">
-          <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
-        </button>
-      </div>
-
-      <div class="card" id="website">
-        <div class="icon"><i class="fas fa-window-maximize"></i></div>
-        <h3>Websites for Business & Portfolio</h3>
-        <p>
-          بننشئ مواقع ويب سريعة وخفيفة لعرض خدماتك وأعمالك بشكل عصري—تخلي العميل يفهم أنت بتقدم إيه في ثواني.
-          الموقع بيكون مرتب: صفحة رئيسية + من نحن + خدمات + تواصل مباشر (واتساب/إيميل) مع تصميم متناسق يعكس قوة البراند.
-          الهدف مش “موقع وخلاص”—الهدف صفحة بيع (Landing) تُحوّل الزائر لعميل: رسالة واضحة، عرض خدمات مضبوط، وتجربة ممتازة على الموبايل.
-        </p>
-        <button class="copy-link" type="button" onclick="copyServiceLink('website')">
-          <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
-        </button>
-      </div>
+  <!-- HERO -->
+  <section class="hero reveal show" id="top">
+    <div class="navigation-links" aria-label="Navigation">
+      <a href="index.html#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="index.html#services" class="nav-link"><i class="fas fa-cogs"></i> الخدمات</a>
+      <a href="about.html" class="nav-link"><i class="fas fa-circle-info"></i> من نحن</a>
+      <a href="index.html#contact" class="nav-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
     </div>
 
-    <a href="index.html#services" class="back-services" onclick="trackClick('nav_back_services','رجوع للخدمات','what_we_do');">← رجوع للخدمات</a>
+    <div class="container">
+      <h1>من نحن | About Axentro</h1>
+      <div class="tagline">BUILD • OPTIMIZE • SCALE</div>
 
-  </div>
-</section>
+      <p>
+        Axentro نساعد أصحاب الأعمال على تحويل الفوضى اليومية إلى نظام واضح: متابعة، تقارير، إجراءات، وصلاحيات.
+        عملنا مبني على فهم نشاطك أولًا ثم تصميم حل عملي وسهل الاستخدام يعمل مع فريقك من اليوم الأول.
+      </p>
 
-<!-- SECTION: HOW WE WORK -->
-<section class="reveal">
-  <div class="container">
-    <h2>كيف نعمل معك</h2>
-    <p class="section-sub">أسلوب عمل “شركات” بخطوات واضحة—بدون تعقيد وبأسرع طريق للنتيجة.</p>
+      <a class="cta-button" href="index.html#contact" onclick="trackClick('cta_consult','احجز استشارتك الآن','hero');">احجز استشارتك الآن</a>
 
-    <div class="cards">
-      <div class="card">
-        <div class="icon"><i class="fas fa-comments"></i></div>
-        <h3>1) جلسة فهم الاحتياج</h3>
-        <p>نجمع تفاصيل عملك، المشاكل الحالية، ونحدد المطلوب بدقة (Features + تقارير + صلاحيات).</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-pen-ruler"></i></div>
-        <h3>2) تصميم الحل</h3>
-        <p>نقدّم تصور للواجهة وخط سير العمل قبل التنفيذ، عشان كل شيء يبقى واضح.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-code"></i></div>
-        <h3>3) تنفيذ واختبار</h3>
-        <p>تنفيذ احترافي + اختبار حالات واقعية + تحسينات بناءً على الملاحظات.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-chalkboard-user"></i></div>
-        <h3>4) تدريب وتسليم</h3>
-        <p>شرح للاستخدام + دليل مختصر + تسليم منظم يسهّل التشغيل.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-headset"></i></div>
-        <h3>5) دعم وتطوير</h3>
-        <p>متابعة بعد التسليم + تطوير مراحل جديدة لما مشروعك يكبر.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-chart-line"></i></div>
-        <h3>6) نمو مستمر</h3>
-        <p>تحديثات وتحسينات حسب أداء العمل والبيانات—لأفضل قرارات وأعلى كفاءة.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION: FAQ -->
-<section class="reveal" id="faq">
-  <div class="container">
-    <h2>أسئلة شائعة | FAQ</h2>
-    <p class="section-sub">إجابات سريعة على أهم الأسئلة قبل ما نبدأ.</p>
-
-    <div class="faq">
-      <details>
-        <summary>
-          <span class="q"><i class="fas fa-circle-question"></i> إزاي نبدأ مع بعض؟</span>
-          <i class="fas fa-chevron-down chev"></i>
-        </summary>
-        <div class="ans">
-          بنبدأ بجلسة قصيرة لفهم طبيعه عملك والهدف المطلوب، بعدها نحدد نطاق العمل والخطوات والمدة المتوقعة، ثم نبدأ التنفيذ على مراحل.
+      <div class="stats">
+        <div class="stat">
+          <div class="num">+6</div>
+          <div class="label">مسارات خدمات (Excel / Web / Desktop / Inventory / Branding / Social)</div>
         </div>
-      </details>
-
-      <details>
-        <summary>
-          <span class="q"><i class="fas fa-circle-question"></i> هل لازم يكون عندي متطلبات جاهزة؟</span>
-          <i class="fas fa-chevron-down chev"></i>
-        </summary>
-        <div class="ans">
-          لا. لو عندك فكرة عامة بس ده كفاية. هنساعدك نطلع المتطلبات بشكل واضح ونحوّلها لخطة تنفيذ واقعية.
+        <div class="stat">
+          <div class="num">7</div>
+          <div class="label">خطوات تسليم واضحة من التحليل حتى الدعم</div>
         </div>
-      </details>
-
-      <details>
-        <summary>
-          <span class="q"><i class="fas fa-circle-question"></i> لو أنا لسه في بداية المشروع، هل ينفع؟</span>
-          <i class="fas fa-chevron-down chev"></i>
-        </summary>
-        <div class="ans">
-          جدًا. بنركز على نسخة أولى (MVP) تحقق الهدف الأساسي بسرعة، وبعدها نطوّر تدريجيًا حسب نمو مشروعك.
+        <div class="stat">
+          <div class="num">100%</div>
+          <div class="label">حل مُفصّل حسب نشاطك (مش قوالب جاهزة)</div>
         </div>
-      </details>
-
-      <details>
-        <summary>
-          <span class="q"><i class="fas fa-circle-question"></i> هل في دعم بعد التسليم؟</span>
-          <i class="fas fa-chevron-down chev"></i>
-        </summary>
-        <div class="ans">
-          نعم، بنوفر دعم وتعديلات حسب الاتفاق، مع إمكانية إضافة تقارير وخصائص جديدة مع الوقت.
+        <div class="stat">
+          <div class="num">24/7</div>
+          <div class="label">قنوات تواصل سريعة (واتساب / بريد)</div>
         </div>
-      </details>
-
-      <details>
-        <summary>
-          <span class="q"><i class="fas fa-circle-question"></i> ما الفرق بين Excel System وWeb App؟</span>
-          <i class="fas fa-chevron-down chev"></i>
-        </summary>
-        <div class="ans">
-          Excel System مناسب كبداية سريعة داخل الشركة، بينما Web App مناسب لو عايز وصول من أي مكان، مستخدمين متعددين، وصلاحيات أوسع وتوسع أكبر.
-        </div>
-      </details>
+      </div>
     </div>
+  </section>
 
-    <div class="cta">
-      <a class="cta-button btn-wa" href="#" onclick="whatsapp('faq'); return false;">
-        <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
-      </a>
+  <!-- SECTION: VALUES -->
+  <section class="reveal" id="values">
+    <div class="container">
+      <h2>قيمنا الأساسية</h2>
+      <p class="section-sub">
+        3 مبادئ ثابتة في كل مشروع—تضمن الجودة والسرعة والوضوح من أول يوم حتى التسليم.
+      </p>
 
-      <a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','تواصل معنا عبر البريد','faq');">
-        <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
-      </a>
+      <div class="cards">
+        <div class="card">
+          <div class="icon"><i class="fas fa-award"></i></div>
+          <h3>Quality | الجودة</h3>
+          <p>
+            نهتم بالتفاصيل: هيكلة نظيفة، واجهة واضحة، اختبار، وتسليم منظم.
+            الهدف إن الحل يظل معك ويعمل بثبات.
+          </p>
+        </div>
 
-      <a class="cta-button btn-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" onclick="trackClick('facebook','تابعنا على فيسبوك','faq');">
-        <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
-      </a>
+        <div class="card">
+          <div class="icon"><i class="fas fa-bolt"></i></div>
+          <h3>Speed | السرعة</h3>
+          <p>
+            نوصل للنتيجة بسرعة بدون ضياع للوقت: تقسيم مراحل، أول نسخة (MVP) ثم تطوير تدريجي حسب الأولويات.
+          </p>
+        </div>
 
-      <a class="cta-button btn-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" onclick="trackClick('instagram','تابعنا على انستجرام','faq');">
-        <i class="fab fa-instagram"></i> تابعنا على انستجرام
-      </a>
+        <div class="card">
+          <div class="icon"><i class="fas fa-eye"></i></div>
+          <h3>Clarity | الوضوح</h3>
+          <p>
+            كل خطوة لها مخرجات واضحة: المطلوب، التصميم، التنفيذ، التدريب.
+            عشان تبقى فاهم أنت هتحصل علي إيه وأمتى.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-<div class="main">© 2024 Axentro – All Rights Reserved</div>
-<div class="by">By Ahmed Hamouda</div>
+  <!-- SECTION: VISION -->
+  <section class="reveal">
+    <div class="container">
+      <h2>رؤيتنا</h2>
+      <p class="section-sub">
+        نبني حلول برمجية تخلّي الإدارة أسهل، البيانات أوضح، وقراراتك أسرع.
+        هدفنا مش “برنامج وخلاص”—هدفنا نظام يخدم عملك يوميًا ويكبر معاك.
+      </p>
 
-<div class="footer-icons">
-<a class="icon-wa" href="#" onclick="whatsapp('footer'); return false;" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-<a class="icon-mail" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','Email Icon','footer');" aria-label="Email"><i class="fas fa-envelope"></i></a>
-<a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" onclick="trackClick('facebook','Facebook Icon','footer');" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-<a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" onclick="trackClick('instagram','Instagram Icon','footer');" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-</div>
-</footer>
+      <div class="cards">
+        <div class="card">
+          <div class="icon"><i class="fas fa-bullseye"></i></div>
+          <h3>هدف واضح</h3>
+          <p>نحدد معاك الهدف من النظام: متابعة مبيعات؟ مخزون؟ عملاء؟ تقارير إدارة؟ ثم نبني الحل حوله.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-diagram-project"></i></div>
+          <h3>عملية منظمة</h3>
+          <p>من التحليل للتنفيذ للتدريب—كل خطوة لها مخرجات واضحة، عشان تطلع بنتيجة ثابتة ومضمونة.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-shield-halved"></i></div>
+          <h3>ثقة وأمان</h3>
+          <p>نهتم بالنسخ الاحتياطية، صلاحيات المستخدمين، وحماية البيانات بما يناسب طبيعة نشاطك.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<a class="floating-wa" href="#" onclick="whatsapp('floating'); return false;" aria-label="WhatsApp Floating">
-<i class="fab fa-whatsapp"></i>
-</a>
+  <!-- SECTION: WHAT WE DO -->
+  <section class="reveal" id="what-we-do">
+    <div class="container">
+      <h2 id="serviceTitle">ماذا نقدم</h2>
 
-<script>
-/* ✅ UTM Handling (Business Card / QR Tracking) */
-const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">الرئيسية</a>
+        <span class="sep">›</span>
+        <a href="about.html">من نحن</a>
+        <span class="sep">›</span>
+        <span id="breadcrumbService">الخدمة</span>
+      </nav>
 
-function getQueryParams(){
-  const p = new URLSearchParams(window.location.search);
-  const obj = {};
-  UTM_KEYS.forEach(k=>{
-    const v = p.get(k);
-    if(v) obj[k] = v;
-  });
-  return obj;
-}
+      <p class="section-sub">
+        خدماتنا مصممة لتغطي احتياج الشركات الصغيرة والمتوسطة: من نظم Excel الذكية إلى تطبيقات ويب وموبايل،
+        وأنظمة سطح مكتب، مع حلول الهوية والسوشيال ومواقع عرض الأعمال.
+      </p>
 
-function loadUTM(){
-  try{
-    const saved = localStorage.getItem('ax_utm');
-    return saved ? JSON.parse(saved) : {};
-  }catch(e){
-    return {};
-  }
-}
+      <div class="cards">
+        <div class="card" id="excel">
+          <div class="icon"><i class="fas fa-table"></i></div>
+          <h3>Smart Excel Systems</h3>
+          <p>
+            نحول ملفات Excel من “جداول مشتتة” إلى نظام عمل واضح بقواعد (Validation) وصلاحيات واستمارات إدخال سهلة.
+            بنبني تقارير تلقائية ولوحات متابعة (Dashboards) تساعدك تشوف الأداء لحظة بلحظة وتقلل الأخطاء البشرية.
+            مناسب جدًا كبداية قوية لأي نشاط: مبيعات، متابعة عملاء، مصروفات، إنتاج، أو أرشفة—مع قابلية تطوير تدريجي حسب نمو شغلك.
+          </p>
+          <button class="copy-link" type="button" onclick="copyServiceLink('excel')">
+            <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
+          </button>
+        </div>
 
-function saveUTM(utmObj){
-  try{
-    localStorage.setItem('ax_utm', JSON.stringify(utmObj || {}));
-  }catch(e){}
-}
+        <div class="card" id="web">
+          <div class="icon"><i class="fas fa-globe"></i></div>
+          <h3>Web & Mobile Apps</h3>
+          <p>
+            نطوّر تطبيقات ويب وموبايل بتجربة مستخدم واضحة وواجهة احترافية تساعد العميل يوصل للخدمة بسرعة.
+            بنركز على السرعة، الأمان، وإدارة المستخدمين والصلاحيات، وربط النظام بالتقارير ولوحات التحكم.
+            سواء محتاج لوحة إدارة داخلية لشركتك أو تطبيق للعميل—بنصمم الحل بناءً على طريقة تشغيلك الفعلية، مش قوالب جاهزة.
+          </p>
+          <button class="copy-link" type="button" onclick="copyServiceLink('web')">
+            <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
+          </button>
+        </div>
 
-(function(){
-  const current = getQueryParams();
-  if(Object.keys(current).length){
-    const merged = { ...loadUTM(), ...current, last_seen: new Date().toISOString() };
-    saveUTM(merged);
-  }
-})();
+        <div class="card" id="desktop">
+          <div class="icon"><i class="fas fa-desktop"></i></div>
+          <h3>Desktop Software</h3>
+          <p>
+            بنبني أنظمة سطح مكتب قوية وسريعة مناسبة للبيئات اللي تحتاج أداء عالي أو تشغيل محلي بدون إنترنت.
+            مثالية للمخازن، نقاط البيع، أو الشركات اللي شغلها بيكون على أجهزة داخل المكان.
+            بنهتم بقاعدة البيانات، النسخ الاحتياطي، وسهولة الاستخدام—مع واجهة واضحة تقلل وقت التدريب وتسرّع التشغيل اليومي.
+          </p>
+          <button class="copy-link" type="button" onclick="copyServiceLink('desktop')">
+            <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
+          </button>
+        </div>
 
-function getUTMForEvent(){
-  const utm = loadUTM() || {};
-  return {
-    utm_source: utm.utm_source || '(none)',
-    utm_medium: utm.utm_medium || '(none)',
-    utm_campaign: utm.utm_campaign || '(none)',
-    utm_content: utm.utm_content || '',
-    utm_term: utm.utm_term || ''
-  };
-}
+        <div class="card" id="inventory">
+          <div class="icon"><i class="fas fa-chart-pie"></i></div>
+          <h3>Inventory & Sales</h3>
+          <p>
+            بنقدّم حلول متابعة مخزون ومبيعات تساعدك تمسك كل حركة: دخول/خروج أصناف، جرد، فواتير، عملاء، موردين، وتنبيهات نقص المخزون.
+            الهدف إنك تشتغل بأرقام واضحة: تقارير الأرباح، أفضل المنتجات، حركة البيع، وتكاليف التشغيل.
+            الحل بيتصمم حسب طبيعة نشاطك (تجزئة/جملة/خدمات) وبآلية تشغيل سهلة تخلّي فريقك يلتزم بالنظام من أول يوم.
+          </p>
+          <button class="copy-link" type="button" onclick="copyServiceLink('inventory')">
+            <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
+          </button>
+        </div>
 
-/* ✅ Generic click tracking */
-function trackClick(method, label, section){
-  try{
-    const utm = getUTMForEvent();
-    gtag('event', 'contact_click', {
-      method: method,
-      label: label,
-      section: section || '',
-      page: 'about',
-      ...utm
-    });
-  }catch(e){}
-}
+        <div class="card" id="branding">
+          <div class="icon"><i class="fas fa-bullhorn"></i></div>
+          <h3>Social Media & Design</h3>
+          <p>
+            بنبني لك شكل احترافي ثابت يوصل رسالة مشروعك بسرعة: لوجو وهوية بصرية (ألوان/خطوط/ستايل) + قوالب بوستات متناسقة.
+            الهدف إن أي حد يشوف صفحتك يحس بثقة واحترافية، ويقدر يميّز علامتك من أول نظرة.
+            كمان نقدر نجهّز مواد دعائية (Cover / Highlights / Templates) تساعدك تعمل محتوى بسرعة وبشكل ثابت بدون تشتت.
+          </p>
+          <button class="copy-link" type="button" onclick="copyServiceLink('branding')">
+            <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
+          </button>
+        </div>
 
-/* ✅ WhatsApp = Conversion Event */
-function whatsapp(origin){
-  const utm = getUTMForEvent();
+        <div class="card" id="website">
+          <div class="icon"><i class="fas fa-window-maximize"></i></div>
+          <h3>Websites for Business & Portfolio</h3>
+          <p>
+            بننشئ مواقع ويب سريعة وخفيفة لعرض خدماتك وأعمالك بشكل عصري—تخلي العميل يفهم أنت بتقدم إيه في ثواني.
+            الموقع بيكون مرتب: صفحة رئيسية + من نحن + خدمات + تواصل مباشر (واتساب/إيميل) مع تصميم متناسق يعكس قوة البراند.
+            الهدف مش “موقع وخلاص”—الهدف صفحة بيع (Landing) تُحوّل الزائر لعميل: رسالة واضحة، عرض خدمات مضبوط، وتجربة ممتازة على الموبايل.
+          </p>
+          <button class="copy-link" type="button" onclick="copyServiceLink('website')">
+            <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
+          </button>
+        </div>
+      </div>
 
-  try{
-    gtag('event', 'whatsapp_click', {
-      origin: origin || '',
-      page: 'about',
-      ...utm
-    });
-  }catch(e){}
+      <a href="index.html#services" class="back-services" onclick="trackClick('nav_back_services','رجوع للخدمات','what_we_do');">← رجوع للخدمات</a>
+    </div>
+  </section>
 
-  const msg = `مرحبًا فريق Axentro،
+  <!-- SECTION: HOW WE WORK -->
+  <section class="reveal">
+    <div class="container">
+      <h2>كيف نعمل معك</h2>
+      <p class="section-sub">أسلوب عمل “شركات” بخطوات واضحة—بدون تعقيد وبأسرع طريق للنتيجة.</p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon"><i class="fas fa-comments"></i></div>
+          <h3>1) جلسة فهم الاحتياج</h3>
+          <p>نجمع تفاصيل عملك، المشاكل الحالية، ونحدد المطلوب بدقة (Features + تقارير + صلاحيات).</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-pen-ruler"></i></div>
+          <h3>2) تصميم الحل</h3>
+          <p>نقدّم تصور للواجهة وخط سير العمل قبل التنفيذ، عشان كل شيء يبقى واضح.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-code"></i></div>
+          <h3>3) تنفيذ واختبار</h3>
+          <p>تنفيذ احترافي + اختبار حالات واقعية + تحسينات بناءً على الملاحظات.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-chalkboard-user"></i></div>
+          <h3>4) تدريب وتسليم</h3>
+          <p>شرح للاستخدام + دليل مختصر + تسليم منظم يسهّل التشغيل.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-headset"></i></div>
+          <h3>5) دعم وتطوير</h3>
+          <p>متابعة بعد التسليم + تطوير مراحل جديدة لما مشروعك يكبر.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-chart-line"></i></div>
+          <h3>6) نمو مستمر</h3>
+          <p>تحديثات وتحسينات حسب أداء العمل والبيانات—لأفضل قرارات وأعلى كفاءة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: FAQ -->
+  <section class="reveal" id="faq">
+    <div class="container">
+      <h2>أسئلة شائعة | FAQ</h2>
+      <p class="section-sub">إجابات سريعة على أهم الأسئلة قبل ما نبدأ.</p>
+
+      <div class="faq">
+        <details>
+          <summary>
+            <span class="q"><i class="fas fa-circle-question"></i> إزاي نبدأ مع بعض؟</span>
+            <i class="fas fa-chevron-down chev"></i>
+          </summary>
+          <div class="ans">
+            بنبدأ بجلسة قصيرة لفهم طبيعه عملك والهدف المطلوب، بعدها نحدد نطاق العمل والخطوات والمدة المتوقعة، ثم نبدأ التنفيذ على مراحل.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="q"><i class="fas fa-circle-question"></i> هل لازم يكون عندي متطلبات جاهزة؟</span>
+            <i class="fas fa-chevron-down chev"></i>
+          </summary>
+          <div class="ans">
+            لا. لو عندك فكرة عامة بس ده كفاية. هنساعدك نطلع المتطلبات بشكل واضح ونحوّلها لخطة تنفيذ واقعية.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="q"><i class="fas fa-circle-question"></i> لو أنا لسه في بداية المشروع، هل ينفع؟</span>
+            <i class="fas fa-chevron-down chev"></i>
+          </summary>
+          <div class="ans">
+            جدًا. بنركز على نسخة أولى (MVP) تحقق الهدف الأساسي بسرعة، وبعدها نطوّر تدريجيًا حسب نمو مشروعك.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="q"><i class="fas fa-circle-question"></i> هل في دعم بعد التسليم؟</span>
+            <i class="fas fa-chevron-down chev"></i>
+          </summary>
+          <div class="ans">
+            نعم، بنوفر دعم وتعديلات حسب الاتفاق، مع إمكانية إضافة تقارير وخصائص جديدة مع الوقت.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="q"><i class="fas fa-circle-question"></i> ما الفرق بين Excel System وWeb App؟</span>
+            <i class="fas fa-chevron-down chev"></i>
+          </summary>
+          <div class="ans">
+            Excel System مناسب كبداية سريعة داخل الشركة، بينما Web App مناسب لو عايز وصول من أي مكان، مستخدمين متعددين، وصلاحيات أوسع وتوسع أكبر.
+          </div>
+        </details>
+      </div>
+
+      <div class="cta">
+        <a class="cta-button btn-wa" href="#" onclick="whatsapp('faq'); return false;">
+          <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+        </a>
+
+        <a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','تواصل معنا عبر البريد','faq');">
+          <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
+        </a>
+
+        <a class="cta-button btn-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener"
+           onclick="trackClick('facebook','تابعنا على فيسبوك','faq');">
+          <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
+        </a>
+
+        <a class="cta-button btn-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener"
+           onclick="trackClick('instagram','تابعنا على انستجرام','faq');">
+          <i class="fab fa-instagram"></i> تابعنا على انستجرام
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="main">© 2024 Axentro – All Rights Reserved</div>
+    <div class="by">By Ahmed Hamouda</div>
+
+    <div class="footer-icons">
+      <a class="icon-wa" href="#" onclick="whatsapp('footer'); return false;" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a class="icon-mail" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','Email Icon','footer');" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" onclick="trackClick('facebook','Facebook Icon','footer');" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" onclick="trackClick('instagram','Instagram Icon','footer');" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+
+  <a class="floating-wa" href="#" onclick="whatsapp('floating'); return false;" aria-label="WhatsApp Floating">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    /* ✅ UTM Handling (Business Card / QR Tracking) */
+    const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','src'];
+
+    function getQueryParams(){
+      const p = new URLSearchParams(window.location.search);
+      const obj = {};
+      UTM_KEYS.forEach(k=>{
+        const v = p.get(k);
+        if(v) obj[k] = v;
+      });
+      return obj;
+    }
+
+    function safeRead(key){
+      try{ return localStorage.getItem(key); }catch(e){ return null; }
+    }
+    function safeWrite(key,val){
+      try{ localStorage.setItem(key,val); }catch(e){}
+    }
+
+    function loadUTM(){
+      try{
+        const saved = safeRead('ax_utm');
+        return saved ? JSON.parse(saved) : {};
+      }catch(e){
+        return {};
+      }
+    }
+
+    function saveUTM(utmObj){
+      safeWrite('ax_utm', JSON.stringify(utmObj || {}));
+    }
+
+    (function(){
+      const current = getQueryParams();
+      if(Object.keys(current).length){
+        const merged = { ...loadUTM(), ...current, last_seen: new Date().toISOString() };
+        saveUTM(merged);
+      }
+    })();
+
+    function getUTMForEvent(){
+      const utm = loadUTM() || {};
+      return {
+        utm_source: utm.utm_source || utm.src || '(none)',
+        utm_medium: utm.utm_medium || (utm.src ? 'qr' : '(none)'),
+        utm_campaign: utm.utm_campaign || 'axentro',
+        utm_content: utm.utm_content || '',
+        utm_term: utm.utm_term || ''
+      };
+    }
+
+    /* ✅ Send page_view manually with UTM */
+    (function(){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event','page_view',{
+          page_title: document.title,
+          page_location: window.location.href,
+          page_path: window.location.pathname,
+          page: 'about',
+          ...utm
+        });
+
+        const p = new URLSearchParams(window.location.search);
+        const src = p.get('src');
+        if(src){
+          gtag('event','qr_scan',{ source: src, page: 'about', ...utm });
+        }
+      }catch(e){}
+    })();
+
+    /* ✅ Generic click tracking */
+    function trackClick(method, label, section){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event', 'contact_click', {
+          method: method,
+          label: label,
+          section: section || '',
+          page: 'about',
+          ...utm
+        });
+      }catch(e){}
+    }
+
+    /* ✅ WhatsApp = Conversion Event */
+    function whatsapp(origin){
+      const utm = getUTMForEvent();
+
+      try{
+        gtag('event', 'whatsapp_click', {
+          origin: origin || '',
+          page: 'about',
+          ...utm
+        });
+      }catch(e){}
+
+      const msg = `مرحبًا فريق Axentro،
 أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
 بانتظار تواصلكم، شكرًا.`;
 
-  window.open(
-    "https://wa.me/201146476993?text=" + encodeURIComponent(msg),
-    "_blank"
-  );
-}
-</script>
+      const url = "https://wa.me/201146476993?text=" + encodeURIComponent(msg);
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  </script>
 
-<script>
-/* Progress bar */
-const bar = document.getElementById('scrollProgress');
-window.addEventListener('scroll', () => {
-  const h = document.documentElement;
-  const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-  bar.style.width = p + '%';
-});
+  <script>
+    /* Progress bar */
+    const bar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      bar.style.width = p + '%';
+    }, { passive: true });
 
-/* Reveal */
-const els = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('show');
-  });
-},{threshold:0.15});
-els.forEach(el=>io.observe(el));
-</script>
+    /* Reveal */
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('show');
+      });
+    },{threshold:0.15});
+    els.forEach(el=>io.observe(el));
+  </script>
 
-<script>
-/* ✅ عنوان/Breadcrumb حسب الخدمة + تنظيف URL + Tracking */
-(function(){
-  const ids = new Set(['#excel','#web','#desktop','#inventory','#branding','#website']);
-  const hash = window.location.hash;
+  <script>
+    /* ✅ عنوان/Breadcrumb حسب الخدمة + تنظيف URL + Tracking */
+    (function(){
+      const ids = new Set(['#excel','#web','#desktop','#inventory','#branding','#website']);
+      const hash = window.location.hash;
 
-  if(hash && ids.has(hash)){
-    const card = document.querySelector(hash);
-    if(card){
-      const titleEl = card.querySelector('h3');
-      const title = titleEl ? titleEl.textContent.trim() : '';
+      if(hash && ids.has(hash)){
+        const card = document.querySelector(hash);
+        if(card){
+          const titleEl = card.querySelector('h3');
+          const title = titleEl ? titleEl.textContent.trim() : '';
 
-      const bc = document.getElementById('breadcrumbService');
-      const st = document.getElementById('serviceTitle');
+          const bc = document.getElementById('breadcrumbService');
+          const st = document.getElementById('serviceTitle');
 
-      if(title){
-        if(bc) bc.textContent = title;
-        if(st) st.textContent = 'تفاصيل الخدمة: ' + title;
+          if(title){
+            if(bc) bc.textContent = title;
+            if(st) st.textContent = 'تفاصيل الخدمة: ' + title;
 
-        try{
-          const utm = getUTMForEvent();
-          gtag('event','service_view',{
-            service_id: hash.replace('#',''),
-            service_name: title,
-            page: 'about',
-            ...utm
-          });
-        }catch(e){}
+            try{
+              const utm = getUTMForEvent();
+              gtag('event','service_view',{
+                service_id: hash.replace('#',''),
+                service_name: title,
+                page: 'about',
+                ...utm
+              });
+            }catch(e){}
+          }
+
+          setTimeout(() => {
+            if(history && history.replaceState){
+              history.replaceState(null, document.title, window.location.pathname + window.location.search);
+            }
+          }, 2900);
+        }
+      }
+    })();
+
+    /* ✅ زر النسخ + Tracking */
+    async function copyServiceLink(id){
+      const url = window.location.origin + window.location.pathname.replace(/\/?$/, '') + '#' + id;
+
+      try{
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          await navigator.clipboard.writeText(url);
+          alert('تم نسخ رابط الخدمة ✅');
+        }else{
+          prompt('انسخ الرابط:', url);
+        }
+      }catch(e){
+        prompt('انسخ الرابط:', url);
       }
 
-      setTimeout(() => {
-        if(history && history.replaceState){
-          history.replaceState(null, document.title, window.location.pathname + window.location.search);
-        }
-      }, 2900);
+      try{
+        const utm = getUTMForEvent();
+        gtag('event','copy_service_link',{
+          service_id: id,
+          page: 'about',
+          ...utm
+        });
+      }catch(e){}
     }
-  }
-})();
-
-/* ✅ زر النسخ + Tracking */
-async function copyServiceLink(id){
-  const url = window.location.origin + window.location.pathname.replace(/\/?$/, '') + '#' + id;
-
-  try{
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      await navigator.clipboard.writeText(url);
-      alert('تم نسخ رابط الخدمة ✅');
-    }else{
-      prompt('انسخ الرابط:', url);
-    }
-  }catch(e){
-    prompt('انسخ الرابط:', url);
-  }
-
-  try{
-    const utm = getUTMForEvent();
-    gtag('event','copy_service_link',{
-      service_id: id,
-      page: 'about',
-      ...utm
-    });
-  }catch(e){}
-}
-</script>
-
+  </script>
 </body>
 </html>
