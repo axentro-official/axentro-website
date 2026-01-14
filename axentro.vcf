@@ -1,14 +1,14 @@
 BEGIN:VCARD
 VERSION:3.0
-KIND:org
+KIND:organization
+X-ABShowAs:COMPANY
 
 FN:Axentro
 ORG:Axentro
 TITLE:Smart Software & Digital Solutions
 
 TEL;TYPE=WORK,VOICE:+201146476993
-EMAIL;TYPE=WORK:axentroofficial@gmail.com
-
+EMAIL;TYPE=WORK,INTERNET:axentroofficial@gmail.com
 URL;TYPE=WORK:https://axentro-official.github.io/axentro-website/
 
 item1.URL:https://wa.me/201146476993
