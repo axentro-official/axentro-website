@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Axentro | روابط التواصل</title>
+  <meta name="description" content="كل وسائل التواصل الخاصة بـ Axentro في صفحة واحدة."/>
+  <style>
+    :root{
+      --bg:#0b1220; --card:#0f1b33; --text:#ffffff; --muted:#b9c3d6;
+      --gold:#d6b15c; --stroke:rgba(255,255,255,.12);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui, -apple-system, "Cairo", Arial;
+      background: radial-gradient(900px 600px at 20% 10%, rgba(214,177,92,.18), transparent 55%),
+                  radial-gradient(900px 600px at 80% 90%, rgba(255,255,255,.06), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:flex; align-items:center; justify-content:center;
+      padding:24px;
+    }
+    .wrap{width:100%; max-width:520px}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), transparent 40%), var(--card);
+      border:1px solid var(--stroke);
+      border-radius:22px;
+      padding:22px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; margin-bottom:14px;
+    }
+    .logo{
+      width:46px; height:46px; border-radius:14px;
+      border:1px solid var(--stroke);
+      display:grid; place-items:center;
+      color:var(--gold); font-weight:800; letter-spacing:1px;
+      background:rgba(0,0,0,.18);
+    }
+    h1{margin:0; font-size:22px; letter-spacing:.3px}
+    .sub{margin:4px 0 0; color:var(--muted); font-size:14px; line-height:1.6}
+    .btns{margin-top:18px; display:flex; flex-direction:column; gap:10px}
+    a.btn{
+      text-decoration:none; color:var(--text);
+      border:1px solid var(--stroke);
+      border-radius:16px;
+      padding:14px 14px;
+      display:flex; align-items:center; justify-content:space-between;
+      background:rgba(255,255,255,.04);
+      transition:.2s ease;
+    }
+    a.btn:hover{transform: translateY(-1px); border-color: rgba(214,177,92,.55)}
+    .left{display:flex; gap:12px; align-items:center}
+    .ic{
+      width:38px; height:38px; border-radius:14px;
+      display:grid; place-items:center;
+      background:rgba(214,177,92,.14);
+      border:1px solid rgba(214,177,92,.25);
+      color:var(--gold); font-weight:700;
+    }
+    .label{display:flex; flex-direction:column; gap:2px}
+    .label b{font-size:15px}
+    .label span{font-size:12px; color:var(--muted)}
+    .arrow{color:var(--gold); font-weight:800}
+    .footer{
+      margin-top:14px; text-align:center; color:var(--muted); font-size:12px
+    }
+    .tiny{opacity:.8}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="brand">
+        <div class="logo">A</div>
+        <div>
+          <h1>AXENTRO</h1>
+          <p class="sub">CONTROL • TRACK • GROW<br><span class="tiny">روابط التواصل الرسمية في صفحة واحدة</span></p>
+        </div>
+      </div>
+
+      <div class="btns">
+        <!-- غيّر الأرقام والروابط هنا -->
+        <a class="btn" href="https://wa.me/201000000000" target="_blank" rel="noopener">
+          <div class="left"><div class="ic">WA</div><div class="label"><b>WhatsApp</b><span>مراسلة مباشرة</span></div></div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="btn" href="tel:+201000000000">
+          <div class="left"><div class="ic">☎</div><div class="label"><b>Call</b><span>اتصال مباشر</span></div></div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="btn" href="mailto:info@axentro.com">
+          <div class="left"><div class="ic">@</div><div class="label"><b>Email</b><span>إرسال بريد</span></div></div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="btn" href="https://www.facebook.com/YourPage" target="_blank" rel="noopener">
+          <div class="left"><div class="ic">f</div><div class="label"><b>Facebook</b><span>تابعنا</span></div></div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="btn" href="https://instagram.com/YourUser" target="_blank" rel="noopener">
+          <div class="left"><div class="ic">IG</div><div class="label"><b>Instagram</b><span>معرض الأعمال</span></div></div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="btn" href="https://www.linkedin.com/in/YourUser" target="_blank" rel="noopener">
+          <div class="left"><div class="ic">in</div><div class="label"><b>LinkedIn</b><span>ملفي المهني</span></div></div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="btn" href="https://github.com/axentro-official" target="_blank" rel="noopener">
+          <div class="left"><div class="ic">GH</div><div class="label"><b>GitHub</b><span>مشاريع وكود</span></div></div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="btn" href="https://axentro-official.github.io/axentro-website/" target="_blank" rel="noopener">
+          <div class="left"><div class="ic">🌐</div><div class="label"><b>Website</b><span>زيارة الموقع</span></div></div>
+          <div class="arrow">›</div>
+        </a>
+      </div>
+
+      <div class="footer">© Axentro — All Rights Reserved</div>
+    </div>
+  </div>
+</body>
+</html>
