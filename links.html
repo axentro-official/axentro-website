@@ -9,18 +9,17 @@
   <meta name="theme-color" content="#020617">
   <meta name="format-detection" content="telephone=no">
 
-  <!-- ✅ GA4 Tracking (Loader only + disable auto page_view) -->
+  <!-- ✅ GA4 Tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // هنمنع page_view التلقائي ونبعت واحد يدوي مع UTM
     gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
   </script>
 
   <!-- FONT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
   <!-- ICONS -->
@@ -49,7 +48,7 @@
       background:linear-gradient(135deg,#020617,#020b2e);
       color:var(--text);
       overflow-x:hidden;
-      -webkit-text-size-adjust:100%;
+      -webkit-text-size-adjust: 100%;
       padding-top: env(safe-area-inset-top);
     }
 
@@ -68,7 +67,6 @@
       width:0%;
       background:var(--secondary);
       z-index:99999;
-      pointer-events:none;
     }
 
     /* HERO */
@@ -82,7 +80,7 @@
     }
     .hero p{max-width:760px;margin:28px auto 0}
 
-    /* ✅ no nav in links page */
+    /* ✅ شيلنا شريط التنقل من صفحة links فقط */
     .navigation-links{display:none;}
 
     /* BUTTON STYLES */
@@ -105,13 +103,11 @@
       width:min(560px, 100%);
       border:none;
 
+      /* ✅ حل مشاكل الضغط على iPhone */
       pointer-events:auto;
       touch-action:manipulation;
       -webkit-tap-highlight-color: transparent;
       user-select:none;
-
-      position:relative;
-      z-index:2;
     }
     .cta-button:hover{
       background-color:#002244;
@@ -122,7 +118,6 @@
       outline:2px solid rgba(0,255,213,.45);
       outline-offset:4px;
     }
-    .cta-button:active{ transform:scale(0.99); }
 
     /* Button colors */
     .btn-wa{background:var(--wa);color:#000}
@@ -168,20 +163,19 @@
       box-shadow:0 12px 30px rgba(0,0,0,.4);
       z-index:999;
       transition:transform .25s ease;
+      text-decoration:none;
       cursor:pointer;
 
+      /* ✅ */
       pointer-events:auto;
       touch-action:manipulation;
       -webkit-tap-highlight-color: transparent;
-
-      border:none;
     }
     .floating-wa:hover{transform:scale(1.08)}
     .floating-wa:focus{
       outline:2px solid rgba(0,255,213,.45);
       outline-offset:4px;
     }
-    .floating-wa:active{transform:scale(0.98);}
 
     @media (max-width:600px){
       .hero h1{font-size:42px}
@@ -208,9 +202,9 @@
         <span style="opacity:.8">Choose your preferred contact method.</span>
       </p>
 
-      <div style="margin-top:34px; display:flex; flex-direction:column; gap:14px; align-items:center; position:relative; z-index:2;">
+      <div style="margin-top:34px; display:flex; flex-direction:column; gap:14px; align-items:center;">
 
-        <!-- 1) WhatsApp -->
+        <!-- ✅ 1) WhatsApp (Button بدل href="#") -->
         <button
           type="button"
           class="cta-button btn-wa"
@@ -245,9 +239,9 @@
           تواصل معنا عبر البريد
         </a>
 
-        <!-- 4) Visit Main Website (✅ ينقل UTM تلقائيًا عن طريق js-utm-link) -->
+        <!-- 4) Visit Main Website -->
         <a
-          class="cta-button btn-site js-utm-link"
+          class="cta-button btn-site"
           href="index.html"
           role="button"
           aria-label="زيارة الموقع الرئيسي"
@@ -262,7 +256,7 @@
           class="cta-button btn-ig"
           href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener"
           role="button"
           aria-label="تابعنا على انستقرام"
           onclick="trackClick('instagram','تابعنا على انستقرام','main');"
@@ -276,7 +270,7 @@
           class="cta-button btn-fb"
           href="https://facebook.com/AxentroSamrtSolutions"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener"
           role="button"
           aria-label="تابعنا على فيسبوك"
           onclick="trackClick('facebook','تابعنا على فيسبوك','main');"
@@ -307,7 +301,7 @@
     <div class="by">By Ahmed Hamouda</div>
   </footer>
 
-  <!-- Floating WhatsApp -->
+  <!-- ✅ FLOATING WA (Button بدل href="#") -->
   <button
     type="button"
     class="floating-wa"
@@ -317,7 +311,126 @@
     <i class="fab fa-whatsapp"></i>
   </button>
 
-  <!-- ✅ UI only -->
+  <script>
+    /* ✅ UTM + QR Tracking */
+    const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','src'];
+
+    function getQueryParams(){
+      const p = new URLSearchParams(window.location.search);
+      const obj = {};
+      UTM_KEYS.forEach(k=>{
+        const v = p.get(k);
+        if(v) obj[k] = v;
+      });
+      return obj;
+    }
+
+    function safeRead(key){
+      try{ return localStorage.getItem(key); }catch(e){ return null; }
+    }
+    function safeWrite(key,val){
+      try{ localStorage.setItem(key,val); }catch(e){}
+    }
+
+    function loadUTM(){
+      try{
+        const saved = safeRead('ax_utm');
+        return saved ? JSON.parse(saved) : {};
+      }catch(e){
+        return {};
+      }
+    }
+
+    function saveUTM(utmObj){
+      safeWrite('ax_utm', JSON.stringify(utmObj || {}));
+    }
+
+    (function(){
+      const current = getQueryParams();
+      if(Object.keys(current).length){
+        const merged = { ...loadUTM(), ...current, last_seen: new Date().toISOString() };
+        saveUTM(merged);
+      }
+    })();
+
+    function getUTMForEvent(){
+      const utm = loadUTM() || {};
+      return {
+        utm_source: utm.utm_source || utm.src || '(none)',
+        utm_medium: utm.utm_medium || (utm.src ? 'qr' : '(none)'),
+        utm_campaign: utm.utm_campaign || 'axentro',
+        utm_content: utm.utm_content || '',
+        utm_term: utm.utm_term || ''
+      };
+    }
+
+    /* ✅ Send page_view manually with UTM */
+    (function(){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event','page_view',{
+          page_title: document.title,
+          page_location: window.location.href,
+          page_path: window.location.pathname,
+          page: 'links',
+          ...utm
+        });
+
+        const p = new URLSearchParams(window.location.search);
+        const src = p.get('src');
+        if(src){
+          gtag('event','qr_scan',{ source: src, page: 'links', ...utm });
+        }
+      }catch(e){}
+    })();
+
+    /* ✅ Click tracking */
+    function trackClick(method, label, section){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event', 'contact_click', {
+          method: method,
+          label: label,
+          section: section || '',
+          page: 'links',
+          ...utm
+        });
+      }catch(e){}
+    }
+
+    /* ✅ vCard download tracking (Event مستقل) */
+    function trackVCardDownload(section){
+      try{
+        const utm = getUTMForEvent();
+        gtag('event', 'vcard_download', {
+          section: section || '',
+          page: 'links',
+          ...utm
+        });
+      }catch(e){}
+    }
+
+    /* ✅ WhatsApp Conversion */
+    function whatsapp(origin){
+      const utm = getUTMForEvent();
+
+      try{
+        gtag('event', 'whatsapp_click', {
+          origin: origin || '',
+          page: 'links',
+          ...utm
+        });
+      }catch(e){}
+
+      const msg = `مرحبًا فريق Axentro،
+أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
+بانتظار تواصلكم، شكرًا.`;
+
+      const url = "https://wa.me/201146476993?text=" + encodeURIComponent(msg);
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  </script>
+
   <script>
     /* Progress bar */
     const bar = document.getElementById('scrollProgress');
@@ -326,18 +439,6 @@
       const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
       bar.style.width = p + '%';
     }, { passive: true });
-  </script>
-
-  <!-- ✅ Analytics (single source) -->
-  <script src="assets/js/ga.js"></script>
-  <script>
-    AxentroAnalytics.init({
-      page: "links",
-      utm_campaign_default: "axentro",
-      enable_qr_open: true,
-      enable_qr_scan: true,
-      enable_internal_utm_links: true
-    });
   </script>
 </body>
 </html>
