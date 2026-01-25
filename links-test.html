@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Axentro | روابط التواصل</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#070712" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- GA4 Loader -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#070712;
+      --bg1:#0b0b1d;
+      --fg:#eaf2ff;
+      --muted:#9aa7c0;
+
+      --blue:#6495ED;
+      --purple:#8A2BE2;
+      --teal:#00CED1;
+
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.10);
+
+      --shadow: 0 20px 80px rgba(0,0,0,.55);
+      --radius: 22px;
+
+      --wa:#25D366;
+      --call:#0ea5e9;
+      --mail:#EA4335;
+      --site:#8A2BE2;
+      --ig:#E1306C;
+      --fb:#1877F2;
+      --vcf:#6495ED;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Cairo',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--fg);
+      min-height:100vh;
+      background:
+        radial-gradient(1100px 800px at 18% 10%, rgba(100,149,237,.18), transparent 60%),
+        radial-gradient(1100px 800px at 85% 25%, rgba(138,43,226,.18), transparent 60%),
+        radial-gradient(1000px 800px at 50% 95%, rgba(0,206,209,.12), transparent 60%),
+        linear-gradient(135deg,var(--bg0),var(--bg1));
+      overflow-x:hidden;
+      padding-top: env(safe-area-inset-top);
+    }
+
+    /* subtle mist without blur-filter heavy stuff */
+    .mist{
+      position:fixed; inset:-60px;
+      pointer-events:none;
+      opacity:.55;
+      background:
+        radial-gradient(520px 360px at 25% 30%, rgba(255,255,255,.05), transparent 60%),
+        radial-gradient(620px 420px at 70% 45%, rgba(255,255,255,.04), transparent 60%),
+        radial-gradient(760px 520px at 50% 82%, rgba(255,255,255,.03), transparent 60%);
+      filter: blur(18px);
+      transform: translateZ(0);
+      z-index:0;
+    }
+
+    /* progress bar */
+    .scroll-progress{
+      position:fixed; top:0; left:0; height:3px; width:0%;
+      background: linear-gradient(90deg, rgba(100,149,237,.95), rgba(138,43,226,.95), rgba(0,206,209,.9));
+      z-index:9999;
+      box-shadow: 0 0 18px rgba(138,43,226,.35);
+      pointer-events:none;
+    }
+
+    .wrap{
+      position:relative;
+      z-index:2;
+      padding: 88px 18px 50px;
+    }
+
+    .container{max-width:1050px;margin:auto}
+
+    /* Header */
+    .top{
+      text-align:center;
+      margin-bottom: 28px;
+    }
+    .brand{
+      font-weight:900;
+      letter-spacing:3px;
+      font-size:52px;
+      text-shadow: 0 0 60px rgba(100,149,237,.25);
+      margin-bottom:10px;
+    }
+    .tagline{
+      letter-spacing:5px;
+      font-size:12px;
+      opacity:.85;
+      text-transform:uppercase;
+      color: rgba(234,242,255,.78);
+      margin-bottom: 18px;
+    }
+    .desc{
+      max-width:760px;
+      margin:0 auto;
+      line-height:1.9;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    /* Card shell like dribbble */
+    .shell{
+      margin-top: 28px;
+      border-radius: calc(var(--radius) + 14px);
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .shell::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(760px 240px at 50% -10%, rgba(100,149,237,.18), transparent 60%),
+        radial-gradient(640px 240px at 92% 30%, rgba(138,43,226,.16), transparent 60%),
+        radial-gradient(560px 260px at 10% 85%, rgba(0,206,209,.12), transparent 60%);
+      opacity:.9;
+      pointer-events:none;
+      filter: blur(10px);
+    }
+
+    .shell-inner{
+      position:relative;
+      z-index:1;
+      padding: 18px;
+    }
+
+    /* Grid cards */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+    }
+
+    /* Each card */
+    .card{
+      position:relative;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      box-shadow: 0 12px 38px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);
+      min-height: 92px;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.16);
+    }
+    .card:active{
+      transform: translateY(0px) scale(.99);
+    }
+
+    /* Accent glow per card */
+    .card::before{
+      content:"";
+      position:absolute; inset:-1px;
+      opacity:.0;
+      transition: opacity .18s ease;
+      background: radial-gradient(260px 180px at 35% 40%, rgba(255,255,255,.10), transparent 60%);
+      pointer-events:none;
+    }
+    .card:hover::before{opacity:.85;}
+
+    /* Inner row */
+    .card a{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 16px 16px;
+      text-decoration:none;
+      color: var(--fg);
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
+    }
+
+    .left{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width:0;
+    }
+
+    /* icon chip */
+    .ico{
+      width:44px; height:44px;
+      border-radius: 14px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      flex: 0 0 auto;
+    }
+
+    .txt{
+      text-align:right;
+      min-width:0;
+    }
+    .title{
+      font-weight:900;
+      font-size: 16px;
+      line-height: 1.3;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .sub{
+      margin-top: 4px;
+      font-size: 12px;
+      color: rgba(234,242,255,.70);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .chev{
+      opacity:.7;
+      transition: transform .18s ease, opacity .18s ease;
+      flex: 0 0 auto;
+    }
+    .card:hover .chev{ transform: translateX(-2px); opacity:1; }
+
+    /* colored top line */
+    .line{
+      position:absolute; top:0; left:0; right:0; height:2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+      opacity:.25;
+    }
+    .card[data-c="wa"] .line{ background: linear-gradient(90deg, transparent, rgba(37,211,102,.9), transparent); opacity:.55;}
+    .card[data-c="call"] .line{ background: linear-gradient(90deg, transparent, rgba(14,165,233,.9), transparent); opacity:.55;}
+    .card[data-c="mail"] .line{ background: linear-gradient(90deg, transparent, rgba(234,67,53,.9), transparent); opacity:.55;}
+    .card[data-c="site"] .line{ background: linear-gradient(90deg, transparent, rgba(138,43,226,.95), transparent); opacity:.55;}
+    .card[data-c="ig"] .line{ background: linear-gradient(90deg, transparent, rgba(225,48,108,.95), transparent); opacity:.55;}
+    .card[data-c="fb"] .line{ background: linear-gradient(90deg, transparent, rgba(24,119,242,.95), transparent); opacity:.55;}
+    .card[data-c="vcf"] .line{ background: linear-gradient(90deg, transparent, rgba(100,149,237,.95), transparent); opacity:.55;}
+
+    /* floating whatsapp */
+    .floating{
+      position:fixed; right:18px; bottom:18px;
+      width:62px; height:62px; border-radius:50%;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 18px 60px rgba(0,0,0,.55), 0 0 32px rgba(37,211,102,.18);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer;
+      z-index:999;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .floating:active{ transform: scale(.98); }
+
+    footer{
+      text-align:center;
+      margin-top: 22px;
+      padding: 26px 18px 34px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: rgba(234,242,255,.78);
+      z-index:2;
+      position:relative;
+    }
+    footer .by{ margin-top:6px; color: var(--muted); font-size:13px; }
+
+    /* responsive grid */
+    @media (max-width:720px){
+      .brand{font-size:42px}
+      .grid{grid-template-columns: 1fr;}
+      .wrap{padding-top: 78px;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="mist" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="container">
+      <div class="top">
+        <div class="brand">AXENTRO</div>
+        <div class="tagline">CONTROL • TRACK • GROW</div>
+        <p class="desc">
+          اختر وسيلة التواصل الأنسب وسنرد عليك سريعًا.<br>
+          <span style="opacity:.8">Choose your preferred contact method.</span>
+        </p>
+      </div>
+
+      <div class="shell">
+        <div class="shell-inner">
+          <div class="grid">
+
+            <!-- WhatsApp -->
+            <div class="card" data-c="wa">
+              <div class="line"></div>
+              <a href="#" onclick="trackClick('whatsapp','تواصل معنا عبر واتساب','grid'); whatsapp('grid'); return false;">
+                <div class="left">
+                  <div class="ico" title="WhatsApp" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                      <path d="M20.5 11.9A8.5 8.5 0 0 1 7.6 19.3L3 21l1.8-4.3A8.5 8.5 0 1 1 20.5 11.9Z" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
+                      <path d="M9.2 9.5c.2-.6.4-.7.8-.7h.6c.2 0 .4 0 .6.4l.9 2c.1.3.1.5 0 .6l-.4.5c-.1.2-.2.3 0 .6.2.3.8 1.3 1.8 2.1 1.2.9 2.1 1.2 2.4 1.3.3.1.5.1.7-.1l.8-1c.2-.2.4-.2.6-.1l2.1 1c.2.1.4.2.4.4 0 .2-.2 1.1-.8 1.6-.6.5-1.3.6-1.8.5-.4 0-1.3-.2-2.5-.8-1.5-.7-2.7-1.8-3.7-3.1-1-1.3-1.5-2.6-1.6-3 0-.4-.1-1.1.3-1.7Z" fill="rgba(255,255,255,.9)"/>
+                    </svg>
+                  </div>
+                  <div class="txt">
+                    <div class="title">واتساب</div>
+                    <div class="sub">رد سريع • تواصل فوري</div>
+                  </div>
+                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Call -->
+            <div class="card" data-c="call">
+              <div class="line"></div>
+              <a href="tel:+201146476993" onclick="trackClick('call','اتصال مباشر','grid');">
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                      <path d="M6.6 3.6h2.2l1.2 4.3-1.6 1.6c1.2 2.2 3 4 5.2 5.2l1.6-1.6 4.3 1.2v2.2c0 1.2-1 2.2-2.2 2.2C9.7 20.9 3.1 14.3 3.1 6.8c0-1.2 1-2.2 2.2-2.2Z" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
+                    </svg>
+                  </div>
+                  <div class="txt">
+                    <div class="title">اتصال مباشر</div>
+                    <div class="sub">متاح خلال ساعات العمل</div>
+                  </div>
+                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Email -->
+            <div class="card" data-c="mail">
+              <div class="line"></div>
+              <a href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','تواصل معنا عبر البريد','grid');">
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                      <path d="M4.5 7.5h15v9h-15v-9Z" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
+                      <path d="M5 8l7 6 7-6" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
+                    </svg>
+                  </div>
+                  <div class="txt">
+                    <div class="title">البريد الإلكتروني</div>
+                    <div class="sub">رسمي • مناسب للعروض</div>
+                  </div>
+                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Website -->
+            <div class="card" data-c="site">
+              <div class="line"></div>
+              <a class="js-utm-link" href="index.html" onclick="trackClick('website','زيارة الموقع الرئيسي','grid');">
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
+                      <path d="M3.5 12h17" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
+                      <path d="M12 3c2.6 2.6 2.6 15.4 0 18-2.6-2.6-2.6-15.4 0-18Z" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
+                    </svg>
+                  </div>
+                  <div class="txt">
+                    <div class="title">الموقع الرئيسي</div>
+                    <div class="sub">عرض الخدمات والأعمال</div>
+                  </div>
+                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Instagram -->
+            <div class="card" data-c="ig">
+              <div class="line"></div>
+              <a href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener"
+                 onclick="trackClick('instagram','تابعنا على انستقرام','grid');">
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                      <path d="M8 3.8h8A4.2 4.2 0 0 1 20.2 8v8A4.2 4.2 0 0 1 16 20.2H8A4.2 4.2 0 0 1 3.8 16V8A4.2 4.2 0 0 1 8 3.8Z" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
+                      <path d="M12 16.1a4.1 4.1 0 1 0 0-8.2 4.1 4.1 0 0 0 0 8.2Z" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
+                      <path d="M17.4 6.6h.01" stroke="rgba(255,255,255,.9)" stroke-width="2.6" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <div class="txt">
+                    <div class="title">إنستجرام</div>
+                    <div class="sub">أحدث الأعمال والبوستات</div>
+                  </div>
+                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Facebook -->
+            <div class="card" data-c="fb">
+              <div class="line"></div>
+              <a href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener"
+                 onclick="trackClick('facebook','تابعنا على فيسبوك','grid');">
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                      <path d="M14 8.4V7.2c0-.7.4-1.2 1.3-1.2h1.2V3.8h-2c-2.3 0-3.7 1.4-3.7 3.6v1h-2v2.4h2V20h2.8v-9.2h2.4l.6-2.4H14Z" fill="rgba(255,255,255,.9)"/>
+                    </svg>
+                  </div>
+                  <div class="txt">
+                    <div class="title">فيسبوك</div>
+                    <div class="sub">تحديثات ومجتمع</div>
+                  </div>
+                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- vCard -->
+            <div class="card" data-c="vcf">
+              <div class="line"></div>
+              <a href="axentro.vcf" download onclick="trackVCardDownload('grid');">
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                      <path d="M7.5 4.5h9v15h-9v-15Z" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
+                      <path d="M10 9a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
+                      <path d="M9.2 16.2c.7-1.4 1.8-2.2 2.8-2.2s2.1.8 2.8 2.2" stroke="rgba(255,255,255,.9)" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <div class="txt">
+                    <div class="title">حفظ جهة الاتصال</div>
+                    <div class="sub">vCard • إضافة سريعة</div>
+                  </div>
+                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div>© 2024 Axentro – All Rights Reserved</div>
+        <div class="by">By Ahmed Hamouda</div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp -->
+  <button class="floating" type="button" aria-label="WhatsApp Floating"
+    onclick="trackClick('whatsapp','واتساب العائم','floating'); whatsapp('floating');">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20.5 11.9A8.5 8.5 0 0 1 7.6 19.3L3 21l1.8-4.3A8.5 8.5 0 1 1 20.5 11.9Z" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
+      <path d="M9.2 9.5c.2-.6.4-.7.8-.7h.6c.2 0 .4 0 .6.4l.9 2c.1.3.1.5 0 .6l-.4.5c-.1.2-.2.3 0 .6.2.3.8 1.3 1.8 2.1 1.2.9 2.1 1.2 2.4 1.3.3.1.5.1.7-.1l.8-1c.2-.2.4-.2.6-.1l2.1 1c.2.1.4.2.4.4 0 .2-.2 1.1-.8 1.6-.6.5-1.3.6-1.8.5-.4 0-1.3-.2-2.5-.8-1.5-.7-2.7-1.8-3.7-3.1-1-1.3-1.5-2.6-1.6-3 0-.4-.1-1.1.3-1.7Z" fill="rgba(255,255,255,.9)"/>
+    </svg>
+  </button>
+
+  <!-- Progress bar -->
+  <script>
+    const bar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      bar.style.width = p + '%';
+    }, { passive: true });
+  </script>
+
+  <!-- Analytics (لازم عشان whatsapp()/trackClick() يشتغلوا) -->
+  <script src="assets/js/ga.js"></script>
+  <script>
+    // Fallbacks: لو ga.js ما اتحملش لأي سبب
+    window.trackClick = window.trackClick || function(){};
+    window.trackVCardDownload = window.trackVCardDownload || function(){};
+    window.whatsapp = window.whatsapp || function(origin){
+      const msg = `مرحبًا فريق Axentro،
+أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
+بانتظار تواصلكم، شكرًا.`;
+      const url = "https://wa.me/201146476993?text=" + encodeURIComponent(msg);
+      const w = window.open(url, "_blank", "noopener,noreferrer");
+      if (!w) window.location.href = url;
+    };
+
+    // Init analytics لو موجود
+    if (window.AxentroAnalytics && typeof window.AxentroAnalytics.init === "function") {
+      AxentroAnalytics.init({
+        page: "links",
+        utm_campaign_default: "axentro",
+        enable_qr_scan: true,
+        enable_internal_utm_links: true,
+        enable_qr_open: false
+      });
+    }
+  </script>
+</body>
+</html>
