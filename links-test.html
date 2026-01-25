@@ -5,7 +5,7 @@
   <title>Axentro | روابط التواصل</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#070712" />
+  <meta name="theme-color" content="#05050c" />
   <meta name="format-detection" content="telephone=no" />
 
   <!-- GA4 Loader -->
@@ -22,80 +22,96 @@
 
   <style>
     :root{
-      --bg0:#070712;
-      --bg1:#0b0b1d;
+      --bg0:#05050c;
+      --bg1:#090916;
+
       --fg:#eaf2ff;
       --muted:#9aa7c0;
 
-      --shadow: 0 20px 80px rgba(0,0,0,.55);
+      --glass: rgba(255,255,255,.06);
+      --glass2: rgba(255,255,255,.09);
+      --border: rgba(255,255,255,.10);
 
+      --shadow: 0 20px 80px rgba(0,0,0,.55);
       --radius: 22px;
 
+      /* Accent colors */
       --wa:#25D366;
       --call:#0ea5e9;
       --mail:#EA4335;
-      --site:#8A2BE2;
+      --site:#22c55e;
       --ig:#E1306C;
       --fb:#1877F2;
-      --vcf:#6495ED;
+      --vcf:#a855f7;
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
     body{
       font-family:'Cairo',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--fg);
       min-height:100vh;
-      background:
-        radial-gradient(1100px 800px at 18% 10%, rgba(100,149,237,.18), transparent 60%),
-        radial-gradient(1100px 800px at 85% 25%, rgba(138,43,226,.18), transparent 60%),
-        radial-gradient(1000px 800px at 50% 95%, rgba(0,206,209,.12), transparent 60%),
-        linear-gradient(135deg,var(--bg0),var(--bg1));
+      background: linear-gradient(135deg,var(--bg0),var(--bg1));
       overflow-x:hidden;
       padding-top: env(safe-area-inset-top);
     }
 
-    /* subtle mist (خفيف) */
-    .mist{
-      position:fixed; inset:-60px;
-      pointer-events:none;
-      opacity:.55;
+    /* ===== Tech Background (Lightweight) ===== */
+    .tech-bg{
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
       background:
-        radial-gradient(520px 360px at 25% 30%, rgba(255,255,255,.05), transparent 60%),
-        radial-gradient(620px 420px at 70% 45%, rgba(255,255,255,.04), transparent 60%),
-        radial-gradient(760px 520px at 50% 82%, rgba(255,255,255,.03), transparent 60%);
-      filter: blur(18px);
-      transform: translateZ(0);
-      z-index:0;
+        radial-gradient(900px 600px at 15% 20%, rgba(0,180,255,.18), transparent 60%),
+        radial-gradient(800px 600px at 85% 30%, rgba(0,120,255,.14), transparent 60%),
+        radial-gradient(900px 700px at 55% 95%, rgba(0,200,255,.10), transparent 60%),
+        linear-gradient(135deg,#05050c,#090916);
     }
 
-    /* progress bar */
-    .scroll-progress{
-      position:fixed; top:0; left:0; height:3px; width:0%;
-      background: linear-gradient(90deg, rgba(100,149,237,.95), rgba(138,43,226,.95), rgba(0,206,209,.9));
-      z-index:9999;
-      box-shadow: 0 0 18px rgba(138,43,226,.35);
-      pointer-events:none;
+    /* circuit grid */
+    .tech-bg::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(0,180,255,.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,180,255,.15) 1px, transparent 1px);
+      background-size: 120px 120px;
+      opacity:.13;
+      mix-blend-mode: screen;
     }
 
+    /* glowing nodes */
+    .tech-bg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 18% 26%, rgba(0,220,255,.30), transparent 6%),
+        radial-gradient(circle at 74% 18%, rgba(0,160,255,.22), transparent 6%),
+        radial-gradient(circle at 44% 72%, rgba(0,220,255,.26), transparent 6%),
+        radial-gradient(circle at 86% 78%, rgba(0,180,255,.24), transparent 6%),
+        radial-gradient(circle at 62% 46%, rgba(0,210,255,.18), transparent 7%);
+      opacity:.7;
+    }
+
+    /* ===== Layout ===== */
     .wrap{
       position:relative;
       z-index:2;
-      padding: 88px 18px 50px;
+      padding: 84px 16px 46px;
     }
+    .container{max-width:1050px;margin:auto}
 
-    .container{max-width:1150px;margin:auto}
-
-    /* Header */
     .top{
       text-align:center;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
     .brand{
       font-weight:900;
       letter-spacing:3px;
       font-size:52px;
-      text-shadow: 0 0 60px rgba(100,149,237,.25);
+      text-shadow: 0 0 60px rgba(0,200,255,.18);
       margin-bottom:10px;
     }
     .tagline{
@@ -103,7 +119,7 @@
       font-size:12px;
       opacity:.85;
       text-transform:uppercase;
-      color: rgba(234,242,255,.78);
+      color: rgba(234,242,255,.72);
       margin-bottom: 18px;
     }
     .desc{
@@ -114,9 +130,9 @@
       font-size:16px;
     }
 
-    /* Shell */
+    /* ===== Glass Shell ===== */
     .shell{
-      margin-top: 28px;
+      margin-top: 26px;
       border-radius: calc(var(--radius) + 14px);
       background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
       border: 1px solid rgba(255,255,255,.10);
@@ -128,9 +144,9 @@
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(760px 240px at 50% -10%, rgba(100,149,237,.18), transparent 60%),
-        radial-gradient(640px 240px at 92% 30%, rgba(138,43,226,.16), transparent 60%),
-        radial-gradient(560px 260px at 10% 85%, rgba(0,206,209,.12), transparent 60%);
+        radial-gradient(760px 240px at 50% -10%, rgba(0,200,255,.16), transparent 60%),
+        radial-gradient(640px 240px at 92% 30%, rgba(0,140,255,.14), transparent 60%),
+        radial-gradient(560px 260px at 10% 85%, rgba(0,200,255,.10), transparent 60%);
       opacity:.9;
       pointer-events:none;
       filter: blur(10px);
@@ -141,166 +157,108 @@
       padding: 18px;
     }
 
-    /* Grid cards: جنب بعض */
+    /* ===== Cards Grid (جنب بعض) ===== */
     .grid{
       display:grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 14px;
     }
-    @media (min-width: 768px){
-      .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-    }
-    @media (min-width: 1200px){
-      .grid{ grid-template-columns: repeat(3, minmax(0,1fr)); }
-    }
 
-    /* Dribbble card */
     .card{
       position:relative;
-      border-radius: 26px;
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
       border: 1px solid rgba(255,255,255,.10);
       overflow:hidden;
-      box-shadow: 0 18px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-      isolation:isolate;
-      min-height: 170px;
+      box-shadow: 0 12px 38px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);
+      transition: transform .18s ease, border-color .18s ease;
+      min-height: 96px;
     }
-    .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,.16);
-      box-shadow: 0 22px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08);
-    }
+    .card:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.16); }
+    .card:active{ transform: translateY(0) scale(.99); }
 
-    /* top glow line */
+    /* colored top line */
     .line{
       position:absolute; top:0; left:0; right:0; height:2px;
-      opacity:.95;
-      z-index:4;
+      opacity:.65;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
     }
     .card[data-c="wa"] .line{ background: linear-gradient(90deg, transparent, rgba(37,211,102,.95), transparent); }
     .card[data-c="call"] .line{ background: linear-gradient(90deg, transparent, rgba(14,165,233,.95), transparent); }
     .card[data-c="mail"] .line{ background: linear-gradient(90deg, transparent, rgba(234,67,53,.95), transparent); }
-    .card[data-c="site"] .line{ background: linear-gradient(90deg, transparent, rgba(138,43,226,.95), transparent); }
+    .card[data-c="site"] .line{ background: linear-gradient(90deg, transparent, rgba(34,197,94,.95), transparent); }
     .card[data-c="ig"] .line{ background: linear-gradient(90deg, transparent, rgba(225,48,108,.95), transparent); }
     .card[data-c="fb"] .line{ background: linear-gradient(90deg, transparent, rgba(24,119,242,.95), transparent); }
-    .card[data-c="vcf"] .line{ background: linear-gradient(90deg, transparent, rgba(100,149,237,.95), transparent); }
+    .card[data-c="vcf"] .line{ background: linear-gradient(90deg, transparent, rgba(168,85,247,.95), transparent); }
 
-    /* Preview area داخل الكارت */
-    .preview{
-      position:absolute;
-      inset:0;
-      z-index:1;
-      pointer-events:none;
-      opacity:.9;
-      background:
-        radial-gradient(520px 260px at 18% 28%, rgba(255,255,255,.10), transparent 60%),
-        radial-gradient(520px 260px at 82% 44%, rgba(255,255,255,.06), transparent 60%),
-        linear-gradient(135deg, rgba(100,149,237,.12), rgba(138,43,226,.10), rgba(0,206,209,.08));
-    }
-    /* texture grid خفيف */
-    .preview::after{
-      content:"";
-      position:absolute; inset:0;
-      opacity:.10;
-      background-image:
-        linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.15) 1px, transparent 1px);
-      background-size: 70px 70px;
-      mix-blend-mode: overlay;
-    }
-
-    /* clickable layout */
     .card a{
-      position:relative;
-      z-index:5;
       display:flex;
-      flex-direction:column;
+      align-items:center;
       justify-content:space-between;
-      gap: 14px;
-      padding: 18px 18px 16px;
+      gap: 12px;
+      padding: 16px 16px;
       text-decoration:none;
       color: var(--fg);
       -webkit-tap-highlight-color: transparent;
       user-select:none;
-      min-height: 170px;
     }
 
-    /* top row (icon + arrow) */
-    .row-top{
+    .left{
       display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 14px;
+      align-items:center;
+      gap: 12px;
+      min-width:0;
     }
 
+    /* ===== Icons (ستايل واضح زي القديم) ===== */
     .ico{
-      width:56px; height:56px;
-      border-radius: 18px;
+      width:44px; height:44px;
+      border-radius: 14px;
       display:grid; place-items:center;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.10);
       flex: 0 0 auto;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
     }
-    .ico svg{ width:28px; height:28px; fill: currentColor; }
+    .ico svg{ width:22px; height:22px; display:block; }
+
+    /* icon colors */
+    .card[data-c="wa"] .ico svg{ fill: var(--wa); }
+    .card[data-c="call"] .ico svg{ fill: var(--call); }
+    .card[data-c="mail"] .ico svg{ fill: var(--mail); }
+    .card[data-c="site"] .ico svg{ fill: var(--site); }
+    .card[data-c="ig"] .ico svg{ fill: var(--ig); }
+    .card[data-c="fb"] .ico svg{ fill: var(--fb); }
+    .card[data-c="vcf"] .ico svg{ fill: var(--vcf); }
+
+    .txt{ text-align:right; min-width:0; }
+    .title{
+      font-weight:900;
+      font-size: 16px;
+      line-height: 1.3;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .sub{
+      margin-top: 4px;
+      font-size: 12px;
+      color: rgba(234,242,255,.70);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
 
     .chev{
       opacity:.75;
       transition: transform .18s ease, opacity .18s ease;
       flex: 0 0 auto;
     }
-    .card:hover .chev{ transform: translateX(-3px); opacity:1; }
+    .card:hover .chev{ transform: translateX(-2px); opacity:1; }
 
-    /* bottom text */
-    .txt{
-      text-align:right;
-      min-width:0;
-    }
-    .title{
-      font-weight: 900;
-      font-size: 19px;
-      line-height: 1.25;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .sub{
-      margin-top: 8px;
-      font-size: 13px;
-      color: rgba(234,242,255,.70);
-      line-height: 1.35;
-      display:-webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow:hidden;
-      max-width: 95%;
-    }
-
-    /* small badge like dribbble */
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      margin-top: 10px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      color: rgba(234,242,255,.78);
-      font-size: 12px;
-      width: fit-content;
-    }
-    .dot{
-      width:8px;height:8px;border-radius:50%;
-      background: rgba(255,255,255,.55);
-      box-shadow: 0 0 14px rgba(255,255,255,.25);
-    }
-
-    /* Floating */
+    /* ===== Floating WhatsApp ===== */
     .floating{
-      position:fixed; right:18px; bottom:18px;
+      position:fixed; right:16px; bottom:16px;
       width:62px; height:62px; border-radius:50%;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.06);
@@ -310,6 +268,7 @@
       z-index:999;
       -webkit-tap-highlight-color: transparent;
     }
+    .floating svg{ fill: var(--wa); }
     .floating:active{ transform: scale(.98); }
 
     footer{
@@ -325,56 +284,14 @@
 
     @media (max-width:720px){
       .brand{font-size:42px}
+      .grid{grid-template-columns: 1fr;}
       .wrap{padding-top: 78px;}
-      .card a{ min-height: 160px; }
-      .card{ min-height: 160px; }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      .card{transition:none}
-      .chev{transition:none}
     }
   </style>
 </head>
 
 <body>
-  <div class="scroll-progress" id="scrollProgress"></div>
-  <div class="mist" aria-hidden="true"></div>
-
-  <!-- SVG Sprite Icons (خفيف + Brand clean) -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden">
-    <symbol id="i-whatsapp" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M12 2a9.7 9.7 0 0 0-8.2 14.9L3 22l5.3-1.8A9.7 9.7 0 1 0 12 2Zm0 17.8c-1.3 0-2.6-.3-3.7-.9l-.3-.1-3.1 1 1-3-.2-.3A7.9 7.9 0 1 1 12 19.8Z"/>
-      <path fill="currentColor" d="M16.6 13.7c-.2-.1-1.3-.6-1.5-.7s-.4-.1-.6.1l-.7.9c-.2.2-.3.2-.5.1-1.5-.7-2.5-1.9-2.7-2.2-.1-.2 0-.3.1-.4l.5-.6c.1-.1.1-.3.1-.4l-.7-1.6c-.1-.2-.2-.4-.4-.4h-.5c-.2 0-.4 0-.6.3-.6.7-.9 1.5-.9 2.3 0 1.3 1 2.8 2.2 4 1.4 1.4 3.3 2.5 5.2 2.5.8 0 1.6-.2 2.2-.8.5-.5.7-1.2.7-1.7 0-.2-.1-.3-.3-.4Z"/>
-    </symbol>
-
-    <symbol id="i-phone" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M6.6 3.5h2.2c.4 0 .7.2.8.6l1.1 3.9c.1.3 0 .6-.2.8l-1.4 1.4c1.1 2.2 2.9 4 5.1 5.1l1.4-1.4c.2-.2.5-.3.8-.2l3.9 1.1c.4.1.6.4.6.8v2.2c0 1.1-.9 2-2 2C10 20.8 3.2 14 3.2 5.5c0-1.1.9-2 2-2Z"/>
-    </symbol>
-
-    <symbol id="i-mail" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M4.5 7.2h15a1.8 1.8 0 0 1 1.8 1.8v8a1.8 1.8 0 0 1-1.8 1.8h-15A1.8 1.8 0 0 1 2.7 17v-8a1.8 1.8 0 0 1 1.8-1.8Zm0 2.1 7.5 5.7 7.5-5.7v-.3h-15v.3Z"/>
-    </symbol>
-
-    <symbol id="i-globe" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm7.9 9H15.6c-.2-2.6-1.1-4.8-2.3-6.1A8 8 0 0 1 19.9 11ZM12 4.1c1.2 1.1 2.2 3.4 2.5 6.9h-5c.3-3.5 1.3-5.8 2.5-6.9ZM4.1 13h4.3c.2 2.6 1.1 4.8 2.3 6.1A8 8 0 0 1 4.1 13Zm4.3-2H4.1a8 8 0 0 1 6.6-6.1C9.5 6.2 8.6 8.4 8.4 11Zm3.6 8.9c-1.2-1.1-2.2-3.4-2.5-6.9h5c-.3 3.5-1.3 5.8-2.5 6.9ZM13.3 19.1c1.2-1.3 2.1-3.5 2.3-6.1h4.3a8 8 0 0 1-6.6 6.1Z"/>
-    </symbol>
-
-    <symbol id="i-instagram" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M7.8 2.9h8.4A4.9 4.9 0 0 1 21.1 7.8v8.4a4.9 4.9 0 0 1-4.9 4.9H7.8A4.9 4.9 0 0 1 2.9 16.2V7.8A4.9 4.9 0 0 1 7.8 2.9Zm0 2A2.9 2.9 0 0 0 4.9 7.8v8.4A2.9 2.9 0 0 0 7.8 19.1h8.4a2.9 2.9 0 0 0 2.9-2.9V7.8a2.9 2.9 0 0 0-2.9-2.9H7.8Z"/>
-      <path fill="currentColor" d="M12 8a4 4 0 1 0 .001 8.001A4 4 0 0 0 12 8Zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"/>
-      <path fill="currentColor" d="M17.3 6.7a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8Z"/>
-    </symbol>
-
-    <symbol id="i-facebook" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M13.8 21v-7.8h2.6l.4-3H13.8V8.3c0-.9.3-1.5 1.6-1.5h1.4V4.1c-.7-.1-1.6-.2-2.7-.2-2.7 0-4.5 1.6-4.5 4.6v1.7H7v3h2.6V21h4.2Z"/>
-    </symbol>
-
-    <symbol id="i-card" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M7 4.5h10A2.5 2.5 0 0 1 19.5 7v10A2.5 2.5 0 0 1 17 19.5H7A2.5 2.5 0 0 1 4.5 17V7A2.5 2.5 0 0 1 7 4.5Zm5 4a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 0 0 0-4.6Zm-4 8.5c.9-1.7 2.3-2.7 4-2.7s3.1 1 4 2.7H8Z"/>
-    </symbol>
-  </svg>
+  <div class="tech-bg" aria-hidden="true"></div>
 
   <div class="wrap">
     <div class="container">
@@ -390,152 +307,159 @@
       <div class="shell">
         <div class="shell-inner">
           <div class="grid">
+
             <!-- WhatsApp -->
             <div class="card" data-c="wa">
-              <div class="preview" aria-hidden="true"></div>
               <div class="line"></div>
-              <a href="#" onclick="trackClick('whatsapp','واتساب','grid'); whatsapp('grid'); return false;">
-                <div class="row-top">
-                  <div class="ico" aria-hidden="true" style="color: rgba(37,211,102,.95);">
-                    <svg><use href="#i-whatsapp"></use></svg>
+              <a href="#" onclick="trackClick('whatsapp','تواصل معنا عبر واتساب','grid'); whatsapp('grid'); return false;">
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <!-- whatsapp icon -->
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 2a9.8 9.8 0 0 0-8.4 14.8L3 22l5.3-1.6A9.8 9.8 0 1 0 12 2zm5.6 14.2c-.2.6-1.2 1.1-1.7 1.2-.5.1-1.1.2-1.8 0-.4-.1-1-.3-1.7-.6-3-1.3-5-4.5-5.1-4.7-.1-.2-.8-1.1-.8-2.6s.8-2.2 1.1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .5 0 .7.6l.9 2.2c.1.4.1.6 0 .8l-.3.5c-.1.2-.3.4-.1.8.2.3.9 1.5 2 2.4 1.4 1.1 2.5 1.4 2.9 1.6.3.1.6.1.8-.1l.9-1.1c.2-.2.4-.2.7-.1l2.1 1c.3.1.5.2.5.4z"/>
+                    </svg>
                   </div>
-                  <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                  <div class="txt">
+                    <div class="title">واتساب</div>
+                    <div class="sub">رد سريع • تواصل فوري</div>
+                  </div>
                 </div>
-                <div class="txt">
-                  <div class="title">واتساب</div>
-                  <div class="sub">رد سريع • تواصل فوري مع فريق Axentro</div>
-                  <div class="badge"><span class="dot"></span> Chat</div>
-                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </div>
 
             <!-- Call -->
             <div class="card" data-c="call">
-              <div class="preview" aria-hidden="true"></div>
               <div class="line"></div>
               <a href="tel:+201146476993" onclick="trackClick('call','اتصال مباشر','grid');">
-                <div class="row-top">
-                  <div class="ico" aria-hidden="true" style="color: rgba(14,165,233,.95);">
-                    <svg><use href="#i-phone"></use></svg>
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M6.6 3.6h2.3c.6 0 .8.3 1 .8l1 3.3c.1.4 0 .7-.3 1L9.4 10c1.2 2.1 2.9 3.8 5 5l1.3-1.3c.3-.3.6-.4 1-.3l3.3 1c.5.2.8.4.8 1v2.3c0 1.2-1 2.2-2.2 2.2C10 21 3 14 3 5.8 3 4.6 4 3.6 5.2 3.6h1.4z"/>
+                    </svg>
                   </div>
-                  <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                  <div class="txt">
+                    <div class="title">اتصال مباشر</div>
+                    <div class="sub">متاح خلال ساعات العمل</div>
+                  </div>
                 </div>
-                <div class="txt">
-                  <div class="title">اتصال مباشر</div>
-                  <div class="sub">متاح خلال ساعات العمل • رد أسرع</div>
-                  <div class="badge"><span class="dot"></span> Call</div>
-                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </div>
 
             <!-- Email -->
             <div class="card" data-c="mail">
-              <div class="preview" aria-hidden="true"></div>
               <div class="line"></div>
-              <a href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','البريد الإلكتروني','grid');">
-                <div class="row-top">
-                  <div class="ico" aria-hidden="true" style="color: rgba(234,67,53,.95);">
-                    <svg><use href="#i-mail"></use></svg>
+              <a href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','تواصل معنا عبر البريد','grid');">
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M4.5 7.5h15v9h-15z"/>
+                      <path d="M5 8l7 6 7-6" fill="none" stroke="currentColor" stroke-width="0"/>
+                    </svg>
                   </div>
-                  <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                  <div class="txt">
+                    <div class="title">البريد الإلكتروني</div>
+                    <div class="sub">رسمي • مناسب للعروض</div>
+                  </div>
                 </div>
-                <div class="txt">
-                  <div class="title">البريد الإلكتروني</div>
-                  <div class="sub">رسمي • مناسب للعروض والملفات</div>
-                  <div class="badge"><span class="dot"></span> Email</div>
-                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </div>
 
             <!-- Website -->
             <div class="card" data-c="site">
-              <div class="preview" aria-hidden="true"></div>
               <div class="line"></div>
-              <a class="js-utm-link" href="index.html" onclick="trackClick('website','الموقع الرئيسي','grid');">
-                <div class="row-top">
-                  <div class="ico" aria-hidden="true" style="color: rgba(138,43,226,.95);">
-                    <svg><use href="#i-globe"></use></svg>
+              <a class="js-utm-link" href="index.html" onclick="trackClick('website','زيارة الموقع الرئيسي','grid');">
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/>
+                      <path d="M3.5 12h17" fill="none" stroke="currentColor" stroke-width="0"/>
+                    </svg>
                   </div>
-                  <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                  <div class="txt">
+                    <div class="title">الموقع الرئيسي</div>
+                    <div class="sub">عرض الخدمات والأعمال</div>
+                  </div>
                 </div>
-                <div class="txt">
-                  <div class="title">الموقع الرئيسي</div>
-                  <div class="sub">استكشف خدماتنا وأعمالنا</div>
-                  <div class="badge"><span class="dot"></span> Website</div>
-                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </div>
 
             <!-- Instagram -->
             <div class="card" data-c="ig">
-              <div class="preview" aria-hidden="true"></div>
               <div class="line"></div>
               <a href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener"
-                 onclick="trackClick('instagram','إنستجرام','grid');">
-                <div class="row-top">
-                  <div class="ico" aria-hidden="true" style="color: rgba(225,48,108,.95);">
-                    <svg><use href="#i-instagram"></use></svg>
+                 onclick="trackClick('instagram','تابعنا على انستقرام','grid');">
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M8 3.8h8A4.2 4.2 0 0 1 20.2 8v8A4.2 4.2 0 0 1 16 20.2H8A4.2 4.2 0 0 1 3.8 16V8A4.2 4.2 0 0 1 8 3.8Z"/>
+                      <path d="M12 16.1a4.1 4.1 0 1 0 0-8.2 4.1 4.1 0 0 0 0 8.2Z" fill="#000" opacity=".0"/>
+                      <path d="M17.4 6.6h.01"/>
+                    </svg>
                   </div>
-                  <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                  <div class="txt">
+                    <div class="title">إنستجرام</div>
+                    <div class="sub">أحدث الأعمال والبوستات</div>
+                  </div>
                 </div>
-                <div class="txt">
-                  <div class="title">إنستجرام</div>
-                  <div class="sub">أحدث الأعمال والبوستات</div>
-                  <div class="badge"><span class="dot"></span> Social</div>
-                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </div>
 
             <!-- Facebook -->
             <div class="card" data-c="fb">
-              <div class="preview" aria-hidden="true"></div>
               <div class="line"></div>
               <a href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener"
-                 onclick="trackClick('facebook','فيسبوك','grid');">
-                <div class="row-top">
-                  <div class="ico" aria-hidden="true" style="color: rgba(24,119,242,.95);">
-                    <svg><use href="#i-facebook"></use></svg>
+                 onclick="trackClick('facebook','تابعنا على فيسبوك','grid');">
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M14 8.4V7.2c0-.7.4-1.2 1.3-1.2h1.2V3.8h-2c-2.3 0-3.7 1.4-3.7 3.6v1h-2v2.4h2V20h2.8v-9.2h2.4l.6-2.4H14Z"/>
+                    </svg>
                   </div>
-                  <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                  <div class="txt">
+                    <div class="title">فيسبوك</div>
+                    <div class="sub">تحديثات ومجتمع</div>
+                  </div>
                 </div>
-                <div class="txt">
-                  <div class="title">فيسبوك</div>
-                  <div class="sub">تحديثات ومجتمع</div>
-                  <div class="badge"><span class="dot"></span> Community</div>
-                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </div>
 
             <!-- vCard -->
             <div class="card" data-c="vcf">
-              <div class="preview" aria-hidden="true"></div>
               <div class="line"></div>
               <a href="axentro.vcf" download onclick="trackVCardDownload('grid');">
-                <div class="row-top">
-                  <div class="ico" aria-hidden="true" style="color: rgba(100,149,237,.95);">
-                    <svg><use href="#i-card"></use></svg>
+                <div class="left">
+                  <div class="ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M7.5 4.5h9v15h-9z"/>
+                      <path d="M10 9a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z" fill="#000" opacity=".0"/>
+                    </svg>
                   </div>
-                  <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                  <div class="txt">
+                    <div class="title">حفظ جهة الاتصال</div>
+                    <div class="sub">vCard • إضافة سريعة</div>
+                  </div>
                 </div>
-                <div class="txt">
-                  <div class="title">حفظ جهة الاتصال</div>
-                  <div class="sub">vCard • إضافة سريعة</div>
-                  <div class="badge"><span class="dot"></span> Save</div>
-                </div>
+                <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </div>
 
@@ -553,30 +477,62 @@
   <!-- Floating WhatsApp -->
   <button class="floating" type="button" aria-label="WhatsApp Floating"
     onclick="trackClick('whatsapp','واتساب العائم','floating'); whatsapp('floating');">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="color: rgba(37,211,102,.95);">
-      <use href="#i-whatsapp"></use>
+    <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2a9.8 9.8 0 0 0-8.4 14.8L3 22l5.3-1.6A9.8 9.8 0 1 0 12 2z"/>
     </svg>
   </button>
 
-  <!-- Progress bar -->
+  <!-- Scroll Progress (خفيف جدًا) -->
   <script>
-    const bar = document.getElementById('scrollProgress');
-    window.addEventListener('scroll', () => {
-      const h = document.documentElement;
-      const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-      bar.style.width = p + '%';
-    }, { passive: true });
+    (function () {
+      const bar = document.createElement('div');
+      bar.style.cssText = `
+        position:fixed;
+        top:0;left:0;
+        height:3px;
+        width:0%;
+        z-index:9999;
+        background:linear-gradient(90deg,#22d3ee,#0ea5e9,#22c55e);
+        box-shadow:0 0 18px rgba(0,200,255,.45);
+        pointer-events:none;
+      `;
+      document.body.appendChild(bar);
+
+      window.addEventListener('scroll', () => {
+        const h = document.documentElement;
+        const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+        bar.style.width = p + '%';
+      }, { passive: true });
+    })();
   </script>
 
-  <!-- Analytics (لازم عشان whatsapp()/trackClick() يشتغلوا) -->
-  <script src="assets/js/ga.js"></script>
+  <!-- Analytics helpers (لازمة للزرار) -->
   <script>
-    AxentroAnalytics.init({
-      page: "links",
-      utm_campaign_default: "axentro",
-      enable_qr_scan: true,
-      enable_internal_utm_links: true
-    });
+    function whatsapp(source){
+      const phone = "201146476993";
+      const text  = "مرحبا Axentro 👋";
+      const url   = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+      window.open(url, "_blank");
+    }
+
+    function trackClick(type,label,place){
+      if(typeof gtag === "function"){
+        gtag('event','click',{
+          event_category: place || 'links',
+          event_label: label || type
+        });
+      }
+    }
+
+    function trackVCardDownload(place){
+      if(typeof gtag === "function"){
+        gtag('event','download',{
+          event_category: place || 'links',
+          event_label: 'vcard'
+        });
+      }
+    }
   </script>
+
 </body>
 </html>
