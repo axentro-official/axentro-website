@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Axentro | روابط التواصل</title>
+
+  <!-- ✅ iPhone / Safari + Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#080812" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- ✅ GA4 Tracking (Loader only + disable auto page_view) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
+  </script>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      /* Cinematic palette (close to v0 vibe) */
+      --bg0:#080812;
+      --bg1:#0a0a1a;
+      --fg:#eaf2ff;
+      --muted:#9aa7c0;
+
+      --glass: rgba(255,255,255,.06);
+      --glass2: rgba(255,255,255,.08);
+      --border: rgba(100,149,237,.16);
+
+      --blue:#6495ED;
+      --purple:#8A2BE2;
+      --teal:#00CED1;
+
+      /* Keep your button identity colors */
+      --wa:#25D366;
+      --mail:#EA4335;
+      --fb:#1877F2;
+      --ig:#E1306C;
+
+      --radius: 22px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Cairo',sans-serif;
+      color:var(--fg);
+      background: radial-gradient(1200px 900px at 70% 10%, rgba(138,43,226,.18), transparent 55%),
+                  radial-gradient(900px 700px at 10% 30%, rgba(100,149,237,.16), transparent 55%),
+                  radial-gradient(900px 700px at 40% 90%, rgba(0,206,209,.12), transparent 55%),
+                  linear-gradient(135deg,var(--bg0),var(--bg1));
+      overflow-x:hidden;
+      -webkit-text-size-adjust:100%;
+      padding-top: env(safe-area-inset-top);
+      min-height: 100vh;
+    }
+
+    /* ====== Cinematic layers ====== */
+    .bg-layer{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+    }
+
+    /* grid overlay */
+    .grid{
+      position:absolute; inset:0;
+      opacity:.06;
+      background-image:
+        linear-gradient(rgba(100,149,237,.45) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100,149,237,.45) 1px, transparent 1px);
+      background-size: 90px 90px;
+      transform: translateZ(0);
+      mix-blend-mode: overlay;
+    }
+
+    /* diagonal lines */
+    .diagonal{
+      position:absolute; inset:0;
+      opacity:.03;
+      background-image:
+        repeating-linear-gradient(45deg,
+          rgba(138,43,226,.7) 0px,
+          rgba(138,43,226,.7) 1px,
+          transparent 1px,
+          transparent 90px
+        );
+      mix-blend-mode: overlay;
+    }
+
+    /* scanlines */
+    .scanlines{
+      position:absolute; inset:0;
+      opacity:.04;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,.06) 0px,
+          rgba(255,255,255,.06) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      mix-blend-mode: overlay;
+    }
+
+    /* moving scan beam */
+    @keyframes scan {
+      0% { transform: translateY(-120%); }
+      100% { transform: translateY(120vh); }
+    }
+    .scan-beam{
+      position:absolute;
+      left:0; right:0;
+      top:-30vh;
+      height: 3px;
+      opacity:.18;
+      background: linear-gradient(90deg, transparent 0%, rgba(100,149,237,.9) 50%, transparent 100%);
+      box-shadow: 0 0 30px rgba(100,149,237,.55);
+      animation: scan 7s linear infinite;
+    }
+
+    /* orbs */
+    @keyframes drift {
+      0% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(32px,-30px) scale(1.05); }
+      66% { transform: translate(-22px,22px) scale(.96); }
+      100% { transform: translate(0,0) scale(1); }
+    }
+    .orb{
+      position:absolute;
+      border-radius:50%;
+      filter: blur(90px);
+      animation: drift 28s ease-in-out infinite;
+      opacity:.9;
+    }
+    .orb.one{
+      width: 900px; height: 900px;
+      top:-25%; left:-15%;
+      background: radial-gradient(circle, rgba(100,149,237,.16) 0%, rgba(100,149,237,.05) 35%, transparent 70%);
+      animation-duration: 34s;
+    }
+    .orb.two{
+      width: 820px; height: 820px;
+      top:38%; right:-18%;
+      background: radial-gradient(circle, rgba(138,43,226,.18) 0%, rgba(138,43,226,.06) 35%, transparent 70%);
+      animation-duration: 38s;
+      animation-delay: -9s;
+    }
+    .orb.three{
+      width: 720px; height: 720px;
+      bottom:-18%; left:22%;
+      background: radial-gradient(circle, rgba(0,206,209,.14) 0%, rgba(0,206,209,.05) 35%, transparent 70%);
+      animation-duration: 30s;
+      animation-delay: -18s;
+      filter: blur(70px);
+    }
+
+    /* noise */
+    .noise::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity:.04;
+      mix-blend-mode: overlay;
+      pointer-events:none;
+    }
+
+    /* vignette */
+    .vignette{
+      position:absolute; inset:0;
+      background: radial-gradient(ellipse at center, transparent 0%, transparent 45%, rgba(0,0,0,.52) 100%);
+    }
+
+    /* Canvas particles (lightweight) */
+    #bgCanvas{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      opacity: .55;
+    }
+
+    /* ====== Layout ====== */
+    section{padding:90px 20px; text-align:center; position:relative; z-index:2;}
+    .container{max-width:1100px;margin:auto}
+
+    h1,h2,h3{color:#dfeaff}
+    p{color:var(--muted);line-height:1.9}
+
+    /* PROGRESS BAR */
+    .scroll-progress{
+      position:fixed;
+      top:0;
+      left:0;
+      height:3px;
+      width:0%;
+      background: linear-gradient(90deg, rgba(100,149,237,.9), rgba(138,43,226,.9), rgba(0,206,209,.8));
+      z-index:99999;
+      pointer-events:none;
+      box-shadow: 0 0 18px rgba(138,43,226,.35);
+    }
+
+    /* HERO */
+    .hero{position:relative}
+    .hero h1{
+      font-size:56px;
+      letter-spacing:3px;
+      font-weight: 900;
+      text-shadow: 0 0 70px rgba(100,149,237,.22);
+    }
+    .hero .tagline{
+      margin-top:10px;
+      letter-spacing:5px;
+      font-size:13px;
+      opacity:.9;
+      color: rgba(234,242,255,.78);
+      text-transform: uppercase;
+    }
+    .hero p{max-width:760px;margin:28px auto 0}
+
+    /* Glass shell */
+    .shell{
+      width:min(860px, 100%);
+      margin: 34px auto 0;
+      padding: 26px;
+      border-radius: calc(var(--radius) + 10px);
+      background: linear-gradient(135deg, rgba(255,255,255,.07) 0%, rgba(255,255,255,.03) 55%, rgba(255,255,255,.05) 100%);
+      border: 1px solid rgba(100,149,237,.18);
+      backdrop-filter: blur(26px);
+      -webkit-backdrop-filter: blur(26px);
+      box-shadow:
+        0 18px 60px rgba(0,0,0,.45),
+        0 0 60px rgba(138,43,226,.10),
+        inset 0 1px 0 rgba(255,255,255,.06);
+      position: relative;
+      overflow:hidden;
+    }
+    .shell::after{
+      content:'';
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(800px 260px at 50% -10%, rgba(100,149,237,.20), transparent 60%),
+                  radial-gradient(600px 220px at 90% 20%, rgba(138,43,226,.18), transparent 60%),
+                  radial-gradient(500px 240px at 10% 70%, rgba(0,206,209,.14), transparent 60%);
+      opacity:.65;
+      pointer-events:none;
+      filter: blur(10px);
+    }
+
+    /* ✅ شيلنا شريط التنقل من صفحة links فقط */
+    .navigation-links{display:none;}
+
+    /* BUTTON STYLES */
+    .cta-wrap{
+      margin-top: 10px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      align-items:center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-button{
+      position: relative;
+      padding:18px 45px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:20px;
+      cursor:pointer;
+      transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      text-decoration:none;
+      width:min(560px, 100%);
+      border: 1px solid rgba(255,255,255,.14);
+      pointer-events:auto;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+      user-select:none;
+      box-shadow:
+        0 14px 40px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.10);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      overflow:hidden;
+      will-change: transform;
+    }
+
+    /* moving sheen */
+    .cta-button::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.18) 50%, transparent 100%);
+      transform: translateX(-140%);
+      transition: transform .8s ease;
+      opacity:.7;
+    }
+    .cta-button:hover::before{ transform: translateX(140%); }
+    .cta-button:hover{
+      transform: translateY(-2px) scale(1.01);
+      filter: saturate(1.05);
+    }
+    .cta-button:focus{
+      outline:2px solid rgba(100,149,237,.45);
+      outline-offset:4px;
+    }
+
+    /* Button colors (keep your identity) */
+    .btn-wa{background: linear-gradient(135deg, rgba(37,211,102,.95) 0%, rgba(37,211,102,.80) 100%); color:#00110a; border-color: rgba(37,211,102,.25);}
+    .btn-mail{background: linear-gradient(135deg, rgba(234,67,53,.95) 0%, rgba(234,67,53,.75) 100%); color:#fff; border-color: rgba(234,67,53,.25);}
+    .btn-fb{background: linear-gradient(135deg, rgba(24,119,242,.95) 0%, rgba(24,119,242,.75) 100%); color:#fff; border-color: rgba(24,119,242,.22);}
+    .btn-ig{background: linear-gradient(135deg, rgba(225,48,108,.95) 0%, rgba(225,48,108,.75) 100%); color:#fff; border-color: rgba(225,48,108,.22);}
+    .btn-call{background: linear-gradient(135deg, rgba(14,165,233,.95) 0%, rgba(14,165,233,.72) 100%); color:#00111a; border-color: rgba(14,165,233,.22);}
+    .btn-site{
+      background: linear-gradient(135deg, rgba(100,149,237,.22) 0%, rgba(138,43,226,.18) 50%, rgba(0,206,209,.16) 100%);
+      color: rgba(234,242,255,.95);
+      border-color: rgba(100,149,237,.22);
+      box-shadow:
+        0 14px 40px rgba(0,0,0,.45),
+        0 0 28px rgba(138,43,226,.18),
+        inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .btn-vcard{
+      background: linear-gradient(135deg, rgba(17,24,39,.92) 0%, rgba(11,18,32,.88) 100%);
+      color:#fff;
+      border-color: rgba(100,149,237,.14);
+    }
+
+    /* Small caption under hero */
+    .hint{
+      margin-top: 16px;
+      font-size: 13px;
+      color: rgba(154,167,192,.86);
+      letter-spacing: .06em;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:40px 20px;
+      border-top:1px solid rgba(255,255,255,.08);
+      text-align:center;
+      position:relative;
+      z-index:2;
+    }
+    footer .main{
+      font-weight:900;
+      font-size:16px;
+      color:#fff;
+    }
+    footer .by{
+      margin-top:8px;
+      font-size:14px;
+      opacity:.9;
+      color:var(--muted);
+    }
+
+    /* FLOATING WA */
+    .floating-wa{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      width:66px;
+      height:66px;
+      border-radius:50%;
+      background: linear-gradient(135deg, rgba(37,211,102,1) 0%, rgba(37,211,102,.82) 100%);
+      color:#00110a;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:30px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.55), 0 0 30px rgba(37,211,102,.25);
+      z-index:999;
+      transition:transform .2s ease, box-shadow .2s ease;
+      cursor:pointer;
+      pointer-events:auto;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+      border:1px solid rgba(37,211,102,.28);
+    }
+    .floating-wa:hover{
+      transform:scale(1.06);
+      box-shadow: 0 18px 60px rgba(0,0,0,.55), 0 0 40px rgba(37,211,102,.32);
+    }
+    .floating-wa:focus{
+      outline:2px solid rgba(37,211,102,.40);
+      outline-offset:4px;
+    }
+
+    @media (max-width:600px){
+      .hero h1{font-size:44px}
+      .cta-button{font-size:18px;padding:16px 22px}
+      .shell{padding: 18px}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .cta-button,.floating-wa{transition:none}
+      .orb,.scan-beam{animation:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Cinematic Background -->
+  <div class="bg-layer noise">
+    <canvas id="bgCanvas"></canvas>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+    <div class="grid"></div>
+    <div class="diagonal"></div>
+    <div class="scanlines"></div>
+    <div class="scan-beam"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <section class="hero" id="links">
+    <div class="container">
+      <h1>AXENTRO</h1>
+      <div class="tagline">CONTROL • TRACK • GROW</div>
+
+      <p>
+        اختر وسيلة التواصل الأنسب وسنرد عليك سريعًا.<br>
+        <span style="opacity:.8">Choose your preferred contact method.</span>
+      </p>
+
+      <div class="shell">
+        <div class="cta-wrap">
+          <!-- 1) WhatsApp -->
+          <a
+            class="cta-button btn-wa"
+            href="#"
+            role="button"
+            aria-label="تواصل معنا عبر واتساب"
+            onclick="trackClick('whatsapp','تواصل معنا عبر واتساب','main'); whatsapp('main'); return false;"
+          >
+            <i class="fab fa-whatsapp"></i>
+            تواصل معنا عبر واتساب
+          </a>
+
+          <!-- 2) Call -->
+          <a
+            class="cta-button btn-call"
+            href="tel:+201146476993"
+            role="button"
+            aria-label="اتصال مباشر"
+            onclick="trackClick('call','اتصال مباشر','main');"
+          >
+            <i class="fas fa-phone"></i>
+            اتصال مباشر
+          </a>
+
+          <!-- 3) Email -->
+          <a
+            class="cta-button btn-mail"
+            href="mailto:axentroofficial@gmail.com"
+            role="button"
+            aria-label="تواصل معنا عبر البريد"
+            onclick="trackClick('email','تواصل معنا عبر البريد','main');"
+          >
+            <i class="fas fa-envelope"></i>
+            تواصل معنا عبر البريد
+          </a>
+
+          <!-- 4) Visit Main Website (internal link => UTM append) -->
+          <a
+            class="cta-button btn-site js-utm-link"
+            href="index.html"
+            role="button"
+            aria-label="زيارة الموقع الرئيسي"
+            onclick="trackClick('website','زيارة الموقع الرئيسي','main');"
+          >
+            <i class="fas fa-globe"></i>
+            زيارة الموقع الرئيسي
+          </a>
+
+          <!-- 5) Instagram -->
+          <a
+            class="cta-button btn-ig"
+            href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
+            target="_blank"
+            rel="noopener"
+            role="button"
+            aria-label="تابعنا على انستقرام"
+            onclick="trackClick('instagram','تابعنا على انستقرام','main');"
+          >
+            <i class="fab fa-instagram"></i>
+            تابعنا على انستقرام
+          </a>
+
+          <!-- 6) Facebook -->
+          <a
+            class="cta-button btn-fb"
+            href="https://facebook.com/AxentroSamrtSolutions"
+            target="_blank"
+            rel="noopener"
+            role="button"
+            aria-label="تابعنا على فيسبوك"
+            onclick="trackClick('facebook','تابعنا على فيسبوك','main');"
+          >
+            <i class="fab fa-facebook-f"></i>
+            تابعنا على فيسبوك
+          </a>
+
+          <!-- 7) vCard -->
+          <a
+            class="cta-button btn-vcard"
+            href="axentro.vcf"
+            download
+            role="button"
+            aria-label="احفظ بياناتنا في جهات الاتصال"
+            onclick="trackVCardDownload('main');"
+          >
+            <i class="fas fa-address-card"></i>
+            احفظ بياناتنا في جهات الاتصال
+          </a>
+        </div>
+
+        <div class="hint">Axentro • Cinematic Links</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="main">© 2024 Axentro – All Rights Reserved</div>
+    <div class="by">By Ahmed Hamouda</div>
+  </footer>
+
+  <!-- FLOATING WA -->
+  <button
+    type="button"
+    class="floating-wa"
+    aria-label="WhatsApp Floating"
+    onclick="trackClick('whatsapp','واتساب العائم','floating'); whatsapp('floating');"
+  >
+    <i class="fab fa-whatsapp"></i>
+  </button>
+
+  <!-- ✅ UI scripts (keep) -->
+  <script>
+    /* Progress bar */
+    const bar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      bar.style.width = p + '%';
+    }, { passive: true });
+  </script>
+
+  <!-- Cinematic particles canvas (lightweight, safe) -->
+  <script>
+    (function(){
+      const canvas = document.getElementById("bgCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      let w = 0, h = 0, raf = 0;
+      const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const hiddenPause = () => document.hidden;
+
+      const colors = [
+        "100,149,237", // blue
+        "138,43,226",  // purple
+        "0,206,209"    // teal
+      ];
+
+      let mouse = { x: 0.5, y: 0.5 };
+      let target = { x: 0.5, y: 0.5 };
+
+      function resize(){
+        const dpr = Math.min(2, window.devicePixelRatio || 1);
+        w = canvas.width = Math.floor(window.innerWidth * dpr);
+        h = canvas.height = Math.floor(window.innerHeight * dpr);
+        canvas.style.width = window.innerWidth + "px";
+        canvas.style.height = window.innerHeight + "px";
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      }
+
+      const particleCount = () => Math.min(140, Math.floor((window.innerWidth * window.innerHeight) / 10000));
+      let particles = [];
+
+      function init(){
+        resize();
+        particles = [];
+        const n = particleCount();
+        for(let i=0;i<n;i++){
+          particles.push({
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            vx: (Math.random()-0.5) * 0.25,
+            vy: (Math.random()-0.5) * 0.25,
+            r: Math.random()*1.8 + 0.6,
+            o: Math.random()*0.5 + 0.15,
+            c: Math.floor(Math.random()*3)
+          });
+        }
+      }
+
+      function onMove(e){
+        target.x = e.clientX / window.innerWidth;
+        target.y = e.clientY / window.innerHeight;
+      }
+
+      function tick(){
+        if (prefersReduced || hiddenPause()){
+          ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+          raf = requestAnimationFrame(tick);
+          return;
+        }
+
+        mouse.x += (target.x - mouse.x) * 0.08;
+        mouse.y += (target.y - mouse.y) * 0.08;
+
+        // trail
+        ctx.fillStyle = "rgba(8,8,18,0.18)";
+        ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+
+        // mouse glow
+        const mx = mouse.x * window.innerWidth;
+        const my = mouse.y * window.innerHeight;
+        const g = ctx.createRadialGradient(mx,my,0,mx,my,320);
+        g.addColorStop(0, "rgba(138,43,226,0.12)");
+        g.addColorStop(0.35, "rgba(100,149,237,0.08)");
+        g.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(mx,my,320,0,Math.PI*2);
+        ctx.fill();
+
+        // particles + connections
+        for (let i=0;i<particles.length;i++){
+          const p = particles[i];
+
+          // mouse repuls
