@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#020617">
   <meta name="format-detection" content="telephone=no">
 
-  <!-- ✅ GA4 Tracking (Loader only + disable auto page_view) -->
+  <!-- ✅ GA4 Tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -25,14 +25,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* ==================================================
+       AXENTRO LINKS — ULTRA PREMIUM (GLOW BOOSTED)
+       Desktop: cinematic glow + deep glass
+       Mobile: optimized & smooth
+       ================================================== */
+
     :root{
-      /* ✅ نفس متغيراتك (مش هنكسر أي حاجة) */
-      --bg:#020617;
-      --card:rgba(255,255,255,.06);
-      --primary:#00d4ff;
-      --secondary:#00ffd5;
+      --bg0:#020617;
+      --bg1:#05070a;
+      --bg2:#020b2e;
+
       --text:#e5f6ff;
       --muted:#94a3b8;
+
+      --primary:#00d4ff;
+      --secondary:#00ffd5;
+
       --wa:#25D366;
       --mail:#EA4335;
       --fb:#1877F2;
@@ -40,418 +49,353 @@
       --site:#0b2447;
       --vcard:#111827;
 
-      /* ✅ إضافات ستايل الصورة */
-      --bg2:#05070a;
-      --stroke:rgba(255,255,255,.12);
-      --stroke2:rgba(255,255,255,.07);
-      --glass:rgba(255,255,255,.06);
-      --glass2:rgba(255,255,255,.04);
-      --glowA: rgba(120, 255, 214, .18);
-      --glowB: rgba(120, 210, 255, .14);
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-      --shadow2: 0 10px 30px rgba(0,0,0,.40);
-      --r-xl: 26px;
-      --r-lg: 18px;
-      --r-md: 14px;
+      --stroke: rgba(255,255,255,.14);
+      --stroke2: rgba(255,255,255,.08);
+      --glass: rgba(255,255,255,.07);
+      --glass2: rgba(255,255,255,.04);
+
+      --shadow: 0 34px 120px rgba(0,0,0,.68);
+      --shadow2: 0 18px 60px rgba(0,0,0,.48);
+
+      --radius: 30px;
+      --pill: 999px;
+
+      /* 🔥 GLOW BOOST */
+      --glowA: rgba(0,255,213,.35);
+      --glowB: rgba(0,212,255,.30);
+      --glowC: rgba(120,255,214,.26);
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
+
     body{
       font-family:'Cairo',sans-serif;
-      /* ✅ نفس الألوان بتاعتك + لمسة الصورة */
-      background:
-        radial-gradient(1100px 650px at 70% 20%, var(--glowA), transparent 58%),
-        radial-gradient(900px 520px at 20% 70%, var(--glowB), transparent 58%),
-        linear-gradient(180deg, #05070a, #03050a);
       color:var(--text);
       overflow-x:hidden;
-      -webkit-text-size-adjust:100%;
       padding-top: env(safe-area-inset-top);
+
+      background:
+        radial-gradient(1100px 620px at 70% 12%, var(--glowA), transparent 60%),
+        radial-gradient(900px 520px at 18% 78%, var(--glowB), transparent 60%),
+        radial-gradient(600px 360px at 45% 45%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(135deg, var(--bg0), var(--bg2));
     }
 
-    /* ✅ تأثير زجاجي خفيف زي الصورة */
-    body:before{
+    /* Ambient cinematic glow (DESKTOP) */
+    body::before{
       content:"";
-      position:fixed; inset:0;
+      position:fixed;
+      inset:-160px;
       pointer-events:none;
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.045), transparent 35%),
-        radial-gradient(circle at 80% 18%, rgba(255,255,255,.035), transparent 35%),
-        radial-gradient(circle at 45% 85%, rgba(255,255,255,.03), transparent 40%);
-      opacity:.65;
-      mix-blend-mode: screen;
+        radial-gradient(900px 520px at 20% 20%, var(--glowC), transparent 62%),
+        radial-gradient(980px 560px at 85% 28%, var(--glowB), transparent 62%),
+        conic-gradient(
+          from 220deg at 60% 45%,
+          rgba(0,255,213,.22),
+          rgba(0,212,255,.18),
+          rgba(255,255,255,.06),
+          rgba(0,255,213,.22)
+        );
+      filter: blur(22px);
+      opacity:.9;
+      animation: ambientMove 18s ease-in-out infinite alternate;
+      transform: translateZ(0);
     }
 
-    section{padding:90px 20px;text-align:center; position:relative}
+    @keyframes ambientMove{
+      0%{ transform: translate3d(0,0,0) scale(1); }
+      100%{ transform: translate3d(22px,-18px,0) scale(1.06); }
+    }
+
+    section{padding:90px 20px;text-align:center;position:relative}
     .container{max-width:1100px;margin:auto}
 
-    h1,h2,h3{color:rgba(255,255,255,.92)}
-    p{color:rgba(255,255,255,.62);line-height:1.9}
+    h1{font-size:58px;letter-spacing:2.8px}
+    p{color:var(--muted);line-height:1.9}
 
     /* PROGRESS BAR */
     .scroll-progress{
       position:fixed;
-      top:0;
-      left:0;
-      height:3px;
-      width:0%;
-      background: linear-gradient(90deg, rgba(120,255,214,.95), rgba(120,210,255,.95));
+      top:0;left:0;
+      height:3px;width:0%;
+      background:linear-gradient(90deg,#00ffd5,#00d4ff);
+      box-shadow:0 0 22px rgba(0,255,213,.45);
       z-index:99999;
       pointer-events:none;
-      box-shadow: 0 0 18px rgba(120,255,214,.35);
     }
 
     /* HERO */
-    .hero{position:relative}
-    .hero .container{
-      background: linear-gradient(180deg, var(--glass), var(--glass2));
-      border: 1px solid var(--stroke2);
-      border-radius: var(--r-xl);
-      box-shadow: var(--shadow2);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      padding: 34px 18px 28px;
-      max-width: 900px;
+    .hero h1{
+      text-shadow:0 18px 80px rgba(0,0,0,.65);
     }
-    .hero h1{font-size:56px;letter-spacing:2px}
     .hero .tagline{
       margin-top:10px;
-      letter-spacing:4px;
-      font-size:14px;
-      opacity:.85;
-      color: rgba(255,255,255,.70);
+      letter-spacing:6px;
+      font-size:13px;
+      opacity:.9;
     }
-    .hero p{max-width:760px;margin:28px auto 0}
 
-    /* ✅ شيلنا شريط التنقل من صفحة links فقط */
-    .navigation-links{display:none;}
+    /* MAIN GLASS CARD */
+    .hero .container{
+      position:relative;
+      max-width:960px;
+      padding:42px 20px 34px;
+      background:linear-gradient(180deg,var(--glass),var(--glass2));
+      border:1px solid var(--stroke2);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow2);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      overflow:hidden;
+    }
 
-    /* BUTTON STYLES (نفس كلاس الزر عندك) */
+    /* Gradient frame */
+    .hero .container::after{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      border-radius:inherit;
+      padding:1px;
+      background:linear-gradient(
+        135deg,
+        rgba(0,255,213,.85),
+        rgba(0,212,255,.55),
+        rgba(255,255,255,.15)
+      );
+      opacity:.9;
+      pointer-events:none;
+      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;
+              mask-composite:exclude;
+    }
+
+    /* BUTTONS */
     .cta-button{
-      color:var(--text);
+      position:relative;
       padding:18px 45px;
-      border-radius:50px;
+      border-radius:var(--pill);
       font-weight:800;
       font-size:20px;
-      cursor:pointer;
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, filter .18s ease;
       margin-top:14px;
+      width:min(560px,100%);
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:12px;
       text-decoration:none;
-      width:min(560px, 100%);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 14px 40px rgba(0,0,0,.42);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-
-      pointer-events:auto;
-      touch-action:manipulation;
-      -webkit-tap-highlight-color:transparent;
-      user-select:none;
-      position: relative;
+      color:var(--text);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:var(--shadow2);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      transition:transform .22s ease, box-shadow .22s ease, filter .22s ease;
+      will-change:transform;
       overflow:hidden;
     }
-    .cta-button:before{
+
+    .cta-button::after{
       content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(420px 140px at 25% 15%, rgba(255,255,255,.10), transparent 60%);
-      opacity:.65;
+      position:absolute;
+      inset:-1px;
+      border-radius:inherit;
       pointer-events:none;
-    }
-    .cta-button:hover{
-      transform: translateY(-2px) scale(1.01);
-      border-color: rgba(255,255,255,.18);
-      box-shadow: var(--shadow);
-      filter: saturate(1.05);
-    }
-    .cta-button:focus{
-      outline:2px solid rgba(0,255,213,.45);
-      outline-offset:4px;
+      background:linear-gradient(
+        135deg,
+        rgba(0,255,213,.75),
+        rgba(0,212,255,.45),
+        rgba(255,255,255,.18)
+      );
+      opacity:.65;
+      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;
+              mask-composite:exclude;
     }
 
-    /* Button colors (نفس ألوانك لكن بلمعة زي الصورة) */
-    .btn-wa{
+    .cta-button::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
       background:
-        radial-gradient(420px 180px at 25% 25%, rgba(255,255,255,.18), transparent 62%),
-        linear-gradient(135deg, rgba(37,211,102,.95), rgba(37,211,102,.78));
-      color:#04120c;
-      border-color: rgba(37,211,102,.35);
+        radial-gradient(600px 260px at 20% 20%, rgba(255,255,255,.18), transparent 60%),
+        linear-gradient(120deg, transparent, rgba(255,255,255,.22), transparent);
+      opacity:.7;
+      pointer-events:none;
     }
-    .btn-mail{
-      background:
-        radial-gradient(420px 180px at 25% 25%, rgba(255,255,255,.14), transparent 62%),
-        linear-gradient(135deg, rgba(234,67,53,.92), rgba(234,67,53,.70));
-      color:#fff;
-      border-color: rgba(234,67,53,.30);
+
+    .cta-button:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow);
+      filter:saturate(1.1);
     }
-    .btn-fb{
-      background:
-        radial-gradient(420px 180px at 25% 25%, rgba(255,255,255,.12), transparent 62%),
-        linear-gradient(135deg, rgba(24,119,242,.92), rgba(24,119,242,.64));
-      color:#fff;
-      border-color: rgba(24,119,242,.28);
+
+    .cta-button:active{
+      transform:translateY(1px);
+      filter:brightness(1.08);
     }
-    .btn-ig{
-      background:
-        radial-gradient(420px 180px at 25% 25%, rgba(255,255,255,.12), transparent 62%),
-        linear-gradient(135deg, rgba(225,48,108,.92), rgba(225,48,108,.66));
-      color:#fff;
-      border-color: rgba(225,48,108,.28);
-    }
-    .btn-call{
-      background:
-        radial-gradient(420px 180px at 25% 25%, rgba(255,255,255,.18), transparent 62%),
-        linear-gradient(135deg, rgba(126,232,255,.95), rgba(14,165,233,.72));
-      color:#00111a;
-      border-color: rgba(126,232,255,.30);
-    }
-    .btn-site{
-      background:
-        radial-gradient(520px 220px at 25% 25%, rgba(255,255,255,.10), transparent 62%),
-        linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      color:var(--secondary);
-      border-color: rgba(255,255,255,.14);
-    }
-    .btn-vcard{
-      background:
-        radial-gradient(520px 220px at 25% 25%, rgba(255,255,255,.10), transparent 62%),
-        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
-      color:#fff;
-      border-color: rgba(255,255,255,.14);
-    }
+
+    /* Button colors */
+    .btn-wa{background:linear-gradient(135deg,#25D366,#1fae57);color:#03150d}
+    .btn-mail{background:linear-gradient(135deg,#EA4335,#c9372b)}
+    .btn-fb{background:linear-gradient(135deg,#1877F2,#0f5fcc)}
+    .btn-ig{background:linear-gradient(135deg,#E1306C,#b91c4c)}
+    .btn-call{background:linear-gradient(135deg,#38bdf8,#0ea5e9);color:#00111a}
+    .btn-site{background:linear-gradient(135deg,#0b2447,#0a3a66);color:var(--secondary)}
+    .btn-vcard{background:linear-gradient(135deg,#111827,#0b1220)}
 
     /* FOOTER */
     footer{
-      padding:40px 20px;
+      padding:42px 20px;
       text-align:center;
       position:relative;
-      border-top: none; /* ✅ نحافظ على الشكل الجديد */
-      margin-top: -30px;
+      margin-top:-20px;
     }
-    footer:before{
+    footer::before{
       content:"";
       position:absolute;
       left:50%;
       transform:translateX(-50%);
       top:0;
-      width:min(920px, calc(100% - 36px));
+      width:min(960px,calc(100% - 36px));
       height:100%;
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: var(--r-xl);
-      box-shadow: var(--shadow2);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:var(--radius);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      box-shadow:var(--shadow2);
       z-index:-1;
-    }
-    footer .main{
-      font-weight:900;
-      font-size:16px;
-      color:#fff;
-    }
-    footer .by{
-      margin-top:8px;
-      font-size:14px;
-      opacity:.9;
-      color:var(--muted);
     }
 
     /* FLOATING WA */
     .floating-wa{
       position:fixed;
-      bottom:25px;
-      right:25px;
-      width:66px;
-      height:66px;
+      bottom:25px;right:25px;
+      width:66px;height:66px;
       border-radius:50%;
-      background:
-        radial-gradient(220px 120px at 30% 20%, rgba(255,255,255,.20), transparent 60%),
-        linear-gradient(135deg, rgba(37,211,102,.98), rgba(37,211,102,.78));
+      background:linear-gradient(135deg,#25D366,#1fae57);
       color:#04120c;
       display:flex;
       align-items:center;
       justify-content:center;
       font-size:30px;
-      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      box-shadow:0 26px 90px rgba(0,0,0,.6);
+      transition:transform .2s ease;
       z-index:999;
-      transition:transform .18s ease, box-shadow .18s ease;
-      text-decoration:none;
-      cursor:pointer;
-
-      pointer-events:auto;
-      touch-action:manipulation;
-      -webkit-tap-highlight-color:transparent;
-      border: 1px solid rgba(37,211,102,.35);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
     }
-    .floating-wa:hover{transform:translateY(-2px) scale(1.02)}
-    .floating-wa:focus{
-      outline:2px solid rgba(0,255,213,.45);
-      outline-offset:4px;
-    }
+    .floating-wa:hover{transform:scale(1.06)}
 
-    @media (max-width:600px){
-      .hero h1{font-size:42px}
-      .cta-button{font-size:18px;padding:16px 22px}
-      section{padding:70px 16px 80px}
-      .hero .container{padding: 28px 14px 22px}
+    /* ===== MOBILE PERFORMANCE MODE ===== */
+    @media (max-width:768px){
+      body::before{display:none;}
+      section{padding:70px 16px}
+      h1{font-size:42px}
+
+      .hero .container{
+        backdrop-filter:blur(10px);
+        -webkit-backdrop-filter:blur(10px);
+        box-shadow:0 16px 46px rgba(0,0,0,.5);
+      }
+
+      .cta-button{
+        font-size:18px;
+        padding:16px 22px;
+        backdrop-filter:blur(8px);
+        -webkit-backdrop-filter:blur(8px);
+      }
+      .cta-button:hover{transform:none}
     }
 
     @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      .cta-button,.floating-wa{transition:none}
+      body::before{animation:none}
+      *{transition:none!important}
     }
   </style>
 </head>
 
 <body>
-  <div class="scroll-progress" id="scrollProgress"></div>
 
-  <section class="hero" id="links">
-    <div class="container">
-      <h1>AXENTRO</h1>
-      <div class="tagline">CONTROL • TRACK • GROW</div>
+<div class="scroll-progress" id="scrollProgress"></div>
 
-      <p>
-        اختر وسيلة التواصل الأنسب وسنرد عليك سريعًا.<br>
-        <span style="opacity:.8">Choose your preferred contact method.</span>
-      </p>
+<section class="hero" id="links">
+  <div class="container">
+    <h1>AXENTRO</h1>
+    <div class="tagline">CONTROL • TRACK • GROW</div>
 
-      <div style="margin-top:34px; display:flex; flex-direction:column; gap:14px; align-items:center;">
+    <p>
+      اختر وسيلة التواصل الأنسب وسنرد عليك سريعًا.<br>
+      <span style="opacity:.8">Choose your preferred contact method.</span>
+    </p>
 
-        <!-- 1) WhatsApp -->
-        <a
-          class="cta-button btn-wa"
-          href="#"
-          role="button"
-          aria-label="تواصل معنا عبر واتساب"
-          onclick="trackClick('whatsapp','تواصل معنا عبر واتساب','main'); whatsapp('main'); return false;"
-        >
-          <i class="fab fa-whatsapp"></i>
-          تواصل معنا عبر واتساب
-        </a>
+    <div style="margin-top:34px;display:flex;flex-direction:column;gap:14px;align-items:center">
 
-        <!-- 2) Call -->
-        <a
-          class="cta-button btn-call"
-          href="tel:+201146476993"
-          role="button"
-          aria-label="اتصال مباشر"
-          onclick="trackClick('call','اتصال مباشر','main');"
-        >
-          <i class="fas fa-phone"></i>
-          اتصال مباشر
-        </a>
+      <a class="cta-button btn-wa" href="#" onclick="trackClick('whatsapp','تواصل معنا عبر واتساب','main'); whatsapp('main'); return false;">
+        <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+      </a>
 
-        <!-- 3) Email -->
-        <a
-          class="cta-button btn-mail"
-          href="mailto:axentroofficial@gmail.com"
-          role="button"
-          aria-label="تواصل معنا عبر البريد"
-          onclick="trackClick('email','تواصل معنا عبر البريد','main');"
-        >
-          <i class="fas fa-envelope"></i>
-          تواصل معنا عبر البريد
-        </a>
+      <a class="cta-button btn-call" href="tel:+201146476993">
+        <i class="fas fa-phone"></i> اتصال مباشر
+      </a>
 
-        <!-- 4) Visit Main Website (internal link => UTM append) -->
-        <a
-          class="cta-button btn-site js-utm-link"
-          href="index.html"
-          role="button"
-          aria-label="زيارة الموقع الرئيسي"
-          onclick="trackClick('website','زيارة الموقع الرئيسي','main');"
-        >
-          <i class="fas fa-globe"></i>
-          زيارة الموقع الرئيسي
-        </a>
+      <a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com">
+        <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
+      </a>
 
-        <!-- 5) Instagram -->
-        <a
-          class="cta-button btn-ig"
-          href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
-          target="_blank"
-          rel="noopener"
-          role="button"
-          aria-label="تابعنا على انستقرام"
-          onclick="trackClick('instagram','تابعنا على انستقرام','main');"
-        >
-          <i class="fab fa-instagram"></i>
-          تابعنا على انستقرام
-        </a>
+      <a class="cta-button btn-site js-utm-link" href="index.html">
+        <i class="fas fa-globe"></i> زيارة الموقع الرئيسي
+      </a>
 
-        <!-- 6) Facebook -->
-        <a
-          class="cta-button btn-fb"
-          href="https://facebook.com/AxentroSamrtSolutions"
-          target="_blank"
-          rel="noopener"
-          role="button"
-          aria-label="تابعنا على فيسبوك"
-          onclick="trackClick('facebook','تابعنا على فيسبوك','main');"
-        >
-          <i class="fab fa-facebook-f"></i>
-          تابعنا على فيسبوك
-        </a>
+      <a class="cta-button btn-ig" href="https://www.instagram.com/axentro.official" target="_blank">
+        <i class="fab fa-instagram"></i> تابعنا على انستقرام
+      </a>
 
-        <!-- 7) vCard -->
-        <a
-          class="cta-button btn-vcard"
-          href="axentro.vcf"
-          download
-          role="button"
-          aria-label="احفظ بياناتنا في جهات الاتصال"
-          onclick="trackVCardDownload('main');"
-        >
-          <i class="fas fa-address-card"></i>
-          احفظ بياناتنا في جهات الاتصال
-        </a>
+      <a class="cta-button btn-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank">
+        <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
+      </a>
 
-      </div>
+      <a class="cta-button btn-vcard" href="axentro.vcf" download>
+        <i class="fas fa-address-card"></i> احفظ بياناتنا في جهات الاتصال
+      </a>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <div class="main">© 2024 Axentro – All Rights Reserved</div>
-    <div class="by">By Ahmed Hamouda</div>
-  </footer>
+<footer>
+  <div class="main">© 2024 Axentro – All Rights Reserved</div>
+  <div class="by">By Ahmed Hamouda</div>
+</footer>
 
-  <!-- FLOATING WA -->
-  <button
-    type="button"
-    class="floating-wa"
-    aria-label="WhatsApp Floating"
-    onclick="trackClick('whatsapp','واتساب العائم','floating'); whatsapp('floating');"
-  >
-    <i class="fab fa-whatsapp"></i>
-  </button>
+<button class="floating-wa" onclick="trackClick('whatsapp','واتساب العائم','floating'); whatsapp('floating');">
+  <i class="fab fa-whatsapp"></i>
+</button>
 
-  <!-- ✅ UI scripts (keep) -->
-  <script>
-    /* Progress bar */
-    const bar = document.getElementById('scrollProgress');
-    window.addEventListener('scroll', () => {
-      const h = document.documentElement;
-      const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-      bar.style.width = p + '%';
-    }, { passive: true });
-  </script>
+<script>
+  const bar=document.getElementById('scrollProgress');
+  let ticking=false;
+  function updateBar(){
+    const h=document.documentElement;
+    bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';
+    ticking=false;
+  }
+  window.addEventListener('scroll',()=>{
+    if(!ticking){
+      ticking=true;
+      requestAnimationFrame(updateBar);
+    }
+  },{passive:true});
+</script>
 
-  <!-- ✅ Analytics (single source) -->
-  <script src="assets/js/ga.js"></script>
-  <script>
-    AxentroAnalytics.init({
-      page: "links",
-      utm_campaign_default: "axentro",
-      enable_qr_scan: true,
-      enable_internal_utm_links: true
-    });
-  </script>
+<script src="assets/js/ga.js"></script>
+<script>
+  AxentroAnalytics.init({
+    page:"links",
+    utm_campaign_default:"axentro",
+    enable_qr_scan:true,
+    enable_internal_utm_links:true
+  });
+</script>
+
 </body>
 </html>
