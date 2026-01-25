@@ -29,10 +29,10 @@
       --muted:#9aa7c0;
 
       --glass: rgba(255,255,255,.06);
-      --glass2: rgba(255,255,255,.09);
-      --border: rgba(255,255,255,.10);
+      --glass2: rgba(255,255,255,.10);
+      --border: rgba(255,255,255,.12);
 
-      --shadow: 0 20px 80px rgba(0,0,0,.55);
+      --shadow: 0 22px 90px rgba(0,0,0,.60);
       --radius: 22px;
 
       /* Accent colors */
@@ -43,6 +43,11 @@
       --ig:#E1306C;
       --fb:#1877F2;
       --vcf:#a855f7;
+
+      /* Tech glow */
+      --glowA: rgba(34,211,238,.26); /* cyan */
+      --glowB: rgba(14,165,233,.22); /* blue */
+      --glowC: rgba(168,85,247,.20); /* purple */
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
@@ -55,44 +60,54 @@
       padding-top: env(safe-area-inset-top);
     }
 
-    /* ===== Tech Background (Lightweight) ===== */
+    /* ===== Tech Background (قوي وخفيف) ===== */
     .tech-bg{
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
+
+      /* 1) deep gradients */
       background:
-        radial-gradient(900px 600px at 15% 20%, rgba(0,180,255,.18), transparent 60%),
-        radial-gradient(800px 600px at 85% 30%, rgba(0,120,255,.14), transparent 60%),
-        radial-gradient(900px 700px at 55% 95%, rgba(0,200,255,.10), transparent 60%),
-        linear-gradient(135deg,#05050c,#090916);
+        radial-gradient(1100px 720px at 18% 20%, rgba(34,211,238,.18), transparent 60%),
+        radial-gradient(1000px 700px at 86% 26%, rgba(14,165,233,.14), transparent 60%),
+        radial-gradient(1100px 800px at 55% 92%, rgba(168,85,247,.12), transparent 60%),
+        linear-gradient(135deg, var(--bg0), var(--bg1));
     }
 
-    /* circuit grid */
+    /* 2) grid */
     .tech-bg::before{
       content:"";
       position:absolute;
       inset:0;
       background-image:
-        linear-gradient(rgba(0,180,255,.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,180,255,.15) 1px, transparent 1px);
-      background-size: 120px 120px;
-      opacity:.13;
+        linear-gradient(rgba(34,211,238,.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,211,238,.16) 1px, transparent 1px);
+      background-size: 140px 140px;
+      opacity:.10;
       mix-blend-mode: screen;
+      transform: translateZ(0);
+      animation: gridMove 16s linear infinite;
     }
 
-    /* glowing nodes */
+    /* 3) dotted nodes */
     .tech-bg::after{
       content:"";
       position:absolute;
       inset:0;
-      background:
-        radial-gradient(circle at 18% 26%, rgba(0,220,255,.30), transparent 6%),
-        radial-gradient(circle at 74% 18%, rgba(0,160,255,.22), transparent 6%),
-        radial-gradient(circle at 44% 72%, rgba(0,220,255,.26), transparent 6%),
-        radial-gradient(circle at 86% 78%, rgba(0,180,255,.24), transparent 6%),
-        radial-gradient(circle at 62% 46%, rgba(0,210,255,.18), transparent 7%);
-      opacity:.7;
+      background-image: radial-gradient(rgba(255,255,255,.22) 1px, transparent 1px);
+      background-size: 26px 26px;
+      opacity:.06;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes gridMove{
+      0%   { background-position: 0 0, 0 0; }
+      100% { background-position: 140px 140px, 140px 140px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .tech-bg::before{ animation:none; }
     }
 
     /* ===== Layout ===== */
@@ -101,7 +116,7 @@
       z-index:2;
       padding: 84px 16px 46px;
     }
-    .container{max-width:1050px;margin:auto}
+    .container{max-width:1080px;margin:auto}
 
     .top{
       text-align:center;
@@ -111,7 +126,7 @@
       font-weight:900;
       letter-spacing:3px;
       font-size:52px;
-      text-shadow: 0 0 60px rgba(0,200,255,.18);
+      text-shadow: 0 0 70px rgba(34,211,238,.14);
       margin-bottom:10px;
     }
     .tagline{
@@ -130,12 +145,12 @@
       font-size:16px;
     }
 
-    /* ===== Glass Shell ===== */
+    /* ===== Glass Shell (أقوى) ===== */
     .shell{
       margin-top: 26px;
-      border-radius: calc(var(--radius) + 14px);
-      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border: 1px solid rgba(255,255,255,.10);
+      border-radius: calc(var(--radius) + 16px);
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.11);
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
@@ -144,9 +159,9 @@
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(760px 240px at 50% -10%, rgba(0,200,255,.16), transparent 60%),
-        radial-gradient(640px 240px at 92% 30%, rgba(0,140,255,.14), transparent 60%),
-        radial-gradient(560px 260px at 10% 85%, rgba(0,200,255,.10), transparent 60%);
+        radial-gradient(780px 280px at 50% -12%, rgba(34,211,238,.18), transparent 60%),
+        radial-gradient(620px 240px at 92% 32%, rgba(14,165,233,.14), transparent 60%),
+        radial-gradient(600px 320px at 10% 88%, rgba(168,85,247,.12), transparent 60%);
       opacity:.9;
       pointer-events:none;
       filter: blur(10px);
@@ -164,34 +179,73 @@
       gap: 14px;
     }
 
+    /* ===== Card (Glass قوي + Border Gradient) ===== */
     .card{
       position:relative;
       border-radius: var(--radius);
-      background: rgba(255,255,255,.05);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
       border: 1px solid rgba(255,255,255,.10);
       overflow:hidden;
-      box-shadow: 0 12px 38px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);
-      transition: transform .18s ease, border-color .18s ease;
-      min-height: 96px;
+      box-shadow:
+        0 14px 44px rgba(0,0,0,.50),
+        inset 0 1px 0 rgba(255,255,255,.09);
+      transition:
+        transform .20s ease,
+        border-color .20s ease,
+        box-shadow .20s ease,
+        filter .20s ease;
+      min-height: 100px;
+      transform: translateZ(0);
     }
-    .card:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.16); }
-    .card:active{ transform: translateY(0) scale(.99); }
+
+    /* glow border layer */
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(320px 240px at 25% 35%, var(--glowA), transparent 60%),
+        radial-gradient(340px 240px at 85% 25%, var(--glowB), transparent 60%),
+        radial-gradient(420px 300px at 55% 95%, var(--glowC), transparent 60%);
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .20s ease;
+    }
+
+    .card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.18);
+      box-shadow:
+        0 18px 60px rgba(0,0,0,.58),
+        0 0 28px rgba(34,211,238,.10),
+        inset 0 1px 0 rgba(255,255,255,.10);
+      filter: saturate(1.05);
+    }
+    .card:hover::after{ opacity: 1; }
+
+    .card:active{
+      transform: translateY(-1px) scale(.99);
+    }
 
     /* colored top line */
     .line{
       position:absolute; top:0; left:0; right:0; height:2px;
-      opacity:.65;
+      opacity:.75;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
     }
-    .card[data-c="wa"] .line{ background: linear-gradient(90deg, transparent, rgba(37,211,102,.95), transparent); }
-    .card[data-c="call"] .line{ background: linear-gradient(90deg, transparent, rgba(14,165,233,.95), transparent); }
-    .card[data-c="mail"] .line{ background: linear-gradient(90deg, transparent, rgba(234,67,53,.95), transparent); }
-    .card[data-c="site"] .line{ background: linear-gradient(90deg, transparent, rgba(34,197,94,.95), transparent); }
-    .card[data-c="ig"] .line{ background: linear-gradient(90deg, transparent, rgba(225,48,108,.95), transparent); }
-    .card[data-c="fb"] .line{ background: linear-gradient(90deg, transparent, rgba(24,119,242,.95), transparent); }
-    .card[data-c="vcf"] .line{ background: linear-gradient(90deg, transparent, rgba(168,85,247,.95), transparent); }
+    .card[data-c="wa"] .line{ background: linear-gradient(90deg, transparent, rgba(37,211,102,.98), transparent); }
+    .card[data-c="call"] .line{ background: linear-gradient(90deg, transparent, rgba(14,165,233,.98), transparent); }
+    .card[data-c="mail"] .line{ background: linear-gradient(90deg, transparent, rgba(234,67,53,.98), transparent); }
+    .card[data-c="site"] .line{ background: linear-gradient(90deg, transparent, rgba(34,197,94,.98), transparent); }
+    .card[data-c="ig"] .line{ background: linear-gradient(90deg, transparent, rgba(225,48,108,.98), transparent); }
+    .card[data-c="fb"] .line{ background: linear-gradient(90deg, transparent, rgba(24,119,242,.98), transparent); }
+    .card[data-c="vcf"] .line{ background: linear-gradient(90deg, transparent, rgba(168,85,247,.98), transparent); }
 
     .card a{
+      position:relative;
+      z-index: 2;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -210,26 +264,37 @@
       min-width:0;
     }
 
-    /* ===== Icons (ستايل واضح زي القديم) ===== */
+    /* ===== Icons (ملامح واضحة) ===== */
     .ico{
-      width:44px; height:44px;
+      width:46px; height:46px;
       border-radius: 14px;
       display:grid; place-items:center;
       background: rgba(0,0,0,.22);
-      border: 1px solid rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
       flex: 0 0 auto;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.10),
+        0 10px 26px rgba(0,0,0,.35);
     }
-    .ico svg{ width:22px; height:22px; display:block; }
+
+    .ico svg{
+      width:24px; height:24px;
+      display:block;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
 
     /* icon colors */
-    .card[data-c="wa"] .ico svg{ fill: var(--wa); }
-    .card[data-c="call"] .ico svg{ fill: var(--call); }
-    .card[data-c="mail"] .ico svg{ fill: var(--mail); }
-    .card[data-c="site"] .ico svg{ fill: var(--site); }
-    .card[data-c="ig"] .ico svg{ fill: var(--ig); }
-    .card[data-c="fb"] .ico svg{ fill: var(--fb); }
-    .card[data-c="vcf"] .ico svg{ fill: var(--vcf); }
+    .card[data-c="wa"] .ico{ color: var(--wa); }
+    .card[data-c="call"] .ico{ color: var(--call); }
+    .card[data-c="mail"] .ico{ color: var(--mail); }
+    .card[data-c="site"] .ico{ color: var(--site); }
+    .card[data-c="ig"] .ico{ color: var(--ig); }
+    .card[data-c="fb"] .ico{ color: var(--fb); }
+    .card[data-c="vcf"] .ico{ color: var(--vcf); }
 
     .txt{ text-align:right; min-width:0; }
     .title{
@@ -251,24 +316,37 @@
 
     .chev{
       opacity:.75;
-      transition: transform .18s ease, opacity .18s ease;
+      transition: transform .20s ease, opacity .20s ease;
       flex: 0 0 auto;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
     }
-    .card:hover .chev{ transform: translateX(-2px); opacity:1; }
+    .card:hover .chev{ transform: translateX(-3px); opacity:1; }
 
     /* ===== Floating WhatsApp ===== */
     .floating{
       position:fixed; right:16px; bottom:16px;
-      width:62px; height:62px; border-radius:50%;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      box-shadow: 0 18px 60px rgba(0,0,0,.55), 0 0 32px rgba(37,211,102,.18);
+      width:64px; height:64px; border-radius:50%;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: 0 18px 60px rgba(0,0,0,.60), 0 0 38px rgba(37,211,102,.18);
       display:flex; align-items:center; justify-content:center;
       cursor:pointer;
       z-index:999;
       -webkit-tap-highlight-color: transparent;
+      transition: transform .18s ease, box-shadow .18s ease;
     }
-    .floating svg{ fill: var(--wa); }
+    .floating:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 22px 70px rgba(0,0,0,.65), 0 0 46px rgba(37,211,102,.22);
+    }
+    .floating svg{
+      width:28px; height:28px;
+      fill:none;
+      stroke: var(--wa);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
     .floating:active{ transform: scale(.98); }
 
     footer{
@@ -314,9 +392,10 @@
               <a href="#" onclick="trackClick('whatsapp','تواصل معنا عبر واتساب','grid'); whatsapp('grid'); return false;">
                 <div class="left">
                   <div class="ico" aria-hidden="true">
-                    <!-- whatsapp icon -->
+                    <!-- WhatsApp (outline) -->
                     <svg viewBox="0 0 24 24">
-                      <path d="M12 2a9.8 9.8 0 0 0-8.4 14.8L3 22l5.3-1.6A9.8 9.8 0 1 0 12 2zm5.6 14.2c-.2.6-1.2 1.1-1.7 1.2-.5.1-1.1.2-1.8 0-.4-.1-1-.3-1.7-.6-3-1.3-5-4.5-5.1-4.7-.1-.2-.8-1.1-.8-2.6s.8-2.2 1.1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .5 0 .7.6l.9 2.2c.1.4.1.6 0 .8l-.3.5c-.1.2-.3.4-.1.8.2.3.9 1.5 2 2.4 1.4 1.1 2.5 1.4 2.9 1.6.3.1.6.1.8-.1l.9-1.1c.2-.2.4-.2.7-.1l2.1 1c.3.1.5.2.5.4z"/>
+                      <path d="M20 11.5A8.5 8.5 0 0 1 7.4 19.2L3 21l1.8-4.3A8.5 8.5 0 1 1 20 11.5Z"/>
+                      <path d="M8.8 9.2c.2-.6.5-.7.9-.7h.6c.2 0 .4 0 .6.4l.9 2c.1.3.1.5 0 .6l-.4.5c-.1.2-.2.3 0 .6.2.4.9 1.6 2 2.4 1.2.9 2.2 1.2 2.6 1.3.3.1.5.1.7-.1l.8-1c.2-.2.4-.2.6-.1l2 1c.2.1.4.2.4.4 0 .2-.2 1-.8 1.5-.6.5-1.2.6-1.7.5-.5-.1-1.6-.4-2.9-1.1-1.6-.9-2.9-2.2-3.9-3.6-.9-1.4-1.3-2.8-1.4-3.2-.1-.4-.1-1.2.3-1.8Z"/>
                     </svg>
                   </div>
                   <div class="txt">
@@ -325,7 +404,7 @@
                   </div>
                 </div>
                 <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.88)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </a>
             </div>
@@ -336,8 +415,9 @@
               <a href="tel:+201146476993" onclick="trackClick('call','اتصال مباشر','grid');">
                 <div class="left">
                   <div class="ico" aria-hidden="true">
+                    <!-- Phone -->
                     <svg viewBox="0 0 24 24">
-                      <path d="M6.6 3.6h2.3c.6 0 .8.3 1 .8l1 3.3c.1.4 0 .7-.3 1L9.4 10c1.2 2.1 2.9 3.8 5 5l1.3-1.3c.3-.3.6-.4 1-.3l3.3 1c.5.2.8.4.8 1v2.3c0 1.2-1 2.2-2.2 2.2C10 21 3 14 3 5.8 3 4.6 4 3.6 5.2 3.6h1.4z"/>
+                      <path d="M6.8 3.8h2.4c.5 0 .8.3 1 .8l1 3.2c.1.4 0 .7-.3 1l-1.4 1.4c1.2 2.2 3 4 5.2 5.2l1.4-1.4c.3-.3.6-.4 1-.3l3.2 1c.5.2.8.5.8 1v2.4c0 1.2-1 2.2-2.2 2.2C10.1 21.2 2.8 13.9 2.8 6c0-1.2 1-2.2 2.2-2.2Z"/>
                     </svg>
                   </div>
                   <div class="txt">
@@ -346,7 +426,7 @@
                   </div>
                 </div>
                 <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.88)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </a>
             </div>
@@ -357,9 +437,10 @@
               <a href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','تواصل معنا عبر البريد','grid');">
                 <div class="left">
                   <div class="ico" aria-hidden="true">
+                    <!-- Mail -->
                     <svg viewBox="0 0 24 24">
                       <path d="M4.5 7.5h15v9h-15z"/>
-                      <path d="M5 8l7 6 7-6" fill="none" stroke="currentColor" stroke-width="0"/>
+                      <path d="M5 8l7 6 7-6"/>
                     </svg>
                   </div>
                   <div class="txt">
@@ -368,7 +449,7 @@
                   </div>
                 </div>
                 <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.88)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </a>
             </div>
@@ -379,9 +460,11 @@
               <a class="js-utm-link" href="index.html" onclick="trackClick('website','زيارة الموقع الرئيسي','grid');">
                 <div class="left">
                   <div class="ico" aria-hidden="true">
+                    <!-- Globe -->
                     <svg viewBox="0 0 24 24">
-                      <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/>
-                      <path d="M3.5 12h17" fill="none" stroke="currentColor" stroke-width="0"/>
+                      <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/>
+                      <path d="M3.5 12h17"/>
+                      <path d="M12 3c3 3.2 3 14.8 0 18-3-3.2-3-14.8 0-18Z"/>
                     </svg>
                   </div>
                   <div class="txt">
@@ -390,11 +473,10 @@
                   </div>
                 </div>
                 <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.88)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </a>
             </div>
-
             <!-- Instagram -->
             <div class="card" data-c="ig">
               <div class="line"></div>
@@ -402,9 +484,10 @@
                  onclick="trackClick('instagram','تابعنا على انستقرام','grid');">
                 <div class="left">
                   <div class="ico" aria-hidden="true">
+                    <!-- Instagram -->
                     <svg viewBox="0 0 24 24">
                       <path d="M8 3.8h8A4.2 4.2 0 0 1 20.2 8v8A4.2 4.2 0 0 1 16 20.2H8A4.2 4.2 0 0 1 3.8 16V8A4.2 4.2 0 0 1 8 3.8Z"/>
-                      <path d="M12 16.1a4.1 4.1 0 1 0 0-8.2 4.1 4.1 0 0 0 0 8.2Z" fill="#000" opacity=".0"/>
+                      <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z"/>
                       <path d="M17.4 6.6h.01"/>
                     </svg>
                   </div>
@@ -414,7 +497,7 @@
                   </div>
                 </div>
                 <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.88)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </a>
             </div>
@@ -426,8 +509,9 @@
                  onclick="trackClick('facebook','تابعنا على فيسبوك','grid');">
                 <div class="left">
                   <div class="ico" aria-hidden="true">
+                    <!-- Facebook -->
                     <svg viewBox="0 0 24 24">
-                      <path d="M14 8.4V7.2c0-.7.4-1.2 1.3-1.2h1.2V3.8h-2c-2.3 0-3.7 1.4-3.7 3.6v1h-2v2.4h2V20h2.8v-9.2h2.4l.6-2.4H14Z"/>
+                      <path d="M14 8.4V7.2c0-.9.5-1.4 1.5-1.4h1.5V3.8h-2.3c-2.4 0-3.9 1.6-3.9 4v.6H9.2v2.4h2.1V20h2.7v-9.2h2.4l.5-2.4H14Z"/>
                     </svg>
                   </div>
                   <div class="txt">
@@ -436,7 +520,7 @@
                   </div>
                 </div>
                 <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.88)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </a>
             </div>
@@ -447,9 +531,11 @@
               <a href="axentro.vcf" download onclick="trackVCardDownload('grid');">
                 <div class="left">
                   <div class="ico" aria-hidden="true">
+                    <!-- ID card -->
                     <svg viewBox="0 0 24 24">
-                      <path d="M7.5 4.5h9v15h-9z"/>
-                      <path d="M10 9a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z" fill="#000" opacity=".0"/>
+                      <path d="M7 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/>
+                      <path d="M10 11a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"/>
+                      <path d="M9.2 16.5c.9-1.6 1.9-2.3 2.8-2.3s1.9.7 2.8 2.3"/>
                     </svg>
                   </div>
                   <div class="txt">
@@ -458,7 +544,7 @@
                   </div>
                 </div>
                 <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 7l5 5-5 5" stroke="rgba(255,255,255,.88)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </a>
             </div>
@@ -477,8 +563,10 @@
   <!-- Floating WhatsApp -->
   <button class="floating" type="button" aria-label="WhatsApp Floating"
     onclick="trackClick('whatsapp','واتساب العائم','floating'); whatsapp('floating');">
-    <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 2a9.8 9.8 0 0 0-8.4 14.8L3 22l5.3-1.6A9.8 9.8 0 1 0 12 2z"/>
+    <!-- WhatsApp (outline) -->
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20 11.5A8.5 8.5 0 0 1 7.4 19.2L3 21l1.8-4.3A8.5 8.5 0 1 1 20 11.5Z"/>
+      <path d="M8.8 9.2c.2-.6.5-.7.9-.7h.6c.2 0 .4 0 .6.4l.9 2c.1.3.1.5 0 .6l-.4.5c-.1.2-.2.3 0 .6.2.4.9 1.6 2 2.4 1.2.9 2.2 1.2 2.6 1.3.3.1.5.1.7-.1l.8-1c.2-.2.4-.2.6-.1l2 1c.2.1.4.2.4.4 0 .2-.2 1-.8 1.5-.6.5-1.2.6-1.7.5-.5-.1-1.6-.4-2.9-1.1-1.6-.9-2.9-2.2-3.9-3.6-.9-1.4-1.3-2.8-1.4-3.2-.1-.4-.1-1.2.3-1.8Z"/>
     </svg>
   </button>
 
@@ -487,13 +575,11 @@
     (function () {
       const bar = document.createElement('div');
       bar.style.cssText = `
-        position:fixed;
-        top:0;left:0;
-        height:3px;
-        width:0%;
+        position:fixed; top:0; left:0;
+        height:3px; width:0%;
         z-index:9999;
-        background:linear-gradient(90deg,#22d3ee,#0ea5e9,#22c55e);
-        box-shadow:0 0 18px rgba(0,200,255,.45);
+        background:linear-gradient(90deg,#22d3ee,#0ea5e9,#a855f7);
+        box-shadow:0 0 18px rgba(34,211,238,.35);
         pointer-events:none;
       `;
       document.body.appendChild(bar);
@@ -512,7 +598,8 @@
       const phone = "201146476993";
       const text  = "مرحبا Axentro 👋";
       const url   = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-      window.open(url, "_blank");
+      const w = window.open(url, "_blank", "noopener,noreferrer");
+      if (!w) window.location.href = url;
     }
 
     function trackClick(type,label,place){
