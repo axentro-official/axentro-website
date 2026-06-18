@@ -5,11 +5,11 @@
   <title>Axentro | من نحن</title>
   
   <!-- Favicon -->
-<link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <!-- ✅ iPhone / Safari + Responsive -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#020617">
+  <meta name="theme-color" content="#050510">
   <meta name="format-detection" content="telephone=no">
 
   <!-- ✅ GA4 Tracking -->
@@ -18,397 +18,217 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    // هنخلي config بسيط، وبعدين ga.js يبعت page_view يدوي مع UTM
     gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
   </script>
 
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- ✅ تطبيق الوضع المحفوظ فوراً لتفادي الوميض -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- ICONS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* ✅ الوضع الداكن (الأساسي) */
     :root{
-      --bg:#020617;
-      --card:rgba(255,255,255,.06);
-      --primary:#00d4ff;
-      --secondary:#00ffd5;
-      --text:#e5f6ff;
-      --muted:#94a3b8;
-      --wa:#25D366;
-      --mail:#EA4335;
-      --fb:#1877F2;
-      --ig:#E1306C;
+      --bg: #050510;
+      --text: #ffffff;
+      --muted: #8b8ba7;
+      --card: rgba(255,255,255,.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --nav-bg: rgba(10, 10, 20, 0.6);
+      --footer-bg: rgba(0,0,0,0.3);
+      --spotlight-color: rgba(123, 47, 247, 0.15);
+      --gradient-1: rgba(123, 47, 247, 0.15);
+      --gradient-2: rgba(0, 212, 255, 0.12);
+      --gradient-3: rgba(255, 0, 122, 0.05);
+      --grid-line: rgba(255, 255, 255, 0.015);
+      --text-gradient: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+      --hero-gradient: linear-gradient(135deg, #fff 0%, #00d4ff 50%, #7b2ff7 100%);
+      --primary: #7b2ff7;
+      --secondary: #00d4ff;
+      --btn-text: #ffffff;
+      --toggle-bg: rgba(255,255,255,0.05);
+      --toggle-icon: #FFD700;
+      --wa: #25D366;
+      --mail: #EA4335;
+      --fb: #1877F2;
+      --ig: #E1306C;
+    }
+
+    /* ✅ الوضع الفاتح */
+    [data-theme="light"]{
+      --bg: #F0F4F8;
+      --text: #0f172a;
+      --muted: #64748b;
+      --card: rgba(255,255,255,.7);
+      --border: rgba(0, 0, 0, 0.08);
+      --nav-bg: rgba(255, 255, 255, 0.6);
+      --footer-bg: rgba(255,255,255,0.5);
+      --spotlight-color: rgba(123, 47, 247, 0.1);
+      --gradient-1: rgba(123, 47, 247, 0.1);
+      --gradient-2: rgba(0, 212, 255, 0.1);
+      --gradient-3: rgba(255, 0, 122, 0.05);
+      --grid-line: rgba(0, 0, 0, 0.02);
+      --text-gradient: linear-gradient(180deg, #0f172a 0%, #334155 100%);
+      --hero-gradient: linear-gradient(135deg, #0f172a 0%, #00d4ff 50%, #7b2ff7 100%);
+      --toggle-bg: rgba(0,0,0,0.05);
+      --toggle-icon: #FF8C00;
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       font-family:'Cairo',sans-serif;
-      background:linear-gradient(135deg,#020617,#020b2e);
+      background:var(--bg);
       color:var(--text);
       overflow-x:hidden;
       -webkit-text-size-adjust: 100%;
       padding-top: env(safe-area-inset-top);
+      position: relative;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
 
-    section{padding:90px 20px;text-align:center}
-    .container{max-width:1100px;margin:auto}
+    /* خلفية متحركة فاخرة */
+    body::before {
+      content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: 
+        radial-gradient(circle at 20% 30%, var(--gradient-1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, var(--gradient-2) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, var(--gradient-3) 0%, transparent 50%);
+      z-index: -2; animation: rotateBg 20s linear infinite; transition: background 0.4s ease;
+    }
+    @keyframes rotateBg { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    body::after {
+      content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 60px 60px; z-index: -1; pointer-events: none;
+    }
 
-    h1,h2,h3{color:var(--secondary)}
+    section{padding:120px 20px;text-align:center; position:relative; z-index:1}
+    .container{max-width:1200px;margin:auto}
+
+    h1, h2 { background: var(--text-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    h3{color:var(--text); line-height:1.2}
     p{color:var(--muted);line-height:1.9}
 
-    /* PROGRESS BAR */
-    .scroll-progress{
-      position:fixed;
-      top:0;
-      left:0;
-      height:3px;
-      width:0%;
-      background:var(--secondary);
-      z-index:99999;
-    }
+    .scroll-progress{ position:fixed; top:0; left:0; height:4px; width:0%; background:linear-gradient(90deg, var(--primary), var(--secondary)); z-index:99999; box-shadow: 0 0 15px var(--secondary); }
+    .reveal{opacity:0; transform:translateY(40px) rotateX(-10deg); transition:opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);}
+    .reveal.show{opacity:1; transform:translateY(0) rotateX(0);}
 
-    /* REVEAL */
-    .reveal{
-      opacity:0;
-      transform:translateY(16px);
-      transition:opacity .7s ease, transform .7s ease;
-      will-change: opacity, transform;
-    }
-    .reveal.show{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    /* HERO */
-    .hero{
-      position:relative;
-      padding-top:110px;
-    }
-    .hero h1{
-      font-size:44px;
-      letter-spacing:1px;
-    }
-    .hero .tagline{
-      margin-top:10px;
-      letter-spacing:3px;
-      font-size:13px;
-      opacity:.85;
-    }
-    .hero p{
-      max-width:860px;
-      margin:22px auto 0;
-    }
-
-    /* NAV — نفس أسلوب الصفحة الرئيسية */
+    /* NAV */
     .navigation-links{
-      position:absolute;
-      top:20px;
-      left:10px;
-      right:10px;
-      display:flex;
-      flex-direction:row;
-      justify-content:center;
-      gap:20px;
-      z-index:10;
+      position:fixed; top:20px; left:50%; transform:translateX(-50%);
+      display:flex; flex-direction:row; justify-content:center; align-items:center; gap:10px; z-index:1000;
+      background: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      padding: 8px; border-radius: 100px; border: 1px solid var(--border);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     }
     .navigation-links .nav-link{
-      font-size:18px;
-      color:#fff;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:12px 16px;
-      border-radius:50px;
-      transition:color .3s, background-color .3s;
-      -webkit-tap-highlight-color: transparent;
+      font-size:15px; color:var(--muted); text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:50px;
+      transition:color .3s, background-color .3s, box-shadow .3s;
     }
-    .navigation-links .nav-link:hover{
-      color:#00d4ff;
-      background-color:#003366;
+    .navigation-links .nav-link:hover{ color:var(--text); background-color: var(--card); box-shadow: inset 0 0 15px var(--spotlight-color); }
+    .theme-toggle {
+      background: var(--toggle-bg); border: 1px solid var(--border); width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--toggle-icon); font-size: 16px;
+      transition: all 0.3s; margin-right: 5px; box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
     }
-    .navigation-links .nav-link:focus{
-      outline:2px solid rgba(0,255,213,.45);
-      outline-offset:4px;
-      border-radius:50px;
-    }
+    .theme-toggle:hover { transform: rotate(20deg) scale(1.1); box-shadow: 0 0 15px var(--toggle-icon); }
 
-    /* CTA BUTTON — نفس الصفحة الرئيسية */
-    .cta-button{
-      background-color:#003366;
-      color:var(--secondary);
-      padding:18px 45px;
-      border-radius:50px;
-      font-weight:800;
-      font-size:20px;
-      cursor:pointer;
-      transition:background-color .3s, transform .3s, box-shadow .3s;
-      margin-top:25px;
-      display:inline-block;
-      text-decoration:none;
-      box-shadow:0 0 25px rgba(0,255,213,.35);
-      border:none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .cta-button:hover{
-      background-color:#002244;
-      transform:scale(1.05);
-      box-shadow:0 0 40px rgba(0,255,213,.6);
-    }
-    .cta-button:focus{
-      outline:2px solid rgba(0,255,213,.45);
-      outline-offset:4px;
-    }
+    /* HERO */
+    .hero{min-height:80vh; display:flex; align-items:center; justify-content:center; padding-top:120px;}
+    .hero h1{ font-family: 'Space Grotesk', sans-serif; font-size: 60px; font-weight: 700; letter-spacing: -2px; line-height: 1; margin-bottom: 10px; background: var(--hero-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .tagline{ font-family: 'Space Grotesk', sans-serif; margin-top:10px; letter-spacing:8px; font-size:14px; color:var(--secondary); text-transform: uppercase; display: inline-block; padding: 8px 20px; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 50px; background: rgba(0, 212, 255, 0.05); margin-bottom: 30px; }
+    .hero p{ max-width:700px; margin:24px auto 0; font-size:18px; }
 
-    /* Cards / Blocks */
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:22px;
-      margin-top:40px;
-      text-align:right;
-    }
+    /* Stats (Glass Cards) */
+    .stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-top:60px; }
+    .stat{ position: relative; background: var(--card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 20px; padding:30px 20px; transition:all .3s; }
+    .stat:hover{ border-color: rgba(0, 212, 255, 0.4); transform:translateY(-5px); box-shadow:0 15px 30px rgba(0,255,213,0.1); }
+    .stat .num{ font-size:40px; font-weight:900; color:var(--secondary); margin-bottom:10px; }
+    .stat .label{ color:var(--muted); font-size:14px; }
+
+    /* GENERIC CARDS (Values, Vision, etc) */
+    .cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; margin-top:60px; text-align:right; }
     .card{
-      background:var(--card);
-      padding:28px 22px;
-      border-radius:20px;
-      transition:transform .35s ease, box-shadow .35s ease;
+      position: relative; background: var(--card); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      padding: 30px; border-radius: 24px; overflow: hidden; border: 1px solid var(--border);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, background 0.4s;
     }
-    .card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 25px 60px rgba(0,212,255,.18);
+    .card::before {
+      content: ''; position: absolute; top: var(--mouse-y, 0); left: var(--mouse-x, 0); transform: translate(-50%, -50%);
+      width: 400px; height: 400px; background: radial-gradient(circle, var(--spotlight-color) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.4s; pointer-events: none; z-index: 0;
     }
-    .card h3{margin-bottom:10px;font-size:18px}
-    .card .icon{
-      font-size:22px;
-      color:var(--secondary);
-      margin-bottom:10px;
-      display:inline-flex;
-    }
+    .card:hover::before { opacity: 1; }
+    .card:hover { transform: translateY(-8px); border-color: rgba(0, 212, 255, 0.4); }
+    .card > * { position: relative; z-index: 1; }
+    .card h3{margin-bottom:14px;font-size:20px}
+    .card .icon{ width:50px; height:50px; border-radius:12px; background:rgba(0,255,213,0.1); display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:20px; margin-bottom:20px; }
 
-    /* Stats */
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:18px;
-      margin-top:30px;
-      text-align:center;
-    }
-    .stat{
-      background:var(--card);
-      border-radius:20px;
-      padding:22px 18px;
-    }
-    .stat .num{
-      font-size:30px;
-      font-weight:800;
-      color:var(--secondary);
-    }
-    .stat .label{
-      margin-top:8px;
-      color:var(--muted);
-    }
+    /* FAQ */
+    .faq-container{ max-width:800px; margin:40px auto 0; text-align:right; }
+    .faq-item{ background: var(--card); border: 1px solid var(--border); border-radius:16px; margin-bottom:15px; overflow:hidden; transition:all .3s; backdrop-filter: blur(10px); }
+    .faq-item[open]{ border-color: rgba(0, 212, 255, 0.4); box-shadow:0 10px 30px rgba(0,0,0,0.2); }
+    .faq-item summary{ padding:20px; cursor:pointer; font-weight:800; color:var(--text); display:flex; justify-content:space-between; align-items:center; list-style:none; }
+    .faq-item summary::-webkit-details-marker{ display:none; }
+    .faq-item summary .chev{ transition:transform .3s; color:var(--secondary); }
+    .faq-item[open] summary .chev{ transform:rotate(180deg); }
+    .faq-item .ans{ padding:0 20px 20px; color:var(--muted); line-height:1.8; }
 
-    /* Small section title helper */
-    .section-sub{
-      max-width:860px;
-      margin:12px auto 0;
-      opacity:.95;
-    }
+    /* Copy Link Button */
+    .copy-link{ display:inline-flex; margin-top:15px; align-items:center; gap:8px; border:1px solid rgba(0,255,213,.35); background:rgba(0,255,213,.06); color:var(--secondary); padding:8px 12px; border-radius:8px; font-weight:800; font-size:12px; cursor:pointer; text-decoration:none; transition: all 0.3s; }
+    .copy-link:hover{ background:rgba(0,255,213,.15); }
 
-    /* CONTACT BUTTONS — نفس الصفحة الرئيسية */
-    .cta{
-      display:flex;
-      gap:18px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
-    .btn-wa{background:var(--wa);color:#000}
-    .btn-mail{background:var(--mail);color:#fff}
-    .btn-fb{background:var(--fb);color:#fff}
-    .btn-ig{background:var(--ig);color:#fff}
+    /* CTA & Footer */
+    .section-sub{ max-width:860px; margin:12px auto 0; opacity:.95; }
+    .cta{ display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin-top:30px; }
+    .btn{ display:inline-flex; align-items:center; gap:10px; padding:14px 30px; border-radius:12px; font-weight:800; font-size:15px; text-decoration:none; cursor:pointer; transition:all .3s; border:1px solid transparent; color: #fff; }
+    .btn:hover{ transform:translateY(-2px); }
+    .btn-wa{background:linear-gradient(135deg, #25D366, #128C7E); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);}
+    .btn-mail{background:linear-gradient(135deg, #EA4335, #d33223); box-shadow: 0 10px 30px rgba(234, 67, 53, 0.3);}
+    .btn-fb{background:linear-gradient(135deg, #1877F2, #0f5fc0); box-shadow: 0 10px 30px rgba(24, 119, 242, 0.3);}
+    .btn-ig{background:linear-gradient(135deg, #E1306C, #f77737); box-shadow: 0 10px 30px rgba(225, 48, 108, 0.3);}
 
-    /* FAQ (خفيف جدًا بدون JS) */
-    .faq{
-      margin-top:30px;
-      text-align:right;
-    }
-    .faq details{
-      background:var(--card);
-      border-radius:18px;
-      padding:18px 18px;
-      margin-bottom:14px;
-      border:1px solid rgba(255,255,255,.08);
-    }
-    .faq summary{
-      cursor:pointer;
-      list-style:none;
-      font-weight:800;
-      color:var(--secondary);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-    }
-    .faq summary::-webkit-details-marker{display:none}
-    .faq summary .q{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-    .faq summary .chev{
-      transition:transform .25s ease;
-      opacity:.9;
-    }
-    .faq details[open] summary .chev{
-      transform:rotate(180deg);
-    }
-    .faq .ans{
-      margin-top:12px;
-      color:var(--muted);
-      line-height:1.9;
-    }
-
-    /* FOOTER — نفس الصفحة الرئيسية */
-    footer{
-      padding:70px 20px;
-      border-top:1px solid rgba(255,255,255,.1);
-      text-align:center;
-    }
-    footer .main{
-      font-weight:900;
-      font-size:20px;
-      color:#fff;
-    }
-    footer .by{
-      margin-top:10px;
-      font-size:16px;
-      opacity:.9;
-    }
-    .footer-icons{
-      margin-top:30px;
-      display:flex;
-      gap:30px;
-      justify-content:center;
-      font-size:26px;
-    }
-    .footer-icons a{
-      transition:transform .25s ease, filter .25s ease;
-      text-decoration:none;
-      cursor:pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .footer-icons a:hover{
-      transform:translateY(-4px) scale(1.12);
-      filter:drop-shadow(0 0 10px currentColor);
-    }
-    .icon-wa{color:var(--wa)}
-    .icon-mail{color:var(--mail)}
-    .icon-fb{color:var(--fb)}
-    .icon-ig{color:var(--ig)}
+    footer{ padding:70px 20px; border-top:1px solid var(--border); text-align:center; position:relative; z-index:1; background: var(--footer-bg); backdrop-filter: blur(10px); }
+    footer .main{ font-weight:900; font-size:20px; color:var(--text); }
+    footer .by{ margin-top:10px; font-size:16px; opacity:.9; color: var(--muted); }
+    .footer-icons{ margin-top:30px; display:flex; gap:15px; justify-content:center; font-size:22px; }
+    .footer-icons a{ transition: transform 0.3s, filter 0.3s, background 0.3s; text-decoration:none; cursor:pointer; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--card); border: 1px solid var(--border); }
+    .footer-icons a:hover{ transform:translateY(-5px) scale(1.1); filter:drop-shadow(0 0 15px currentColor); }
+    .icon-wa{color:var(--wa)} .icon-mail{color:var(--mail)} .icon-fb{color:var(--fb)} .icon-ig{color:var(--ig)}
 
     /* FLOATING WHATSAPP */
     .floating-wa{
-      position:fixed;
-      bottom:25px;
-      right:25px;
-      width:66px;
-      height:66px;
-      border-radius:50%;
-      background:var(--wa);
-      color:#000;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:30px;
-      box-shadow:0 12px 30px rgba(0,0,0,.4);
-      z-index:999;
-      transition:transform .25s ease;
-      cursor:pointer;
-      text-decoration:none;
-      -webkit-tap-highlight-color: transparent;
+      position:fixed; bottom:25px; right:25px; width:60px; height:60px; border-radius:50%;
+      background: #25D366; color: #ffffff; display:flex; align-items:center; justify-content:center; font-size:30px;
+      border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 25px rgba(37, 211, 102, 0.4);
+      z-index:999; text-decoration:none; transition: all 0.3s; animation: pulseWa 2s infinite;
     }
-    .floating-wa:hover{transform:scale(1.08)}
-    .floating-wa:focus{
-      outline:2px solid rgba(0,255,213,.45);
-      outline-offset:4px;
+    .floating-wa:hover{ transform: scale(1.15) rotate(10deg); }
+    @keyframes pulseWa {
+      0% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 0 0 rgba(37, 211, 102, 0); }
     }
 
-    /* ✅ إضافات */
-    #what-we-do .card{scroll-margin-top:120px;}
-    #what-we-do .card:target{
-      box-shadow:0 0 0 2px var(--secondary),0 0 35px rgba(0,255,213,.45);
-      animation:highlightFade 2.5s ease forwards;
-    }
-    @keyframes highlightFade{to{box-shadow:none}}
-
-    .breadcrumb{
-      margin-top:10px;
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      font-size:14px;
-      color:var(--muted);
-      flex-wrap:wrap;
-    }
-    .breadcrumb a{
-      color:var(--secondary);
-      text-decoration:none;
-    }
-    .breadcrumb a:hover{text-decoration:underline}
-    .breadcrumb .sep{opacity:.7}
-
-    .back-services{
-      display:inline-block;
-      margin-top:18px;
-      font-size:14px;
-      font-weight:800;
-      color:var(--secondary);
-      text-decoration:none;
-    }
-    .back-services:hover{text-decoration:underline}
-
-    /* ✅ زر نسخ الرابط — يظهر فقط داخل الكارت المستهدف */
-    .copy-link{
-      display:none;
-      margin-top:14px;
-      align-items:center;
-      gap:10px;
-      border:1px solid rgba(0,255,213,.35);
-      background:rgba(0,255,213,.06);
-      color:var(--secondary);
-      padding:10px 14px;
-      border-radius:14px;
-      font-weight:800;
-      font-size:14px;
-      cursor:pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-    #what-we-do .card:target .copy-link{ display:inline-flex; }
-    .copy-link:hover{ background:rgba(0,255,213,.10); }
-    .copy-link:focus{
-      outline:2px solid rgba(0,255,213,.45);
-      outline-offset:4px;
-    }
-    .copy-link i{font-size:16px}
-
-    /* Mobile */
-    @media (max-width:600px){
-      .hero{padding-top:120px}
-      .hero h1{font-size:34px}
-      .navigation-links .nav-link{font-size:14px;padding:10px 12px}
-      .cta-button{font-size:18px;padding:16px 26px}
-    }
-
-    /* ✅ Reduce Motion */
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      .reveal{transition:none}
-      .cta-button,.card,.footer-icons a,.floating-wa,.copy-link{transition:none}
+    @media (max-width:768px){
+      .hero h1{font-size:40px;}
+      .navigation-links{ width: 95%; gap: 0; padding: 5px; }
+      .navigation-links .nav-link{ font-size:12px; padding: 8px 12px; }
+      .navigation-links .nav-link span { display: none; }
+      .theme-toggle { width: 36px; height: 36px; font-size: 14px; }
     }
   </style>
 </head>
@@ -416,26 +236,26 @@
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
 
+  <!-- NAV -->
+  <div class="navigation-links" aria-label="Navigation">
+    <a href="index.html#home" class="nav-link js-utm-link"><i class="fas fa-home"></i> <span>الرئيسية</span></a>
+    <a href="index.html#services" class="nav-link js-utm-link"><i class="fas fa-cogs"></i> <span>الخدمات</span></a>
+    <a href="about.html" class="nav-link js-utm-link active"><i class="fas fa-circle-info"></i> <span>من نحن</span></a>
+    <a href="index.html#contact" class="nav-link js-utm-link"><i class="fas fa-phone-alt"></i> <span>اتصل بنا</span></a>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+
   <!-- HERO -->
   <section class="hero reveal show" id="top">
-    <div class="navigation-links" aria-label="Navigation">
-      <a href="index.html#home" class="nav-link js-utm-link"><i class="fas fa-home"></i> الرئيسية</a>
-      <a href="index.html#services" class="nav-link js-utm-link"><i class="fas fa-cogs"></i> الخدمات</a>
-      <a href="about.html" class="nav-link js-utm-link"><i class="fas fa-circle-info"></i> من نحن</a>
-      <a href="index.html#contact" class="nav-link js-utm-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
-    </div>
-
     <div class="container">
-      <h1>من نحن | About Axentro</h1>
       <div class="tagline">BUILD • OPTIMIZE • SCALE</div>
-
+      <h1>من نحن | About Axentro</h1>
       <p>
-        Axentro نساعد أصحاب الأعمال على تحويل الفوضى اليومية إلى نظام واضح: متابعة، تقارير، إجراءات، وصلاحيات.
+        نساعد أصحاب الأعمال على تحويل الفوضى اليومية إلى نظام واضح: متابعة، تقارير، إجراءات، وصلاحيات.
         عملنا مبني على فهم نشاطك أولًا ثم تصميم حل عملي وسهل الاستخدام يعمل مع فريقك من اليوم الأول.
       </p>
-
-      <a class="cta-button js-utm-link" href="index.html#contact"
-         onclick="trackClick('cta_consult','احجز استشارتك الآن','hero');">احجز استشارتك الآن</a>
 
       <div class="stats">
         <div class="stat">
@@ -458,86 +278,36 @@
     </div>
   </section>
 
-  <!-- SECTION: VALUES -->
+  <!-- VALUES SECTION -->
   <section class="reveal" id="values">
     <div class="container">
-      <h2>قيمنا الأساسية</h2>
-      <p class="section-sub">
-        3 مبادئ ثابتة في كل مشروع—تضمن الجودة والسرعة والوضوح من أول يوم حتى التسليم.
-      </p>
+      <h2 style="font-size:42px; margin-bottom:10px;">قيمنا الأساسية</h2>
+      <p class="section-sub">3 مبادئ ثابتة في كل مشروع—تضمن الجودة والسرعة والوضوح من أول يوم حتى التسليم.</p>
 
       <div class="cards">
         <div class="card">
           <div class="icon"><i class="fas fa-award"></i></div>
           <h3>Quality | الجودة</h3>
-          <p>
-            نهتم بالتفاصيل: هيكلة نظيفة، واجهة واضحة، اختبار، وتسليم منظم.
-            الهدف إن الحل يظل معك ويعمل بثبات.
-          </p>
+          <p>نهتم بالتفاصيل: هيكلة نظيفة، واجهة واضحة، اختبار، وتسليم منظم. الهدف إن الحل يظل معك ويعمل بثبات.</p>
         </div>
-
         <div class="card">
           <div class="icon"><i class="fas fa-bolt"></i></div>
           <h3>Speed | السرعة</h3>
-          <p>
-            نوصل للنتيجة بسرعة بدون ضياع للوقت: تقسيم مراحل، أول نسخة (MVP) ثم تطوير تدريجي حسب الأولويات.
-          </p>
+          <p>نوصل للنتيجة بسرعة بدون ضياع للوقت: تقسيم مراحل، أول نسخة (MVP) ثم تطوير تدريجي حسب الأولويات.</p>
         </div>
-
         <div class="card">
           <div class="icon"><i class="fas fa-eye"></i></div>
           <h3>Clarity | الوضوح</h3>
-          <p>
-            كل خطوة لها مخرجات واضحة: المطلوب، التصميم، التنفيذ، التدريب.
-            عشان تبقى فاهم أنت هتحصل علي إيه وأمتى.
-          </p>
+          <p>كل خطوة لها مخرجات واضحة: المطلوب، التصميم، التنفيذ، التدريب. عشان تبقى فاهم أنت هتحصل علي إيه وأمتى.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION: VISION -->
-  <section class="reveal">
-    <div class="container">
-      <h2>رؤيتنا</h2>
-      <p class="section-sub">
-        نبني حلول برمجية تخلّي الإدارة أسهل، البيانات أوضح، وقراراتك أسرع.
-        هدفنا مش “برنامج وخلاص”—هدفنا نظام يخدم عملك يوميًا ويكبر معاك.
-      </p>
-
-      <div class="cards">
-        <div class="card">
-          <div class="icon"><i class="fas fa-bullseye"></i></div>
-          <h3>هدف واضح</h3>
-          <p>نحدد معاك الهدف من النظام: متابعة مبيعات؟ مخزون؟ عملاء؟ تقارير إدارة؟ ثم نبني الحل حوله.</p>
-        </div>
-        <div class="card">
-          <div class="icon"><i class="fas fa-diagram-project"></i></div>
-          <h3>عملية منظمة</h3>
-          <p>من التحليل للتنفيذ للتدريب—كل خطوة لها مخرجات واضحة، عشان تطلع بنتيجة ثابتة ومضمونة.</p>
-        </div>
-        <div class="card">
-          <div class="icon"><i class="fas fa-shield-halved"></i></div>
-          <h3>ثقة وأمان</h3>
-          <p>نهتم بالنسخ الاحتياطية، صلاحيات المستخدمين، وحماية البيانات بما يناسب طبيعة نشاطك.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION: WHAT WE DO -->
+  <!-- WHAT WE DO -->
   <section class="reveal" id="what-we-do">
     <div class="container">
-      <h2 id="serviceTitle">ماذا نقدم</h2>
-
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html" class="js-utm-link">الرئيسية</a>
-        <span class="sep">›</span>
-        <a href="about.html" class="js-utm-link">من نحن</a>
-        <span class="sep">›</span>
-        <span id="breadcrumbService">الخدمة</span>
-      </nav>
-
+      <h2 style="font-size:42px; margin-bottom:10px;">ماذا نقدم</h2>
       <p class="section-sub">
         خدماتنا مصممة لتغطي احتياج الشركات الصغيرة والمتوسطة: من نظم Excel الذكية إلى تطبيقات ويب وموبايل،
         وأنظمة سطح مكتب، مع حلول الهوية والسوشيال ومواقع عرض الأعمال.
@@ -547,92 +317,53 @@
         <div class="card" id="excel">
           <div class="icon"><i class="fas fa-table"></i></div>
           <h3>Smart Excel Systems</h3>
-          <p>
-            نحول ملفات Excel من “جداول مشتتة” إلى نظام عمل واضح بقواعد (Validation) وصلاحيات واستمارات إدخال سهلة.
-            بنبني تقارير تلقائية ولوحات متابعة (Dashboards) تساعدك تشوف الأداء لحظة بلحظة وتقلل الأخطاء البشرية.
-            مناسب جدًا كبداية قوية لأي نشاط: مبيعات، متابعة عملاء، مصروفات، إنتاج، أو أرشفة—مع قابلية تطوير تدريجي حسب نمو شغلك.
-          </p>
-          <button class="copy-link" type="button" onclick="copyServiceLink('excel')">
-            <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
-          </button>
+          <p>نحول ملفات Excel من “جداول مشتتة” إلى نظام عمل واضح بقواعد وصلاحيات واستمارات إدخال سهلة. بنبني تقارير تلقائية ولوحات متابعة تساعدك تشوف الأداء لحظة بلحظة وتقلل الأخطاء البشرية.</p>
+          <button class="copy-link" type="button" onclick="copyServiceLink('excel')"><i class="fas fa-link"></i> نسخ رابط هذه الخدمة</button>
         </div>
 
         <div class="card" id="web">
           <div class="icon"><i class="fas fa-globe"></i></div>
           <h3>Web & Mobile Apps</h3>
-          <p>
-            نطوّر تطبيقات ويب وموبايل بتجربة مستخدم واضحة وواجهة احترافية تساعد العميل يوصل للخدمة بسرعة.
-            بنركز على السرعة، الأمان، وإدارة المستخدمين والصلاحيات، وربط النظام بالتقارير ولوحات التحكم.
-            سواء محتاج لوحة إدارة داخلية لشركتك أو تطبيق للعميل—بنصمم الحل بناءً على طريقة تشغيلك الفعلية، مش قوالب جاهزة.
-          </p>
-          <button class="copy-link" type="button" onclick="copyServiceLink('web')">
-            <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
-          </button>
+          <p>نطوّر تطبيقات ويب وموبايل بتجربة مستخدم واضحة وواجهة احترافية تساعد العميل يوصل للخدمة بسرعة. بنركز على السرعة، الأمان، وإدارة المستخدمين والصلاحيات، وربط النظام بالتقارير ولوحات التحكم.</p>
+          <button class="copy-link" type="button" onclick="copyServiceLink('web')"><i class="fas fa-link"></i> نسخ رابط هذه الخدمة</button>
         </div>
 
         <div class="card" id="desktop">
           <div class="icon"><i class="fas fa-desktop"></i></div>
           <h3>Desktop Software</h3>
-          <p>
-            بنبني أنظمة سطح مكتب قوية وسريعة مناسبة للبيئات اللي تحتاج أداء عالي أو تشغيل محلي بدون إنترنت.
-            مثالية للمخازن، نقاط البيع، أو الشركات اللي شغلها بيكون على أجهزة داخل المكان.
-            بنهتم بقاعدة البيانات، النسخ الاحتياطي، وسهولة الاستخدام—مع واجهة واضحة تقلل وقت التدريب وتسرّع التشغيل اليومي.
-          </p>
-          <button class="copy-link" type="button" onclick="copyServiceLink('desktop')">
-            <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
-          </button>
+          <p>بنبني أنظمة سطح مكتب قوية وسريعة مناسبة للبيئات اللي تحتاج أداء عالي أو تشغيل محلي بدون إنترنت. مثالية للمخازن، نقاط البيع، أو الشركات اللي شغلها بيكون على أجهزة داخل المكان.</p>
+          <button class="copy-link" type="button" onclick="copyServiceLink('desktop')"><i class="fas fa-link"></i> نسخ رابط هذه الخدمة</button>
         </div>
 
         <div class="card" id="inventory">
           <div class="icon"><i class="fas fa-chart-pie"></i></div>
           <h3>Inventory & Sales</h3>
-          <p>
-            بنقدّم حلول متابعة مخزون ومبيعات تساعدك تمسك كل حركة: دخول/خروج أصناف، جرد، فواتير، عملاء، موردين، وتنبيهات نقص المخزون.
-            الهدف إنك تشتغل بأرقام واضحة: تقارير الأرباح، أفضل المنتجات، حركة البيع، وتكاليف التشغيل.
-            الحل بيتصمم حسب طبيعة نشاطك (تجزئة/جملة/خدمات) وبآلية تشغيل سهلة تخلّي فريقك يلتزم بالنظام من أول يوم.
-          </p>
-          <button class="copy-link" type="button" onclick="copyServiceLink('inventory')">
-            <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
-          </button>
+          <p>بنقدّم حلول متابعة مخزون ومبيعات تساعدك تمسك كل حركة: دخول/خروج أصناف، جرد، فواتير، عملاء، موردين، وتنبيهات نقص المخزون. الهدف إنك تشتغل بأرقام واضحة وتقارير دقيقة.</p>
+          <button class="copy-link" type="button" onclick="copyServiceLink('inventory')"><i class="fas fa-link"></i> نسخ رابط هذه الخدمة</button>
         </div>
 
         <div class="card" id="branding">
           <div class="icon"><i class="fas fa-bullhorn"></i></div>
           <h3>Social Media & Design</h3>
-          <p>
-            بنبني لك شكل احترافي ثابت يوصل رسالة مشروعك بسرعة: لوجو وهوية بصرية (ألوان/خطوط/ستايل) + قوالب بوستات متناسقة.
-            الهدف إن أي حد يشوف صفحتك يحس بثقة واحترافية، ويقدر يميّز علامتك من أول نظرة.
-            كمان نقدر نجهّز مواد دعائية (Cover / Highlights / Templates) تساعدك تعمل محتوى بسرعة وبشكل ثابت بدون تشتت.
-          </p>
-          <button class="copy-link" type="button" onclick="copyServiceLink('branding')">
-            <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
-          </button>
+          <p>بنبني لك شكل احترافي ثابت يوصل رسالة مشروعك بسرعة: لوجو وهوية بصرية + قوالب بوستات متناسقة. كمان نقدر نجهّز مواد دعائية تساعدك تعمل محتوى بسرعة وبشكل ثابت بدون تشتت.</p>
+          <button class="copy-link" type="button" onclick="copyServiceLink('branding')"><i class="fas fa-link"></i> نسخ رابط هذه الخدمة</button>
         </div>
 
         <div class="card" id="website">
           <div class="icon"><i class="fas fa-window-maximize"></i></div>
           <h3>Websites for Business & Portfolio</h3>
-          <p>
-            بننشئ مواقع ويب سريعة وخفيفة لعرض خدماتك وأعمالك بشكل عصري—تخلي العميل يفهم أنت بتقدم إيه في ثواني.
-            الموقع بيكون مرتب: صفحة رئيسية + من نحن + خدمات + تواصل مباشر (واتساب/إيميل) مع تصميم متناسق يعكس قوة البراند.
-            الهدف مش “موقع وخلاص”—الهدف صفحة بيع (Landing) تُحوّل الزائر لعميل: رسالة واضحة، عرض خدمات مضبوط، وتجربة ممتازة على الموبايل.
-          </p>
-          <button class="copy-link" type="button" onclick="copyServiceLink('website')">
-            <i class="fas fa-link"></i> نسخ رابط هذه الخدمة
-          </button>
+          <p>بننشئ مواقع ويب سريعة وخفيفة لعرض خدماتك وأعمالك بشكل عصري—تخلي العميل يفهم أنت بتقدم إيه في ثواني. الهدف صفحة بيع تُحوّل الزائر لعميل: رسالة واضحة، عرض خدمات مضبوط، وتجربة ممتازة.</p>
+          <button class="copy-link" type="button" onclick="copyServiceLink('website')"><i class="fas fa-link"></i> نسخ رابط هذه الخدمة</button>
         </div>
       </div>
-
-      <a href="index.html#services" class="back-services js-utm-link"
-         onclick="trackClick('nav_back_services','رجوع للخدمات','what_we_do');">← رجوع للخدمات</a>
     </div>
   </section>
 
-  <!-- SECTION: HOW WE WORK -->
+  <!-- HOW WE WORK -->
   <section class="reveal">
     <div class="container">
-      <h2>كيف نعمل معك</h2>
-      <p class="section-sub">أسلوب عمل “شركات” بخطوات واضحة—بدون تعقيد وبأسرع طريق للنتيجة.</p>
+      <h2 style="font-size:42px; margin-bottom:10px;">كيف نعمل معك</h2>
+      <p class="section-sub">أسلوب عمل "شركات" بخطوات واضحة—بدون تعقيد وبأسرع طريق للنتيجة.</p>
 
       <div class="cards">
         <div class="card">
@@ -669,83 +400,38 @@
     </div>
   </section>
 
-  <!-- SECTION: FAQ -->
+  <!-- FAQ -->
   <section class="reveal" id="faq">
     <div class="container">
-      <h2>أسئلة شائعة | FAQ</h2>
+      <h2 style="font-size:42px; margin-bottom:10px;">أسئلة شائعة | FAQ</h2>
       <p class="section-sub">إجابات سريعة على أهم الأسئلة قبل ما نبدأ.</p>
 
-      <div class="faq">
-        <details>
-          <summary>
-            <span class="q"><i class="fas fa-circle-question"></i> إزاي نبدأ مع بعض؟</span>
-            <i class="fas fa-chevron-down chev"></i>
-          </summary>
-          <div class="ans">
-            بنبدأ بجلسة قصيرة لفهم طبيعه عملك والهدف المطلوب، بعدها نحدد نطاق العمل والخطوات والمدة المتوقعة، ثم نبدأ التنفيذ على مراحل.
-          </div>
+      <div class="faq-container">
+        <details class="faq-item">
+          <summary>إزاي نبدأ مع بعض؟ <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="ans">بنبدأ بجلسة قصيرة لفهم طبيعه عملك والهدف المطلوب، بعدها نحدد نطاق العمل والخطوات والمدة المتوقعة، ثم نبدأ التنفيذ على مراحل.</div>
         </details>
-
-        <details>
-          <summary>
-            <span class="q"><i class="fas fa-circle-question"></i> هل لازم يكون عندي متطلبات جاهزة؟</span>
-            <i class="fas fa-chevron-down chev"></i>
-          </summary>
-          <div class="ans">
-            لا. لو عندك فكرة عامة بس ده كفاية. هنساعدك نطلع المتطلبات بشكل واضح ونحوّلها لخطة تنفيذ واقعية.
-          </div>
+        <details class="faq-item">
+          <summary>هل لازم يكون عندي متطلبات جاهزة؟ <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="ans">لا. لو عندك فكرة عامة بس ده كفاية. هنساعدك نطلع المتطلبات بشكل واضح ونحوّلها لخطة تنفيذ واقعية.</div>
         </details>
-
-        <details>
-          <summary>
-            <span class="q"><i class="fas fa-circle-question"></i> لو أنا لسه في بداية المشروع، هل ينفع؟</span>
-            <i class="fas fa-chevron-down chev"></i>
-          </summary>
-          <div class="ans">
-            جدًا. بنركز على نسخة أولى (MVP) تحقق الهدف الأساسي بسرعة، وبعدها نطوّر تدريجيًا حسب نمو مشروعك.
-          </div>
+        <details class="faq-item">
+          <summary>لو أنا لسه في بداية المشروع، هل ينفع؟ <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="ans">جدًا. بنركز على نسخة أولى (MVP) تحقق الهدف الأساسي بسرعة، وبعدها نطوّر تدريجيًا حسب نمو مشروعك.</div>
         </details>
-
-        <details>
-          <summary>
-            <span class="q"><i class="fas fa-circle-question"></i> هل في دعم بعد التسليم؟</span>
-            <i class="fas fa-chevron-down chev"></i>
-          </summary>
-          <div class="ans">
-            نعم، بنوفر دعم وتعديلات حسب الاتفاق، مع إمكانية إضافة تقارير وخصائص جديدة مع الوقت.
-          </div>
+        <details class="faq-item">
+          <summary>هل في دعم بعد التسليم؟ <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="ans">نعم، بنوفر دعم وتعديلات حسب الاتفاق، مع إمكانية إضافة تقارير وخصائص جديدة مع الوقت.</div>
         </details>
-
-        <details>
-          <summary>
-            <span class="q"><i class="fas fa-circle-question"></i> ما الفرق بين Excel System وWeb App؟</span>
-            <i class="fas fa-chevron-down chev"></i>
-          </summary>
-          <div class="ans">
-            Excel System مناسب كبداية سريعة داخل الشركة، بينما Web App مناسب لو عايز وصول من أي مكان، مستخدمين متعددين، وصلاحيات أوسع وتوسع أكبر.
-          </div>
+        <details class="faq-item">
+          <summary>ما الفرق بين Excel System وWeb App؟ <i class="fas fa-chevron-down chev"></i></summary>
+          <div class="ans">Excel System مناسب كبداية سريعة داخل الشركة، بينما Web App مناسب لو عايز وصول من أي مكان، مستخدمين متعددين، وصلاحيات أوسع وتوسع أكبر.</div>
         </details>
       </div>
 
       <div class="cta">
-        <a class="cta-button btn-wa" href="#" onclick="whatsapp('faq'); return false;">
-          <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
-        </a>
-
-        <a class="cta-button btn-mail" href="mailto:axentroofficial@gmail.com"
-           onclick="trackClick('email','تواصل معنا عبر البريد','faq');">
-          <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
-        </a>
-
-        <a class="cta-button btn-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener"
-           onclick="trackClick('facebook','تابعنا على فيسبوك','faq');">
-          <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
-        </a>
-
-        <a class="cta-button btn-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener"
-           onclick="trackClick('instagram','تابعنا على انستجرام','faq');">
-          <i class="fab fa-instagram"></i> تابعنا على انستجرام
-        </a>
+        <a class="btn btn-wa" href="#" onclick="whatsapp('faq'); return false;"><i class="fab fa-whatsapp"></i> تواصل عبر واتساب</a>
+        <a class="btn btn-mail" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','تواصل عبر البريد','faq');"><i class="fas fa-envelope"></i> راسلنا عبر البريد</a>
       </div>
     </div>
   </section>
@@ -754,20 +440,30 @@
   <footer>
     <div class="main">© 2024 Axentro – All Rights Reserved</div>
     <div class="by">By Axentro Team</div>
-
     <div class="footer-icons">
       <a class="icon-wa" href="#" onclick="whatsapp('footer'); return false;" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a class="icon-mail" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','Email Icon','footer');" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" onclick="trackClick('facebook','Facebook Icon','footer');" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a class="icon-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" onclick="trackClick('instagram','Instagram Icon','footer');" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a class="icon-mail" href="mailto:axentroofficial@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a class="icon-ig" href="https://www.instagram.com/axentro.official" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
 
-  <a class="floating-wa" href="#" onclick="whatsapp('floating'); return false;" aria-label="WhatsApp Floating">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+  <a class="floating-wa" href="#" onclick="whatsapp('floating'); return false;" aria-label="WhatsApp Floating"><i class="fab fa-whatsapp"></i></a>
 
-  <!-- ✅ UI scripts (keep) -->
+  <!-- ✅ Analytics -->
+  <script src="assets/js/ga.js"></script>
+  <script>
+    AxentroAnalytics.init({
+      page: "about",
+      utm_campaign_default: "axentro",
+      enable_qr_scan: true,
+      enable_internal_utm_links: true,
+      enable_service_hash_title: true,
+      service_hash_ids: ["excel","web","desktop","inventory","branding","website"],
+      service_title_prefix: "تفاصيل الخدمة: "
+    });
+  </script>
+
   <script>
     /* Progress bar */
     const bar = document.getElementById('scrollProgress');
@@ -780,27 +476,53 @@
     /* Reveal */
     const els = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add('show');
-      });
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
     },{threshold:0.15});
     els.forEach(el=>io.observe(el));
-  </script>
 
-  <!-- ✅ Analytics (single source) -->
-  <script src="assets/js/ga.js"></script>
-  <script>
-    AxentroAnalytics.init({
-      page: "about",
-      utm_campaign_default: "axentro",
-      enable_qr_scan: true,
-      enable_internal_utm_links: true,
+    /* Card Spotlight Effect */
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
 
-      // ✅ دي بتخلي عنوان "ماذا نقدم" + الـBreadcrumb يتغيروا حسب #service
-      enable_service_hash_title: true,
-      service_hash_ids: ["excel","web","desktop","inventory","branding","website"],
-      service_title_prefix: "تفاصيل الخدمة: "
-      // clean_hash_delay_ms: 2900  // (اختياري) سيبه كده ياخد الديفولت
+    /* Copy Link function */
+    function copyServiceLink(id) {
+      const url = window.location.origin + window.location.pathname + '#' + id;
+      navigator.clipboard.writeText(url).then(() => {
+        alert('تم نسخ رابط الخدمة بنجاح!');
+      }).catch(err => console.error('Copy failed', err));
+    }
+
+    /* Dark/Light Mode Toggle Logic */
+    const toggle = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    const icon = toggle.querySelector('i');
+    function updateIcon() {
+      if (htmlEl.getAttribute('data-theme') === 'light') {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    }
+    updateIcon();
+    toggle.addEventListener('click', () => {
+      if (htmlEl.getAttribute('data-theme') === 'light') {
+        htmlEl.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        htmlEl.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      }
+      updateIcon();
     });
   </script>
 </body>
