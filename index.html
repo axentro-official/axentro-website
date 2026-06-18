@@ -9,7 +9,7 @@
   
   <!-- ✅ iPhone / Safari + Responsive -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#020617">
+  <meta name="theme-color" content="#050510">
   <meta name="format-detection" content="telephone=no">
 
   <!-- ✅ GA4 Tracking -->
@@ -18,335 +18,230 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    // هنخلي config بسيط، وبعدين نبعت page_view يدوي مع UTM من ga.js
     gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
   </script>
 
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- ✅ تطبيق الوضع المحفوظ فوراً قبل تحميل الصفحة لتفادي الوميض -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- ICONS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* ✅ الوضع الداكن (الأساسي) */
     :root{
-      --bg:#020617;
-      --card:rgba(255,255,255,.06);
-      --primary:#00d4ff;
-      --secondary:#00ffd5;
-      --text:#e5f6ff;
-      --muted:#94a3b8;
-      --wa:#25D366;
-      --mail:#EA4335;
-      --fb:#1877F2;
-      --ig:#E1306C;
+      --bg: #050510;
+      --text: #ffffff;
+      --muted: #8b8ba7;
+      --card: rgba(255,255,255,.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --nav-bg: rgba(10, 10, 20, 0.6);
+      --footer-bg: rgba(0,0,0,0.3);
+      --spotlight-color: rgba(123, 47, 247, 0.15);
+      --gradient-1: rgba(123, 47, 247, 0.15);
+      --gradient-2: rgba(0, 212, 255, 0.12);
+      --gradient-3: rgba(255, 0, 122, 0.05);
+      --grid-line: rgba(255, 255, 255, 0.015);
+      --text-gradient: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+      --hero-gradient: linear-gradient(135deg, #fff 0%, #00d4ff 50%, #7b2ff7 100%);
+      --primary: #7b2ff7;
+      --secondary: #00d4ff;
+      --btn-text: #ffffff;
+      --toggle-bg: rgba(255,255,255,0.05);
+      --toggle-icon: #FFD700; /* لون ذهبي للقمر */
+    }
+
+    /* ✅ الوضع الفاتح */
+    [data-theme="light"]{
+      --bg: #F0F4F8;
+      --text: #0f172a;
+      --muted: #64748b;
+      --card: rgba(255,255,255,.7);
+      --border: rgba(0, 0, 0, 0.08);
+      --nav-bg: rgba(255, 255, 255, 0.6);
+      --footer-bg: rgba(255,255,255,0.5);
+      --spotlight-color: rgba(123, 47, 247, 0.1);
+      --gradient-1: rgba(123, 47, 247, 0.1);
+      --gradient-2: rgba(0, 212, 255, 0.1);
+      --gradient-3: rgba(255, 0, 122, 0.05);
+      --grid-line: rgba(0, 0, 0, 0.02);
+      --text-gradient: linear-gradient(180deg, #0f172a 0%, #334155 100%);
+      --hero-gradient: linear-gradient(135deg, #0f172a 0%, #00d4ff 50%, #7b2ff7 100%);
+      --primary: #7b2ff7;
+      --secondary: #00d4ff;
+      --btn-text: #ffffff;
+      --toggle-bg: rgba(0,0,0,0.05);
+      --toggle-icon: #FF8C00; /* لون برتقالي للشمس */
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       font-family:'Cairo',sans-serif;
-      background:linear-gradient(135deg,#020617,#020b2e);
+      background:var(--bg);
       color:var(--text);
       overflow-x:hidden;
       -webkit-text-size-adjust: 100%;
       padding-top: env(safe-area-inset-top);
+      position: relative;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
 
-    section{padding:90px 20px;text-align:center}
-    .container{max-width:1100px;margin:auto}
+    /* خلفية متحركة */
+    body::before {
+      content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: 
+        radial-gradient(circle at 20% 30%, var(--gradient-1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, var(--gradient-2) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, var(--gradient-3) 0%, transparent 50%);
+      z-index: -2; animation: rotateBg 20s linear infinite; transition: background 0.4s ease;
+    }
+    @keyframes rotateBg { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    body::after {
+      content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 60px 60px; z-index: -1; pointer-events: none;
+    }
 
-    h1,h2,h3{color:var(--secondary)}
+    section{padding:120px 20px;text-align:center; position:relative; z-index:1}
+    .container{max-width:1200px;margin:auto}
+
+    h1, h2 { background: var(--text-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    h3{color:var(--text); line-height:1.2}
     p{color:var(--muted);line-height:1.9}
 
-    /* PROGRESS BAR (خفيف جدًا) */
-    .scroll-progress{
-      position:fixed;
-      top:0;
-      left:0;
-      height:3px;
-      width:0%;
-      background:var(--secondary);
-      z-index:99999;
-    }
+    .scroll-progress{ position:fixed; top:0; left:0; height:4px; width:0%; background:linear-gradient(90deg, var(--primary), var(--secondary)); z-index:99999; box-shadow: 0 0 15px var(--secondary); }
+    .reveal{opacity:0; transform:translateY(40px) rotateX(-10deg); transition:opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);}
+    .reveal.show{opacity:1; transform:translateY(0) rotateX(0);}
 
-    /* REVEAL (خفيف جدًا) */
-    .reveal{
-      opacity:0;
-      transform:translateY(16px);
-      transition:opacity .7s ease, transform .7s ease;
-      will-change: opacity, transform;
-    }
-    .reveal.show{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    /* HERO */
-    .hero{position:relative}
-    .hero h1{font-size:52px;letter-spacing:2px}
-    .hero .tagline{
-      margin-top:10px;
-      letter-spacing:4px;
-      font-size:14px;
-      opacity:.85;
-    }
-    .hero p{max-width:760px;margin:30px auto 0}
-
-    /* HERO SERVICES LINE */
-    .hero-services{
-      margin-top:22px;
-      font-size:14px;
-      letter-spacing:2px;
-      opacity:.8;
-    }
-
-    /* BUTTON STYLES */
-    .cta-button{
-      background-color:#003366;
-      color:var(--secondary);
-      padding:18px 45px;
-      border-radius:50px;
-      font-weight:800;
-      font-size:22px;
-      cursor:pointer;
-      transition:background-color .3s, transform .3s, box-shadow .3s;
-      margin-top:50px;
-      display:inline-block;
-      text-decoration:none;
-      box-shadow:0 0 25px rgba(0,255,213,0.35);
-      border:none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .cta-button:hover{
-      background-color:#002244;
-      transform:scale(1.05);
-      box-shadow:0 0 40px rgba(0,255,213,0.6);
-    }
-    .cta-button:focus{
-      outline: 2px solid rgba(0,255,213,.45);
-      outline-offset: 4px;
-      border-radius: 50px;
-    }
-
-    /* SERVICES */
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:28px;
-      margin-top:50px;
-    }
-    .card{
-      background:var(--card);
-      padding:20px;
-      border-radius:20px;
-      transition:transform .35s ease, box-shadow .35s ease;
-      text-align:right;
-      overflow:hidden;
-    }
-    .card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 25px 60px rgba(0,212,255,.22);
-    }
-    .card h3{margin-bottom:14px;font-size:18px}
-
-    /* MAKE CARDS CLICKABLE (بدون تغيير شكلها) */
-    .card-link{
-      display:block;
-      text-decoration:none;
-      color:inherit;
-      height:100%;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .card-link:focus{
-      outline:2px solid rgba(0,255,213,.35);
-      outline-offset:4px;
-      border-radius:20px
-    }
-
-    /* ✅ صور الخدمات داخل الكروت */
-    .service-img{
-      width:100%;
-      height:170px;
-      object-fit:cover;
-      border-radius:16px;
-      margin-bottom:16px;
-      display:block;
-      box-shadow:0 12px 30px rgba(0,0,0,.25);
-      transition:transform .35s ease;
-    }
-    .card:hover .service-img{ transform:scale(1.03); }
-
-    /* ✅ اعرف المزيد */
-    .more-link{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      margin-top:14px;
-      font-weight:800;
-      color:var(--secondary);
-      text-decoration:none;
-    }
-    .more-link:hover{text-decoration:underline}
-
-    /* FINAL CTA */
-    .final-cta-text{
-      margin-bottom:25px;
-      font-size:22px;
-      font-weight:800;
-      color:var(--secondary);
-    }
-    .final-cta-sub{
-      max-width:760px;
-      margin:0 auto 35px;
-      opacity:.9;
-    }
-
-    /* BUTTONS */
-    .cta{
-      display:flex;
-      gap:18px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:12px;
-      padding:18px 38px;
-      border-radius:50px;
-      font-weight:800;
-      font-size:18px;
-      text-decoration:none;
-      cursor:pointer;
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-    .btn:hover{
-      transform:translateY(-3px) scale(1.04);
-      box-shadow:0 12px 30px rgba(0,0,0,.35);
-    }
-
-    .btn-wa{background:var(--wa);color:#000}
-    .btn-mail{background:var(--mail);color:#fff}
-    .btn-fb{background:var(--fb);color:#fff}
-    .btn-ig{background:var(--ig);color:#fff}
-
-    /* FOOTER */
-    footer{
-      padding:70px 20px;
-      border-top:1px solid rgba(255,255,255,.1);
-      text-align:center;
-    }
-    footer .main{
-      font-weight:900;
-      font-size:20px;
-      color:#fff;
-    }
-    footer .by{
-      margin-top:10px;
-      font-size:16px;
-      opacity:.9;
-    }
-    .footer-icons{
-      margin-top:30px;
-      display:flex;
-      gap:30px;
-      justify-content:center;
-      font-size:26px;
-    }
-    .footer-icons a{
-      transition:transform .25s ease, filter .25s ease;
-      text-decoration:none;
-      cursor:pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .footer-icons a:hover{
-      transform:translateY(-4px) scale(1.12);
-      filter:drop-shadow(0 0 10px currentColor);
-    }
-    .icon-wa{color:var(--wa)}
-    .icon-mail{color:var(--mail)}
-    .icon-fb{color:var(--fb)}
-    .icon-ig{color:var(--ig)}
-
-    /* FLOATING WHATSAPP */
-    .floating-wa{
-      position:fixed;
-      bottom:25px;
-      right:25px;
-      width:66px;
-      height:66px;
-      border-radius:50%;
-      background:var(--wa);
-      color:#000;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:30px;
-      box-shadow:0 12px 30px rgba(0,0,0,.4);
-      z-index:999;
-      transition:transform .25s ease;
-      cursor:pointer;
-      text-decoration:none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .floating-wa:hover{transform:scale(1.08)}
-    .floating-wa:focus{
-      outline:2px solid rgba(0,255,213,.45);
-      outline-offset:4px;
-    }
-
-    /* NAVIGATION LINKS — أفقي دائمًا */
+    /* NAV */
     .navigation-links{
-      position:absolute;
-      top:20px;
-      left:10px;
-      right:10px;
-      display:flex;
-      flex-direction:row;
-      justify-content:center;
-      gap:20px;
-      z-index:10;
+      position:fixed; top:20px; left:50%; transform:translateX(-50%);
+      display:flex; flex-direction:row; justify-content:center; align-items:center; gap:10px; z-index:1000;
+      background: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      padding: 8px; border-radius: 100px; border: 1px solid var(--border);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     }
     .navigation-links .nav-link{
-      font-size:18px;
-      color:#fff;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:12px 16px;
-      border-radius:50px;
-      transition:color .3s, background-color .3s;
-      -webkit-tap-highlight-color: transparent;
+      font-size:15px; color:var(--muted); text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:50px;
+      transition:color .3s, background-color .3s, box-shadow .3s;
     }
-    .navigation-links .nav-link:hover{
-      color:#00d4ff;
-      background-color:#003366;
+    .navigation-links .nav-link:hover{ color:var(--text); background-color: var(--card); box-shadow: inset 0 0 15px var(--spotlight-color); }
+    
+    /* ✅ زر تبديل الوضع (أكثر وضوحاً واحترافية) */
+    .theme-toggle {
+      background: var(--toggle-bg); border: 1px solid var(--border);
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--toggle-icon); font-size: 16px;
+      transition: all 0.3s; margin-right: 5px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.1); /* توهج خفيف ذهبي */
     }
-    .navigation-links .nav-link:focus{
-      outline:2px solid rgba(0,255,213,.45);
-      outline-offset:4px;
-      border-radius:50px;
+    .theme-toggle:hover { transform: rotate(20deg) scale(1.1); box-shadow: 0 0 15px var(--toggle-icon); }
+
+    /* HERO */
+    .hero{min-height:100vh; display:flex; align-items:center; justify-content:center; padding-top:0;}
+    .hero h1{
+      font-family: 'Space Grotesk', sans-serif; font-size: 100px; font-weight: 700; letter-spacing: -4px;
+      line-height: 1; margin-bottom: 10px; background: var(--hero-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero .tagline{
+      font-family: 'Space Grotesk', sans-serif; margin-top:10px; letter-spacing:8px; font-size:14px; color:var(--secondary);
+      text-transform: uppercase; display: inline-block; padding: 8px 20px; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 50px;
+      background: rgba(0, 212, 255, 0.05); margin-bottom: 30px;
+    }
+    .hero p{max-width:700px;margin:24px auto 0; font-size:18px;}
+    .hero-services{ margin-top:30px; font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:3px; opacity:.6; color: var(--text); }
+
+    .cta-button{
+      background: transparent; color: var(--text); padding:18px 45px; border-radius:12px; font-weight:800; font-size:18px; cursor:pointer; margin-top:50px;
+      display:inline-block; text-decoration:none; border: 1px solid var(--secondary);
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 47, 247, 0.1));
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.1), inset 0 0 20px rgba(0, 212, 255, 0.05); transition: all 0.3s ease;
+    }
+    .cta-button:hover{ transform: translateY(-3px); box-shadow: 0 10px 40px rgba(0, 212, 255, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.2); border-color: var(--text); }
+
+    /* SERVICES CARDS */
+    .cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; margin-top:60px; }
+    .card{
+      position: relative; background: var(--card); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      padding: 24px; border-radius: 24px; text-align:right; overflow: hidden; border: 1px solid var(--border);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, background 0.4s;
+    }
+    .card::before {
+      content: ''; position: absolute; top: var(--mouse-y, 0); left: var(--mouse-x, 0); transform: translate(-50%, -50%);
+      width: 400px; height: 400px; background: radial-gradient(circle, var(--spotlight-color) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.4s; pointer-events: none; z-index: 0;
+    }
+    .card:hover::before { opacity: 1; }
+    .card:hover { transform: translateY(-8px); border-color: rgba(0, 212, 255, 0.4); }
+    .card > * { position: relative; z-index: 1; }
+    
+    .card h3{margin-bottom:14px;font-size:20px}
+    .card-link{ display:block; text-decoration:none; color:inherit; height:100%; }
+    .service-img{ width:100%; height:180px; object-fit:cover; border-radius:16px; margin-bottom:16px; display:block; transition:transform 0.5s ease, filter 0.5s ease; filter: grayscale(30%) contrast(1.1); }
+    .card:hover .service-img{ transform:scale(1.05); filter: grayscale(0%) contrast(1.1); }
+    .more-link{ display:inline-flex; align-items:center; gap:8px; margin-top:14px; font-weight:800; color:var(--secondary); text-decoration:none; transition: gap 0.3s; }
+    .card:hover .more-link { gap: 15px; }
+
+    /* FINAL CTA */
+    .final-cta-text{ margin-bottom:15px; font-size:36px; font-weight:900; color:var(--text); }
+    .final-cta-sub{ max-width:760px; margin:0 auto 35px; opacity:.9; }
+    .cta{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+    .btn{
+      display:inline-flex; align-items:center; gap:12px; padding:16px 32px; border-radius:50px; font-weight:800; font-size:16px; text-decoration:none; cursor:pointer;
+      transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; border: 1px solid transparent; color: var(--btn-text);
+    }
+    .btn:hover{ transform:translateY(-5px) scale(1.02); }
+    .btn-wa{background:linear-gradient(135deg, #25D366, #128C7E); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);}
+    .btn-mail{background:linear-gradient(135deg, #EA4335, #d33223); box-shadow: 0 10px 30px rgba(234, 67, 53, 0.3);}
+    .btn-fb{background:linear-gradient(135deg, #1877F2, #0f5fc0); box-shadow: 0 10px 30px rgba(24, 119, 242, 0.3);}
+    .btn-ig{background:linear-gradient(135deg, #E1306C, #f77737); box-shadow: 0 10px 30px rgba(225, 48, 108, 0.3);}
+
+    /* FOOTER */
+    footer{ padding:70px 20px; border-top:1px solid var(--border); text-align:center; position:relative; z-index:1; background: var(--footer-bg); backdrop-filter: blur(10px); }
+    footer .main{ font-weight:900; font-size:20px; color:var(--text); }
+    footer .by{ margin-top:10px; font-size:16px; opacity:.9; color: var(--muted); }
+    .footer-icons{ margin-top:30px; display:flex; gap:15px; justify-content:center; font-size:22px; }
+    .footer-icons a{ transition: transform 0.3s, filter 0.3s, background 0.3s; text-decoration:none; cursor:pointer; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--card); border: 1px solid var(--border); }
+    .footer-icons a:hover{ transform:translateY(-5px) scale(1.1); filter:drop-shadow(0 0 15px currentColor); }
+    .icon-wa{color:var(--wa)} .icon-mail{color:var(--mail)} .icon-fb{color:var(--fb)} .icon-ig{color:var(--ig)}
+
+    /* ✅ FLOATING WHATSAPP (ألوان أوضح وأقوى في الدارك مود) */
+    .floating-wa{
+      position:fixed; bottom:25px; right:25px; width:60px; height:60px; border-radius:50%;
+      background: #25D366; /* لون أخضر صريح وقوي */
+      color: #ffffff; /* أيقونة بيضاء نقية */
+      display:flex; align-items:center; justify-content:center; font-size:30px;
+      border: 2px solid rgba(255, 255, 255, 0.2); /* حد أبيض خفيف ليفصل الزر عن الخلفية الداكنة */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 25px rgba(37, 211, 102, 0.4); /* ظل أسود تحت الزر + توهج أخضر */
+      z-index:999; text-decoration:none; transition: all 0.3s; animation: pulseWa 2s infinite;
+    }
+    .floating-wa:hover{ transform: scale(1.15) rotate(10deg); }
+    @keyframes pulseWa {
+      0% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 0 0 rgba(37, 211, 102, 0); }
     }
 
-    /* ✅ موبايل */
-    @media (max-width:600px){
-      .navigation-links .nav-link{
-        font-size:14px;
-        padding:10px 12px;
-      }
-      .service-img{height:150px;}
-      .hero h1{font-size:44px;}
-      .cta-button{font-size:20px;}
-    }
-
-    /* ✅ تقليل الحركة للناس اللي مفعّلين Reduce Motion */
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      .reveal{transition:none}
-      .cta-button,.card,.service-img,.footer-icons a,.floating-wa{transition:none}
+    @media (max-width:768px){
+      .hero h1{font-size:60px;}
+      .navigation-links{ width: 95%; gap: 0; padding: 5px; }
+      .navigation-links .nav-link{ font-size:12px; padding: 8px 12px; }
+      .navigation-links .nav-link span { display: none; }
+      .theme-toggle { width: 36px; height: 36px; font-size: 14px; }
     }
   </style>
 </head>
@@ -354,18 +249,23 @@
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
 
+  <!-- NAV -->
+  <div class="navigation-links" aria-label="Navigation">
+    <a href="index.html#home" class="nav-link js-utm-link"><i class="fas fa-home"></i> <span>الرئيسية</span></a>
+    <a href="index.html#services" class="nav-link js-utm-link"><i class="fas fa-cogs"></i> <span>الخدمات</span></a>
+    <a href="about.html" class="nav-link js-utm-link"><i class="fas fa-circle-info"></i> <span>من نحن</span></a>
+    <a href="index.html#contact" class="nav-link js-utm-link"><i class="fas fa-phone-alt"></i> <span>اتصل بنا</span></a>
+    <!-- زر تبديل الوضع -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+
   <!-- HERO -->
   <section class="hero reveal show" id="home">
-    <div class="navigation-links" aria-label="Navigation">
-      <a href="index.html#home" class="nav-link js-utm-link"><i class="fas fa-home"></i> الرئيسية</a>
-      <a href="index.html#services" class="nav-link js-utm-link"><i class="fas fa-cogs"></i> الخدمات</a>
-      <a href="about.html" class="nav-link js-utm-link"><i class="fas fa-circle-info"></i> من نحن</a>
-      <a href="index.html#contact" class="nav-link js-utm-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
-    </div>
-
     <div class="container">
-      <h1>AXENTRO</h1>
       <div class="tagline">CONTROL • TRACK • GROW</div>
+      <h1>AXENTRO</h1>
 
       <p>
         حلول برمجية ذكية لإدارة الأعمال وتحويل Excel إلى أنظمة احترافية<br>
@@ -376,11 +276,7 @@
         EXE • Web • Mobile • Portfolio & Business Websites • Social Media Solutions
       </div>
 
-      <a
-        href="#contact"
-        class="cta-button"
-        onclick="trackClick('cta_consult','احجز استشارتك الآن','home');"
-      >
+      <a href="#contact" class="cta-button" onclick="trackClick('cta_consult','احجز استشارتك الآن','home');">
         احجز استشارتك الآن
       </a>
     </div>
@@ -389,9 +285,9 @@
   <!-- SERVICES -->
   <section id="services" class="reveal">
     <div class="container">
-      <h2>خدماتنا | Our Services</h2>
+      <h2 style="font-size:42px; margin-bottom:40px;">خدماتنا | Our Services</h2>
 
-      <div class="cards">
+      <div class="cards" id="servicesGrid">
         <div class="card">
           <a class="card-link js-utm-link" href="about.html#excel" onclick="trackService('smart_excel','Smart Excel Systems');">
             <img class="service-img" src="assets/images/axentro-service-smart-excel.webp" alt="Smart Excel Systems">
@@ -423,10 +319,7 @@
           <a class="card-link js-utm-link" href="about.html#inventory" onclick="trackService('inventory_sales','Inventory & Sales');">
             <img class="service-img" src="assets/images/axentro-service-inventory-sales.webp" alt="Inventory & Sales">
             <h3>Inventory & Sales</h3>
-            <p>
-              أنظمة إدارة مخزون ومبيعات ذكية تساعدك على متابعة الأصناف،
-              تسجيل المبيعات، واستخراج تقارير دقيقة لاتخاذ قرارات أفضل.
-            </p>
+            <p>أنظمة إدارة مخزون ومبيعات ذكية تساعدك على متابعة الأصناف، تسجيل المبيعات، واستخراج تقارير دقيقة.</p>
             <span class="more-link">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
           </a>
         </div>
@@ -444,10 +337,7 @@
           <a class="card-link js-utm-link" href="about.html#website" onclick="trackService('websites','Websites for Business & Portfolio');">
             <img class="service-img" src="assets/images/axentro-service-websites.webp" alt="Websites for Business & Portfolio">
             <h3>Websites for Business & Portfolio</h3>
-            <p>
-              مواقع ويب احترافية لعرض أعمالك وخدماتك،
-              تظهر مشروعك بشكل قوي وتسهّل تواصل العملاء معك.
-            </p>
+            <p>مواقع ويب احترافية لعرض أعمالك وخدماتك، تظهر مشروعك بشكل قوي وتسهّل تواصل العملاء معك.</p>
             <span class="more-link">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
           </a>
         </div>
@@ -459,47 +349,22 @@
   <section id="contact" class="reveal">
     <div class="container">
       <div class="final-cta-text">احجز استشارتك الآن</div>
-
       <div class="final-cta-sub">
         نصنع لك حضورًا رقميًا يعكس قوة مشروعك ويزيد ثقة عملائك<br>
         <span style="opacity:.8">We build a digital presence that strengthens your brand and builds trust.</span>
       </div>
 
       <div class="cta">
-        <a
-          class="cta-button btn-wa"
-          href="#"
-          role="button"
-          onclick="whatsapp('contact_section'); return false;"
-        >
+        <a class="btn btn-wa" href="#" onclick="whatsapp('contact_section'); return false;">
           <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
         </a>
-
-        <a
-          class="cta-button btn-mail"
-          href="mailto:axentroofficial@gmail.com"
-          onclick="trackClick('email','تواصل معنا عبر البريد','contact_section');"
-        >
+        <a class="btn btn-mail" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','تواصل معنا عبر البريد','contact_section');">
           <i class="fas fa-envelope"></i> تواصل معنا عبر البريد
         </a>
-
-        <a
-          class="cta-button btn-fb"
-          href="https://facebook.com/AxentroSamrtSolutions"
-          target="_blank"
-          rel="noopener"
-          onclick="trackClick('facebook','تابعنا على فيسبوك','contact_section');"
-        >
+        <a class="btn btn-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" onclick="trackClick('facebook','تابعنا على فيسبوك','contact_section');">
           <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
         </a>
-
-        <a
-          class="cta-button btn-ig"
-          href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg=="
-          target="_blank"
-          rel="noopener"
-          onclick="trackClick('instagram','تابعنا على انستجرام','contact_section');"
-        >
+        <a class="btn btn-ig" href="https://www.instagram.com/axentro.official?igsh=MW5pYTNyM2Nmb2lwdg==" target="_blank" rel="noopener" onclick="trackClick('instagram','تابعنا على انستجرام','contact_section');">
           <i class="fab fa-instagram"></i> تابعنا على انستقرام
         </a>
       </div>
@@ -524,7 +389,7 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- ✅ Analytics (single source) -->
+  <!-- ✅ Analytics -->
   <script src="assets/js/ga.js"></script>
   <script>
     AxentroAnalytics.init({
@@ -544,14 +409,52 @@
       bar.style.width = p + '%';
     }, { passive: true });
 
-    /* Reveal (خفيف جدًا) */
+    /* Reveal Animation */
     const els = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add('show');
-      });
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
     },{threshold:0.15});
     els.forEach(el=>io.observe(el));
+
+    /* Card Spotlight Effect */
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    /* ✅ Dark/Light Mode Toggle Logic */
+    const toggle = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    const icon = toggle.querySelector('i');
+
+    // تحديث الأيقونة بناءً على الوضع الحالي
+    function updateIcon() {
+      if (htmlEl.getAttribute('data-theme') === 'light') {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    }
+    updateIcon(); // تطبيق الأيقونة الصحيحة عند تحميل الصفحة
+
+    toggle.addEventListener('click', () => {
+      if (htmlEl.getAttribute('data-theme') === 'light') {
+        htmlEl.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        htmlEl.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      }
+      updateIcon(); // تحديث الأيقونة بعد التبديل
+    });
   </script>
 </body>
 </html>
