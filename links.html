@@ -137,27 +137,20 @@
     }
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-    .card-avatar {
-      width: 120px; height: 120px; margin: 0 auto 25px;
-      background: var(--hero-gradient);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 30px rgba(0, 255, 213, 0.4); position: relative;
-      overflow: hidden;
+    /* ✅ حاوية اللوجو الجديدة */
+    .logo-container{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        margin:0 auto 25px;
     }
-    .card-avatar::before {
-      content: ''; position: absolute; inset: -5px; border-radius: 50%;
-      border: 1px solid rgba(0, 255, 213, 0.3); animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.2); opacity: 0; } }
 
-    /* ✅ تنسيق صورة اللوجو */
-    .logo-img {
-      max-width: 70%;  
-      max-height: 70%; 
-      object-fit: contain;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); 
-      position: relative;
-      z-index: 2;
+    .logo-img{
+        width:150px;
+        height:auto;
+        object-fit:contain;
+        display:block;
+        filter:drop-shadow(0 10px 25px rgba(0,0,0,.35));
     }
 
     .card-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 28px; color: var(--text); margin-bottom: 5px; background: var(--hero-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -214,7 +207,7 @@
     @media (max-width:600px){
       .digital-card { padding: 30px 20px; }
       .card-header h1 { font-size: 24px; }
-      .card-avatar { width: 100px; height: 100px; }
+      .logo-img { width: 130px; }
     }
   </style>
 </head>
@@ -225,9 +218,9 @@
   </button>
 
   <div class="digital-card">
-    <!-- ✅ اللوجو داخل الدائرة -->
-    <div class="card-avatar">
-      <img src="assets/images/logo.png" alt="Axentro Logo" class="logo-img">
+    <!-- ✅ اللوجو الجديد بدون خلفية -->
+    <div class="logo-container">
+       <img src="assets/images/logo.png" alt="Axentro Logo" class="logo-img">
     </div>
     
     <div class="card-header">
