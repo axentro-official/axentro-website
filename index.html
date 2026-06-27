@@ -41,7 +41,7 @@
       --btn-ripple: rgba(0,0,0,0.1);
     }
     [data-theme="dark"] {
-      --bg-base: #0a0a0c; --text: #e4e4e7; --muted: #a1a1aa;
+      --bg-base: #0a0a0c; --text: #ffffff; --muted: #d4d4d8;
       --glass-bg: rgba(255, 255, 255, 0.04); --glass-border: rgba(255, 255, 255, 0.1);
       --accent: #9fff00; --secondary: #bc00ff; --btn-text: #050507;
       --card-bg: rgba(20, 20, 22, 0.6); --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -111,14 +111,17 @@
     .video-wrapper video { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
     .gradient-mask { position: absolute; top: 0; left: 0; width: 100%; height: 6rem; background: linear-gradient(to bottom, var(--bg-base), transparent); z-index: 1; }
     .hero-content { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 10; text-align: center; }
-    .hero-title { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(2rem, 9vw, 6rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 2rem; text-transform: uppercase; }
-    .hero-title .muted { color: var(--muted); font-weight: 500; display: block; font-size: clamp(1rem, 2vw, 1.5rem); text-transform: none; margin-top: 1rem; }
+    
+    /* Updated Text Colors for High Visibility */
+    .hero-title { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(2rem, 9vw, 6rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 2rem; text-transform: uppercase; color: var(--text); text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4); }
+    .hero-title .muted { color: var(--text); opacity: 0.9; font-weight: 500; display: block; font-size: clamp(1rem, 2vw, 1.5rem); text-transform: none; margin-top: 1rem; }
+    
     .eye-pill { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border: 2px solid var(--text); border-radius: 50%; vertical-align: middle; margin: 0 4px; position: relative; top: -2px; transition: width 0.3s ease; }
     @media (min-width: 768px) { .eye-pill { width: 42px; height: 42px; top: 0; } }
     @media (min-width: 1024px) { .eye-pill { width: 62px; height: 62px; } }
     .eye-dot { width: 8px; height: 8px; background-color: var(--text); border-radius: 50%; }
     .hero .tagline { font-family: 'Outfit', sans-serif; margin-bottom: 25px; letter-spacing: 0.2em; font-size: clamp(0.7rem, 1.5vw, 0.9rem); color: var(--accent); text-transform: uppercase; display: inline-block; padding: 8px 24px; border: 1px solid var(--accent); border-radius: 50px; background: rgba(159, 255, 0, 0.05); }
-    .hero-services { margin-top: 40px; font-family: 'Outfit', sans-serif; font-size: clamp(0.7rem, 1.2vw, 0.85rem); letter-spacing: 0.15em; opacity: .7; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 15px 0; display: inline-block; }
+    .hero-services { margin-top: 40px; font-family: 'Outfit', sans-serif; font-size: clamp(0.7rem, 1.2vw, 0.85rem); letter-spacing: 0.15em; color: var(--text); opacity: 0.8; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 15px 0; display: inline-block; }
     .cta-button { background: var(--accent); color: var(--btn-text); padding: 16px 40px; border-radius: 8px; font-weight: 700; font-size: 1.1rem; cursor: pointer; margin-top: 50px; display: inline-block; text-decoration: none; border: none; font-family: 'Outfit', sans-serif; box-shadow: 0 10px 30px rgba(159, 255, 0, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden; }
     .cta-button:hover { box-shadow: 0 15px 40px rgba(159, 255, 0, 0.4); transform: translateY(-2px); }
 
