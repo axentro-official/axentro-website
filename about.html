@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <title>Axentro | من نحن</title>
-  
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
-
-  <!-- ✅ iPhone / Safari + Responsive -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#050510">
+  <meta name="theme-color" content="#EDEEF5">
   <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Axentro - About Us. Build, Optimize, Scale.">
 
-  <!-- ✅ GA4 Tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -21,509 +17,413 @@
     gtag('config', 'G-CY6Y32C90K', { send_page_view: false });
   </script>
 
-  <!-- ✅ تطبيق الوضع المحفوظ فوراً لتفادي الوميض -->
   <script>
     (function() {
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      if (savedTheme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-      }
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const savedTheme = localStorage.getItem('theme') || (systemPrefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const savedLang = localStorage.getItem('lang') || 'ar';
+      document.documentElement.setAttribute('lang', savedLang);
+      document.documentElement.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
     })();
   </script>
 
-  <!-- FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <!-- ICONS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* ✅ الوضع الداكن (الأساسي) */
-    :root{
-      --bg: #050510;
-      --text: #ffffff;
-      --muted: #8b8ba7;
-      --card: rgba(255,255,255,.03);
-      --border: rgba(255, 255, 255, 0.08);
-      --nav-bg: rgba(10, 10, 20, 0.6);
-      --footer-bg: rgba(0,0,0,0.3);
-      --spotlight-color: rgba(123, 47, 247, 0.15);
-      --gradient-1: rgba(123, 47, 247, 0.15);
-      --gradient-2: rgba(0, 212, 255, 0.12);
-      --gradient-3: rgba(255, 0, 122, 0.05);
-      --grid-line: rgba(255, 255, 255, 0.015);
-      --text-gradient: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
-      --hero-gradient: linear-gradient(135deg, #fff 0%, #00d4ff 50%, #7b2ff7 100%);
-      --primary: #7b2ff7;
-      --secondary: #00d4ff;
-      --btn-text: #ffffff;
-      --toggle-bg: rgba(255,255,255,0.05);
-      --toggle-icon: #FFD700;
-      --wa: #25D366;
-      --mail: #EA4335;
-      --fb: #1877F2;
-      --ig: #E1306C;
+    :root {
+      --bg-base: #EDEEF5; --text: #1a1a1a; --muted: #555555;
+      --glass-bg: rgba(255, 255, 255, 0.7); --glass-border: rgba(0, 0, 0, 0.05);
+      --accent: #9fff00; --btn-text: #1a1a1a; --card-bg: rgba(255, 255, 255, 0.9);
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.05); --nav-bg: rgba(241, 241, 241, 0.8);
+      --link-hover-bg: rgba(0, 0, 0, 0.03); --btn-ripple: rgba(0,0,0,0.1);
+      --secondary: #bc00ff;
     }
-
-    /* ✅ الوضع الفاتح */
-    [data-theme="light"]{
-      --bg: #F0F4F8;
-      --text: #0f172a;
-      --muted: #64748b;
-      --card: rgba(255,255,255,.7);
-      --border: rgba(0, 0, 0, 0.08);
-      --nav-bg: rgba(255, 255, 255, 0.6);
-      --footer-bg: rgba(255,255,255,0.5);
-      --spotlight-color: rgba(123, 47, 247, 0.1);
-      --gradient-1: rgba(123, 47, 247, 0.1);
-      --gradient-2: rgba(0, 212, 255, 0.1);
-      --gradient-3: rgba(255, 0, 122, 0.05);
-      --grid-line: rgba(0, 0, 0, 0.02);
-      --text-gradient: linear-gradient(180deg, #0f172a 0%, #334155 100%);
-      --hero-gradient: linear-gradient(135deg, #0f172a 0%, #00d4ff 50%, #7b2ff7 100%);
-      --toggle-bg: rgba(0,0,0,0.05);
-      --toggle-icon: #FF8C00;
+    [data-theme="dark"] {
+      --bg-base: #0a0a0c; --text: #e4e4e7; --muted: #a1a1aa;
+      --glass-bg: rgba(255, 255, 255, 0.04); --glass-border: rgba(255, 255, 255, 0.1);
+      --accent: #9fff00; --btn-text: #050507; --card-bg: rgba(20, 20, 22, 0.6);
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.3); --nav-bg: rgba(10, 10, 12, 0.7);
+      --link-hover-bg: rgba(255, 255, 255, 0.05); --btn-ripple: rgba(255,255,255,0.3);
     }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg-base); color: var(--text); min-height: 100vh; overflow-x: hidden; -webkit-font-smoothing: antialiased; transition: background-color 0.4s ease, color 0.4s ease; }
+    
+    #loader { position: fixed; inset: 0; background: var(--bg-base); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .spinner { width: 40px; height: 40px; border: 3px solid var(--glass-border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:'Cairo',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
-      -webkit-text-size-adjust: 100%;
-      padding-top: env(safe-area-inset-top);
-      position: relative;
-      transition: background-color 0.4s ease, color 0.4s ease;
-    }
+    #particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+    .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--accent), var(--secondary)); z-index: 99999; box-shadow: 0 0 10px var(--accent); }
+    
+    section { padding: clamp(80px, 10vw, 140px) clamp(15px, 4vw, 40px); text-align: center; position: relative; z-index: 1; }
+    .container { max-width: 1200px; margin: auto; width: 100%; }
+    h1, h2 { font-family: 'Outfit', sans-serif; font-weight: 800; line-height: 1.2; color: var(--text); }
+    h3 { color: var(--text); line-height: 1.3; font-family: 'Outfit', sans-serif; font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
+    p { color: var(--muted); line-height: 1.8; font-size: clamp(0.9rem, 1.5vw, 1.05rem); }
+    
+    .reveal { opacity: 0; transform: translateY(50px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.show { opacity: 1; transform: translateY(0); }
 
-    /* خلفية متحركة فاخرة */
-    body::before {
-      content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
-      background: 
-        radial-gradient(circle at 20% 30%, var(--gradient-1) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, var(--gradient-2) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, var(--gradient-3) 0%, transparent 50%);
-      z-index: -2; animation: rotateBg 20s linear infinite; transition: background 0.4s ease;
-    }
-    @keyframes rotateBg { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    body::after {
-      content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-      background-size: 60px 60px; z-index: -1; pointer-events: none;
-    }
+    /* Navbar */
+    nav.navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: linear-gradient(to bottom, var(--nav-bg), transparent); backdrop-filter: blur(8px); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: background 0.4s ease; }
+    .nav-brand { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+    .nav-brand svg { width: 24px; height: 24px; fill: var(--text); }
+    .nav-links { display: flex; gap: 5px; background: var(--glass-bg); backdrop-filter: blur(20px); padding: 8px; border-radius: 100px; border: 1px solid var(--glass-border); box-shadow: var(--shadow); }
+    .nav-link { font-size: clamp(0.8rem, 1.2vw, 0.95rem); color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 50px; transition: color .3s, background-color .3s; white-space: nowrap; }
+    .nav-link:hover { color: var(--text); background-color: var(--link-hover-bg); }
+    .nav-link.active { color: var(--text); background: var(--accent); }
 
-    section{padding:120px 20px;text-align:center; position:relative; z-index:1}
-    .container{max-width:1200px;margin:auto}
+    /* Floating Controls */
+    .floating-controls { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 12px; }
+    html[dir="rtl"] .floating-controls { right: auto; left: 20px; }
+    .nav-btn { background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text); padding: 12px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; position: relative; overflow: hidden; backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .nav-btn:hover { background: var(--text); color: var(--bg-base); border-color: var(--text); transform: translateY(-2px) scale(1.05); }
+    .nav-btn i { font-size: 1rem; }
+    .ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: ripple-anim 0.6s linear; background: var(--btn-ripple); pointer-events: none; }
+    @keyframes ripple-anim { to { transform: scale(4); opacity: 0; } }
 
-    h1, h2 { background: var(--text-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    h3{color:var(--text); line-height:1.2}
-    p{color:var(--muted);line-height:1.9}
+    /* Hero Section */
+    .hero-section { position: relative; min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding-top: 8rem; padding-bottom: 4rem; flex-grow: 1; }
+    .video-wrapper { position: absolute; top: 15vh; left: 0; width: 100%; height: 85vh; z-index: 0; pointer-events: none; }
+    .video-wrapper video { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+    .gradient-mask { position: absolute; top: 0; left: 0; width: 100%; height: 6rem; background: linear-gradient(to bottom, var(--bg-base), transparent); z-index: 1; }
+    .hero-content { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 10; text-align: center; }
+    .hero-title { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 2rem; text-transform: uppercase; }
+    .hero-title .muted { color: var(--muted); font-weight: 500; display: block; font-size: clamp(1rem, 2vw, 1.5rem); text-transform: none; margin-top: 1rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .eye-pill { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border: 2px solid var(--text); border-radius: 50%; vertical-align: middle; margin: 0 4px; position: relative; top: -2px; transition: width 0.3s ease; }
+    @media (min-width: 768px) { .eye-pill { width: 42px; height: 42px; top: 0; } }
+    @media (min-width: 1024px) { .eye-pill { width: 62px; height: 62px; } }
+    .eye-dot { width: 8px; height: 8px; background-color: var(--text); border-radius: 50%; }
+    .tagline { font-family: 'Outfit', sans-serif; margin-bottom: 25px; letter-spacing: 0.2em; font-size: clamp(0.7rem, 1.5vw, 0.9rem); color: var(--accent); text-transform: uppercase; display: inline-block; padding: 8px 24px; border: 1px solid var(--accent); border-radius: 50px; background: rgba(159, 255, 0, 0.05); }
+    
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 60px; }
+    .stat { position: relative; background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: all .3s; }
+    .stat:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); }
+    .stat .num { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--accent); margin-bottom: 10px; font-family: 'Outfit', sans-serif; }
+    .stat .label { color: var(--muted); font-size: 0.9rem; }
 
-    .scroll-progress{ position:fixed; top:0; left:0; height:4px; width:0%; background:linear-gradient(90deg, var(--primary), var(--secondary)); z-index:99999; box-shadow: 0 0 15px var(--secondary); }
-    .reveal{opacity:0; transform:translateY(40px) rotateX(-10deg); transition:opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);}
-    .reveal.show{opacity:1; transform:translateY(0) rotateX(0);}
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px; text-align: start; }
+    .card-wrapper { perspective: 1000px; }
+    .card { position: relative; background: var(--card-bg); backdrop-filter: blur(15px) saturate(180%); padding: 30px; border-radius: 24px; overflow: hidden; border: 1px solid var(--glass-border); transform-style: preserve-3d; transition: box-shadow 0.3s; box-shadow: var(--shadow); height: 100%; }
+    .card:hover { box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1); border-color: var(--accent); }
+    .glare-card { position: absolute; inset: 0; border-radius: 24px; pointer-events: none; z-index: 2; }
+    .card-content { position: relative; z-index: 3; transform-style: preserve-3d; }
+    .card-content > * { transition: transform 0.3s; }
+    .card:hover .card-content > * { transform: translateZ(30px); }
+    .card h3 { margin-bottom: 14px; margin-top: 15px; }
+    .card .icon { width: 50px; height: 50px; border-radius: 14px; background: rgba(159, 255, 0, 0.1); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .service-img { width: 100%; height: 160px; object-fit: cover; border-radius: 16px; margin-bottom: 15px; filter: grayscale(30%) contrast(1.1); transition: filter 0.4s ease, transform 0.4s ease; }
+    .card:hover .service-img { filter: grayscale(0%) contrast(1.1); transform: scale(1.02); }
 
-    /* NAV */
-    .navigation-links{
-      position:fixed; top:20px; left:50%; transform:translateX(-50%);
-      display:flex; flex-direction:row; justify-content:center; align-items:center; gap:10px; z-index:1000;
-      background: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      padding: 8px; border-radius: 100px; border: 1px solid var(--border);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    }
-    .navigation-links .nav-link{
-      font-size:15px; color:var(--muted); text-decoration:none;
-      display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:50px;
-      transition:color .3s, background-color .3s, box-shadow .3s;
-    }
-    .navigation-links .nav-link:hover{ color:var(--text); background-color: var(--card); box-shadow: inset 0 0 15px var(--spotlight-color); }
-    .theme-toggle {
-      background: var(--toggle-bg); border: 1px solid var(--border); width: 42px; height: 42px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--toggle-icon); font-size: 16px;
-      transition: all 0.3s; margin-right: 5px; box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
-    }
-    .theme-toggle:hover { transform: rotate(20deg) scale(1.1); box-shadow: 0 0 15px var(--toggle-icon); }
+    .faq-container { max-width: 800px; margin: 40px auto 0; text-align: start; }
+    .faq-item { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 16px; margin-bottom: 10px; overflow: hidden; transition: all .3s; backdrop-filter: blur(10px); }
+    .faq-item[open] { border-color: var(--accent); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
+    .faq-item summary { padding: 20px; cursor: pointer; font-weight: 600; color: var(--text); display: flex; justify-content: space-between; align-items: center; list-style: none; font-family: 'Outfit', sans-serif; font-size: 1.1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary .chev { transition: transform .3s; color: var(--accent); }
+    .faq-item[open] summary .chev { transform: rotate(180deg); }
+    .faq-item .ans { padding: 0 20px 20px; color: var(--muted); line-height: 1.8; }
 
-    /* HERO */
-    .hero{min-height:80vh; display:flex; align-items:center; justify-content:center; padding-top:120px;}
-    .hero h1{ font-family: 'Space Grotesk', sans-serif; font-size: 60px; font-weight: 700; letter-spacing: -2px; line-height: 1; margin-bottom: 10px; background: var(--hero-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .tagline{ font-family: 'Space Grotesk', sans-serif; margin-top:10px; letter-spacing:8px; font-size:14px; color:var(--secondary); text-transform: uppercase; display: inline-block; padding: 8px 20px; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 50px; background: rgba(0, 212, 255, 0.05); margin-bottom: 30px; }
-    .hero p{ max-width:700px; margin:24px auto 0; font-size:18px; }
+    .copy-link { display: inline-flex; margin-top: 15px; align-items: center; gap: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); padding: 8px 12px; border-radius: 8px; font-weight: 600; font-size: 0.8rem; cursor: pointer; text-decoration: none; transition: all 0.3s; position: relative; overflow: hidden; }
+    .copy-link:hover { background: var(--accent); color: var(--btn-text); }
+    .cta { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 30px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; border: 1px solid transparent; color: #fff; font-family: 'Outfit', sans-serif; position: relative; overflow: hidden; }
+    .btn-wa { background: #25D366; color: #000; } .btn-mail { background: #EA4335; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-    /* Stats (Glass Cards) */
-    .stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-top:60px; }
-    .stat{ position: relative; background: var(--card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 20px; padding:30px 20px; transition:all .3s; }
-    .stat:hover{ border-color: rgba(0, 212, 255, 0.4); transform:translateY(-5px); box-shadow:0 15px 30px rgba(0,255,213,0.1); }
-    .stat .num{ font-size:40px; font-weight:900; color:var(--secondary); margin-bottom:10px; }
-    .stat .label{ color:var(--muted); font-size:14px; }
+    footer { padding: 60px 20px; border-top: 1px solid var(--glass-border); text-align: center; background: var(--glass-bg); backdrop-filter: blur(10px); }
+    footer .main { font-weight: 700; font-size: 1.1rem; font-family: 'Outfit', sans-serif; color: var(--text); }
+    footer .by { margin-top: 10px; font-size: 0.9rem; opacity: .6; color: var(--muted); }
+    .footer-icons { margin-top: 25px; display: flex; gap: 15px; justify-content: center; font-size: 1.1rem; }
+    .footer-icons a { transition: all 0.3s; text-decoration: none; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: transparent; border: 1px solid var(--glass-border); color: var(--text); }
+    .footer-icons a:hover { transform: translateY(-5px); color: var(--accent); border-color: var(--accent); background: var(--text); }
+    
+    .floating-wa { position: fixed; bottom: 20px; left: 20px; width: 55px; height: 55px; border-radius: 50%; background: #25D366; color: #000; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 999; text-decoration: none; transition: all 0.3s; }
+    html[dir="rtl"] .floating-wa { left: auto; right: 20px; }
+    .floating-wa:hover { transform: scale(1.1) rotate(5deg); }
 
-    /* GENERIC CARDS (Values, Vision, etc) */
-    .cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; margin-top:60px; text-align:right; }
-    .card{
-      position: relative; background: var(--card); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      padding: 30px; border-radius: 24px; overflow: hidden; border: 1px solid var(--border);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, background 0.4s;
-    }
-    .card::before {
-      content: ''; position: absolute; top: var(--mouse-y, 0); left: var(--mouse-x, 0); transform: translate(-50%, -50%);
-      width: 400px; height: 400px; background: radial-gradient(circle, var(--spotlight-color) 0%, transparent 60%);
-      opacity: 0; transition: opacity 0.4s; pointer-events: none; z-index: 0;
-    }
-    .card:hover::before { opacity: 1; }
-    .card:hover { transform: translateY(-8px); border-color: rgba(0, 212, 255, 0.4); }
-    .card > * { position: relative; z-index: 1; }
-    .card h3{margin-bottom:14px;font-size:20px}
-    .card .icon{ width:50px; height:50px; border-radius:12px; background:rgba(0,255,213,0.1); display:flex; align-items:center; justify-content:center; color:var(--secondary); font-size:20px; margin-bottom:20px; }
-
-    /* FAQ */
-    .faq-container{ max-width:800px; margin:40px auto 0; text-align:right; }
-    .faq-item{ background: var(--card); border: 1px solid var(--border); border-radius:16px; margin-bottom:15px; overflow:hidden; transition:all .3s; backdrop-filter: blur(10px); }
-    .faq-item[open]{ border-color: rgba(0, 212, 255, 0.4); box-shadow:0 10px 30px rgba(0,0,0,0.2); }
-    .faq-item summary{ padding:20px; cursor:pointer; font-weight:800; color:var(--text); display:flex; justify-content:space-between; align-items:center; list-style:none; }
-    .faq-item summary::-webkit-details-marker{ display:none; }
-    .faq-item summary .chev{ transition:transform .3s; color:var(--secondary); }
-    .faq-item[open] summary .chev{ transform:rotate(180deg); }
-    .faq-item .ans{ padding:0 20px 20px; color:var(--muted); line-height:1.8; }
-
-    /* Copy Link Button */
-    .copy-link{ display:inline-flex; margin-top:15px; align-items:center; gap:8px; border:1px solid rgba(0,255,213,.35); background:rgba(0,255,213,.06); color:var(--secondary); padding:8px 12px; border-radius:8px; font-weight:800; font-size:12px; cursor:pointer; text-decoration:none; transition: all 0.3s; }
-    .copy-link:hover{ background:rgba(0,255,213,.15); }
-
-    /* CTA & Footer */
-    .section-sub{ max-width:860px; margin:12px auto 0; opacity:.95; }
-    .cta{ display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin-top:30px; }
-    .btn{ display:inline-flex; align-items:center; gap:10px; padding:14px 30px; border-radius:12px; font-weight:800; font-size:15px; text-decoration:none; cursor:pointer; transition:all .3s; border:1px solid transparent; color: #fff; }
-    .btn:hover{ transform:translateY(-2px); }
-    .btn-wa{background:linear-gradient(135deg, #25D366, #128C7E); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);}
-    .btn-mail{background:linear-gradient(135deg, #EA4335, #d33223); box-shadow: 0 10px 30px rgba(234, 67, 53, 0.3);}
-    .btn-fb{background:linear-gradient(135deg, #1877F2, #0f5fc0); box-shadow: 0 10px 30px rgba(24, 119, 242, 0.3);}
-    .btn-ig{background:linear-gradient(135deg, #E1306C, #f77737); box-shadow: 0 10px 30px rgba(225, 48, 108, 0.3);}
-
-    footer{ padding:70px 20px; border-top:1px solid var(--border); text-align:center; position:relative; z-index:1; background: var(--footer-bg); backdrop-filter: blur(10px); }
-    footer .main{ font-weight:900; font-size:20px; color:var(--text); }
-    footer .by{ margin-top:10px; font-size:16px; opacity:.9; color: var(--muted); }
-    .footer-icons{ margin-top:30px; display:flex; gap:15px; justify-content:center; font-size:22px; }
-    .footer-icons a{ transition: transform 0.3s, filter 0.3s, background 0.3s; text-decoration:none; cursor:pointer; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--card); border: 1px solid var(--border); }
-    .footer-icons a:hover{ transform:translateY(-5px) scale(1.1); filter:drop-shadow(0 0 15px currentColor); }
-    .icon-wa{color:var(--wa)} .icon-mail{color:var(--mail)} .icon-fb{color:var(--fb)} .icon-ig{color:var(--ig)}
-
-    /* FLOATING WHATSAPP */
-    .floating-wa{
-      position:fixed; bottom:25px; right:25px; width:60px; height:60px; border-radius:50%;
-      background: #25D366; color: #ffffff; display:flex; align-items:center; justify-content:center; font-size:30px;
-      border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 25px rgba(37, 211, 102, 0.4);
-      z-index:999; text-decoration:none; transition: all 0.3s; animation: pulseWa 2s infinite;
-    }
-    .floating-wa:hover{ transform: scale(1.15) rotate(10deg); }
-    @keyframes pulseWa {
-      0% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 0 0 rgba(37, 211, 102, 0.5); }
-      70% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 0 15px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 0 0 rgba(37, 211, 102, 0); }
-    }
-
-    @media (max-width:768px){
-      .hero h1{font-size:40px;}
-      .navigation-links{ width: 95%; gap: 0; padding: 5px; }
-      .navigation-links .nav-link{ font-size:12px; padding: 8px 12px; }
-      .navigation-links .nav-link span { display: none; }
-      .theme-toggle { width: 36px; height: 36px; font-size: 14px; }
+    @media (max-width: 768px) {
+      .nav-link span { display: none; } .nav-link { padding: 10px 15px; } .nav-link i { font-size: 1.1rem; }
+      .nav-btn span.text-btn { display: none; } .nav-brand { font-size: 1.2rem; } nav.navbar { padding: 1rem 1rem; }
+      .nav-links { background: transparent; backdrop-filter: none; box-shadow: none; border: none; }
     }
   </style>
 </head>
-
 <body>
+  <div id="loader"><div class="spinner"></div></div>
+  <canvas id="particles-canvas"></canvas>
   <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- NAV -->
-  <div class="navigation-links" aria-label="Navigation">
-    <a href="index.html#home" class="nav-link js-utm-link"><i class="fas fa-home"></i> <span>الرئيسية</span></a>
-    <a href="index.html#services" class="nav-link js-utm-link"><i class="fas fa-cogs"></i> <span>الخدمات</span></a>
-    <a href="about.html" class="nav-link js-utm-link active"><i class="fas fa-circle-info"></i> <span>من نحن</span></a>
-    <a href="index.html#contact" class="nav-link js-utm-link"><i class="fas fa-phone-alt"></i> <span>اتصل بنا</span></a>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
-      <i class="fas fa-moon"></i>
-    </button>
-  </div>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zm0 13.5L2 10.5v6.5l10 5 10-5v-6.5l-10 5z"/></svg>
+      AXENTRO
+    </div>
+    <div class="nav-links" aria-label="Navigation">
+      <a href="index.html#home" class="nav-link js-utm-link"><i class="fas fa-home"></i> <span data-i18n="nav_home">الرئيسية</span></a>
+      <a href="index.html#services" class="nav-link js-utm-link"><i class="fas fa-cogs"></i> <span data-i18n="nav_services">الخدمات</span></a>
+      <a href="about.html" class="nav-link js-utm-link active"><i class="fas fa-circle-info"></i> <span data-i18n="nav_about">من نحن</span></a>
+      <a href="index.html#contact" class="nav-link js-utm-link"><i class="fas fa-phone-alt"></i> <span data-i18n="nav_contact">اتصل بنا</span></a>
+    </div>
+  </nav>
 
-  <!-- HERO -->
-  <section class="hero reveal show" id="top">
-    <div class="container">
+  <section class="hero-section reveal show" id="top">
+    <div class="video-wrapper">
+      <video autoPlay loop muted playsInline>
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4" type="video/mp4">
+      </video>
+      <div class="gradient-mask"></div>
+    </div>
+    <div class="hero-content">
       <div class="tagline">BUILD • OPTIMIZE • SCALE</div>
-      <h1>من نحن | About Axentro</h1>
-      <p>
-        نساعد أصحاب الأعمال على تحويل الفوضى اليومية إلى نظام واضح: متابعة، تقارير، إجراءات، وصلاحيات.
-        عملنا مبني على فهم نشاطك أولًا ثم تصميم حل عملي وسهل الاستخدام يعمل مع فريقك من اليوم الأول.
-      </p>
-
+      <h1 class="hero-title" data-i18n="about_title">من نحن | About
+        <span class="muted" data-i18n="about_desc">في Axentro، نؤمن بأن المستقبل على الويب. نحن نتخصص في تقديم حلول رقمية متكاملة <span class="eye-pill"><span class="eye-dot"></span></span> تبدأ من بناء المواقع التعريفية وحتى أنظمة إدارة الأعمال المتقدمة التي تعمل بالكامل عبر الإنترنت.</span>
+      </h1>
       <div class="stats">
-        <div class="stat">
-          <div class="num">+6</div>
-          <div class="label">مسارات خدمات (Excel / Web / Desktop / Inventory / Branding / Social)</div>
-        </div>
-        <div class="stat">
-          <div class="num">7</div>
-          <div class="label">خطوات تسليم واضحة من التحليل حتى الدعم</div>
-        </div>
-        <div class="stat">
-          <div class="num">100%</div>
-          <div class="label">حل مُفصّل حسب نشاطك (مش قوالب جاهزة)</div>
-        </div>
-        <div class="stat">
-          <div class="num">24/7</div>
-          <div class="label">قنوات تواصل سريعة (واتساب / بريد)</div>
-        </div>
+        <div class="stat"><div class="num">+9</div><div class="label" data-i18n="stat_1">مسارات خدمات ويب متكاملة</div></div>
+        <div class="stat"><div class="num">100%</div><div class="label" data-i18n="stat_2">حلول تعمل بالكامل على المتصفح (Cloud-based)</div></div>
+        <div class="stat"><div class="num">24/7</div><div class="label" data-i18n="stat_3">قنوات تواصل سريعة (واتساب / بريد)</div></div>
+        <div class="stat"><div class="num">UI/UX</div><div class="label" data-i18n="stat_4">تصميمات عصرية تركز على تجربة المستخدم</div></div>
       </div>
     </div>
   </section>
 
-  <!-- VALUES SECTION -->
   <section class="reveal" id="values">
     <div class="container">
-      <h2 style="font-size:42px; margin-bottom:10px;">قيمنا الأساسية</h2>
-      <p class="section-sub">3 مبادئ ثابتة في كل مشروع—تضمن الجودة والسرعة والوضوح من أول يوم حتى التسليم.</p>
-
+      <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom:10px;" data-i18n="values_title">قيمنا الأساسية</h2>
+      <p style="max-width:860px; margin:12px auto 0; opacity:.8;" data-i18n="values_desc">3 مبادئ ثابتة في كل مشروع—تضمن الجودة والسرعة والوضوح من أول يوم حتى التسليم.</p>
       <div class="cards">
-        <div class="card">
-          <div class="icon"><i class="fas fa-award"></i></div>
-          <h3>Quality | الجودة</h3>
-          <p>نهتم بالتفاصيل: هيكلة نظيفة، واجهة واضحة، اختبار، وتسليم منظم. الهدف إن الحل يظل معك ويعمل بثبات.</p>
-        </div>
-        <div class="card">
-          <div class="icon"><i class="fas fa-bolt"></i></div>
-          <h3>Speed | السرعة</h3>
-          <p>نوصل للنتيجة بسرعة بدون ضياع للوقت: تقسيم مراحل، أول نسخة (MVP) ثم تطوير تدريجي حسب الأولويات.</p>
-        </div>
-        <div class="card">
-          <div class="icon"><i class="fas fa-eye"></i></div>
-          <h3>Clarity | الوضوح</h3>
-          <p>كل خطوة لها مخرجات واضحة: المطلوب، التصميم، التنفيذ، التدريب. عشان تبقى فاهم أنت هتحصل علي إيه وأمتى.</p>
-        </div>
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content"><div class="icon"><i class="fas fa-award"></i></div><h3>Quality | الجودة</h3><p data-i18n="val_1">نهتم بالتفاصيل: هيكلة نظيفة، واجهة واضحة، اختبار، وتسليم منظم. الهدف إن المنصة يظل معك وتعمل بثبات.</p></div></div></div>
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content"><div class="icon"><i class="fas fa-bolt"></i></div><h3>Speed | السرعة</h3><p data-i18n="val_2">نوصل للنتيجة بسرعة بدون ضياع للوقت: تقسيم مراحل، أول نسخة (MVP) ثم تطوير تدريجي حسب الأولويات.</p></div></div></div>
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content"><div class="icon"><i class="fas fa-eye"></i></div><h3>Clarity | الوضوح</h3><p data-i18n="val_3">كل خطوة لها مخرجات واضحة: المطلوب، التصميم، التنفيذ، التدريب. عشان تبقى فاهم أنت هتحصل علي إيه وأمتى.</p></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- WHAT WE DO -->
   <section class="reveal" id="what-we-do">
     <div class="container">
-      <h2 style="font-size:42px; margin-bottom:10px;">ماذا نقدم</h2>
-      <p class="section-sub">
-        خدماتنا مصممة لتغطي احتياج الشركات الصغيرة والمتوسطة: من نظم Excel الذكية إلى تطبيقات ويب وموبايل،
-        وأنظمة سطح مكتب، مع حلول الهوية والسوشيال ومواقع عرض الأعمال.
-      </p>
-
+      <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom:10px;" data-i18n="services_title">ماذا نقدم</h2>
+      <p style="max-width:860px; margin:12px auto 0; opacity:.8;" data-i18n="services_desc">خدماتنا مصممة لتغطي احتياج الشركات والأفراد: من المواقع التعريفية إلى أنظمة الحجوزات وإدارة المبيعات، كلها تعمل بسلاسة على أي متصفح.</p>
       <div class="cards">
-        <div class="card" id="excel">
-          <div class="icon"><i class="fas fa-table"></i></div>
-          <h3>Smart Excel Systems</h3>
-          <p>نحول ملفات Excel من “جداول مشتتة” إلى نظام عمل واضح بقواعد وصلاحيات واستمارات إدخال سهلة. بنبني تقارير تلقائية ولوحات متابعة تساعدك تشوف الأداء لحظة بلحظة وتقلل الأخطاء البشرية.</p>
-          <button class="copy-link" type="button" onclick="copyServiceLink('excel')"><i class="fas fa-link"></i> نسخ رابط هذه الخدمة</button>
-        </div>
+        <div class="card-wrapper"><div class="card" id="websites"><div class="glare-card"></div><div class="card-content"><img class="service-img" src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop" alt="Business Websites"><div class="icon"><i class="fas fa-window-maximize"></i></div><h3>Business & Landing Websites</h3><p data-i18n="serv_1_desc">مواقع تعريفية للشركات وصفحات هبوط (Landing Pages) مخصصة للحملات الإعلانية، مصممة لتحميل سريع وتجربة مستخدم ممتازة ترفع نسبة التحويل للعملاء.</p><button class="copy-link ripple-btn" type="button" onclick="copyServiceLink('websites')" data-i18n="copy_link"><i class="fas fa-link"></i> نسخ رابط الخدمة</button></div></div></div>
+        
+        <div class="card-wrapper"><div class="card" id="portfolio"><div class="glare-card"></div><div class="card-content"><img class="service-img" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop" alt="Portfolio & CV"><div class="icon"><i class="fas fa-id-badge"></i></div><h3>Portfolio & CV Websites</h3><p data-i18n="serv_2_desc">مواقع بورتفوليو احترافية لعرض أعمالك أو سيرتك الذاتية، لتضع بصمتك الرقمية أمام أصحاب العمل والعملاء بشكل يليق بمكانتك.</p><button class="copy-link ripple-btn" type="button" onclick="copyServiceLink('portfolio')" data-i18n="copy_link"><i class="fas fa-link"></i> نسخ رابط الخدمة</button></div></div></div>
+        
+        <div class="card-wrapper"><div class="card" id="booking"><div class="glare-card"></div><div class="card-content"><img class="service-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" alt="Booking Systems"><div class="icon"><i class="fas fa-calendar-check"></i></div><h3>Booking & Reservation Systems</h3><p data-i18n="serv_3_desc">أنظمة حجز ومواعيد إلكترونية متكاملة للصالونات، المراكز الاستشارية، والمدربين، تتيح لعملائك الحجز أونلاين وتوفر عليك متابعة المواعيد يدوياً.</p><button class="copy-link ripple-btn" type="button" onclick="copyServiceLink('booking')" data-i18n="copy_link"><i class="fas fa-link"></i> نسخ رابط الخدمة</button></div></div></div>
+        
+        <div class="card-wrapper"><div class="card" id="clinics"><div class="glare-card"></div><div class="card-content"><img class="service-img" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop" alt="Clinic Management"><div class="icon"><i class="fas fa-user-md"></i></div><h3>Clinic Management Systems</h3><p data-i18n="serv_4_desc">نظام ويب متكامل لإدارة العيادات والمراكز الطبية: تسجيل بيانات المرضى، جدولة المواعيد، تسجيل الزيارات الطبية، وإدارة الفواتير والمدفوعات.</p><button class="copy-link ripple-btn" type="button" onclick="copyServiceLink('clinics')" data-i18n="copy_link"><i class="fas fa-link"></i> نسخ رابط الخدمة</button></div></div></div>
+        
+        <div class="card-wrapper"><div class="card" id="ecommerce"><div class="glare-card"></div><div class="card-content"><img class="service-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop" alt="E-commerce"><div class="icon"><i class="fas fa-shopping-cart"></i></div><h3>E-commerce & Product Showcase</h3><p data-i18n="serv_5_desc">متاجر إلكترونية خفيفة وسريعة لعرض وبيع منتجاتك، مع لوحة تحكم لإدارة الطلبات والمنتجات، أو مواقع "كتالوج" لعرض المنتجات والتواصل للشراء.</p><button class="copy-link ripple-btn" type="button" onclick="copyServiceLink('ecommerce')" data-i18n="copy_link"><i class="fas fa-link"></i> نسخ رابط الخدمة</button></div></div></div>
+        
+        <div class="card-wrapper"><div class="card" id="inventory"><div class="glare-card"></div><div class="card-content"><img class="service-img" src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=800&auto=format&fit=crop" alt="Web Inventory"><div class="icon"><i class="fas fa-boxes-stacked"></i></div><h3>Web Inventory & Sales</h3><p data-i18n="serv_6_desc">نظام ويب لإدارة المخزون والمبيعات والمشتريات. تتبع حركة الأصناف، تنبيهات نقص المخزون، وإصدار الفواتير، مع تقارير يومية وشهرية دقيقة.</p><button class="copy-link ripple-btn" type="button" onclick="copyServiceLink('inventory')" data-i18n="copy_link"><i class="fas fa-link"></i> نسخ رابط الخدمة</button></div></div></div>
 
-        <div class="card" id="web">
-          <div class="icon"><i class="fas fa-globe"></i></div>
-          <h3>Web & Mobile Apps</h3>
-          <p>نطوّر تطبيقات ويب وموبايل بتجربة مستخدم واضحة وواجهة احترافية تساعد العميل يوصل للخدمة بسرعة. بنركز على السرعة، الأمان، وإدارة المستخدمين والصلاحيات، وربط النظام بالتقارير ولوحات التحكم.</p>
-          <button class="copy-link" type="button" onclick="copyServiceLink('web')"><i class="fas fa-link"></i> نسخ رابط هذه الخدمة</button>
-        </div>
+        <div class="card-wrapper"><div class="card" id="crm"><div class="glare-card"></div><div class="card-content"><img class="service-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="CRM Systems"><div class="icon"><i class="fas fa-users-gear"></i></div><h3>CRM Systems</h3><p data-i18n="serv_7_desc">أنظمة لإدارة علاقات العملاء (CRM): تسجيل بيانات العملاء، متابعة خطط البيع، وتسجيل الاتصالات لزيادة المبيعات وتنظيم فريق العمل.</p><button class="copy-link ripple-btn" type="button" onclick="copyServiceLink('crm')" data-i18n="copy_link"><i class="fas fa-link"></i> نسخ رابط الخدمة</button></div></div></div>
 
-        <div class="card" id="desktop">
-          <div class="icon"><i class="fas fa-desktop"></i></div>
-          <h3>Desktop Software</h3>
-          <p>بنبني أنظمة سطح مكتب قوية وسريعة مناسبة للبيئات اللي تحتاج أداء عالي أو تشغيل محلي بدون إنترنت. مثالية للمخازن، نقاط البيع، أو الشركات اللي شغلها بيكون على أجهزة داخل المكان.</p>
-          <button class="copy-link" type="button" onclick="copyServiceLink('desktop')"><i class="fas fa-link"></i> نسخ رابط هذه الخدمة</button>
-        </div>
+        <div class="card-wrapper"><div class="card" id="qr-menu"><div class="glare-card"></div><div class="card-content"><img class="service-img" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop" alt="QR Menu"><div class="icon"><i class="fas fa-qrcode"></i></div><h3>QR Menu & Smart Ordering</h3><p data-i18n="serv_8_desc">قوائم رقمية للمطاعم والكافيهات تعمل بمسح الـ QR كود، تتيح للعملاء تصفح المنيو وإرسال الطلبات مباشرة للمطبخ أو الكاشير.</p><button class="copy-link ripple-btn" type="button" onclick="copyServiceLink('qr-menu')" data-i18n="copy_link"><i class="fas fa-link"></i> نسخ رابط الخدمة</button></div></div></div>
 
-        <div class="card" id="inventory">
-          <div class="icon"><i class="fas fa-chart-pie"></i></div>
-          <h3>Inventory & Sales</h3>
-          <p>بنقدّم حلول متابعة مخزون ومبيعات تساعدك تمسك كل حركة: دخول/خروج أصناف، جرد، فواتير، عملاء، موردين، وتنبيهات نقص المخزون. الهدف إنك تشتغل بأرقام واضحة وتقارير دقيقة.</p>
-          <button class="copy-link" type="button" onclick="copyServiceLink('inventory')"><i class="fas fa-link"></i> نسخ رابط هذه الخدمة</button>
-        </div>
-
-        <div class="card" id="branding">
-          <div class="icon"><i class="fas fa-bullhorn"></i></div>
-          <h3>Social Media & Design</h3>
-          <p>بنبني لك شكل احترافي ثابت يوصل رسالة مشروعك بسرعة: لوجو وهوية بصرية + قوالب بوستات متناسقة. كمان نقدر نجهّز مواد دعائية تساعدك تعمل محتوى بسرعة وبشكل ثابت بدون تشتت.</p>
-          <button class="copy-link" type="button" onclick="copyServiceLink('branding')"><i class="fas fa-link"></i> نسخ رابط هذه الخدمة</button>
-        </div>
-
-        <div class="card" id="website">
-          <div class="icon"><i class="fas fa-window-maximize"></i></div>
-          <h3>Websites for Business & Portfolio</h3>
-          <p>بننشئ مواقع ويب سريعة وخفيفة لعرض خدماتك وأعمالك بشكل عصري—تخلي العميل يفهم أنت بتقدم إيه في ثواني. الهدف صفحة بيع تُحوّل الزائر لعميل: رسالة واضحة، عرض خدمات مضبوط، وتجربة ممتازة.</p>
-          <button class="copy-link" type="button" onclick="copyServiceLink('website')"><i class="fas fa-link"></i> نسخ رابط هذه الخدمة</button>
-        </div>
+        <div class="card-wrapper"><div class="card" id="listings"><div class="glare-card"></div><div class="card-content"><img class="service-img" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop" alt="Real Estate Platforms"><div class="icon"><i class="fas fa-building"></i></div><h3>Real Estate & Listing Platforms</h3><p data-i18n="serv_9_desc">منصات ويب متكاملة لعرض العقارات أو الإعلانات المبوبة، تتيح رفع تفاصيل العقار، الصور، وتصفية البحث للعملاء بسهولة.</p><button class="copy-link ripple-btn" type="button" onclick="copyServiceLink('listings')" data-i18n="copy_link"><i class="fas fa-link"></i> نسخ رابط الخدمة</button></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- HOW WE WORK -->
   <section class="reveal">
     <div class="container">
-      <h2 style="font-size:42px; margin-bottom:10px;">كيف نعمل معك</h2>
-      <p class="section-sub">أسلوب عمل "شركات" بخطوات واضحة—بدون تعقيد وبأسرع طريق للنتيجة.</p>
-
+      <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom:10px;" data-i18n="process_title">كيف نعمل معك</h2>
+      <p style="max-width:860px; margin:12px auto 0; opacity:.8;" data-i18n="process_desc">أسلوب عمل واضح—بدون تعقيد وبأسرع طريق للنتيجة.</p>
       <div class="cards">
-        <div class="card">
-          <div class="icon"><i class="fas fa-comments"></i></div>
-          <h3>1) جلسة فهم الاحتياج</h3>
-          <p>نجمع تفاصيل عملك، المشاكل الحالية، ونحدد المطلوب بدقة (Features + تقارير + صلاحيات).</p>
-        </div>
-        <div class="card">
-          <div class="icon"><i class="fas fa-pen-ruler"></i></div>
-          <h3>2) تصميم الحل</h3>
-          <p>نقدّم تصور للواجهة وخط سير العمل قبل التنفيذ، عشان كل شيء يبقى واضح.</p>
-        </div>
-        <div class="card">
-          <div class="icon"><i class="fas fa-code"></i></div>
-          <h3>3) تنفيذ واختبار</h3>
-          <p>تنفيذ احترافي + اختبار حالات واقعية + تحسينات بناءً على الملاحظات.</p>
-        </div>
-        <div class="card">
-          <div class="icon"><i class="fas fa-chalkboard-user"></i></div>
-          <h3>4) تدريب وتسليم</h3>
-          <p>شرح للاستخدام + دليل مختصر + تسليم منظم يسهّل التشغيل.</p>
-        </div>
-        <div class="card">
-          <div class="icon"><i class="fas fa-headset"></i></div>
-          <h3>5) دعم وتطوير</h3>
-          <p>متابعة بعد التسليم + تطوير مراحل جديدة لما مشروعك يكبر.</p>
-        </div>
-        <div class="card">
-          <div class="icon"><i class="fas fa-chart-line"></i></div>
-          <h3>6) نمو مستمر</h3>
-          <p>تحديثات وتحسينات حسب أداء العمل والبيانات—لأفضل قرارات وأعلى كفاءة.</p>
-        </div>
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content"><div class="icon"><i class="fas fa-comments"></i></div><h3 data-i18n="proc_1_title">1) جلسة فهم الاحتياج</h3><p data-i18n="proc_1_desc">نجمع تفاصيل عملك، المشاكل الحالية، ونحدد المطلوب بدقة (Features + تقارير + صلاحيات).</p></div></div></div>
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content"><div class="icon"><i class="fas fa-pen-ruler"></i></div><h3 data-i18n="proc_2_title">2) تصميم الحل</h3><p data-i18n="proc_2_desc">نقدّم تصور للواجهة وخط سير العمل قبل التنفيذ، عشان كل شيء يبقى واضح.</p></div></div></div>
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content"><div class="icon"><i class="fas fa-code"></i></div><h3 data-i18n="proc_3_title">3) تنفيذ واختبار</h3><p data-i18n="proc_3_desc">تنفيذ احترافي + اختبار حالات واقعية + تحسينات بناءً على الملاحظات.</p></div></div></div>
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content"><div class="icon"><i class="fas fa-chalkboard-user"></i></div><h3 data-i18n="proc_4_title">4) تدريب وتسليم</h3><p data-i18n="proc_4_desc">شرح للاستخدام + دليل مختصر + تسليم منظم يسهّل التشغيل.</p></div></div></div>
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content"><div class="icon"><i class="fas fa-headset"></i></div><h3 data-i18n="proc_5_title">5) دعم وتطوير</h3><p data-i18n="proc_5_desc">متابعة بعد التسليم + تطوير مراحل جديدة لما مشروعك يكبر.</p></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
   <section class="reveal" id="faq">
     <div class="container">
-      <h2 style="font-size:42px; margin-bottom:10px;">أسئلة شائعة | FAQ</h2>
-      <p class="section-sub">إجابات سريعة على أهم الأسئلة قبل ما نبدأ.</p>
-
+      <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom:10px;" data-i18n="faq_title">أسئلة شائعة | FAQ</h2>
+      <p style="max-width:860px; margin:12px auto 0; opacity:.8;" data-i18n="faq_desc">إجابات سريعة على أهم الأسئلة قبل ما نبدأ.</p>
       <div class="faq-container">
-        <details class="faq-item">
-          <summary>إزاي نبدأ مع بعض؟ <i class="fas fa-chevron-down chev"></i></summary>
-          <div class="ans">بنبدأ بجلسة قصيرة لفهم طبيعه عملك والهدف المطلوب، بعدها نحدد نطاق العمل والخطوات والمدة المتوقعة، ثم نبدأ التنفيذ على مراحل.</div>
-        </details>
-        <details class="faq-item">
-          <summary>هل لازم يكون عندي متطلبات جاهزة؟ <i class="fas fa-chevron-down chev"></i></summary>
-          <div class="ans">لا. لو عندك فكرة عامة بس ده كفاية. هنساعدك نطلع المتطلبات بشكل واضح ونحوّلها لخطة تنفيذ واقعية.</div>
-        </details>
-        <details class="faq-item">
-          <summary>لو أنا لسه في بداية المشروع، هل ينفع؟ <i class="fas fa-chevron-down chev"></i></summary>
-          <div class="ans">جدًا. بنركز على نسخة أولى (MVP) تحقق الهدف الأساسي بسرعة، وبعدها نطوّر تدريجيًا حسب نمو مشروعك.</div>
-        </details>
-        <details class="faq-item">
-          <summary>هل في دعم بعد التسليم؟ <i class="fas fa-chevron-down chev"></i></summary>
-          <div class="ans">نعم، بنوفر دعم وتعديلات حسب الاتفاق، مع إمكانية إضافة تقارير وخصائص جديدة مع الوقت.</div>
-        </details>
-        <details class="faq-item">
-          <summary>ما الفرق بين Excel System وWeb App؟ <i class="fas fa-chevron-down chev"></i></summary>
-          <div class="ans">Excel System مناسب كبداية سريعة داخل الشركة، بينما Web App مناسب لو عايز وصول من أي مكان، مستخدمين متعددين، وصلاحيات أوسع وتوسع أكبر.</div>
-        </details>
+        <details class="faq-item"><summary data-i18n="faq_1_q">إزاي نبدأ مع بعض؟ <i class="fas fa-chevron-down chev"></i></summary><div class="ans" data-i18n="faq_1_a">بنبدأ بجلسة قصيرة لفهم طبيعه عملك والهدف المطلوب، بعدها نحدد نطاق العمل والخطوات والمدة المتوقعة، ثم نبدأ التنفيذ على مراحل.</div></details>
+        <details class="faq-item"><summary data-i18n="faq_2_q">كم تكلفة إنشاء الموقع أو النظام؟ <i class="fas fa-chevron-down chev"></i></summary><div class="ans" data-i18n="faq_2_a">التكلفة بتختلف حسب حجم النظام والمميزات المطلوبة. بنقدملك عرض سعر شفاف ومناسب لميزانيتك بعد جلسة الاستشارة المجانية وتحديد المتطلبات بدقة.</div></details>
+        <details class="faq-item"><summary data-i18n="faq_3_q">كم تستغرق مدة التنفيذ؟ <i class="fas fa-chevron-down chev"></i></summary><div class="ans" data-i18n="faq_3_a">المواقع التعريفية وصفحات الهبوط بتاخد من 3 لـ 7 أيام. أما الأنظمة الإدارية والمتاجر فبتاخد من 2 لـ 4 أسابيع حسب حجم البيانات وتعقيد الخصائص المطلوبة.</div></details>
+        <details class="faq-item"><summary data-i18n="faq_4_q">هل الموقع أو النظام هيكون ملكي بالكامل؟ <i class="fas fa-chevron-down chev"></i></summary><div class="ans" data-i18n="faq_4_a">نعم، كل الأكواد والأنظمة بتكون ملكك بالكامل وبتشتغل باسمك وباسم شركتك، وإنت اللي ليك حق التحكم فيها والتعديل عليها في أي وقت.</div></details>
+        <details class="faq-item"><summary data-i18n="faq_5_q">هل توفرون الاستضافة واسم النطاق (الدومين)؟ <i class="fas fa-chevron-down chev"></i></summary><div class="ans" data-i18n="faq_5_a">نعم، بنوفر لك كل ما تحتاجه من استضافة سحابية سريعة واسم موقع (Domain) وتأمين البيانات لتبدأ مباشرة دون أي تعقيدات تقنية.</div></details>
+        <details class="faq-item"><summary data-i18n="faq_6_q">هل الأنظمة هتشتغل على الموبايل؟ <i class="fas fa-chevron-down chev"></i></summary><div class="ans" data-i18n="faq_6_a">نعم، كل المواقع والأنظمة اللي بنبرمجها بتكون "Responsive" يعني بتشتغل وتظهر بشكل احترافي على الموبايل، التابلت، والكمبيوتر من خلال أي متصفح إنترنت.</div></details>
+        <details class="faq-item"><summary data-i18n="faq_7_q">هل في دعم بعد التسليم؟ <i class="fas fa-chevron-down chev"></i></summary><div class="ans" data-i18n="faq_7_a">نعم، بنوفر دعم وتعديلات حسب الاتفاق، مع إمكانية إضافة خصائص جديدة مع الوقت.</div></details>
       </div>
-
       <div class="cta">
-        <a class="btn btn-wa" href="#" onclick="whatsapp('faq'); return false;"><i class="fab fa-whatsapp"></i> تواصل عبر واتساب</a>
-        <a class="btn btn-mail" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','تواصل عبر البريد','faq');"><i class="fas fa-envelope"></i> راسلنا عبر البريد</a>
+        <a class="btn btn-wa ripple-btn" href="#" onclick="whatsapp('faq'); return false;"><i class="fab fa-whatsapp"></i> <span data-i18n="btn_wa">تواصل عبر واتساب</span></a>
+        <a class="btn btn-mail ripple-btn" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','تواصل عبر البريد','faq');"><i class="fas fa-envelope"></i> <span data-i18n="btn_mail">راسلنا عبر البريد</span></a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="main">© 2024 Axentro – All Rights Reserved</div>
     <div class="by">By Axentro Team</div>
     <div class="footer-icons">
-      <a class="icon-wa" href="#" onclick="whatsapp('footer'); return false;" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a class="icon-mail" href="mailto:axentroofficial@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a class="icon-fb" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a class="icon-ig" href="https://www.instagram.com/axentro.official" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="ripple-btn" onclick="whatsapp('footer'); return false;"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:axentroofficial@gmail.com" class="ripple-btn"><i class="fas fa-envelope"></i></a>
+      <a href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" class="ripple-btn"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/axentro.official" target="_blank" rel="noopener" class="ripple-btn"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
 
-  <a class="floating-wa" href="#" onclick="whatsapp('floating'); return false;" aria-label="WhatsApp Floating"><i class="fab fa-whatsapp"></i></a>
+  <!-- Floating Controls -->
+  <div class="floating-controls">
+    <button id="lang-switcher" class="nav-btn ripple-btn" aria-label="Switch Language">
+      <i class="fas fa-globe"></i>
+      <span class="text-btn" id="lang-text">EN</span>
+    </button>
+    <button id="theme-toggle" class="nav-btn ripple-btn" aria-label="Toggle Theme">
+      <i class="fas fa-moon" id="theme-icon"></i>
+      <span class="text-btn" id="theme-text">Dark Mode</span>
+    </button>
+  </div>
 
-  <!-- ✅ Analytics -->
+  <a class="floating-wa ripple-btn" href="#" onclick="whatsapp('floating'); return false;"><i class="fab fa-whatsapp"></i></a>
+
   <script src="assets/js/ga.js"></script>
   <script>
-    AxentroAnalytics.init({
-      page: "about",
-      utm_campaign_default: "axentro",
-      enable_qr_scan: true,
-      enable_internal_utm_links: true,
-      enable_service_hash_title: true,
-      service_hash_ids: ["excel","web","desktop","inventory","branding","website"],
-      service_title_prefix: "تفاصيل الخدمة: "
-    });
+    AxentroAnalytics.init({ page: "about", utm_campaign_default: "axentro", enable_qr_scan: true, enable_internal_utm_links: true, enable_service_hash_title: true, service_hash_ids: ["websites","portfolio","booking","clinics","ecommerce","inventory","crm","qr-menu","listings"], service_title_prefix: "تفاصيل الخدمة: " });
   </script>
 
   <script>
-    /* Progress bar */
-    const bar = document.getElementById('scrollProgress');
-    window.addEventListener('scroll', () => {
-      const h = document.documentElement;
-      const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-      bar.style.width = p + '%';
-    }, { passive: true });
+    window.addEventListener('load', () => document.getElementById('loader').classList.add('hidden'));
 
-    /* Reveal */
+    const translations = {
+      ar: { nav_home: "الرئيسية", nav_services: "الخدمات", nav_about: "من نحن", nav_contact: "اتصل بنا", theme_light: "الوضع النهاري", theme_dark: "الوضع الليلي", lang_switch: "EN",
+            about_title: "من نحن | About", about_desc: 'في Axentro، نؤمن بأن المستقبل على الويب. نحن نتخصص في تقديم حلول رقمية متكاملة <span class="eye-pill"><span class="eye-dot"></span></span> تبدأ من بناء المواقع التعريفية وحتى أنظمة إدارة الأعمال المتقدمة التي تعمل بالكامل عبر الإنترنت.',
+            stat_1: "مسارات خدمات ويب متكاملة", stat_2: "حلول تعمل بالكامل على المتصفح (Cloud-based)", stat_3: "قنوات تواصل سريعة (واتساب / بريد)", stat_4: "تصميمات عصرية تركز على تجربة المستخدم",
+            values_title: "قيمنا الأساسية", values_desc: "3 مبادئ ثابتة في كل مشروع—تضمن الجودة والسرعة والوضوح من أول يوم حتى التسليم.",
+            val_1: "نهتم بالتفاصيل: هيكلة نظيفة، واجهة واضحة، اختبار، وتسليم منظم. الهدف إن المنصة يظل معك وتعمل بثبات.", val_2: "نوصل للنتيجة بسرعة بدون ضياع للوقت: تقسيم مراحل، أول نسخة (MVP) ثم تطوير تدريجي حسب الأولويات.", val_3: "كل خطوة لها مخرجات واضحة: المطلوب، التصميم، التنفيذ، التدريب. عشان تبقى فاهم أنت هتحصل علي إيه وأمتى.",
+            services_title: "ماذا نقدم", services_desc: "خدماتنا مصممة لتغطي احتياج الشركات والأفراد: من المواقع التعريفية إلى أنظمة الحجوزات وإدارة المبيعات، كلها تعمل بسلاسة على أي متصفح.",
+            serv_1_desc: "مواقع تعريفية للشركات وصفحات هبوط (Landing Pages) مخصصة للحملات الإعلانية، مصممة لتحميل سريع وتجربة مستخدم ممتازة ترفع نسبة التحويل للعملاء.", serv_2_desc: "مواقع بورتفوليو احترافية لعرض أعمالك أو سيرتك الذاتية، لتضع بصمتك الرقمية أمام أصحاب العمل والعملاء بشكل يليق بمكانتك.", serv_3_desc: "أنظمة حجز ومواعيد إلكترونية متكاملة للصالونات، المراكز الاستشارية، والمدربين، تتيح لعملائك الحجز أونلاين وتوفر عليك متابعة المواعيد يدوياً.", serv_4_desc: "نظام ويب متكامل لإدارة العيادات والمراكز الطبية: تسجيل بيانات المرضى، جدولة المواعيد، تسجيل الزيارات الطبية، وإدارة الفواتير والمدفوعات.", serv_5_desc: "متاجر إلكترونية خفيفة وسريعة لعرض وبيع منتجاتك، مع لوحة تحكم لإدارة الطلبات والمنتجات، أو مواقع \"كتالوج\" لعرض المنتجات والتواصل للشراء.", serv_6_desc: "نظام ويب لإدارة المخزون والمبيعات والمشتريات. تتبع حركة الأصناف، تنبيهات نقص المخزون، وإصدار الفواتير، مع تقارير يومية وشهرية دقيقة.", serv_7_desc: "أنظمة لإدارة علاقات العملاء (CRM): تسجيل بيانات العملاء، متابعة خطط البيع، وتسجيل الاتصالات لزيادة المبيعات وتنظيم فريق العمل.", serv_8_desc: "قوائم رقمية للمطاعم والكافيهات تعمل بمسح الـ QR كود، تتيح للعملاء تصفح المنيو وإرسال الطلبات مباشرة للمطبخ أو الكاشير.", serv_9_desc: "منصات ويب متكاملة لعرض العقارات أو الإعلانات المبوبة، تتيح رفع تفاصيل العقار، الصور، وتصفية البحث للعملاء بسهولة.",
+            copy_link: "<i class='fas fa-link'></i> نسخ رابط الخدمة",
+            process_title: "كيف نعمل معك", process_desc: "أسلوب عمل واضح—بدون تعقيد وبأسرع طريق للنتيجة.",
+            proc_1_title: "1) جلسة فهم الاحتياج", proc_1_desc: "نجمع تفاصيل عملك، المشاكل الحالية، ونحدد المطلوب بدقة (Features + تقارير + صلاحيات).", proc_2_title: "2) تصميم الحل", proc_2_desc: "نقدّم تصور للواجهة وخط سير العمل قبل التنفيذ، عشان كل شيء يبقى واضح.", proc_3_title: "3) تنفيذ واختبار", proc_3_desc: "تنفيذ احترافي + اختبار حالات واقعية + تحسينات بناءً على الملاحظات.", proc_4_title: "4) تدريب وتسليم", proc_4_desc: "شرح للاستخدام + دليل مختصر + تسليم منظم يسهّل التشغيل.", proc_5_title: "5) دعم وتطوير", proc_5_desc: "متابعة بعد التسليم + تطوير مراحل جديدة لما مشروعك يكبر.",
+            faq_title: "أسئلة شائعة | FAQ", faq_desc: "إجابات سريعة على أهم الأسئلة قبل ما نبدأ.",
+            faq_1_q: "إزاي نبدأ مع بعض؟ <i class='fas fa-chevron-down chev'></i>", faq_1_a: "بنبدأ بجلسة قصيرة لفهم طبيعه عملك والهدف المطلوب، بعدها نحدد نطاق العمل والخطوات والمدة المتوقعة، ثم نبدأ التنفيذ على مراحل.",
+            faq_2_q: "كم تكلفة إنشاء الموقع أو النظام؟ <i class='fas fa-chevron-down chev'></i>", faq_2_a: "التكلفة بتختلف حسب حجم النظام والمميزات المطلوبة. بنقدملك عرض سعر شفاف ومناسب لميزانيتك بعد جلسة الاستشارة المجانية وتحديد المتطلبات بدقة.",
+            faq_3_q: "كم تستغرق مدة التنفيذ؟ <i class='fas fa-chevron-down chev'></i>", faq_3_a: "المواقع التعريفية وصفحات الهبوط بتاخد من 3 لـ 7 أيام. أما الأنظمة الإدارية والمتاجر فبتاخد من 2 لـ 4 أسابيع حسب حجم البيانات وتعقيد الخصائص المطلوبة.",
+            faq_4_q: "هل الموقع أو النظام هيكون ملكي بالكامل؟ <i class='fas fa-chevron-down chev'></i>", faq_4_a: "نعم، كل الأكواد والأنظمة بتكون ملكك بالكامل وبتشتغل باسمك وباسم شركتك، وإنت اللي ليك حق التحكم فيها والتعديل عليها في أي وقت.",
+            faq_5_q: "هل توفرون الاستضافة واسم النطاق (الدومين)؟ <i class='fas fa-chevron-down chev'></i>", faq_5_a: "نعم، بنوفر لك كل ما تحتاجه من استضافة سحابية سريعة واسم موقع (Domain) وتأمين البيانات لتبدأ مباشرة دون أي تعقيدات تقنية.",
+            faq_6_q: "هل الأنظمة هتشتغل على الموبايل؟ <i class='fas fa-chevron-down chev'></i>", faq_6_a: "نعم، كل المواقع والأنظمة اللي بنبرمجها بتكون \"Responsive\" يعني بتشتغل وتظهر بشكل احترافي على الموبايل، التابلت، والكمبيوتر من خلال أي متصفح إنترنت.",
+            faq_7_q: "هل في دعم بعد التسليم؟ <i class='fas fa-chevron-down chev'></i>", faq_7_a: "نعم، بنوفر دعم وتعديلات حسب الاتفاق، مع إمكانية إضافة خصائص جديدة مع الوقت.",
+            btn_wa: "تواصل عبر واتساب", btn_mail: "راسلنا عبر البريد"
+      },
+      en: { nav_home: "Home", nav_services: "Services", nav_about: "About", nav_contact: "Contact", theme_light: "Light Mode", theme_dark: "Dark Mode", lang_switch: "AR",
+            about_title: "About Us", about_desc: 'At Axentro, we believe the future is on the web. We specialize in providing integrated digital solutions <span class="eye-pill"><span class="eye-dot"></span></span> ranging from building informational websites to advanced business management systems that operate entirely online.',
+            stat_1: "Integrated Web Service Tracks", stat_2: "Fully Browser-based Solutions (Cloud)", stat_3: "Fast Communication Channels (WhatsApp/Mail)", stat_4: "Modern Designs Focused on UX",
+            values_title: "Our Core Values", values_desc: "3 constant principles in every project—ensuring quality, speed, and clarity from day one until delivery.",
+            val_1: "We care about details: clean structure, clear interface, testing, and organized delivery. The goal is for the platform to stay with you and work stably.", val_2: "We reach the result quickly without wasting time: dividing phases, first version (MVP) then gradual development based on priorities.", val_3: "Every step has clear outputs: requirements, design, execution, training. So you understand exactly what you will get and when.",
+            services_title: "What We Offer", services_desc: "Our services are designed to cover the needs of companies and individuals: from informational websites to booking systems and sales management, all working smoothly on any browser.",
+            serv_1_desc: "Company informational websites and Landing Pages dedicated to advertising campaigns, designed for fast loading and an excellent user experience that increases conversion rates.", serv_2_desc: "Professional portfolio websites to showcase your work or CV, putting your digital footprint in front of employers and clients in a way that befits your position.", serv_3_desc: "Integrated electronic booking and appointment systems for salons, consulting centers, and trainers, allowing your clients to book online and saving you from manual appointment tracking.", serv_4_desc: "Integrated web system for managing clinics and medical centers: recording patient data, scheduling appointments, recording medical visits, and managing invoices and payments.", serv_5_desc: "Light and fast e-commerce stores to display and sell your products, with a dashboard for managing orders and products, or 'catalog' websites to display products and contact for purchase.", serv_6_desc: "Web system for inventory, sales, and purchases management. Track item movements, low stock alerts, and invoice issuance, with accurate daily and monthly reports.", serv_7_desc: "Customer Relationship Management (CRM) systems: recording customer data, tracking sales plans, and logging calls to increase sales and organize the team.", serv_8_desc: "Digital menus for restaurants and cafes that work by scanning a QR code, allowing customers to browse the menu and send orders directly to the kitchen or cashier.", serv_9_desc: "Integrated web platforms for displaying real estate or classified ads, allowing uploading property details, images, and filtering search for customers easily.",
+            copy_link: "<i class='fas fa-link'></i> Copy Service Link",
+            process_title: "How We Work With You", process_desc: "Clear workflow—no complexity and the fastest path to the result.",
+            proc_1_title: "1) Requirements Understanding Session", proc_1_desc: "We gather your business details, current problems, and define the requirements accurately (Features + reports + permissions).", proc_2_title: "2) Solution Design", proc_2_desc: "We provide a visualization of the interface and workflow before execution, so everything is clear.", proc_3_title: "3) Execution & Testing", proc_3_desc: "Professional execution + real-world case testing + improvements based on feedback.", proc_4_title: "4) Training & Delivery", proc_4_desc: "Usage explanation + brief manual + organized delivery that facilitates operation.", proc_5_title: "5) Support & Development", proc_5_desc: "Post-delivery follow-up + developing new phases as your project grows.",
+            faq_title: "FAQ", faq_desc: "Quick answers to the most important questions before we start.",
+            faq_1_q: "How do we start together? <i class='fas fa-chevron-down chev'></i>", faq_1_a: "We start with a short session to understand your business nature and the required goal, after which we define the scope of work, steps, and expected duration, then begin execution in phases.",
+            faq_2_q: "How much does it cost to create a website or system? <i class='fas fa-chevron-down chev'></i>", faq_2_a: "The cost varies depending on the size of the system and the required features. We offer a transparent and suitable price quote for your budget after the free consultation session and accurately defining the requirements.",
+            faq_3_q: "How long does execution take? <i class='fas fa-chevron-down chev'></i>", faq_3_a: "Informational websites and landing pages take 3 to 7 days. Administrative systems and stores take 2 to 4 weeks depending on the data volume and complexity of the required features.",
+            faq_4_q: "Will the website or system be completely mine? <i class='fas fa-chevron-down chev'></i>", faq_4_a: "Yes, all codes and systems are completely yours, operating under your name and your company's name, and you have the right to control and modify them at any time.",
+            faq_5_q: "Do you provide hosting and domain name? <i class='fas fa-chevron-down chev'></i>", faq_5_a: "Yes, we provide everything you need from fast cloud hosting and a domain name and data security to start immediately without any technical complications.",
+            faq_6_q: "Will the systems work on mobile? <i class='fas fa-chevron-down chev'></i>", faq_6_a: "Yes, all websites and systems we program are 'Responsive', meaning they work and appear professionally on mobile, tablet, and computer through any internet browser.",
+            faq_7_q: "Is there support after delivery? <i class='fas fa-chevron-down chev'></i>", faq_7_a: "Yes, we provide support and modifications according to the agreement, with the possibility of adding new features over time.",
+            btn_wa: "Contact via WhatsApp", btn_mail: "Email Us"
+      }
+    };
+
+    function applyLanguage(lang) {
+      const dict = translations[lang];
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.innerHTML = dict[key];
+      });
+      document.getElementById('lang-text').textContent = dict.lang_switch;
+      updateThemeUI(); 
+    }
+
+    document.getElementById('lang-switcher').addEventListener('click', (e) => {
+      createRipple(e);
+      const currentLang = document.documentElement.getAttribute('lang');
+      applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+    });
+
+    function updateThemeUI() {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      const iconEl = document.getElementById('theme-icon');
+      const textEl = document.getElementById('theme-text');
+      const currentLang = document.documentElement.getAttribute('lang');
+      if (isLight) { iconEl.classList.remove('fa-moon'); iconEl.classList.add('fa-sun'); textEl.textContent = translations[currentLang].theme_light; } 
+      else { iconEl.classList.remove('fa-sun'); iconEl.classList.add('fa-moon'); textEl.textContent = translations[currentLang].theme_dark; }
+    }
+
+    document.getElementById('theme-toggle').addEventListener('click', (e) => {
+      createRipple(e);
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeUI();
+    });
+
+    applyLanguage(localStorage.getItem('lang') || 'ar');
+    updateThemeUI();
+
+    function createRipple(event) {
+      const button = event.currentTarget;
+      const circle = document.createElement('span');
+      const diameter = Math.max(button.clientWidth, button.clientHeight);
+      const radius = diameter / 2;
+      const rect = button.getBoundingClientRect();
+      circle.style.width = circle.style.height = `${diameter}px`;
+      circle.style.left = `${event.clientX - rect.left - radius}px`;
+      circle.style.top = `${event.clientY - rect.top - radius}px`;
+      circle.classList.add('ripple');
+      const existingRipple = button.querySelector('.ripple');
+      if (existingRipple) existingRipple.remove();
+      button.appendChild(circle);
+      setTimeout(() => circle.remove(), 600);
+    }
+    document.querySelectorAll('.ripple-btn, .nav-link').forEach(btn => btn.addEventListener('click', createRipple));
+
+    const bar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => { const h = document.documentElement; const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100; bar.style.width = p + '%'; }, { passive: true });
+
     const els = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
-    },{threshold:0.15});
+    const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); }); },{threshold:0.1});
     els.forEach(el=>io.observe(el));
 
-    /* Card Spotlight Effect */
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-      });
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+    class Particle { constructor(){ this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 0.5; this.speedX = Math.random() * 0.5 - 0.25; this.speedY = Math.random() * 0.5 - 0.25; this.opacity = Math.random() * 0.5 + 0.1; } update(){ this.x += this.speedX; this.y += this.speedY; if(this.x < 0 || this.x > canvas.width) this.speedX *= -1; if(this.y < 0 || this.y > canvas.height) this.speedY *= -1; } draw(){ ctx.fillStyle = `${getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()}${Math.round(this.opacity * 255).toString(16).padStart(2, '0')}`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); } }
+    function initParticles() { particles = []; const count = Math.floor((window.innerWidth * window.innerHeight) / 15000); for(let i=0; i<count; i++) particles.push(new Particle()); }
+    function animateParticles() { ctx.clearRect(0, 0, canvas.width, canvas.height); for(let p of particles) { p.update(); p.draw(); } requestAnimationFrame(animateParticles); }
+    initParticles(); animateParticles();
+
+    document.querySelectorAll('.card-wrapper').forEach(wrapper => {
+      const card = wrapper.querySelector('.card'); const glare = wrapper.querySelector('.glare-card');
+      let targetX = 0, targetY = 0, currX = 0, currY = 0, gX = 50, gY = 50, cgX = 50, cgY = 50;
+      wrapper.addEventListener('mousemove', (e) => { const rect = wrapper.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top; targetY = ((x / rect.width) - 0.5) * 15; targetX = -((y / rect.height) - 0.5) * 15; gX = (x / rect.width) * 100; gY = (y / rect.height) * 100; });
+      wrapper.addEventListener('mouseleave', () => { targetX = 0; targetY = 0; gX = 50; gY = 50; });
+      function animateCard() { currX += (targetX - currX) * 0.1; currY += (targetY - currY) * 0.1; cgX += (gX - cgX) * 0.1; cgY += (gY - cgY) * 0.1; card.style.transform = `rotateY(${currY}deg) rotateX(${currX}deg)`; glare.style.background = `radial-gradient(circle at ${cgX}% ${cgY}%, rgba(255,255,255,0.15) 0%, transparent 50%)`; requestAnimationFrame(animateCard); }
+      animateCard();
     });
 
-    /* Copy Link function */
-    function copyServiceLink(id) {
-      const url = window.location.origin + window.location.pathname + '#' + id;
-      navigator.clipboard.writeText(url).then(() => {
-        alert('تم نسخ رابط الخدمة بنجاح!');
-      }).catch(err => console.error('Copy failed', err));
-    }
-
-    /* Dark/Light Mode Toggle Logic */
-    const toggle = document.getElementById('theme-toggle');
-    const htmlEl = document.documentElement;
-    const icon = toggle.querySelector('i');
-    function updateIcon() {
-      if (htmlEl.getAttribute('data-theme') === 'light') {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-      }
-    }
-    updateIcon();
-    toggle.addEventListener('click', () => {
-      if (htmlEl.getAttribute('data-theme') === 'light') {
-        htmlEl.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        htmlEl.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-      }
-      updateIcon();
-    });
+    function copyServiceLink(id) { const url = window.location.origin + window.location.pathname + '#' + id; navigator.clipboard.writeText(url).then(() => alert('تم نسخ رابط الخدمة بنجاح!!')); }
   </script>
 </body>
 </html>
