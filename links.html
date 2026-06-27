@@ -73,6 +73,8 @@
       background-color: var(--bg-base);
       color: var(--text);
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       overflow-x: hidden;
       transition: background-color 0.4s ease, color 0.4s ease;
       -webkit-font-smoothing: antialiased;
@@ -134,17 +136,16 @@
 
     /* Hero Section */
     .hero-section {
-      position: relative; min-height: 110vh; width: 100%;
-      display: flex; flex-direction: column; align-items: center; justify-content: start;
-      overflow: hidden; padding-top: 6rem;
+      position: relative; min-height: 100vh; width: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      overflow: hidden; padding-top: 8rem; padding-bottom: 4rem;
+      flex-grow: 1;
     }
-    @media (min-width: 640px) { .hero-section { min-height: 140vh; padding-top: 10rem; } }
 
     .video-wrapper {
-      position: absolute; top: 15vh; left: 0; width: 100%; height: 95vh;
+      position: absolute; top: 15vh; left: 0; width: 100%; height: 85vh;
       z-index: 0; pointer-events: none;
     }
-    @media (min-width: 640px) { .video-wrapper { top: 20vh; height: 120vh; } }
     
     .video-wrapper video {
       width: 100%; height: 100%; object-fit: cover; opacity: 1;
@@ -155,29 +156,29 @@
       background: linear-gradient(to bottom, var(--bg-base), transparent);
       z-index: 1;
     }
-    @media (min-width: 640px) { .gradient-mask { height: 8rem; } }
 
     .hero-content {
       max-width: 1200px; width: 100%; margin: 0 auto;
       padding: 0 2rem; position: relative; z-index: 10;
       display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem;
+      text-align: center;
     }
     .hero-text-wrapper {
       grid-column: span 12; 
-    }
-    @media (min-width: 768px) {
-      .hero-text-wrapper { grid-column: 10 / span 10; grid-column-start: 2; }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-title {
       font-family: 'Outfit', sans-serif; font-weight: 800;
-      font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1;
-      letter-spacing: -0.02em; margin-bottom: 2rem;
+      font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.2;
+      letter-spacing: -0.02em; margin-bottom: 2.5rem;
       opacity: 0; transform: translateY(15px);
       animation: fadeUp 0.8s ease forwards;
+      max-width: 800px;
     }
-    .hero-title .muted { color: var(--muted); font-weight: 500; }
-    .hero-title .brand { color: var(--text); display: block; margin-bottom: 0.5rem; }
+    .hero-title .muted { color: var(--muted); font-weight: 500; display: block; margin-bottom: 0.5rem; }
     
     /* Eye Icon Element */
     .eye-pill {
@@ -198,7 +199,7 @@
       display: flex; flex-direction: column; gap: 10px;
       opacity: 0; transform: translateY(15px);
       animation: fadeUp 0.8s ease 0.15s forwards;
-      max-width: 650px; margin: 0 auto; width: 100%;
+      max-width: 650px; width: 100%;
     }
 
     .link-btn {
@@ -230,51 +231,30 @@
     .bg-ig { background: #E1306C; } .bg-fb { background: #1877F2; }
     .bg-vcard { background: rgba(128,128,128,0.2); color: var(--text); }
 
-    /* Edge Anchors */
-    .edge-anchor {
-      position: absolute; z-index: 20; font-size: 0.75rem; color: var(--muted);
-      font-family: 'Inter', sans-serif; font-weight: 500;
-      opacity: 0; animation: fadeIn 1s ease 0.5s forwards;
-      padding: 1rem;
+    /* Restored Axentro Footer */
+    footer {
+      padding: 3rem 1.5rem;
+      text-align: center;
+      width: 100%;
+      border-top: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      z-index: 10;
     }
-    .bottom-left { bottom: 0; left: 0; }
-    .bottom-right { bottom: 0; right: 0; text-align: right; }
-    html[dir="rtl"] .bottom-left { left: auto; right: 0; text-align: left; }
-    html[dir="rtl"] .bottom-right { right: auto; left: 0; text-align: left; }
+    footer .main { font-weight: 700; font-size: 1rem; font-family: 'Outfit', sans-serif; }
+    footer .by { margin-top: 5px; font-size: 0.85rem; color: var(--muted); }
+    .footer-icons { margin-top: 20px; display: flex; gap: 15px; justify-content: center; font-size: 1.1rem; }
+    .footer-icons a { 
+      transition: all 0.3s; text-decoration: none; width: 44px; height: 44px; 
+      display: flex; align-items: center; justify-content: center; border-radius: 50%; 
+      background: transparent; border: 1px solid var(--glass-border); color: var(--text); 
+      position: relative; overflow: hidden;
+    }
+    .footer-icons a:hover { transform: translateY(-5px); color: var(--accent); border-color: var(--accent); background: var(--text); }
 
-    /* Language Switcher Edge */
-    .lang-edge {
-      position: fixed; top: 50%; right: 0; transform: translateY(-50%);
-      z-index: 50; opacity: 0; animation: fadeIn 1s ease 0.8s forwards;
-    }
-    html[dir="rtl"] .lang-edge { right: auto; left: 0; }
-    .lang-edge button {
-      background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);
-      border-right: none; padding: 14px 20px; cursor: pointer; font-size: 0.85rem; font-weight: 700;
-      color: var(--text); border-radius: 50px 0 0 50px; transition: all 0.3s ease;
-      box-shadow: var(--shadow); position: relative; overflow: hidden;
-      letter-spacing: 1px;
-    }
-    html[dir="rtl"] .lang-edge button { border-right: 1px solid var(--glass-border); border-left: none; border-radius: 0 50px 50px 0; }
-    .lang-edge button:hover { background: var(--text); color: var(--bg-base); transform: scale(1.05); }
-
-    /* Footer Icons */
-    .footer-icons {
-      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 10px; z-index: 50; opacity: 0; animation: fadeIn 1s ease 1s forwards;
-      background: var(--glass-bg); backdrop-filter: blur(10px); padding: 8px 12px; border-radius: 50px; border: 1px solid var(--glass-border);
-      box-shadow: var(--shadow);
-    }
-    .footer-icons a {
-      width: 40px; height: 40px; border-radius: 50%; background: transparent;
-      color: var(--text); display: flex; align-items: center; justify-content: center; font-size: 1rem;
-      text-decoration: none; transition: all 0.3s ease; position: relative; overflow: hidden;
-    }
-    .footer-icons a:hover { background: var(--text); color: var(--bg-base); transform: scale(1.1); }
-
-    /* Floating WhatsApp */
+    /* Floating WhatsApp - Positioned safely */
     .floating-wa { 
-      position: fixed; bottom: 80px; left: 20px; width: 55px; height: 55px; 
+      position: fixed; bottom: 100px; left: 20px; width: 55px; height: 55px; 
       border-radius: 50%; background: #25D366; color: #fff; display: flex; 
       align-items: center; justify-content: center; font-size: 1.6rem; 
       box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 999; 
@@ -290,13 +270,12 @@
     @media (max-width: 768px) {
       .nav-btn { padding: 8px 12px; }
       .nav-btn span.text-btn { display: none; } 
-      .hero-section { padding-top: 5rem; }
-      .footer-icons { bottom: 1rem; }
-      .bottom-left, .bottom-right { display: none; } /* Hide edge text on mobile to avoid clutter */
+      .hero-section { padding-top: 6rem; }
       .links-container { padding: 1rem; }
       .link-btn { padding: 12px 14px; gap: 0.75rem; }
       .link-btn .icon-box { width: 38px; height: 38px; min-width: 38px; font-size: 1.1rem; }
       .link-btn .text { font-size: 0.9rem; }
+      .floating-wa { bottom: 120px; width: 50px; height: 50px; font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -313,6 +292,10 @@
       AXENTRO
     </div>
     <div class="nav-controls">
+      <button id="lang-switcher" class="nav-btn ripple-btn" aria-label="Switch Language">
+        <i class="fas fa-globe"></i>
+        <span class="text-btn" id="lang-text">EN</span>
+      </button>
       <button id="theme-toggle" class="nav-btn ripple-btn" aria-label="Toggle Theme">
         <i class="fas fa-moon" id="theme-icon"></i>
         <span class="text-btn" id="theme-text">Dark Mode</span>
@@ -334,8 +317,7 @@
     <div class="hero-content">
       <div class="hero-text-wrapper">
         <h1 class="hero-title">
-          <span class="brand">AXENTRO</span>
-          <span class="muted" data-i18n="desc1">اختر وسيلة التواصل الأنسب</span><br>
+          <span class="muted" data-i18n="desc1">اختر وسيلة التواصل الأنسب</span>
           <span class="muted" data-i18n="desc2">وسنرد عليك سريعًا <span class="eye-pill"><span class="eye-dot"></span></span> Choose your preferred contact method.</span>
         </h1>
 
@@ -379,26 +361,19 @@
         </div>
       </div>
     </div>
-
-    <!-- Edge Anchors -->
-    <div class="edge-anchor bottom-left">© 2024 Axentro</div>
-    <div class="edge-anchor bottom-right" data-i18n="footer_by">By Axentro Team</div>
   </main>
 
-  <!-- Language Switcher Edge Pill -->
-  <div class="lang-edge">
-    <button id="lang-switcher" class="ripple-btn">
-      <span id="lang-text">EN</span>
-    </button>
-  </div>
-
-  <!-- Footer Icons -->
-  <div class="footer-icons">
-    <a href="#" class="ripple-btn" onclick="whatsapp('footer'); return false;"><i class="fab fa-whatsapp"></i></a>
-    <a href="mailto:axentroofficial@gmail.com" class="ripple-btn" onclick="trackClick('email','Email Icon','footer');"><i class="fas fa-envelope"></i></a>
-    <a href="https://facebook.com/AxentroSamrtSolutions" class="ripple-btn" target="_blank" rel="noopener" onclick="trackClick('facebook','Facebook Icon','footer');"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/axentro.official" class="ripple-btn" target="_blank" rel="noopener" onclick="trackClick('instagram','Instagram Icon','footer');"><i class="fab fa-instagram"></i></a>
-  </div>
+  <!-- Restored Axentro Footer -->
+  <footer>
+    <div class="main" data-i18n="footer_main">© 2024 Axentro – All Rights Reserved</div>
+    <div class="by" data-i18n="footer_by">By Axentro Team</div>
+    <div class="footer-icons">
+      <a href="#" class="ripple-btn" onclick="whatsapp('footer'); return false;"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:axentroofficial@gmail.com" class="ripple-btn" onclick="trackClick('email','Email Icon','footer');"><i class="fas fa-envelope"></i></a>
+      <a href="https://facebook.com/AxentroSamrtSolutions" class="ripple-btn" target="_blank" rel="noopener" onclick="trackClick('facebook','Facebook Icon','footer');"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/axentro.official" class="ripple-btn" target="_blank" rel="noopener" onclick="trackClick('instagram','Instagram Icon','footer');"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
 
   <a class="floating-wa ripple-btn" href="#" onclick="whatsapp('floating'); return false;"><i class="fab fa-whatsapp"></i></a>
 
@@ -426,6 +401,7 @@
         instagram: "تابعنا على انستقرام",
         facebook: "تابعنا على فيسبوك",
         vcard: "احفظ بياناتنا في جهات الاتصال",
+        footer_main: "© 2024 Axentro – جميع الحقوق محفوظة",
         footer_by: "By Axentro Team",
         theme_light: "الوضع النهاري",
         theme_dark: "الوضع الليلي",
@@ -441,6 +417,7 @@
         instagram: "Follow us on Instagram",
         facebook: "Follow us on Facebook",
         vcard: "Save our contact details",
+        footer_main: "© 2024 Axentro – All Rights Reserved",
         footer_by: "By Axentro Team",
         theme_light: "Light Mode",
         theme_dark: "Dark Mode",
