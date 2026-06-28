@@ -112,16 +112,53 @@
     .gradient-mask { position: absolute; top: 0; left: 0; width: 100%; height: 6rem; background: linear-gradient(to bottom, var(--bg-base), transparent); z-index: 1; }
     .hero-content { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 10; text-align: center; }
     
-    /* Updated Text Colors for High Visibility */
-    .hero-title { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(2rem, 9vw, 6rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 2rem; text-transform: uppercase; color: var(--text); text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4); }
-    .hero-title .muted { color: var(--text); opacity: 0.9; font-weight: 500; display: block; font-size: clamp(1rem, 2vw, 1.5rem); text-transform: none; margin-top: 1rem; }
-    
-    .eye-pill { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border: 2px solid var(--text); border-radius: 50%; vertical-align: middle; margin: 0 4px; position: relative; top: -2px; transition: width 0.3s ease; }
+    /* Updated Text Colors & Shadows for 100% Visibility */
+    .hero-title { 
+      font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(2rem, 9vw, 6rem); 
+      line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 2rem; text-transform: uppercase; 
+      color: #0a0a0a; 
+      text-shadow: 0 2px 10px rgba(255, 255, 255, 0.9), 0 0 25px rgba(255, 255, 255, 0.7);
+    }
+    .hero-title .muted { 
+      color: #333333; opacity: 1; font-weight: 500; display: block; 
+      font-size: clamp(1rem, 2vw, 1.5rem); text-transform: none; margin-top: 1rem; 
+      text-shadow: 0 2px 8px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.7);
+    }
+    .eye-pill { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border: 2px solid #0a0a0a; border-radius: 50%; vertical-align: middle; margin: 0 4px; position: relative; top: -2px; transition: width 0.3s ease; }
     @media (min-width: 768px) { .eye-pill { width: 42px; height: 42px; top: 0; } }
     @media (min-width: 1024px) { .eye-pill { width: 62px; height: 62px; } }
-    .eye-dot { width: 8px; height: 8px; background-color: var(--text); border-radius: 50%; }
-    .hero .tagline { font-family: 'Outfit', sans-serif; margin-bottom: 25px; letter-spacing: 0.2em; font-size: clamp(0.7rem, 1.5vw, 0.9rem); color: var(--accent); text-transform: uppercase; display: inline-block; padding: 8px 24px; border: 1px solid var(--accent); border-radius: 50px; background: rgba(159, 255, 0, 0.05); }
-    .hero-services { margin-top: 40px; font-family: 'Outfit', sans-serif; font-size: clamp(0.7rem, 1.2vw, 0.85rem); letter-spacing: 0.15em; color: var(--text); opacity: 0.8; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 15px 0; display: inline-block; }
+    .eye-dot { width: 8px; height: 8px; background-color: #0a0a0a; border-radius: 50%; }
+    .hero .tagline { 
+      font-family: 'Outfit', sans-serif; margin-bottom: 25px; letter-spacing: 0.2em; 
+      font-size: clamp(0.7rem, 1.5vw, 0.9rem); color: var(--accent); text-transform: uppercase; 
+      display: inline-block; padding: 8px 24px; border: 1px solid var(--accent); border-radius: 50px; 
+      background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px);
+    }
+    .hero-services { 
+      margin-top: 40px; font-family: 'Outfit', sans-serif; font-size: clamp(0.7rem, 1.2vw, 0.85rem); 
+      letter-spacing: 0.15em; color: #333333; opacity: 1; 
+      border-top: 1px solid rgba(0, 0, 0, 0.2); border-bottom: 1px solid rgba(0, 0, 0, 0.2); 
+      padding: 15px 0; display: inline-block; 
+      text-shadow: 0 2px 8px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Dark Mode Overrides for Hero Text */
+    [data-theme="dark"] .hero-title { 
+      color: #ffffff; 
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 0, 0, 0.7);
+    }
+    [data-theme="dark"] .hero-title .muted { 
+      color: #e4e4e7; 
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.7);
+    }
+    [data-theme="dark"] .eye-pill { border-color: #ffffff; }
+    [data-theme="dark"] .eye-dot { background-color: #ffffff; }
+    [data-theme="dark"] .hero-services { 
+      color: #ffffff; 
+      border-top: 1px solid rgba(255, 255, 255, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.7);
+    }
+
     .cta-button { background: var(--accent); color: var(--btn-text); padding: 16px 40px; border-radius: 8px; font-weight: 700; font-size: 1.1rem; cursor: pointer; margin-top: 50px; display: inline-block; text-decoration: none; border: none; font-family: 'Outfit', sans-serif; box-shadow: 0 10px 30px rgba(159, 255, 0, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden; }
     .cta-button:hover { box-shadow: 0 15px 40px rgba(159, 255, 0, 0.4); transform: translateY(-2px); }
 
