@@ -1,0 +1,140 @@
+/* ============================================
+   Axentro | Responsive Design
+   Version: 2.0 (Production)
+   ============================================ */
+
+/* 1. Large Desktops & Laptops (Default styles handle this well, but added for clarity) */
+@media (min-width: 1024px) {
+  .eye-pill {
+    width: 62px;
+    height: 62px;
+  }
+}
+
+/* 2. Tablets & iPads (Portrait & Landscape) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .eye-pill {
+    width: 42px;
+    height: 42px;
+    top: 0;
+  }
+  
+  .nav-brand {
+    font-size: 1.3rem;
+  }
+}
+
+/* 3. Mobile Devices (Android & iPhone) */
+@media (max-width: 767px) {
+  /* Navbar Adjustments */
+  nav.navbar {
+    padding: 1rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .nav-brand {
+    font-size: 1.2rem;
+  }
+
+  .nav-brand svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Hide text in navbar links, show icons only */
+  .nav-link span {
+    display: none;
+  }
+
+  .nav-link {
+    padding: 10px 15px;
+  }
+
+  .nav-link i {
+    font-size: 1.1rem;
+  }
+
+  /* Remove background from links container to merge with page on mobile */
+  .nav-links {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    border: none;
+    padding: 4px;
+  }
+
+  /* Navbar Controls (Theme & Lang) */
+  .nav-controls .nav-btn {
+    padding: 8px 12px;
+  }
+
+  .nav-controls .nav-btn span.text-btn {
+    display: none; /* Hide text "Dark Mode" etc, show icons only */
+  }
+
+  /* Hero Section Adjustments */
+  .hero-section {
+    padding-top: 6rem;
+  }
+
+  .video-wrapper {
+    top: 10vh;
+    height: 90vh;
+  }
+
+  .hero-content {
+    padding: 0 1rem;
+  }
+
+  .hero-services {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 10px 0;
+  }
+
+  /* Cards Adjustments */
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  /* CTA Buttons */
+  .cta {
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    flex-grow: 1;
+    justify-content: center;
+  }
+
+  /* Floating WhatsApp */
+  .floating-wa {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+    bottom: 15px;
+  }
+  
+  html[dir="rtl"] .floating-wa {
+    right: 15px;
+  }
+}
+
+/* 4. Very Small Mobile Devices */
+@media (max-width: 360px) {
+  .nav-brand {
+    font-size: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+}
