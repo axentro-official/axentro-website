@@ -28,17 +28,18 @@
 @media (max-width: 767px) {
   /* Navbar Adjustments */
   nav.navbar {
-    padding: 1rem 1rem;
+    padding: 0.75rem 0.5rem;
     gap: 0.5rem;
   }
 
   .nav-brand {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    gap: 5px;
   }
 
   .nav-brand svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 
   /* Hide text in navbar links, show icons only */
@@ -47,7 +48,7 @@
   }
 
   .nav-link {
-    padding: 10px 15px;
+    padding: 8px 10px;
   }
 
   .nav-link i {
@@ -61,12 +62,17 @@
     -webkit-backdrop-filter: none;
     box-shadow: none;
     border: none;
-    padding: 4px;
+    gap: 0;
+    padding: 2px;
   }
 
   /* Navbar Controls (Theme & Lang) */
+  .nav-controls {
+    gap: 5px;
+  }
+
   .nav-controls .nav-btn {
-    padding: 8px 12px;
+    padding: 8px 10px;
   }
 
   .nav-controls .nav-btn span.text-btn {
@@ -131,10 +137,14 @@
 /* 4. Very Small Mobile Devices */
 @media (max-width: 360px) {
   .nav-brand {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   
   .hero-title {
     font-size: 1.8rem;
+  }
+
+  .nav-link {
+    padding: 8px;
   }
 }
