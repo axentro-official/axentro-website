@@ -1,5 +1,5 @@
-const CACHE_NAME = 'axentro-cache-v1';
-const URLs_TO_CACHE = [
+const CACHE_VERSION = 'axentro-v2-prod';
+const PRECACHE_URLS = [
   '/',
   '/index.html',
   '/about.html',
@@ -13,29 +13,28 @@ const URLs_TO_CACHE = [
   '/assets/js/language.js',
   '/assets/js/particles.js',
   '/assets/js/ga.js',
-  '/manifest.json'
+  '/manifest.json',
+  '/favicon.png'
 ];
 
-// Install: Cache App Shell
+// 1. Install: Pre-cache App Shell
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(URLs_TO_CACHE).catch(error => {
-        console.error('Failed to cache:', error);
-      });
+    caches.open(CACHE_VERSION).then((cache) => {
+      return cache.addAll(PRECACHE_URLS).catch(error => console.error('Pre-cache failed:', error));
     })
   );
   self.skipWaiting();
 });
 
-// Activate: Clean up old caches
+// 2. Activate: Clean up old caches aggressively
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
+          if (cacheName !== CACHE_VERSION) {
+            return caches.delete(cacheName); // Delete old versions
           }
         })
       );
@@ -44,32 +43,53 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Fetch: Cache First Strategy, then Network
+// 3. Fetch: Advanced Routing & Caching Strategies
 self.addEventListener('fetch', (event) => {
-  // Skip cross-origin requests like Google Analytics, Fonts, CloudFront
-  if (!event.request.url.startsWith(self.location.origin)) {
+  const { request } = event;
+  
+  // Ignore non-GET requests
+  if (request.method !== 'GET') return;
+
+  const url = new URL(request.url);
+
+  // Strategy 1: Network First for HTML (Ensures fresh content)
+  if (request.mode === 'navigate' || request.destination === 'document') {
+    event.respondWith(
+      fetch(request).then((networkResponse) => {
+        const clone = networkResponse.clone();
+        caches.open(CACHE_VERSION).then(cache => cache.put(request, clone));
+        return networkResponse;
+      }).catch(() => caches.match(request).then(cached => cached || caches.match('/404.html')))
+    );
     return;
   }
 
+  // Strategy 2: Stale While Revalidate for Cross-Origin (Fonts, Images, Analytics, CloudFront Video)
+  if (url.origin !== self.location.origin) {
+    event.respondWith(
+      caches.match(request).then((cachedResponse) => {
+        const fetchPromise = fetch(request).then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clone = networkResponse.clone();
+            caches.open(CACHE_VERSION).then(cache => cache.put(request, clone));
+          }
+          return networkResponse;
+        }).catch(() => cachedResponse);
+        return cachedResponse || fetchPromise;
+      })
+    );
+    return;
+  }
+
+  // Strategy 3: Cache First for Same-Origin Static Assets (CSS, JS, Images)
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).then((networkResponse) => {
-        // Optional: Cache new requests dynamically
-        if (networkResponse && networkResponse.status === 200 && event.request.method === 'GET') {
-          const responseToCache = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
+    caches.match(request).then((cachedResponse) => {
+      return cachedResponse || fetch(request).then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const clone = networkResponse.clone();
+          caches.open(CACHE_VERSION).then(cache => cache.put(request, clone));
         }
         return networkResponse;
-      }).catch(() => {
-        // Fallback to 404 page if offline and resource not cached
-        if (event.request.mode === 'navigate') {
-          return caches.match('/404.html');
-        }
       });
     })
   );
