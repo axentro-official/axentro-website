@@ -60,9 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Debounced Resize for Performance
+  let resizeTimeout;
   window.addEventListener('resize', () => {
-    resizeCanvas();
-    initParticles();
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      resizeCanvas();
+      initParticles();
+    }, 250); // Wait 250ms after resize ends
   });
 
   resizeCanvas();
