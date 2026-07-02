@@ -1,1 +1,266 @@
-test
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <title>Axentro | Web & Digital Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#EDEEF5">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Axentro - Web & Digital Solutions. Control, Build, Grow.">
+
+  <!-- Security & SEO Meta Tags -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data:; media-src https://d8j0ntlcm91z4.cloudfront.net; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://www.google-analytics.com;">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://axentro.site/">
+
+  <!-- Open Graph / Twitter Cards -->
+  <meta property="og:site_name" content="Axentro">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://axentro.site/">
+  <meta property="og:title" content="Axentro | Web & Digital Solutions">
+  <meta property="og:description" content="Axentro provides integrated digital and software solutions to build your online presence. We develop smart web systems that facilitate your business management. Control, Build, Grow.">
+  <meta property="og:image" content="https://axentro.site/assets/images/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://axentro.site/assets/images/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Axentro Digital Solutions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Axentro | Web & Digital Solutions">
+  <meta name="twitter:description" content="Axentro provides integrated digital and software solutions to build your online presence. We develop smart web systems that facilitate your business management. Control, Build, Grow.">
+  <meta name="twitter:image" content="https://axentro.site/assets/images/og-image.jpg">
+  
+  <!-- Enhanced Favicon for SEO & Apple Devices -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Performance Optimization: Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <!-- Stylesheets -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
+  
+  <!-- Prevent Flash of Incorrect Theme/Direction (Critical for UX) -->
+  <script>
+    (function() {
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const savedTheme = localStorage.getItem('theme') || (systemPrefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const savedLang = localStorage.getItem('lang') || 'ar';
+      document.documentElement.setAttribute('lang', savedLang);
+      document.documentElement.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
+    })();
+  </script>
+
+  <!-- Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Axentro",
+    "url": "https://axentro.site",
+    "logo": "https://axentro.site/assets/images/og-image.jpg",
+    "description": "Web & Digital Solutions. Control, Build, Grow.",
+    "sameAs": [
+      "https://facebook.com/AxentroSamrtSolutions",
+      "https://www.instagram.com/axentro.official"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="loader" aria-hidden="true"><div class="spinner"></div></div>
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <a href="index.html#home" class="nav-brand">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zm0 13.5L2 10.5v6.5l10 5 10-5v-6.5l-10 5z"/></svg>
+      AXENTRO
+    </a>
+    <div class="nav-links">
+      <a href="index.html#home" class="nav-link js-utm-link active" aria-label="Home"><i class="fas fa-home" aria-hidden="true"></i> <span data-i18n="nav_home">الرئيسية</span></a>
+      <a href="index.html#services" class="nav-link js-utm-link" aria-label="Services"><i class="fas fa-cogs" aria-hidden="true"></i> <span data-i18n="nav_services">الخدمات</span></a>
+      <a href="about.html" class="nav-link js-utm-link" aria-label="About Us"><i class="fas fa-circle-info" aria-hidden="true"></i> <span data-i18n="nav_about">من نحن</span></a>
+      <a href="index.html#contact" class="nav-link js-utm-link" aria-label="Contact"><i class="fas fa-phone-alt" aria-hidden="true"></i> <span data-i18n="nav_contact">اتصل بنا</span></a>
+    </div>
+    <div class="nav-controls">
+      <button id="lang-switcher" class="nav-btn ripple-btn" aria-label="Switch Language">
+        <i class="fas fa-globe" aria-hidden="true"></i>
+        <span class="text-btn" id="lang-text">EN</span>
+      </button>
+      <button id="theme-toggle" class="nav-btn ripple-btn" aria-label="Toggle Theme">
+        <i class="fas fa-moon" id="theme-icon" aria-hidden="true"></i>
+        <span class="text-btn" id="theme-text">Dark Mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="hero-section reveal show" id="home">
+    <div class="video-wrapper">
+      <video autoPlay loop muted playsInline preload="auto">
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4" type="video/mp4">
+      </video>
+      <div class="gradient-mask"></div>
+    </div>
+    <div class="hero-content">
+      <div class="tagline">CONTROL • BUILD • GROW</div>
+      <h1 class="hero-title">
+        AXENTRO
+        <span class="muted" data-i18n="hero_desc">حلول رقمية وبرمجية متكاملة لبناء حضورك على الإنترنت <span class="eye-pill"><span class="eye-dot"></span></span> وتطوير أنظمة ويب ذكية تسهل إدارة عملك.</span>
+      </h1>
+      <div class="hero-services">WEB DEVELOPMENT • E-COMMERCE • CRM • BOOKING SYSTEMS • CLINIC MANAGEMENT • QR MENU • INVENTORY & LISTINGS</div>
+      <br>
+      <a href="#contact" class="cta-button ripple-btn" onclick="trackClick('cta_consult','احجز استشارتك الآن','home');" data-i18n="hero_cta">احجز استشارتك الآن</a>
+    </div>
+  </section>
+
+  <section id="services" class="reveal">
+    <div class="container">
+      <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 40px; text-transform: uppercase;" data-i18n="services_title">خدماتنا | Services</h2>
+      <div class="cards" id="servicesGrid">
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="about.html#websites" onclick="trackService('websites','Business & Landing Websites');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop" alt="Business Websites" loading="lazy">
+            <h3>Business & Landing Websites</h3>
+            <p data-i18n="serv_1_desc">تصميم وتطوير مواقع تعريفية احترافية وصفحات هبوط (Landing Pages) مخصصة لزيادة المبيعات وجذب العملاء.</p>
+            <span class="more-link" data-i18n="know_more">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+        </div></div></div>
+
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="about.html#portfolio" onclick="trackService('portfolio','Portfolio & CV Websites');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop" alt="Portfolio & CV" loading="lazy">
+            <h3>Portfolio & CV Websites</h3>
+            <p data-i18n="serv_2_desc">مواقع شخصية إلكترونية لعرض أعمالك أو سيرتك الذاتية بشكل راقٍ يترك انطباعاً قوياً لدى أصحاب العمل والعملاء.</p>
+            <span class="more-link" data-i18n="know_more">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+        </div></div></div>
+
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="about.html#booking" onclick="trackService('booking','Booking & Reservation Systems');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" alt="Booking Systems" loading="lazy">
+            <h3>Booking & Reservation Systems</h3>
+            <p data-i18n="serv_3_desc">أنظمة حجز مواعيد إلكترونية متكاملة للعيادات، الصالونات، والمراكز الاستشارية، لتسهيل إدارة وقتك ووقت عملائك.</p>
+            <span class="more-link" data-i18n="know_more">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+        </div></div></div>
+
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="about.html#clinics" onclick="trackService('clinics','Clinic Management Systems');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop" alt="Clinic Management" loading="lazy">
+            <h3>Clinic Management Systems</h3>
+            <p data-i18n="serv_4_desc">أنظمة ويب متخصصة لإدارة العيادات والمراكز الطبية: ملفات المرضى، المواعيد، الفواتير، والتقارير الطبية في مكان واحد.</p>
+            <span class="more-link" data-i18n="know_more">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+        </div></div></div>
+
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="about.html#ecommerce" onclick="trackService('ecommerce','E-commerce & Product Showcase');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop" alt="E-commerce" loading="lazy">
+            <h3>E-commerce & Product Showcase</h3>
+            <p data-i18n="serv_5_desc">متاجر إلكترونية متكاملة أو مواقع لعرض المنتجات والكتالوجات، مع لوحات تحكم سهلة لإدارة الطلبات والمنتجات.</p>
+            <span class="more-link" data-i18n="know_more">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+        </div></div></div>
+
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="about.html#inventory" onclick="trackService('inventory','Web Inventory & Sales');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=800&auto=format&fit=crop" alt="Web Inventory" loading="lazy">
+            <h3>Web Inventory & Sales</h3>
+            <p data-i18n="serv_6_desc">أنظمة ويب لإدارة المخزون والمبيعات تعمل من أي متصفح، تتبع حركة الأصناف، الفواتير، وتقارير الأداء بدقة.</p>
+            <span class="more-link" data-i18n="know_more">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+        </div></div></div>
+
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="about.html#crm" onclick="trackService('crm','CRM Systems');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="CRM Systems" loading="lazy">
+            <h3>CRM Systems</h3>
+            <p data-i18n="serv_7_desc">أنظمة لإدارة علاقات العملاء (CRM): تسجيل بيانات العملاء، متابعة خطط البيع، وتسجيل الاتصالات لزيادة المبيعات وتنظيم فريق العمل.</p>
+            <span class="more-link" data-i18n="know_more">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+        </div></div></div>
+
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="about.html#qr-menu" onclick="trackService('qr-menu','QR Menu & Smart Ordering');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop" alt="QR Menu" loading="lazy">
+            <h3>QR Menu & Smart Ordering</h3>
+            <p data-i18n="serv_8_desc">قوائم رقمية للمطاعم والكافيهات تعمل بمسح الـ QR كود، تتيح للعملاء تصفح المنيو وإرسال الطلبات مباشرة للمطبخ أو الكاشير.</p>
+            <span class="more-link" data-i18n="know_more">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+        </div></div></div>
+
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="about.html#listings" onclick="trackService('listings','Real Estate & Listing Platforms');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop" alt="Real Estate Platforms" loading="lazy">
+            <h3>Real Estate & Listing Platforms</h3>
+            <p data-i18n="serv_9_desc">منصات ويب متكاملة لعرض العقارات أو الإعلانات المبوبة، تتيح رفع تفاصيل العقار، الصور، وتصفية البحث للعملاء بسهولة.</p>
+            <span class="more-link" data-i18n="know_more">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+        </div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <div class="container">
+      <div class="final-cta-text" data-i18n="contact_title">احجز استشارتك الآن</div>
+      <div style="opacity:.8; max-width: 760px; margin: 0 auto 35px; font-size: clamp(0.9rem, 2vw, 1.1rem);" data-i18n="contact_desc">نصنع لك حضورًا رقميًا يعكس قوة مشروعك ويزيد ثقة عملائك<br><span style="opacity:.7">We build a digital presence that strengthens your brand and builds trust.</span></div>
+      <div class="cta">
+        <a class="btn btn-wa ripple-btn" href="#" onclick="whatsapp('contact_section'); return false;"><i class="fab fa-whatsapp" aria-hidden="true"></i> <span data-i18n="btn_wa">واتساب</span></a>
+        <a class="btn btn-mail ripple-btn" href="mailto:axentroofficial@gmail.com" onclick="trackClick('email','تواصل معنا عبر البريد','contact_section');"><i class="fas fa-envelope" aria-hidden="true"></i> <span data-i18n="btn_mail">بريد</span></a>
+        <a class="btn btn-fb ripple-btn" href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" onclick="trackClick('facebook','تابعنا على فيسبوك','contact_section');"><i class="fab fa-facebook-f" aria-hidden="true"></i> <span data-i18n="btn_fb">فيسبوك</span></a>
+        <a class="btn btn-ig ripple-btn" href="https://www.instagram.com/axentro.official" target="_blank" rel="noopener" onclick="trackClick('instagram','تابعنا على انستجرام','contact_section');"><i class="fab fa-instagram" aria-hidden="true"></i> <span data-i18n="btn_ig">انستقرام</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="main">© 2024 Axentro – All Rights Reserved</div>
+    <div class="by">By Axentro Team</div>
+    <div class="footer-icons">
+      <a href="#" class="ripple-btn" aria-label="WhatsApp" onclick="whatsapp('footer'); return false;"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+      <a href="mailto:axentroofficial@gmail.com" class="ripple-btn" aria-label="Email" onclick="trackClick('email','Email Icon','footer');"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+      <a href="https://facebook.com/AxentroSamrtSolutions" target="_blank" rel="noopener" class="ripple-btn" aria-label="Facebook" onclick="trackClick('facebook','Facebook Icon','footer');"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+      <a href="https://www.instagram.com/axentro.official" target="_blank" rel="noopener" class="ripple-btn" aria-label="Instagram" onclick="trackClick('instagram','Instagram Icon','footer');"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+    </div>
+  </footer>
+
+  <a class="floating-wa ripple-btn" href="#" aria-label="Floating WhatsApp" onclick="whatsapp('floating'); return false;"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+
+  <!-- Scripts: Loaded with defer for performance -->
+  <script src="assets/js/ga.js"></script>
+  <script src="assets/js/language.js" defer></script>
+  <script src="assets/js/theme.js" defer></script>
+  <script src="assets/js/particles.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  
+  <script>
+    // Initialize Analytics after ga.js is loaded
+    window.addEventListener('DOMContentLoaded', function() {
+      if (window.AxentroAnalytics) {
+        AxentroAnalytics.init({ 
+          page: "index", 
+          utm_campaign_default: "axentro", 
+          enable_qr_scan: true, 
+          enable_internal_utm_links: true 
+        });
+      }
+    });
+  </script>
+</body>
+</html>
