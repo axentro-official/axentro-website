@@ -29,13 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', window.createRipple);
   });
 
-  // 3. Scroll Progress Bar
+  // 3. Scroll Progress Bar (Throttled for Performance)
   const bar = document.getElementById('scrollProgress');
   if (bar) {
-    window.addEventListener('scroll', () => {
+    let ticking = false;
+    const updateBar = () => {
       const h = document.documentElement;
       const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
       bar.style.width = p + '%';
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateBar);
+        ticking = true;
+      }
     }, { passive: true });
   }
 
@@ -91,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 6. Analytics & Tracking Helpers (To keep HTML clean)
-  // These are already defined in ga.js, but we ensure they exist to prevent JS errors if ga.js is delayed
   window.trackClick = window.trackClick || function(category, label, page) {};
   window.trackService = window.trackService || function(serviceId, serviceName) {};
   window.whatsapp = window.whatsapp || function(source) { console.log('WhatsApp clicked from: ' + source); };
