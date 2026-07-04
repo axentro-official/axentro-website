@@ -248,6 +248,13 @@
       },
       componentProps: {
         title: 'Axentro Assistant',
+      },
+      auth: {
+        type: 'token',
+        token: 'pat_CCWtwHoJTTB3s9v2Ub3vWCN2Fwdmyev91bT4UtiKH1qr6FGLYi69zqqLX8SEQBpY',
+        onRefreshToken: function () {
+          return 'pat_CCWtwHoJTTB3s9v2Ub3vWCN2Fwdmyev91bT4UtiKH1qr6FGLYi69zqqLX8SEQBpY'
+        }
       }
     });
   </script>
