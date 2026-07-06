@@ -63,7 +63,7 @@
       dismiss: 'Dismiss',
       quick_actions: ['I need a website', 'I need a management system', 'I have a project idea', 'What services does Axentro offer?'],
       wa_cta: 'Continue on WhatsApp',
-      wa_summary: 'Hello Axentro,\nI spoke with the AI Assistant and I'd like to discuss my project.'
+      wa_summary: "Hello Axentro,\nI spoke with the AI Assistant and I'd like to discuss my project."
     }
   };
 
