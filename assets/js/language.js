@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ar: { 
       // Shared
       nav_home: "الرئيسية", nav_services: "الخدمات", nav_about: "من نحن", nav_contact: "اتصل بنا", theme_light: "الوضع النهاري", theme_dark: "الوضع الليلي", lang_switch: "EN",
-      know_more: "اعرف المزيد <i class='fas fa-arrow-left'></i>", btn_wa: "واتساب", btn_mail: "بريد", btn_fb: "فيسبوك", btn_ig: "انستقرام",
+      know_more: "اعرف المزيد <i class='fas fa-arrow-left'></i>", btn_wa: "واتساب", btn_mail: "بريد", btn_fb: "فيسبوك", btn_ig: "انستقرام", btn_tiktok: "تيك توك",
       // Index
       hero_desc: 'حلول رقمية وبرمجية متكاملة لبناء حضورك على الإنترنت <span class="eye-pill"><span class="eye-dot"></span></span> وتطوير أنظمة ويب ذكية تسهل إدارة عملك.', hero_cta: "احجز استشارتك الآن",
       services_title: "خدماتنا | Services", contact_title: "احجز استشارتك الآن", contact_desc: 'نصنع لك حضورًا رقميًا يعكس قوة مشروعك ويزيد ثقة عملائك<br><span style="opacity:.7">We build a digital presence that strengthens your brand and builds trust.</span>',
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     en: { 
       // Shared
       nav_home: "Home", nav_services: "Services", nav_about: "About", nav_contact: "Contact", theme_light: "Light Mode", theme_dark: "Dark Mode", lang_switch: "AR",
-      know_more: "Learn more <i class='fas fa-arrow-right'></i>", btn_wa: "WhatsApp", btn_mail: "Email", btn_fb: "Facebook", btn_ig: "Instagram",
+      know_more: "Learn more <i class='fas fa-arrow-right'></i>", btn_wa: "WhatsApp", btn_mail: "Email", btn_fb: "Facebook", btn_ig: "Instagram", btn_tiktok: "TikTok",
       // Index
       hero_desc: 'Integrated digital and software solutions to build your online presence <span class="eye-pill"><span class="eye-dot"></span></span> and develop smart web systems that facilitate your business management.', hero_cta: "Book Your Consultation",
       services_title: "Our Services", contact_title: "Book Your Consultation Now", contact_desc: 'We create a digital presence that reflects the strength of your project and increases your customers\' trust<br><span style="opacity:.7">We build a digital presence that strengthens your brand and builds trust.</span>',
