@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'axentro-v2-prod';
+const CACHE_VERSION = 'axentro-v3-ai-prod';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
@@ -8,11 +8,13 @@ const PRECACHE_URLS = [
   '/assets/css/style.css',
   '/assets/css/animations.css',
   '/assets/css/responsive.css',
+  '/assets/css/ai-assistant.css',
   '/assets/js/main.js',
   '/assets/js/theme.js',
   '/assets/js/language.js',
   '/assets/js/particles.js',
   '/assets/js/ga.js',
+  '/assets/js/ai-assistant.js',
   '/manifest.json',
   '/favicon.png'
 ];
@@ -64,7 +66,13 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Strategy 2: Stale While Revalidate for Cross-Origin (Fonts, Images, Analytics, CloudFront Video)
+  // Strategy 2: Network Only for AI Worker API (Prevent caching AI responses)
+  if (url.origin === 'https://axentro-ai-assistant.axentroofficial.workers.dev') {
+    event.respondWith(fetch(request));
+    return;
+  }
+
+  // Strategy 3: Stale While Revalidate for Cross-Origin (Fonts, Images, Analytics, CloudFront Video)
   if (url.origin !== self.location.origin) {
     event.respondWith(
       caches.match(request).then((cachedResponse) => {
@@ -81,7 +89,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Strategy 3: Cache First for Same-Origin Static Assets (CSS, JS, Images)
+  // Strategy 4: Cache First for Same-Origin Static Assets (CSS, JS, Images)
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       return cachedResponse || fetch(request).then((networkResponse) => {
