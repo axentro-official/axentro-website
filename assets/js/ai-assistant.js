@@ -51,7 +51,7 @@
     en: {
       title: 'Axentro AI',
       status: 'Online',
-      welcome: 'Hello 👋\nI'm the Axentro AI Assistant.\nI can help you understand our services and choose the right solution for your project.',
+      welcome: "Hello 👋\nI'm the Axentro AI Assistant.\nI can help you understand our services and choose the right solution for your project.",
       placeholder: 'Type your message...',
       send: 'Send',
       close: 'Close',
