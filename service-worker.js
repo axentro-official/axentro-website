@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'axentro-v3-ai-prod';
+const CACHE_VERSION = 'axentro-v4-ai-prod';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
@@ -89,7 +89,21 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Strategy 4: Cache First for Same-Origin Static Assets (CSS, JS, Images)
+  // Strategy 4: Network First for Same-Origin JavaScript and CSS (Critical Fix)
+  if (request.destination === 'script' || request.destination === 'style') {
+    event.respondWith(
+      fetch(request).then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const clone = networkResponse.clone();
+          caches.open(CACHE_VERSION).then(cache => cache.put(request, clone));
+        }
+        return networkResponse;
+      }).catch(() => caches.match(request))
+    );
+    return;
+  }
+
+  // Strategy 5: Cache First for Same-Origin Other Static Assets (Images, Icons, etc.)
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       return cachedResponse || fetch(request).then((networkResponse) => {
