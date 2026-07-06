@@ -1,0 +1,397 @@
+/* ============================================
+   Axentro AI Assistant - Stylesheet
+   Version: 1.2 (Production - Explicit RTL/LTR & Layout Fixes)
+   ============================================ */
+
+/* 1. Floating Action Button (FAB) - Dynamic Positioning */
+.ax-ai-fab {
+  position: fixed;
+  /* Default (LTR): WhatsApp is Left, AI is Right */
+  right: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  width: 55px;
+  height: 55px;
+  background: var(--accent);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 9998;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+/* RTL Mode: WhatsApp is Right (20px), AI moves to Left (20px) */
+html[dir="rtl"] .ax-ai-fab {
+  right: auto;
+  left: 20px;
+}
+
+.ax-ai-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(159, 255, 0, 0.4);
+}
+
+.ax-ai-fab:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+
+.ax-ai-fab.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+}
+
+/* Mobile adjustments: WhatsApp is 15px, AI matches opposite side */
+@media (max-width: 768px) {
+  .ax-ai-fab {
+    right: 15px;
+    bottom: calc(15px + env(safe-area-inset-bottom));
+  }
+  html[dir="rtl"] .ax-ai-fab {
+    right: auto;
+    left: 15px;
+  }
+}
+
+/* 2. Chat Panel Layout & Smooth Animation */
+.ax-ai-panel {
+  position: fixed;
+  /* Default (LTR) */
+  right: 20px;
+  bottom: calc(85px + env(safe-area-inset-bottom));
+  width: 380px;
+  max-width: calc(100vw - 40px);
+  height: 70vh;
+  max-height: 600px;
+  background: var(--card-bg);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 9998;
+  
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+}
+
+/* RTL Mode: Panel moves to Left */
+html[dir="rtl"] .ax-ai-panel {
+  right: auto;
+  left: 20px;
+}
+
+.ax-ai-panel.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0s;
+}
+
+/* Mobile Full-screen / Bottom Sheet with Safe Areas */
+@media (max-width: 768px) {
+  .ax-ai-panel {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
+    border: none;
+  }
+  html[dir="rtl"] .ax-ai-panel {
+    left: 0;
+  }
+}
+
+/* 3. Chat Header (with Mobile Safe Area Top) */
+.ax-ai-header {
+  padding: 16px 20px;
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .ax-ai-header {
+    padding-top: calc(16px + env(safe-area-inset-top));
+  }
+}
+
+.ax-ai-header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ax-ai-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ax-ai-status {
+  font-size: 0.75rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ax-ai-status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.ax-ai-close {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ax-ai-close:hover { background: var(--link-hover-bg); color: var(--text); }
+.ax-ai-close:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+
+/* 4. Chat Body (Flex Shrink Fix for Mobile Keyboard) */
+.ax-ai-body {
+  flex: 1 1 auto;
+  min-height: 0; /* Crucial for flexbox to allow shrinking when keyboard opens */
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-border) transparent;
+}
+
+.ax-ai-body::-webkit-scrollbar { width: 6px; }
+.ax-ai-body::-webkit-scrollbar-thumb { background-color: var(--glass-border); border-radius: 10px; }
+
+/* 5. Messages - Explicit RTL/LTR via Selectors */
+.ax-ai-msg {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.ax-ai-msg--bot {
+  background: var(--glass-bg);
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+}
+
+.ax-ai-msg--user {
+  background: var(--accent);
+  color: var(--btn-text);
+}
+
+/* Explicit LTR Alignment & Corners */
+html[dir="ltr"] .ax-ai-msg--bot {
+  align-self: flex-start;
+  border-top-left-radius: 2px;
+}
+html[dir="ltr"] .ax-ai-msg--user {
+  align-self: flex-end;
+  border-top-right-radius: 2px;
+}
+
+/* Explicit RTL Alignment & Corners */
+html[dir="rtl"] .ax-ai-msg--bot {
+  align-self: flex-start; /* In RTL, flex-start is right */
+  border-top-right-radius: 2px;
+}
+html[dir="rtl"] .ax-ai-msg--user {
+  align-self: flex-end; /* In RTL, flex-end is left */
+  border-top-left-radius: 2px;
+}
+
+/* Error State - Theme Adaptive Local Variables */
+.ax-ai-panel {
+  --ax-error-bg: rgba(220, 50, 50, 0.1);
+  --ax-error-border: rgba(220, 50, 50, 0.2);
+  --ax-error-text: #dc3232;
+}
+
+[data-theme="dark"] .ax-ai-panel {
+  --ax-error-bg: rgba(255, 100, 100, 0.1);
+  --ax-error-border: rgba(255, 100, 100, 0.3);
+  --ax-error-text: #ff8a80;
+}
+
+.ax-ai-msg--error {
+  background: var(--ax-error-bg);
+  color: var(--ax-error-text);
+  border: 1px solid var(--ax-error-border);
+  align-self: center;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* 6. Typing Indicator */
+.ax-ai-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 18px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  width: fit-content;
+}
+
+/* Explicit LTR/RTL for Typing Indicator */
+html[dir="ltr"] .ax-ai-typing {
+  align-self: flex-start;
+  border-top-left-radius: 2px;
+}
+html[dir="rtl"] .ax-ai-typing {
+  align-self: flex-start;
+  border-top-right-radius: 2px;
+}
+
+.ax-ai-typing-dot {
+  width: 8px; height: 8px;
+  background: var(--muted);
+  border-radius: 50%;
+  animation: ax-ai-bounce 1.4s infinite ease-in-out both;
+}
+
+.ax-ai-typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.ax-ai-typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes ax-ai-bounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* 7. Action Buttons (Focus & States) */
+.ax-ai-quick-actions {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+}
+
+.ax-ai-quick-btn {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-sizing: border-box;
+}
+
+.ax-ai-quick-btn:hover { background: var(--accent); color: var(--btn-text); }
+.ax-ai-quick-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.ax-ai-wa-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; margin-top: 15px; padding: 12px;
+  background: #25D366; color: #000; text-decoration: none;
+  border-radius: 8px; font-weight: 600; font-family: 'Outfit', sans-serif;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.ax-ai-wa-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
+.ax-ai-wa-btn:focus-visible { outline: 2px solid #25D366; outline-offset: 2px; }
+
+/* 8. Input Area (Composer with Mobile Safe Area Bottom) */
+.ax-ai-composer {
+  padding: 12px;
+  border-top: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .ax-ai-composer {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+}
+
+.ax-ai-textarea {
+  flex: 1;
+  background: var(--bg-base);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 10px 15px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  resize: none;
+  max-height: 120px;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.ax-ai-textarea:focus { outline: none; border-color: var(--accent); }
+
+.ax-ai-send-btn {
+  width: 42px; height: 42px;
+  background: var(--accent); color: var(--btn-text);
+  border: none; border-radius: 8px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; transition: opacity 0.2s, transform 0.2s; flex-shrink: 0;
+}
+
+.ax-ai-send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.ax-ai-send-btn:not(:disabled):hover { transform: scale(1.05); }
+.ax-ai-send-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+/* 9. Accessibility & Reduced Motion */
+.ax-ai-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ax-ai-fab, .ax-ai-panel, .ax-ai-msg, .ax-ai-typing-dot, .ax-ai-send-btn, .ax-ai-wa-btn {
+    transition: none !important; animation: none !important;
+  }
+}
