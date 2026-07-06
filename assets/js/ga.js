@@ -210,7 +210,7 @@
     } catch (e) {}
   }
 
-  function whatsapp(origin, pageName, cfg) {
+  function whatsapp(origin, pageName, cfg, customMessage) {
     try {
       const utm = getUTMForEvent(cfg);
       window.gtag("event", "whatsapp_click", {
@@ -220,9 +220,14 @@
       });
     } catch (e) {}
 
-    const msg = `مرحبًا فريق Axentro،
+    let msg;
+    if (typeof customMessage === 'string' && customMessage.trim().length > 0) {
+      msg = customMessage;
+    } else {
+      msg = `مرحبًا فريق Axentro،
 أرغب في الاستفسار عن حلولكم البرمجية وتحديد أنسب خدمة لمشروعي.
 بانتظار تواصلكم، شكرًا.`;
+    }
 
     const url = "https://wa.me/201146476993?text=" + encodeURIComponent(msg);
     const w = window.open(url, "_blank", "noopener,noreferrer");
@@ -352,8 +357,8 @@
     trackVCardDownload(section, AxentroAnalytics._page || "", AxentroAnalytics._cfg || {});
   };
 
-  window.whatsapp = function (origin) {
-    whatsapp(origin, AxentroAnalytics._page || "", AxentroAnalytics._cfg || {});
+  window.whatsapp = function (origin, customMessage) {
+    whatsapp(origin, AxentroAnalytics._page || "", AxentroAnalytics._cfg || {}, customMessage);
   };
 
   window.copyServiceLink = function (id) {
