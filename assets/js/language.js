@@ -30,7 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
       faq_6_q: "هل الأنظمة هتشتغل على الموبايل؟ <i class='fas fa-chevron-down chev'></i>", faq_6_a: "نعم، كل المواقع والأنظمة اللي بنبرمجها بتكون \"Responsive\" يعني بتشتغل وتظهر بشكل احترافي على الموبايل، التابلت، والكمبيوتر من خلال أي متصفح إنترنت.",
       faq_7_q: "هل في دعم بعد التسليم؟ <i class='fas fa-chevron-down chev'></i>", faq_7_a: "نعم، بنوفر دعم وتعديلات حسب الاتفاق، مع إمكانية إضافة خصائص جديدة مع الوقت.",
       // Links Page
-      links_desc1: "اختر وسيلة التواصل الأنسب", links_desc2: 'وسنرد عليك سريعًا <span class="eye-pill"><span class="eye-dot"></span></span> Choose your preferred contact method.',
+      links_title: "Axentro | اكسنترو للحلول الرقمية والبرمجية",
+      links_desc1: "اختر وسيلة التواصل الأنسب",
+      links_desc2: 'وسنرد عليك سريعًا <span class="eye-pill"><span class="eye-dot"></span></span> Choose your preferred contact method.',
       links_whatsapp: "تواصل معنا عبر واتساب", links_call: "اتصال مباشر", links_email: "تواصل معنا عبر البريد", links_website: "زيارة الموقع الرئيسي", links_instagram: "تابعنا على انستقرام", links_tiktok: "تابعنا على تيك توك", links_facebook: "تابعنا على فيسبوك", links_vcard: "احفظ بياناتنا في جهات الاتصال",
       links_footer_main: "© 2024 Axentro – جميع الحقوق محفوظة", links_footer_by: "By Axentro Team"
     },
@@ -60,7 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
       faq_6_q: "Will the systems work on mobile? <i class='fas fa-chevron-down chev'></i>", faq_6_a: "Yes, all websites and systems we program are 'Responsive', meaning they work and appear professionally on mobile, tablet, and computer through any internet browser.",
       faq_7_q: "Is there support after delivery? <i class='fas fa-chevron-down chev'></i>", faq_7_a: "Yes, we provide support and modifications according to the agreement, with the possibility of adding new features over time.",
       // Links Page
-      links_desc1: "Choose your preferred contact method", links_desc2: 'and we\'ll get back to you quickly <span class="eye-pill"><span class="eye-dot"></span></span> اختر وسيلة التواصل الأنسب وسنرد عليك سريعًا.',
+      links_title: "Axentro | Web & Digital Solutions",
+      links_desc1: "Choose your preferred contact method",
+      links_desc2: 'and we\'ll get back to you quickly <span class="eye-pill"><span class="eye-dot"></span></span> اختر وسيلة التواصل الأنسب وسنرد عليك سريعًا.',
       links_whatsapp: "Contact us via WhatsApp", links_call: "Direct Call", links_email: "Contact us via Email", links_website: "Visit Main Website", links_instagram: "Follow us on Instagram", links_tiktok: "Follow us on TikTok", links_facebook: "Follow us on Facebook", links_vcard: "Save our contact details",
       links_footer_main: "© 2024 Axentro – All Rights Reserved", links_footer_by: "By Axentro Team"
     }
