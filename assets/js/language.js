@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Links Page
       links_title: "Axentro | Web & Digital Solutions",
       links_desc1: "Choose your preferred contact method",
-      links_desc2: 'and we\'ll get back to you quickly <span class="eye-pill"><span class="eye-dot"></span></span> اختر وسيلة التواصل الأنسب وسنرد عليك سريعًا.',
+      links_desc2: 'and we\'ll get back to you quickly <span class="eye-pill"><span class="eye-dot"></span></span> Choose your preferred contact method.',
       links_whatsapp: "Contact us via WhatsApp", links_call: "Direct Call", links_email: "Contact us via Email", links_website: "Visit Main Website", links_instagram: "Follow us on Instagram", links_tiktok: "Follow us on TikTok", links_facebook: "Follow us on Facebook", links_vcard: "Save our contact details",
       links_footer_main: "© 2024 Axentro – All Rights Reserved", links_footer_by: "By Axentro Team"
     }
