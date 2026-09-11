@@ -273,15 +273,8 @@
         });
       } catch (e) {}
 
-      // clean hash, keep query
-      const delay = (cfg && cfg.clean_hash_delay_ms != null) ? cfg.clean_hash_delay_ms : DEFAULTS.clean_hash_delay_ms;
-      setTimeout(() => {
-        try {
-          if (history && history.replaceState) {
-            history.replaceState(null, document.title, window.location.pathname + window.location.search);
-          }
-        } catch (e) {}
-      }, delay);
+      // Hash is intentionally kept in the URL: it powers hash-preserving language switching
+      // (e.g. /en/about.html#crm -> /about.html#crm). No cleanup.
     } catch (e) {}
   }
 
