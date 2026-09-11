@@ -58,15 +58,12 @@
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
   
-  <!-- Prevent Flash of Incorrect Theme/Direction -->
+  <!-- Theme init (language and direction are static Arabic on this page) -->
   <script>
     (function() {
       const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const savedTheme = localStorage.getItem('theme') || (systemPrefersDark ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', savedTheme);
-      const savedLang = localStorage.getItem('lang') || 'ar';
-      document.documentElement.setAttribute('lang', savedLang);
-      document.documentElement.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
     })();
   </script>
 
@@ -191,8 +188,7 @@
   ]
 }
 </script>
-  
-  <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -322,8 +318,7 @@
       </div>
     </div>
   </section>
-
-  <section class="reveal">
+<section class="reveal">
     <div class="container">
       <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom:10px;" data-i18n="process_title">كيف نعمل معك</h2>
       <p style="max-width:860px; margin:12px auto 0; opacity:.8;" data-i18n="process_desc">أسلوب عمل واضح—بدون تعقيد وبأسرع طريق للنتيجة.</p>
