@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-    window.AxentroLang = {
+  window.AxentroLang = {
     updateThemeText: function(isLight) {
       const currentLang = document.documentElement.getAttribute('lang') || 'ar';
       themeText.textContent = isLight ? translations[currentLang].theme_light : translations[currentLang].theme_dark;
@@ -78,14 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // --- Language architecture: "/" = Arabic (static), "/en/" = English (static) ---
-  // Converted home pages: the switcher NAVIGATES between the two versions.
-  // Not-yet-converted pages (about.html, links.html, ...): keep the original in-page switching.
+  // Converted pages (root, /en/, about.html, en/about.html): the switcher NAVIGATES between versions.
+  // Not-yet-converted pages (links.html, ...): keep the original in-page switching.
 
   const path = window.location.pathname;
   const isEnglishPage = path === '/en' || path.indexOf('/en/') === 0;
-  const isConvertedHome = isEnglishPage || path === '/' || path === '/index.html';
+  const isArabicAbout = path === '/about.html';
+  const isEnglishAbout = path === '/en/about.html';
+  const isConvertedPage = isEnglishPage || isArabicAbout || path === '/' || path === '/index.html';
 
-  if (isConvertedHome) {
+  if (isConvertedPage) {
     // The static HTML already has the correct language content.
     // Sync html attributes + stored preference with the page actually being viewed.
     const pageLang = isEnglishPage ? 'en' : 'ar';
@@ -96,10 +98,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Button label = the language you can switch TO
     langText.textContent = translations[pageLang].lang_switch;
 
+    // Navigate to the equivalent page in the other language (hash preserved, e.g. #crm)
     langSwitcher.addEventListener('click', (e) => {
       if (window.createRipple) window.createRipple(e);
       const hash = window.location.hash || '';
-      window.location.href = isEnglishPage ? ('/' + hash) : ('/en/' + hash);
+      let target;
+      if (isEnglishAbout) {
+        target = '/about.html' + hash;
+      } else if (isArabicAbout) {
+        target = '/en/about.html' + hash;
+      } else if (isEnglishPage) {
+        target = '/' + hash;
+      } else {
+        target = '/en/' + hash;
+      }
+      window.location.href = target;
     });
   } else {
     // Legacy pages: original behavior, unchanged, until they get their own static versions.
