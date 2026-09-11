@@ -58,15 +58,12 @@
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
   
-  <!-- Prevent Flash of Incorrect Theme/Direction (Critical for UX) -->
+    <!-- Theme init (language and direction are static Arabic on this page) -->
   <script>
     (function() {
       const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const savedTheme = localStorage.getItem('theme') || (systemPrefersDark ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', savedTheme);
-      const savedLang = localStorage.getItem('lang') || 'ar';
-      document.documentElement.setAttribute('lang', savedLang);
-      document.documentElement.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
     })();
   </script>
 
