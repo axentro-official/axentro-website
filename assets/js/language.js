@@ -98,10 +98,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Button label = the language you can switch TO
     langText.textContent = translations[pageLang].lang_switch;
 
-    // Navigate to the equivalent page in the other language (hash preserved, e.g. #crm)
+        // Navigate to the equivalent page in the other language.
+    // Position preserved: URL hash if present, otherwise the section currently in view.
     langSwitcher.addEventListener('click', (e) => {
       if (window.createRipple) window.createRipple(e);
-      const hash = window.location.hash || '';
+
+      let hash = window.location.hash;
+
+      if (!hash && window.scrollY > 100) {
+        // Detect the section/card the user is currently viewing and carry it over
+        const anchors = document.querySelectorAll('section[id], .card[id]');
+        anchors.forEach((el) => {
+          if (el.getBoundingClientRect().top <= window.innerHeight * 0.4) {
+            hash = '#' + el.id;
+          }
+        });
+      }
+
       let target;
       if (isEnglishAbout) {
         target = '/about.html' + hash;
