@@ -278,6 +278,53 @@
     } catch (e) {}
   }
 
+  // ====== COPY TOAST (site-styled, auto-dismiss, language-aware) ======
+  function showCopyToast() {
+    try {
+      const isEn = document.documentElement.lang === 'en';
+      const msg = isEn ? 'Service link copied' : 'تم نسخ رابط الخدمة';
+
+      let style = document.getElementById('ax-toast-style');
+      if (!style) {
+        style = document.createElement('style');
+        style.id = 'ax-toast-style';
+        style.textContent = [
+          '.ax-toast{position:fixed;bottom:96px;left:50%;transform:translate(-50%,14px);',
+          'background:var(--card-bg,rgba(20,20,24,.85));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);',
+          'border:1px solid var(--accent,#9fff00);color:var(--text,#fff);',
+          'padding:12px 22px;border-radius:50px;font-weight:600;font-size:.95rem;',
+          'box-shadow:0 10px 30px rgba(0,0,0,.3);z-index:10001;display:flex;align-items:center;gap:10px;',
+          'opacity:0;transition:transform .28s ease,opacity .28s ease;pointer-events:none;white-space:nowrap;}',
+          '.ax-toast .ax-toast-icon{color:var(--accent,#9fff00);font-size:1.05rem;}',
+          '.ax-toast.ax-toast--show{transform:translate(-50%,0);opacity:1;}'
+        ].join('');
+        document.head.appendChild(style);
+      }
+
+      const existing = document.getElementById('ax-copy-toast');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.id = 'ax-copy-toast';
+      toast.className = 'ax-toast';
+      const icon = document.createElement('i');
+      icon.className = 'fas fa-check-circle ax-toast-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      const label = document.createElement('span');
+      label.textContent = msg;
+      toast.appendChild(icon);
+      toast.appendChild(label);
+      document.body.appendChild(toast);
+
+      requestAnimationFrame(() => toast.classList.add('ax-toast--show'));
+
+      setTimeout(() => {
+        toast.classList.remove('ax-toast--show');
+        setTimeout(() => toast.remove(), 320);
+      }, 2600);
+    } catch (e) {}
+  }
+
   async function copyServiceLink(id, pageName, cfg) {
     const url = new URL(window.location.href);
     url.hash = id;
@@ -286,7 +333,7 @@
     try {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         await navigator.clipboard.writeText(text);
-        alert("تم نسخ رابط الخدمة ✅");
+        showCopyToast();
       } else {
         prompt("انسخ الرابط:", text);
       }
