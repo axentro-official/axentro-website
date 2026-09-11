@@ -70,35 +70,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  window.AxentroLang = {
+    window.AxentroLang = {
     updateThemeText: function(isLight) {
       const currentLang = document.documentElement.getAttribute('lang') || 'ar';
       themeText.textContent = isLight ? translations[currentLang].theme_light : translations[currentLang].theme_dark;
     }
   };
 
-  function applyLanguage(lang) {
-    const dict = translations[lang];
-    document.documentElement.setAttribute('lang', lang);
-    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-    localStorage.setItem('lang', lang);
-    
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (dict[key]) el.innerHTML = dict[key];
+  // --- Language architecture: "/" = Arabic (static), "/en/" = English (static) ---
+  // Converted home pages: the switcher NAVIGATES between the two versions.
+  // Not-yet-converted pages (about.html, links.html, ...): keep the original in-page switching.
+
+  const path = window.location.pathname;
+  const isEnglishPage = path === '/en' || path.indexOf('/en/') === 0;
+  const isConvertedHome = isEnglishPage || path === '/' || path === '/index.html';
+
+  if (isConvertedHome) {
+    // The static HTML already has the correct language content.
+    // Sync html attributes + stored preference with the page actually being viewed.
+    const pageLang = isEnglishPage ? 'en' : 'ar';
+    document.documentElement.setAttribute('lang', pageLang);
+    document.documentElement.setAttribute('dir', pageLang === 'ar' ? 'rtl' : 'ltr');
+    localStorage.setItem('lang', pageLang);
+
+    // Button label = the language you can switch TO
+    langText.textContent = translations[pageLang].lang_switch;
+
+    langSwitcher.addEventListener('click', (e) => {
+      if (window.createRipple) window.createRipple(e);
+      const hash = window.location.hash || '';
+      window.location.href = isEnglishPage ? ('/' + hash) : ('/en/' + hash);
     });
-    
-    langText.textContent = dict.lang_switch;
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    window.AxentroLang.updateThemeText(isLight);
+  } else {
+    // Legacy pages: original behavior, unchanged, until they get their own static versions.
+    function applyLanguage(lang) {
+      const dict = translations[lang];
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      localStorage.setItem('lang', lang);
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.innerHTML = dict[key];
+      });
+
+      langText.textContent = dict.lang_switch;
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      window.AxentroLang.updateThemeText(isLight);
+    }
+
+    langSwitcher.addEventListener('click', (e) => {
+      if (window.createRipple) window.createRipple(e);
+      const currentLang = document.documentElement.getAttribute('lang');
+      applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+    });
+
+    // Init
+    applyLanguage(localStorage.getItem('lang') || 'ar');
   }
-
-  langSwitcher.addEventListener('click', (e) => {
-    if (window.createRipple) window.createRipple(e);
-    const currentLang = document.documentElement.getAttribute('lang');
-    applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
-  });
-
-  // Init
-  applyLanguage(localStorage.getItem('lang') || 'ar');
 });
