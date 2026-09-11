@@ -1,7 +1,8 @@
-const CACHE_VERSION = 'axentro-v4-ai-prod';
+const CACHE_VERSION = 'axentro-v5-ai-prod';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
+  '/en/',
   '/about.html',
   '/links.html',
   '/404.html',
