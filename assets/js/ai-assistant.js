@@ -705,6 +705,7 @@
     loadSession();
     syncLanguage();
     setupObserver();
+    renderMessages();
   });
 
 })();
