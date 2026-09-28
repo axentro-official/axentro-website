@@ -151,6 +151,14 @@
     const lang = document.documentElement.lang === 'en' ? 'en' : 'ar';
     const changed = state.currentLanguage !== lang;
     state.currentLanguage = lang;
+    // Clear chat session when language changes (fresh start)
+    if (changed) {
+      try {
+        sessionStorage.removeItem(SESSION_KEY);
+      } catch (e) { /* ignore */ }
+      state.messages = [];
+      state.pendingRetryContext = null;
+    }
     
     const dict = i18n[lang];
     headerTitle.textContent = dict.title;
