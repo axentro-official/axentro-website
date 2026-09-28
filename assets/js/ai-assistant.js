@@ -10,10 +10,10 @@
   // --- 1. CONSTANTS & CONFIG ---
   const API_URL = 'https://axentro.site/api/assistant';
   const SESSION_KEY = 'axentro_ai_session';
-  const SESSION_EXPIRY_MS = 30 * 60 * 1000; // 30 minutes
+  const SESSION_EXPIRY_MS = 3 * 60 * 60 * 1000; // 30 minutes
   const MAX_MSG_LENGTH = 1500;
-  const MAX_HISTORY_TURNS = 5; // 5 pairs = 10 elements max
-  const MAX_SESSION_MSGS = 20;
+  const MAX_HISTORY_TURNS = 12; // 5 pairs = 10 elements max
+  const MAX_SESSION_MSGS = 60;
   const TIMEOUT_MS = 30000;
 
   // --- 2. STATE ---
@@ -172,9 +172,6 @@
     sendBtn.setAttribute('aria-label', dict.send);
     closeBtn.setAttribute('aria-label', dict.close);
     
-    if (changed) {
-      renderMessages();
-    }
   }
 
   function setupObserver() {
