@@ -8,7 +8,7 @@
   'use strict';
 
   // --- 1. CONSTANTS & CONFIG ---
-  const API_URL = 'https://axentro-ai-assistant.axentroofficial.workers.dev/';
+  const API_URL = 'https://axentro.site/api/assistant';
   const SESSION_KEY = 'axentro_ai_session';
   const SESSION_EXPIRY_MS = 30 * 60 * 1000; // 30 minutes
   const MAX_MSG_LENGTH = 1500;
