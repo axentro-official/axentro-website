@@ -149,16 +149,17 @@
   // --- 6. LANGUAGE & OBSERVER ---
   function syncLanguage() {
     const lang = document.documentElement.lang === 'en' ? 'en' : 'ar';
-    const changed = state.currentLanguage !== lang;
-    state.currentLanguage = lang;
-    // Clear chat session when language changes (fresh start)
-    if (changed) {
+        state.currentLanguage = lang;
+// Clear chat session if the interface language changed since last visit
+    const savedLang = sessionStorage.getItem('axentro_ai_lang');
+    if (savedLang && savedLang !== lang) {
       try {
         sessionStorage.removeItem(SESSION_KEY);
       } catch (e) { /* ignore */ }
       state.messages = [];
       state.pendingRetryContext = null;
     }
+    sessionStorage.setItem('axentro_ai_lang', lang);
     
     const dict = i18n[lang];
     headerTitle.textContent = dict.title;
