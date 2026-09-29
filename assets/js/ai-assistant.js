@@ -697,8 +697,10 @@
   // --- 13. INITIALIZATION ---
     document.addEventListener('DOMContentLoaded', () => {
     initDOM();
-    syncLanguage();   // ← الأول: نعرف اللغة (عشان المفتاح يتولد صح)
-    loadSession();    // ← التاني: نحمّل محادثة اللغة دي بالذات
+    syncLanguage();
+    loadSession();
     setupObserver();
     renderMessages();
   });
+
+})();
