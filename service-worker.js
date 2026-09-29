@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'axentro-v5-ai-prod';
+const CACHE_VERSION = 'axentro-v6-ai-prod';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
@@ -24,7 +24,13 @@ const PRECACHE_URLS = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_VERSION).then((cache) => {
-      return cache.addAll(PRECACHE_URLS).catch(error => console.error('Pre-cache failed:', error));
+      return Promise.allSettled(
+        PRECACHE_URLS.map((url) => cache.add(url))
+      ).then((results) => {
+        results.forEach((r, i) => {
+          if (r.status === 'rejected') console.warn('Pre-cache skipped:', PRECACHE_URLS[i]);
+        });
+      });
     })
   );
   self.skipWaiting();
@@ -68,7 +74,7 @@ self.addEventListener('fetch', (event) => {
   }
 
   // Strategy 2: Network Only for AI Worker API (Prevent caching AI responses)
-  if (url.origin === 'https://axentro-ai-assistant.axentroofficial.workers.dev') {
+    if (url.pathname.startsWith('/api/')) {
     event.respondWith(fetch(request));
     return;
   }
