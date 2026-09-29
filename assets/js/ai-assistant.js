@@ -1,6 +1,6 @@
 /* ============================================
    Axentro AI Assistant - JavaScript
-   Version: 1.0.3 (Production - Retry & Validation Finalized)
+   Version: 1.0.4 (Language detection from URL - deterministic)
    Architecture: IIFE, Zero innerHTML, Safe DOM APIs
    ============================================ */
 
@@ -10,9 +10,9 @@
   // --- 1. CONSTANTS & CONFIG ---
   const API_URL = 'https://axentro.site/api/assistant';
   const getSessionKey = () => `axentro_ai_session_${state.currentLanguage}`;
-  const SESSION_EXPIRY_MS = 3 * 60 * 60 * 1000; // 30 minutes
+  const SESSION_EXPIRY_MS = 3 * 60 * 60 * 1000; // 3 hours
   const MAX_MSG_LENGTH = 1500;
-  const MAX_HISTORY_TURNS = 12; // 5 pairs = 10 elements max
+  const MAX_HISTORY_TURNS = 12; // 12 pairs = 24 messages (matches Worker maxHistoryItems)
   const MAX_SESSION_MSGS = 60;
   const TIMEOUT_MS = 30000;
 
@@ -146,12 +146,21 @@
     window.addEventListener('pagehide', handlePageHide);
   }
 
-  // --- 6. LANGUAGE & OBSERVER ---
-    function syncLanguage() {
-    const lang = document.documentElement.lang === 'en' ? 'en' : 'ar';
+  // --- 6. LANGUAGE DETECTION (URL-based, deterministic) ---
+  // Source of truth = URL path: /en/* = English, anything else = Arabic.
+  // We intentionally do NOT read document.documentElement.lang:
+  // language.js or stale cached HTML can alter it at runtime, which caused
+  // EN conversations to be saved under the Arabic session key.
+  function detectLanguage() {
+    const p = window.location.pathname;
+    return (p === '/en' || p.startsWith('/en/')) ? 'en' : 'ar';
+  }
+
+  function syncLanguage() {
+    const lang = detectLanguage();
     state.currentLanguage = lang;
     sessionStorage.setItem('axentro_ai_lang', lang);
-    
+
     const dict = i18n[lang];
     headerTitle.textContent = dict.title;
     headerStatus.replaceChildren();
@@ -162,13 +171,6 @@
     textarea.setAttribute('placeholder', dict.placeholder);
     sendBtn.setAttribute('aria-label', dict.send);
     closeBtn.setAttribute('aria-label', dict.close);
-  }
-  function setupObserver() {
-    const observer = new MutationObserver(() => syncLanguage());
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['lang', 'dir']
-    });
   }
 
   // --- 7. SESSION MANAGEMENT ---
@@ -695,11 +697,11 @@
   }
 
   // --- 13. INITIALIZATION ---
-    document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     initDOM();
     syncLanguage();
+    console.log(`[AxentroAI] v1.0.4 | lang=${state.currentLanguage} | path=${window.location.pathname}`);
     loadSession();
-    setupObserver();
     renderMessages();
   });
 
