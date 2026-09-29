@@ -9,7 +9,7 @@
 
   // --- 1. CONSTANTS & CONFIG ---
   const API_URL = 'https://axentro.site/api/assistant';
-  const SESSION_KEY = 'axentro_ai_session';
+  const getSessionKey = () => `axentro_ai_session_${state.currentLanguage}`;
   const SESSION_EXPIRY_MS = 3 * 60 * 60 * 1000; // 30 minutes
   const MAX_MSG_LENGTH = 1500;
   const MAX_HISTORY_TURNS = 12; // 5 pairs = 10 elements max
@@ -147,18 +147,9 @@
   }
 
   // --- 6. LANGUAGE & OBSERVER ---
-  function syncLanguage() {
+    function syncLanguage() {
     const lang = document.documentElement.lang === 'en' ? 'en' : 'ar';
-        state.currentLanguage = lang;
-// Clear chat session if the interface language changed since last visit
-    const savedLang = sessionStorage.getItem('axentro_ai_lang');
-    if (savedLang && savedLang !== lang) {
-      try {
-        sessionStorage.removeItem(SESSION_KEY);
-      } catch (e) { /* ignore */ }
-      state.messages = [];
-      state.pendingRetryContext = null;
-    }
+    state.currentLanguage = lang;
     sessionStorage.setItem('axentro_ai_lang', lang);
     
     const dict = i18n[lang];
@@ -171,9 +162,7 @@
     textarea.setAttribute('placeholder', dict.placeholder);
     sendBtn.setAttribute('aria-label', dict.send);
     closeBtn.setAttribute('aria-label', dict.close);
-    
   }
-
   function setupObserver() {
     const observer = new MutationObserver(() => syncLanguage());
     observer.observe(document.documentElement, {
@@ -186,7 +175,7 @@
   function loadSession() {
     let sessionWasNormalized = false;
     try {
-      const raw = sessionStorage.getItem(SESSION_KEY);
+      const raw = sessionStorage.getItem(getSessionKey());
       if (!raw) return;
       const data = JSON.parse(raw);
       
@@ -231,7 +220,7 @@
       }
       renderMessages();
     } catch (e) {
-      sessionStorage.removeItem(SESSION_KEY);
+      sessionStorage.removeItem(getSessionKey());
     }
   }
 
@@ -241,7 +230,7 @@
         messages: state.messages.slice(-MAX_SESSION_MSGS),
         lastActivity: state.lastActivity
       };
-      sessionStorage.setItem(SESSION_KEY, JSON.stringify(data));
+      sessionStorage.setItem(getSessionKey(), JSON.stringify(data));
     } catch (e) {
       console.error('Failed to save AI session:', e);
     }
@@ -706,12 +695,10 @@
   }
 
   // --- 13. INITIALIZATION ---
-  document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
     initDOM();
-    loadSession();
-    syncLanguage();
+    syncLanguage();   // ← الأول: نعرف اللغة (عشان المفتاح يتولد صح)
+    loadSession();    // ← التاني: نحمّل محادثة اللغة دي بالذات
     setupObserver();
     renderMessages();
   });
-
-})();
