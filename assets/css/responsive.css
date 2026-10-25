@@ -1,6 +1,6 @@
 /* ============================================
    Axentro | Responsive Design
-   Version: 2.0 (Production)
+   Version: 2.1 (Cross-device refinements)
    ============================================ */
 
 /* 1. Large Desktops & Laptops (Default styles handle this well, but added for clarity) */
@@ -146,5 +146,108 @@
 
   .nav-link {
     padding: 8px;
+  }
+}
+
+
+/* 5. Cross-device safeguards (scoped; preserve the existing layout) */
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+/* Prevent long labels and URLs from forcing horizontal overflow. */
+body {
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 767px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Respect notched displays without relying on a specific device model. */
+  nav.navbar {
+    padding-left: max(0.5rem, env(safe-area-inset-left));
+    padding-right: max(0.5rem, env(safe-area-inset-right));
+  }
+
+  .hero-section {
+    min-width: 0;
+  }
+
+  .hero-title {
+    overflow-wrap: anywhere;
+  }
+
+  .cta {
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    min-width: 0;
+  }
+
+  .floating-wa {
+    bottom: calc(15px + env(safe-area-inset-bottom));
+  }
+
+  html[dir="ltr"] .floating-wa {
+    left: auto;
+    right: max(15px, env(safe-area-inset-right));
+  }
+
+  html[dir="rtl"] .floating-wa {
+    right: auto;
+    left: max(15px, env(safe-area-inset-left));
+  }
+}
+
+@media (max-width: 360px) {
+  nav.navbar {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    max-width: 100%;
+  }
+
+  .nav-link {
+    padding: 7px;
+  }
+
+  .hero-services {
+    letter-spacing: 0.04em;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Landscape phones can have very little vertical space. */
+@media (max-width: 900px) and (orientation: landscape) {
+  .hero-section {
+    padding-top: 4.5rem;
+  }
+
+  .video-wrapper {
+    height: 100vh;
+  }
+}
+
+/* Honor the operating system's motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -1,6 +1,6 @@
 /* ============================================
    Axentro AI Assistant - Stylesheet
-   Version: 1.3 (Production - RTL/LTR Fixes + Quick-Reply Contrast Fix for Light/Dark Themes)
+   Version: 1.4 (Premium assistant icon + mobile viewport refinements)
    ============================================ */
 
 /* 1. Floating Action Button (FAB) - Dynamic Positioning */
@@ -402,5 +402,138 @@ html[dir="rtl"] .ax-ai-typing {
 @media (prefers-reduced-motion: reduce) {
   .ax-ai-fab, .ax-ai-panel, .ax-ai-msg, .ax-ai-typing-dot, .ax-ai-send-btn, .ax-ai-wa-btn {
     transition: none !important; animation: none !important;
+  }
+}
+
+
+/* 10. Axentro signature assistant button (self-contained SVG; no icon-font dependency) */
+.ax-ai-fab {
+  isolation: isolate;
+  overflow: visible;
+  background: linear-gradient(145deg, #c7ff67 0%, #9fff00 48%, #70c900 100%);
+  color: #10140b;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24), 0 0 0 1px rgba(159, 255, 0, 0.14);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.ax-ai-fab::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(16, 20, 11, 0.16);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.ax-ai-fab-mark {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 35px;
+  height: 35px;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12));
+}
+
+.ax-ai-fab-mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.ax-ai-fab:hover {
+  transform: translateY(-2px) scale(1.035);
+  box-shadow: 0 11px 28px rgba(0, 0, 0, 0.28), 0 0 0 5px rgba(159, 255, 0, 0.12);
+}
+
+.ax-ai-fab:active {
+  transform: scale(0.97);
+}
+
+.ax-ai-fab:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 4px;
+}
+
+/* Viewport units: older Safari fallback first, dynamic viewport second. */
+@media (max-width: 768px) {
+  .ax-ai-panel {
+    height: 100vh;
+    max-height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+
+  .ax-ai-header {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  .ax-ai-body {
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ax-ai-composer {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+}
+
+.ax-ai-close,
+.ax-ai-send-btn,
+.ax-ai-quick-btn {
+  touch-action: manipulation;
+}
+
+.ax-ai-close {
+  min-width: 40px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ax-ai-quick-btn {
+  min-height: 40px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.ax-ai-msg,
+.ax-ai-textarea {
+  overflow-wrap: anywhere;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+@media (max-width: 360px) {
+  .ax-ai-body {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .ax-ai-msg {
+    max-width: 94%;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .ax-ai-header {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .ax-ai-composer {
+    gap: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ax-ai-fab::before {
+    transition: none;
   }
 }
