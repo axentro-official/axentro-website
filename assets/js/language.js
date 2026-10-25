@@ -149,6 +149,11 @@ document.addEventListener('DOMContentLoaded', () => {
       langText.textContent = dict.lang_switch;
       const isLight = document.documentElement.getAttribute('data-theme') === 'light';
       window.AxentroLang.updateThemeText(isLight);
+
+      // Notify widgets (including Axentro AI) that this legacy page changed language.
+      window.dispatchEvent(new CustomEvent('axentro:languagechange', {
+        detail: { language: lang }
+      }));
     }
 
     langSwitcher.addEventListener('click', (e) => {

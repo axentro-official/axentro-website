@@ -154,6 +154,8 @@
 
     document.addEventListener('keydown', handleGlobalKeydown);
     window.addEventListener('pagehide', handlePageHide);
+    // Links switches language in-place, so the language script signals us.
+    window.addEventListener('axentro:languagechange', handleAssistantLanguageChange);
   }
 
   // --- 6. LANGUAGE DETECTION (URL-based, deterministic) ---
@@ -163,6 +165,14 @@
   // EN conversations to be saved under the Arabic session key.
   function detectLanguage() {
     const p = window.location.pathname;
+
+    // Links is a legacy page that switches language without navigating.
+    // Use its live <html lang> value; other pages use their URL version.
+    if (p === '/links.html' || p.endsWith('/links.html')) {
+      const pageLanguage = document.documentElement.getAttribute('lang');
+      if (pageLanguage === 'en' || pageLanguage === 'ar') return pageLanguage;
+    }
+
     return (p === '/en' || p.startsWith('/en/')) ? 'en' : 'ar';
   }
 
@@ -182,6 +192,35 @@
     textarea.setAttribute('placeholder', dict.placeholder);
     sendBtn.setAttribute('aria-label', dict.send);
     closeBtn.setAttribute('aria-label', dict.close);
+  }
+
+  function handleAssistantLanguageChange() {
+    const nextLanguage = detectLanguage();
+    if (nextLanguage === state.currentLanguage) return;
+
+    // Stop any in-flight request so a reply in the previous language cannot
+    // leak into the newly selected language.
+    if (state.activeRequest) {
+      state.abortReason = 'language-change';
+      state.activeRequest.abort();
+    }
+
+    state.isSending = false;
+    state.pendingRetryContext = null;
+    state.messages = [];
+    state.lastActivity = Date.now();
+
+    // A language switch intentionally starts a fresh conversation in Links.
+    try {
+      sessionStorage.removeItem('axentro_ai_session_ar');
+      sessionStorage.removeItem('axentro_ai_session_en');
+    } catch (e) {
+      console.warn('Could not clear AI chat sessions after language switch:', e);
+    }
+
+    syncLanguage();
+    renderMessages();
+    unlockComposer();
   }
 
   // --- 7. SESSION MANAGEMENT ---
@@ -527,7 +566,7 @@
       hideTyping();
 
       if (error.name === 'AbortError') {
-        if (state.abortReason === 'navigation') return;
+        if (state.abortReason === 'navigation' || state.abortReason === 'language-change') return;
         if (state.abortReason === 'timeout') {
           handleError({ name: 'TimeoutError' }, message, history, userMsgId);
           return;
