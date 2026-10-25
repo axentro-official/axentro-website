@@ -1,6 +1,6 @@
 /* ============================================
    Axentro AI Assistant - JavaScript
-   Version: 1.0.4 (Language detection from URL - deterministic)
+   Version: 1.0.5 (Full services coverage: AI Automation, Integration, Dashboards, Custom Apps)
    Architecture: IIFE, Zero innerHTML, Safe DOM APIs
    ============================================ */
 
@@ -34,7 +34,7 @@
     ar: {
       title: 'Axentro AI',
       status: 'متصل',
-      welcome: 'مرحبًا 👋\nأنا مساعد Axentro الذكي.\nيمكنني مساعدتك في فهم خدماتنا واختيار الحل الأنسب لمشروعك.',
+      welcome: 'مرحبًا 👋\nأنا مساعد Axentro الذكي.\nأساعدك في فهم كل خدماتنا — من المواقع وأنظمة الإدارة إلى الأتمتة بالذكاء الاصطناعي — وأختار معاك الحل الأنسب لمشروعك.',
       placeholder: 'اكتب رسالتك...',
       send: 'إرسال',
       close: 'إغلاق',
@@ -44,14 +44,14 @@
       error_generic: 'عذراً، حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.',
       retry: 'إعادة المحاولة',
       dismiss: 'تجاهل',
-      quick_actions: ['أريد إنشاء موقع', 'أحتاج نظام إدارة', 'لدي فكرة مشروع', 'ما خدمات Axentro؟'],
+      quick_actions: ['أريد إنشاء موقع', 'أحتاج نظام إدارة', 'عايز أتمتة شغل بالذكاء الاصطناعي', 'لدي فكرة مشروع', 'ما خدمات Axentro؟'],
       wa_cta: 'متابعة المشروع على واتساب',
       wa_summary: 'مرحبًا Axentro،\nتحدثت مع المساعد الذكي وأرغب في مناقشة مشروعي.'
     },
     en: {
       title: 'Axentro AI',
       status: 'Online',
-      welcome: "Hello 👋\nI'm the Axentro AI Assistant.\nI can help you understand our services and choose the right solution for your project.",
+      welcome: "Hello 👋\nI'm the Axentro AI Assistant.\nI help you understand all our services — from websites and business systems to AI automation — and choose the right solution for your project.",
       placeholder: 'Type your message...',
       send: 'Send',
       close: 'Close',
@@ -61,7 +61,7 @@
       error_generic: 'Sorry, an unexpected error occurred. Please try again.',
       retry: 'Retry',
       dismiss: 'Dismiss',
-      quick_actions: ['I need a website', 'I need a management system', 'I have a project idea', 'What services does Axentro offer?'],
+      quick_actions: ['I need a website', 'I need a management system', 'I need AI automation for my business', 'I have a project idea', 'What services does Axentro offer?'],
       wa_cta: 'Continue on WhatsApp',
       wa_summary: "Hello Axentro,\nI spoke with the AI Assistant and I'd like to discuss my project."
     }
