@@ -1,63 +1,65 @@
 /* ============================================
    Axentro AI Assistant - Stylesheet
-   Version: 1.4 (Premium assistant icon + mobile viewport refinements)
+   Version: 1.5 (Standalone full-body robot mascot)
    ============================================ */
 
-/* 1. Floating Action Button (FAB) - Dynamic Positioning */
+/* 1. Standalone full-body robot mascot trigger (no circular button/background) */
 .ax-ai-fab {
   position: fixed;
-  /* Default (LTR): WhatsApp is Left, AI is Right */
-  right: 20px;
-  bottom: calc(20px + env(safe-area-inset-bottom));
-  width: 55px;
-  height: 55px;
-  background: var(--accent);
-  color: var(--btn-text);
-  border: none;
-  border-radius: 50%;
+  right: 18px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  width: 112px;
+  height: 174px;
+  padding: 0;
+  margin: 0;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: inherit;
   cursor: pointer;
   z-index: 9998;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  font-size: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
   opacity: 1;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: transform .25s ease, opacity .25s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* RTL Mode: WhatsApp is Right (20px), AI moves to Left (20px) */
-html[dir="rtl"] .ax-ai-fab {
-  right: auto;
-  left: 20px;
-}
-
-.ax-ai-fab:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(159, 255, 0, 0.4);
-}
-
-.ax-ai-fab:focus-visible {
-  outline: 2px solid var(--text);
-  outline-offset: 4px;
-}
-
-.ax-ai-fab.is-hidden {
-  opacity: 0;
+html[dir="rtl"] .ax-ai-fab { right: auto; left: 18px; }
+.ax-ai-mascot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
   pointer-events: none;
-  transform: scale(0.8);
+  user-select: none;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,.35));
+  animation: ax-ai-mascot-idle 4.5s ease-in-out infinite;
+  transform-origin: center bottom;
 }
-
-/* Mobile adjustments: WhatsApp is 15px, AI matches opposite side */
+.ax-ai-fab:hover { transform: translateY(-4px) scale(1.025); }
+.ax-ai-fab:hover .ax-ai-mascot { filter: drop-shadow(0 7px 13px rgba(159,255,0,.22)); }
+.ax-ai-fab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 12px !important; }
+.ax-ai-fab.is-hidden { opacity: 0; pointer-events: none; transform: translateY(12px); }
+@keyframes ax-ai-mascot-idle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
 @media (max-width: 768px) {
-  .ax-ai-fab {
-    right: 15px;
-    bottom: calc(15px + env(safe-area-inset-bottom));
-  }
-  html[dir="rtl"] .ax-ai-fab {
-    right: auto;
-    left: 15px;
-  }
+  .ax-ai-fab { right: 8px; bottom: calc(8px + env(safe-area-inset-bottom)); width: 88px; height: 137px; }
+  html[dir="rtl"] .ax-ai-fab { right: auto; left: 8px; }
+}
+@media (max-width: 380px) {
+  .ax-ai-fab { width: 74px; height: 116px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ax-ai-mascot { animation: none; }
+  .ax-ai-fab { transition: none; }
 }
 
 /* 2. Chat Panel Layout & Smooth Animation */
