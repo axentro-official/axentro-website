@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'axentro-v6-ai-prod';
+const CACHE_VERSION = 'axentro-v10-services';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
@@ -17,7 +17,11 @@ const PRECACHE_URLS = [
   '/assets/js/ga.js',
   '/assets/js/ai-assistant.js',
   '/manifest.json',
-  '/favicon.png'
+  '/favicon.png',
+  '/en/links.html',
+  '/en/services.html',
+  '/assets/images/services/portfolio-websites.webp',
+  '/assets/images/services/ecommerce-store.webp'
 ];
 
 // 1. Install: Pre-cache App Shell
