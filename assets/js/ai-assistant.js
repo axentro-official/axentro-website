@@ -1,6 +1,6 @@
 /* ============================================
    Axentro AI Assistant - JavaScript
-   Version: 1.0.5 (Full services coverage: AI Automation, Integration, Dashboards, Custom Apps)
+   Version: 1.0.7 (full-body Axentro robot icon + responsive refinements)
    Architecture: IIFE, Zero innerHTML, Safe DOM APIs
    ============================================ */
 
@@ -33,6 +33,7 @@
   const i18n = {
     ar: {
       title: 'Axentro AI',
+      openAssistant: 'فتح المساعد الذكي',
       status: 'متصل',
       welcome: 'مرحبًا 👋\nأنا مساعد Axentro الذكي.\nأساعدك في فهم كل خدماتنا — من المواقع وأنظمة الإدارة إلى الأتمتة بالذكاء الاصطناعي — وأختار معاك الحل الأنسب لمشروعك.',
       placeholder: 'اكتب رسالتك...',
@@ -50,6 +51,7 @@
     },
     en: {
       title: 'Axentro AI',
+      openAssistant: 'Open AI Assistant',
       status: 'Online',
       welcome: "Hello 👋\nI'm the Axentro AI Assistant.\nI help you understand all our services — from websites and business systems to AI automation — and choose the right solution for your project.",
       placeholder: 'Type your message...',
@@ -75,12 +77,55 @@
   function initDOM() {
     fab = document.createElement('button');
     fab.className = 'ax-ai-fab';
+    fab.setAttribute('type', 'button');
     fab.setAttribute('aria-label', 'Open AI Assistant');
     fab.setAttribute('aria-expanded', 'false');
     fab.setAttribute('aria-controls', 'ax-ai-panel');
-    const fabIcon = document.createElement('i');
-    fabIcon.className = 'fas fa-robot';
-    fab.appendChild(fabIcon);
+
+    // Inline SVG keeps the Axentro assistant icon crisp and independent of icon fonts.
+    const fabMark = document.createElement('span');
+    fabMark.className = 'ax-ai-fab-mark';
+    fabMark.setAttribute('aria-hidden', 'true');
+    const fabIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    fabIcon.setAttribute('viewBox', '0 0 48 48');
+    fabIcon.setAttribute('fill', 'none');
+    fabIcon.setAttribute('focusable', 'false');
+    fabIcon.setAttribute('aria-hidden', 'true');
+
+    // Full-body Axentro robot: antenna, expressive face, torso, arms and feet.
+    // Constructed with SVG DOM nodes (no HTML injection or external icon font).
+    const iconParts = [
+      // Antenna
+      { tag: 'path', attrs: { d: 'M24 5.5V9', stroke: 'currentColor', 'stroke-width': '2.2', 'stroke-linecap': 'round' } },
+      { tag: 'circle', attrs: { cx: '24', cy: '4', r: '2.5', fill: '#9FFF00', stroke: 'currentColor', 'stroke-width': '1.2' } },
+      // Head and side sensors
+      { tag: 'rect', attrs: { x: '13.5', y: '9', width: '21', height: '15', rx: '5.2', fill: 'currentColor' } },
+      { tag: 'path', attrs: { d: 'M13.5 14.5H10.8V19H13.5M34.5 14.5H37.2V19H34.5', stroke: 'currentColor', 'stroke-width': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' } },
+      { tag: 'rect', attrs: { x: '17', y: '13', width: '14', height: '7', rx: '2.5', fill: '#171B13' } },
+      { tag: 'circle', attrs: { cx: '20.5', cy: '16.5', r: '1.5', fill: '#9FFF00' } },
+      { tag: 'circle', attrs: { cx: '27.5', cy: '16.5', r: '1.5', fill: '#9FFF00' } },
+      // Neck and torso
+      { tag: 'path', attrs: { d: 'M21.5 24V26H26.5V24', stroke: 'currentColor', 'stroke-width': '2', 'stroke-linecap': 'round' } },
+      { tag: 'path', attrs: { d: 'M17 25.5H31L34 29V36.5Q34 38 32.5 38H15.5Q14 38 14 36.5V29L17 25.5Z', fill: 'currentColor' } },
+      { tag: 'rect', attrs: { x: '19', y: '29', width: '10', height: '5.5', rx: '1.8', fill: '#9FFF00' } },
+      { tag: 'path', attrs: { d: 'M21 31.8H27', stroke: '#171B13', 'stroke-width': '1.2', 'stroke-linecap': 'round' } },
+      // Arms and hands
+      { tag: 'path', attrs: { d: 'M14.5 28.5 10.5 31.5V35.5M33.5 28.5 37.5 31.5V35.5', stroke: 'currentColor', 'stroke-width': '3.2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' } },
+      { tag: 'circle', attrs: { cx: '10.5', cy: '37', r: '2.2', fill: '#9FFF00', stroke: 'currentColor', 'stroke-width': '1.4' } },
+      { tag: 'circle', attrs: { cx: '37.5', cy: '37', r: '2.2', fill: '#9FFF00', stroke: 'currentColor', 'stroke-width': '1.4' } },
+      // Legs and feet
+      { tag: 'path', attrs: { d: 'M19 38V41.5M29 38V41.5', stroke: 'currentColor', 'stroke-width': '3.2', 'stroke-linecap': 'round' } },
+      { tag: 'path', attrs: { d: 'M15.5 43H21V41.5H18.5M27 41.5V43H32.5', stroke: 'currentColor', 'stroke-width': '2.8', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' } }
+    ];
+
+    iconParts.forEach((part) => {
+      const node = document.createElementNS('http://www.w3.org/2000/svg', part.tag);
+      Object.entries(part.attrs).forEach(([name, value]) => node.setAttribute(name, value));
+      fabIcon.appendChild(node);
+    });
+
+    fabMark.appendChild(fabIcon);
+    fab.appendChild(fabMark);
     fab.addEventListener('click', togglePanel);
 
     panel = document.createElement('div');
@@ -162,6 +207,7 @@
     sessionStorage.setItem('axentro_ai_lang', lang);
 
     const dict = i18n[lang];
+    fab.setAttribute('aria-label', dict.openAssistant);
     headerTitle.textContent = dict.title;
     headerStatus.replaceChildren();
     const statusDot = document.createElement('span');
@@ -700,7 +746,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     initDOM();
     syncLanguage();
-    console.log(`[AxentroAI] v1.0.4 | lang=${state.currentLanguage} | path=${window.location.pathname}`);
+    console.log(`[AxentroAI] v1.0.6 | lang=${state.currentLanguage} | path=${window.location.pathname}`);
     loadSession();
     renderMessages();
   });
