@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'axentro-v10-services';
+const CACHE_VERSION = 'axentro-v11-robot-mascot';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
@@ -16,6 +16,7 @@ const PRECACHE_URLS = [
   '/assets/js/particles.js',
   '/assets/js/ga.js',
   '/assets/js/ai-assistant.js',
+  '/assets/images/axentro-ai-robot.png',
   '/manifest.json',
   '/favicon.png',
   '/en/links.html',
