@@ -9,7 +9,7 @@
   <meta name="description" content="Axentro provides web development, software development, e-commerce, CRM, booking systems, and custom digital solutions for businesses worldwide, serving clients in Egypt and internationally.">
 
   <!-- Security & SEO Meta Tags (CSP identical to root page) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data: https://www.google.com https://www.google.com.eg https://www.googletagmanager.com; media-src https://d8j0ntlcm91z4.cloudfront.net; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.google.com https://www.google.com.eg https://www.googletagmanager.com https://cloudflareinsights.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data: https://www.google.com https://www.google.com.eg https://www.googletagmanager.com; media-src 'self' https://d8j0ntlcm91z4.cloudfront.net; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.google.com https://www.google.com.eg https://www.googletagmanager.com https://cloudflareinsights.com;">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="robots" content="index, follow">
@@ -86,6 +86,7 @@
   "url": "https://axentro.site/",
   "logo": "https://axentro.site/assets/images/og-image.jpg",
   "description": "Axentro (اكسنترو) provides web development, software development, e-commerce, CRM, booking systems, and custom digital solutions for businesses in Egypt and worldwide.",
+  "knowsAbout": ["Web Development", "Portfolio & CV Websites", "E-commerce Development", "Booking & Reservation Systems", "Clinic Management Systems", "Inventory & Sales Management", "CRM Systems", "QR Menu & Online Ordering", "Real Estate Platforms", "AI Automation", "Business Systems Integration", "Business Dashboards & Reports", "Custom Business Applications", "تصميم وتطوير المواقع", "أنظمة إدارة الأعمال", "أتمتة الأعمال بالذكاء الاصطناعي"],
   "email": "axentroofficial@gmail.com",
   "telephone": "+201146476993",
     "sameAs": [
@@ -184,8 +185,8 @@
 
   <section class="hero-section reveal show" id="home">
     <div class="video-wrapper">
-      <video autoPlay loop muted playsInline preload="auto">
-        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4" type="video/mp4">
+      <video autoplay loop muted playsInline preload="metadata" poster="/assets/video/hero-poster.jpg">
+        <source src="/assets/video/hero.mp4" type="video/mp4">
       </video>
       <div class="gradient-mask"></div>
     </div>
@@ -199,7 +200,7 @@
   </span>
 </h1>
 
-      <div class="hero-services">WEB DEVELOPMENT • E-COMMERCE • CRM • BOOKING SYSTEMS • CLINIC MANAGEMENT • QR MENU • INVENTORY & LISTINGS</div>
+      <div class="hero-services">WEB DEVELOPMENT • E-COMMERCE • CRM • BOOKING SYSTEMS • CLINIC MANAGEMENT • QR MENU • INVENTORY & LISTINGS • AI AUTOMATION • DASHBOARDS & CUSTOM APPS</div>
       <br>
       <a href="#contact" class="cta-button ripple-btn" onclick="trackClick('cta_consult','Book Your Consultation','home');" data-i18n="hero_cta">Book Your Consultation</a>
     </div>
@@ -220,7 +221,7 @@
 
         <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
           <a class="card-link js-utm-link" href="/en/about.html#portfolio" onclick="trackService('portfolio','Portfolio & CV Websites');">
-            <img class="service-img" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop" alt="Portfolio & Personal Websites" loading="lazy">
+            <img class="service-img" src="/assets/images/services/portfolio.jpg" alt="Portfolio & Personal Websites" loading="lazy">
             <h3>Portfolio & Personal Websites</h3>
             <p data-i18n="serv_2_desc">Professional portfolio and personal website development for showcasing your work and CV, with responsive design that helps build a strong digital presence for employers and clients.</p>
             <span class="more-link" data-i18n="know_more">Learn more <i class="fas fa-arrow-right"></i></span>
@@ -247,7 +248,7 @@
 
         <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
           <a class="card-link js-utm-link" href="/en/about.html#ecommerce" onclick="trackService('ecommerce','E-commerce & Product Showcase');">
-            <img class="service-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop" alt="E-commerce Development" loading="lazy">
+            <img class="service-img" src="/assets/images/services/ecommerce.jpg" alt="E-commerce Development" loading="lazy">
             <h3>E-commerce Development & Product Showcase</h3>
             <p data-i18n="serv_5_desc">Professional e-commerce development for businesses, including E-commerce Development and Online Store Development, with product and order management and an easy-to-use dashboard.</p>
             <span class="more-link" data-i18n="know_more">Learn more <i class="fas fa-arrow-right"></i></span>
@@ -286,6 +287,38 @@
             <img class="service-img" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop" alt="Real Estate Listing & Property Platforms" loading="lazy">
             <h3>Real Estate Listing & Property Platforms</h3>
             <p data-i18n="serv_9_desc">Real estate listing and property platforms for real estate businesses, including property listings, images, details, search, and filtering for an easier customer experience.</p>
+            <span class="more-link" data-i18n="know_more">Learn more <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div></div></div>
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="/en/about.html#ai-automation" onclick="trackService('ai-automation','AI Automation & Intelligent Workflows');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop" alt="AI Automation Services" loading="lazy">
+            <h3>AI Automation</h3>
+            <p data-i18n="serv_10_desc">Turning repetitive tasks and business operations into Intelligent Workflows that save time, reduce manual work, and improve overall business efficiency.</p>
+            <span class="more-link" data-i18n="know_more">Learn more <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div></div></div>
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="/en/about.html#integrations" onclick="trackService('integrations','Business Systems Integration');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" alt="Business Systems Integration" loading="lazy">
+            <h3>Business Systems Integration</h3>
+            <p data-i18n="serv_11_desc">Connecting your different systems and services so data flows automatically between them, with more organized operations and no manual data transfer.</p>
+            <span class="more-link" data-i18n="know_more">Learn more <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div></div></div>
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="/en/about.html#dashboards" onclick="trackService('dashboards','Business Dashboards & Reports');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Business Dashboards & Reports" loading="lazy">
+            <h3>Dashboards & Business Reports</h3>
+            <p data-i18n="serv_12_desc">Turning your business data into clear Dashboards and reports that help you track performance, sales, customers, and operations.</p>
+            <span class="more-link" data-i18n="know_more">Learn more <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div></div></div>
+        <div class="card-wrapper"><div class="card"><div class="glare-card"></div><div class="card-content">
+          <a class="card-link js-utm-link" href="/en/about.html#custom-apps" onclick="trackService('custom-apps','Custom Business Applications');">
+            <img class="service-img" src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?q=80&w=800&auto=format&fit=crop" alt="Custom Business Applications" loading="lazy">
+            <h3>Custom Business Applications</h3>
+            <p data-i18n="serv_13_desc">Custom digital solutions built around your business Workflow and Requirements, instead of off-the-shelf systems that don't fit the way you work.</p>
             <span class="more-link" data-i18n="know_more">Learn more <i class="fas fa-arrow-right"></i></span>
           </a>
         </div></div></div>
