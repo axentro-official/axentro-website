@@ -589,7 +589,7 @@ footer .by {
 .floating-wa {
   position: fixed;
   bottom: 20px;
-  left: 20px;
+  right: 20px;
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -605,6 +605,7 @@ footer .by {
   transition: all 0.3s;
 }
 
+/* WhatsApp stays on the RIGHT in both languages (AI mascot owns the left) */
 html[dir="rtl"] .floating-wa {
   left: auto;
   right: 20px;

@@ -121,7 +121,7 @@
     justify-content: center;
   }
 
-  /* Floating WhatsApp */
+  /* Floating WhatsApp — RIGHT in both languages (AI mascot owns the left) */
   .floating-wa {
     width: 50px;
     height: 50px;
@@ -195,14 +195,15 @@ body {
     bottom: calc(15px + env(safe-area-inset-bottom));
   }
 
+  /* WhatsApp stays on the RIGHT in both languages (AI mascot owns the left) */
   html[dir="ltr"] .floating-wa {
     left: auto;
     right: max(15px, env(safe-area-inset-right));
   }
 
   html[dir="rtl"] .floating-wa {
-    right: auto;
-    left: max(15px, env(safe-area-inset-left));
+    left: auto;
+    right: max(15px, env(safe-area-inset-right));
   }
 }
 

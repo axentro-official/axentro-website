@@ -6,7 +6,7 @@
 /* 1. Standalone full-body robot mascot trigger (no circular button/background) */
 .ax-ai-fab {
   position: fixed;
-  right: 18px;
+  left: 18px;
   bottom: calc(12px + env(safe-area-inset-bottom));
   width: 112px;
   height: 174px;
@@ -29,6 +29,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Mascot stays on the LEFT in both languages (WhatsApp owns the right) */
 html[dir="rtl"] .ax-ai-fab { right: auto; left: 18px; }
 .ax-ai-mascot {
   display: block;
@@ -51,7 +52,7 @@ html[dir="rtl"] .ax-ai-fab { right: auto; left: 18px; }
   50% { transform: translateY(-4px); }
 }
 @media (max-width: 768px) {
-  .ax-ai-fab { right: 8px; bottom: calc(8px + env(safe-area-inset-bottom)); width: 88px; height: 137px; }
+  .ax-ai-fab { left: 8px; bottom: calc(8px + env(safe-area-inset-bottom)); width: 88px; height: 137px; }
   html[dir="rtl"] .ax-ai-fab { right: auto; left: 8px; }
 }
 @media (max-width: 380px) {
@@ -62,11 +63,11 @@ html[dir="rtl"] .ax-ai-fab { right: auto; left: 18px; }
   .ax-ai-fab { transition: none; }
 }
 
-/* 2. Chat Panel Layout & Smooth Animation */
+/* Chat Panel: opens above the mascot (LEFT side in both languages) */
 .ax-ai-panel {
   position: fixed;
-  /* Default (LTR) */
-  right: 20px;
+  /* Mascot side (left) — same in LTR and RTL */
+  left: 20px;
   bottom: calc(85px + env(safe-area-inset-bottom));
   width: 380px;
   max-width: calc(100vw - 40px);
@@ -90,7 +91,7 @@ html[dir="rtl"] .ax-ai-fab { right: auto; left: 18px; }
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
 }
 
-/* RTL Mode: Panel moves to Left */
+/* RTL: same side as LTR — panel follows the mascot on the left */
 html[dir="rtl"] .ax-ai-panel {
   right: auto;
   left: 20px;
