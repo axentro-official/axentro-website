@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'axentro-v11-robot-mascot';
+const CACHE_VERSION = 'axentro-v13-float-fix';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
