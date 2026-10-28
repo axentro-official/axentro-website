@@ -74,7 +74,7 @@
   
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY6Y32C90K"></script>
+  <!-- v16: gtag library loads lazily via ga.js (first interaction or 10s) -->
 
     <!-- Theme init (language and direction are static on this page) -->
   <script>
@@ -94,17 +94,44 @@
   "name": "Axentro",
   "alternateName": [
     "اكسنترو",
+    "أكستنرو",
     "أكسنترو",
+    "اكسترو",
+    "اكسبنتو",
     "اكسنترو للحلول الرقمية"
   ],
   "url": "https://axentro.site/",
   "logo": "https://axentro.site/assets/images/og-image.jpg",
   "description": "Axentro (اكسنترو) provides web development, software development, e-commerce, CRM, booking systems, and custom digital solutions for businesses in Egypt and worldwide.",
-  "knowsAbout": ["Web Development", "Portfolio & CV Websites", "E-commerce Development", "Booking & Reservation Systems", "Clinic Management Systems", "Inventory & Sales Management", "CRM Systems", "QR Menu & Online Ordering", "Real Estate Platforms", "AI Automation", "Business Systems Integration", "Business Dashboards & Reports", "Custom Business Applications", "تصميم وتطوير المواقع", "أنظمة إدارة الأعمال", "أتمتة الأعمال بالذكاء الاصطناعي"],
+  "knowsAbout": [
+    "Web Development",
+    "Portfolio & CV Websites",
+    "E-commerce Development",
+    "Booking & Reservation Systems",
+    "Clinic Management Systems",
+    "Inventory & Sales Management",
+    "CRM Systems",
+    "QR Menu & Online Ordering",
+    "Real Estate Platforms",
+    "AI Automation",
+    "Business Systems Integration",
+    "Business Dashboards & Reports",
+    "Custom Business Applications",
+    "تصميم وتطوير المواقع",
+    "أنظمة إدارة الأعمال",
+    "أتمتة الأعمال بالذكاء الاصطناعي",
+    "Software Development",
+    "CRM Software",
+    "Online Booking Systems",
+    "Inventory Management Systems",
+    "Sales Management Systems",
+    "Clinic Management Software",
+    "QR Menu Systems"
+  ],
   "email": "axentroofficial@gmail.com",
   "telephone": "+201146476993",
-    "areaServed": "Worldwide",
-    "sameAs": [
+  "areaServed": "Worldwide",
+  "sameAs": [
     "https://www.facebook.com/axentro.site/",
     "https://www.instagram.com/axentro.official",
     "https://www.tiktok.com/@axentro.official",
@@ -118,19 +145,7 @@
       "Arabic",
       "English"
     ]
-  },
-  "knowsAbout": [
-    "Web Development",
-    "Software Development",
-    "E-commerce Development",
-    "CRM Software",
-    "Online Booking Systems",
-    "Inventory Management Systems",
-    "Sales Management Systems",
-    "Clinic Management Software",
-    "QR Menu Systems",
-    "Real Estate Platforms"
-  ]
+  }
 }
   </script>
 
@@ -164,6 +179,41 @@
     "@id": "https://axentro.site/#organization"
   },
   "inLanguage": "en"
+}
+  </script>
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://axentro.site/#faq-en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Axentro?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Axentro (in Arabic: اكسنترو / أكستنرو / اكسترو) is an Egypt-based web development and software company building corporate websites, e-commerce stores, booking and clinic management systems, CRM, inventory and sales systems, QR menus for restaurants, real estate platforms, AI automation, dashboards, and custom business applications. Axentro serves clients in Egypt, the Gulf, and worldwide with remote delivery in Arabic and English."}
+    },
+    {
+      "@type": "Question",
+      "name": "What services does Axentro offer?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Axentro offers 13 core services: web development, portfolio and CV websites, booking and appointment systems, clinic management software, e-commerce development, inventory and sales management, CRM software, QR menu and online ordering for restaurants and cafes, real estate listing platforms, AI business automation, business systems integration, dashboards and business reports, and custom business applications."}
+    },
+    {
+      "@type": "Question",
+      "name": "How can I contact Axentro?",
+      "acceptedAnswer": {"@type": "Answer", "text": "The fastest way is WhatsApp at +201146476993 or through the website axentro.site. You can also reach Axentro on Facebook, Instagram, TikTok, and LinkedIn (@axentro.official), or by email at axentroofficial@gmail.com."}
+    },
+    {
+      "@type": "Question",
+      "name": "Does Axentro work with international clients?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. Axentro delivers remotely for clients in Saudi Arabia, the UAE, Kuwait, Qatar, the wider Gulf, Europe, and the Americas. Communication and delivery are fully online in Arabic and English, and every project includes training and post-launch support."}
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a website cost with Axentro?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Pricing depends on the type and size of the project: a landing page, a corporate website, an online store, or a full management system. Every quote is tailored to the client's needs. Message WhatsApp +201146476993 with a short description of your project and you will receive a detailed offer shortly."}
+    }
+  ]
 }
   </script>
 
@@ -201,9 +251,10 @@
 
   <section class="hero-section reveal show" id="home">
     <div class="video-wrapper">
-      <video autoplay loop muted playsInline preload="metadata" poster="/assets/video/hero-poster-v2.jpg">
+      <video loop muted playsInline preload="none" poster="/assets/video/hero-poster-v2.jpg">
         <source src="/assets/video/hero-v2.mp4" type="video/mp4">
       </video>
+      <script>(function(){var v=document.querySelector(".video-wrapper video");if(v&&!window.matchMedia("(max-width:767px)").matches){v.setAttribute("autoplay","");v.load();var p=v.play();p&&p.catch&&p.catch(function(){})}})();</script>
       <div class="gradient-mask"></div>
     </div>
     <div class="hero-content">
