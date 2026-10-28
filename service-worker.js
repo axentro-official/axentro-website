@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'axentro-v15-full-audit';
+const CACHE_VERSION = 'axentro-v16-speed-geo';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
