@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'axentro-v13-float-fix';
+const CACHE_VERSION = 'axentro-v15-full-audit';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
@@ -10,19 +10,32 @@ const PRECACHE_URLS = [
   '/assets/css/animations.css',
   '/assets/css/responsive.css',
   '/assets/css/ai-assistant.css',
+  '/assets/css/fonts.css',
+  '/assets/fontawesome/css/all.min.css',
   '/assets/js/main.js',
   '/assets/js/theme.js',
   '/assets/js/language.js',
   '/assets/js/particles.js',
   '/assets/js/ga.js',
   '/assets/js/ai-assistant.js',
-  '/assets/images/axentro-ai-robot.png',
+  '/assets/images/axentro-ai-robot.webp',
   '/manifest.json',
   '/favicon.png',
   '/en/links.html',
   '/en/services.html',
+  '/assets/images/services/web-development.webp',
   '/assets/images/services/portfolio-websites.webp',
-  '/assets/images/services/ecommerce-store.webp'
+  '/assets/images/services/booking-systems.webp',
+  '/assets/images/services/clinic-management.webp',
+  '/assets/images/services/ecommerce-store.webp',
+  '/assets/images/services/inventory-sales.webp',
+  '/assets/images/services/crm-systems.webp',
+  '/assets/images/services/qr-menu.webp',
+  '/assets/images/services/real-estate.webp',
+  '/assets/images/services/ai-automation.webp',
+  '/assets/images/services/systems-integration.webp',
+  '/assets/images/services/dashboards-reports.webp',
+  '/assets/images/services/custom-applications.webp'
 ];
 
 // 1. Install: Pre-cache App Shell

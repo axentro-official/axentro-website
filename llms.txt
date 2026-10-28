@@ -1,0 +1,45 @@
+# Axentro
+
+> Axentro is a digital solutions company based in Egypt, serving clients in Egypt, the Gulf, and worldwide.
+> We design and build websites, business management systems, and AI-powered automation.
+> Website: https://axentro.site/ (Arabic) - English site: https://axentro.site/en/
+
+Axentro (اكسنترو) helps businesses digitize and grow: corporate websites and landing pages,
+e-commerce stores, booking and clinic management systems, CRM, inventory and invoicing,
+QR menus for restaurants, real estate platforms, plus AI automation, systems integration,
+business dashboards, and custom business applications. Every solution is built around the
+client's actual workflow, with training and ongoing support after launch.
+
+## Services (13)
+- [Web Development](https://axentro.site/en/services.html): corporate websites and high-converting landing pages with clean technical SEO.
+- [Portfolio & Personal Websites](https://axentro.site/en/services.html): portfolio and CV websites for professionals and job seekers.
+- [Booking & Appointment Systems](https://axentro.site/en/services.html): 24/7 self-booking with smart calendars and automatic reminders.
+- [Clinic Management Software](https://axentro.site/en/services.html): patient files, appointments, invoicing, and reports for clinics and medical centers.
+- [E-commerce Development](https://axentro.site/en/services.html): online stores with catalog, cart, payments, and order management.
+- [Inventory & Sales Management](https://axentro.site/en/services.html): stock, invoices, and profit reports connected in one system.
+- [CRM Software](https://axentro.site/en/services.html): leads, sales pipeline, follow-ups, and team performance tracking.
+- [QR Menu & Online Ordering](https://axentro.site/en/services.html): digital QR menus for restaurants and cafes with instant ordering.
+- [Real Estate Listing Platform](https://axentro.site/en/services.html): property listings with search, filters, and map location.
+- [AI Automation](https://axentro.site/en/services.html): intelligent workflows that remove repetitive manual work.
+- [Business Systems Integration](https://axentro.site/en/services.html): connecting websites, CRM, inventory, WhatsApp, and payment tools via APIs.
+- [Dashboards & Business Reports](https://axentro.site/en/services.html): interactive dashboards and KPI reports from your business data.
+- [Custom Business Applications](https://axentro.site/en/services.html): tailor-made software built around your exact workflow.
+
+## Pages
+- [Home (Arabic)](https://axentro.site/)
+- [Home (English)](https://axentro.site/en/)
+- [About (English)](https://axentro.site/en/about.html)
+- [Services & FAQ (English)](https://axentro.site/en/services.html)
+- [Contact (English)](https://axentro.site/en/links.html)
+- [Contact (Arabic)](https://axentro.site/links.html)
+
+## Contact
+- WhatsApp: https://wa.me/201146476993
+- Email: axentroofficial@gmail.com
+- Facebook: https://www.facebook.com/axentro.site/
+- Instagram: https://www.instagram.com/axentro.official
+- TikTok: https://www.tiktok.com/@axentro.official
+- LinkedIn: https://www.linkedin.com/company/axentro-official
+- GitHub: https://github.com/axentrohq
+
+Axentro serves clients worldwide with remote delivery; the team communicates in Arabic and English.
